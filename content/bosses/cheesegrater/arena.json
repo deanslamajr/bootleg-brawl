@@ -1,0 +1,44 @@
+{
+ "id": "cheesegrater-throne",
+ "schemaVersion": 1,
+ "width": 480,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [],
+ "hazards": [
+  {
+   "kind": "rail",
+   "id": "beam-cannon",
+   "params": {
+    "behavior": "unbootleg-beam",
+    "y": 22,
+    "speed": 1.6,
+    "telegraph": 36,
+    "cooldown": 70
+   }
+  }
+ ],
+ "phases": [
+  {
+   "hpBelowPct": 60,
+   "text": "THE CANNON SPEEDS UP"
+  },
+  {
+   "hpBelowPct": 30,
+   "spawn": {
+    "family": "shoe-clan",
+    "tier": 2,
+    "count": 2
+   },
+   "text": "FOOT SOLDIERS! I MEAN SHOE SOLDIERS!"
+  }
+ ],
+ "camera": {
+  "lockX": 0
+ },
+ "rules": {
+  "throwTowardCamera": true
+ }
+}

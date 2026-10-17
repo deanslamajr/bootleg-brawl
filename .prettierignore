@@ -1,0 +1,11 @@
+node_modules
+dist
+generated
+content/manifest.json
+pnpm-lock.yaml
+docs
+test-results
+playwright-report
+tests/golden/*.replay.json
+content
+packages/schema/test/fixtures

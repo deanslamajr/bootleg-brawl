@@ -1,0 +1,69 @@
+{
+ "id": "water",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 100,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 100,
+   "color": "#1a5a5a"
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 100,
+   "every": 9,
+   "width": 2,
+   "color": "#2a9a8a",
+   "vertical": false
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 100,
+   "color": "#6ae0c8",
+   "density": 3,
+   "seed": 12
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 60,
+   "count": 8,
+   "ops": [
+    {
+     "op": "ellipse",
+     "x": 30,
+     "y": 40,
+     "w": 24,
+     "h": 4,
+     "color": "#6ae0c8"
+    }
+   ]
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 80,
+   "count": 6,
+   "ops": [
+    {
+     "op": "ellipse",
+     "x": 20,
+     "y": 74,
+     "w": 30,
+     "h": 5,
+     "color": "#2a9a8a"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "id": "pipes",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1440,
+ "depth": [
+  184,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "pipes",
+   "depth": 1,
+   "speedX": 1
+  },
+  {
+   "layer": "grime",
+   "depth": 9,
+   "speedX": 1.3,
+   "y": 0,
+   "foreground": true
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "pipe-1",
+   "at": 160,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 40,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 3,
+     "side": "left",
+     "delayTicks": 100,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "pipes-roam-1",
+   "at": 340,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "pipe-2",
+   "at": 520,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "manhole",
+     "x": 760,
+     "y": 210,
+     "fixed": true
+    },
+    {
+     "family": "shoe-clan",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 80,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "pipes-roam-2",
+   "at": 700,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "pipe-3",
+   "at": 900,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 3,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "shoe-clan",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 90,
+     "spawnKind": "dumpster",
+     "x": 1200,
+     "y": 196,
+     "fixed": true
+    },
+    {
+     "family": "shoe-clan",
+     "tier": 3,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 240,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "prop",
+   "id": "manhole",
+   "x": 760,
+   "y": 214
+  },
+  {
+   "kind": "prop",
+   "id": "dumpster",
+   "x": 1200,
+   "y": 192
+  },
+  {
+   "kind": "breakable",
+   "id": "oil-drum",
+   "x": 420,
+   "y": 192
+  },
+  {
+   "kind": "breakable",
+   "id": "crate",
+   "x": 1040,
+   "y": 200
+  },
+  {
+   "kind": "pickup",
+   "id": "pizza-slice",
+   "x": 650,
+   "y": 240
+  }
+ ],
+ "gags": [],
+ "intro": "THE SEWER. IT SMELLS OF PIZZA AND REGRET.",
+ "startX": 50
+}

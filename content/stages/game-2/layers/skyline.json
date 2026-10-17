@@ -1,0 +1,68 @@
+{
+ "id": "skyline",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 180,
+ "ops": [
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 80,
+   "count": 12,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 4,
+     "y": 40,
+     "w": 60,
+     "h": 140,
+     "color": "#1e0a3a"
+    },
+    {
+     "op": "windows",
+     "x": 10,
+     "y": 50,
+     "cols": 4,
+     "rows": 9,
+     "ww": 6,
+     "wh": 8,
+     "gapX": 6,
+     "gapY": 6,
+     "color": "#2e2a3a",
+     "lit": "#ffd93a",
+     "litChance": 25
+    }
+   ]
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 130,
+   "count": 8,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 40,
+     "y": 80,
+     "w": 40,
+     "h": 100,
+     "color": "#3e1a6a"
+    },
+    {
+     "op": "windows",
+     "x": 46,
+     "y": 88,
+     "cols": 2,
+     "rows": 6,
+     "ww": 8,
+     "wh": 8,
+     "gapX": 8,
+     "gapY": 6,
+     "color": "#1e0a3a",
+     "lit": "#ffb04a",
+     "litChance": 30
+    }
+   ]
+  }
+ ]
+}

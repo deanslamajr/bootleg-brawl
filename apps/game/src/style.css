@@ -1,0 +1,26 @@
+:root {
+  --bg: #1a1420;
+  --bezel: #2e2a3a;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+#cabinet {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#screen canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: block;
+}
+body.cabinet-mode #cabinet {
+  background: var(--bezel);
+}

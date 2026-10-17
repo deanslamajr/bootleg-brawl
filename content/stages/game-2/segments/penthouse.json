@@ -1,0 +1,37 @@
+{
+ "id": "penthouse",
+ "schemaVersion": 1,
+ "kind": "arena",
+ "length": 480,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "penthouse",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "penthouse-boss",
+   "at": 0,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 600,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [],
+ "gags": [],
+ "intro": "THE PENTHOUSE"
+}

@@ -1,0 +1,487 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:grappler",
+ "states": {
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk4:0",
+     "dur": 5
+    },
+    {
+     "pose": "atk4:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        6,
+        30,
+        32
+       ],
+       "damage": 7,
+       "knock": [
+        1.2,
+        0
+       ],
+       "hitstun": 28,
+       "hitstop": 8,
+       "sfx": "clang",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "atk4:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "tags": [
+    "improvised"
+   ],
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "swing:0",
+     "dur": 5
+    },
+    {
+     "pose": "swing:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        10,
+        30,
+        32
+       ],
+       "damage": 8,
+       "knock": [
+        1.2,
+        0
+       ],
+       "hitstun": 28,
+       "hitstop": 8,
+       "sfx": "clang",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "swing:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "tags": [
+    "improvised"
+   ],
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "bareAtk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        22,
+        16
+       ],
+       "damage": 8,
+       "knock": [
+        0.9,
+        0
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 5
+    },
+    {
+     "on": "attack",
+     "to": "bareAtk2",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "bareAtk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk2:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk2:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        22,
+        16
+       ],
+       "damage": 9,
+       "knock": [
+        0.9,
+        0
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk2:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "land:0",
+     "dur": 6
+    },
+    {
+     "pose": "jump:1",
+     "dur": 12,
+     "vel": [
+      1.2,
+      3.8
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "bellyLand",
+   "invuln": [
+    0,
+    30
+   ],
+   "friction": 0
+  },
+  "bellyLand": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "down:0",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -30,
+        0,
+        60,
+        26
+       ],
+       "damage": 14,
+       "knock": [
+        3,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam",
+       "score": 25,
+       "tags": [
+        "any"
+       ]
+      }
+     ],
+     "events": [
+      {
+       "shake": 10,
+       "text": "SPLAT"
+      }
+     ]
+    },
+    {
+     "pose": "down:0",
+     "dur": 16
+    },
+    {
+     "pose": "getup:1",
+     "dur": 8
+    }
+   ],
+   "next": "idle"
+  },
+  "throwF": {
+   "kind": "throw",
+   "frames": [
+    {
+     "pose": "grabSlam:0",
+     "dur": 5
+    },
+    {
+     "pose": "grabSlam:1",
+     "dur": 8,
+     "events": [
+      {
+       "text": "DAD DRIVER!"
+      }
+     ]
+    },
+    {
+     "pose": "grabSlam:2",
+     "dur": 8
+    },
+    {
+     "pose": "grabSlam:3",
+     "dur": 4,
+     "events": [
+      {
+       "release": true,
+       "shake": 10,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "grabSlam:4",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  },
+  "teamSuplex": {
+   "kind": "teamup",
+   "frames": [
+    {
+     "pose": "teamToss:0",
+     "dur": 8
+    },
+    {
+     "pose": "teamToss:1",
+     "dur": 16,
+     "events": [
+      {
+       "text": "SUBURBAN SUPLEX"
+      }
+     ]
+    },
+    {
+     "pose": "teamToss:2",
+     "dur": 4,
+     "events": [
+      {
+       "release": true,
+       "shake": 4
+      }
+     ]
+    },
+    {
+     "pose": "teamToss:3",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    40
+   ],
+   "tags": [
+    "teamToss"
+   ]
+  }
+ },
+ "patch": {
+  "idle": {
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "back",
+     "to": "backAtk"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "attack",
+     "to": "atk1",
+     "if": "hasImprovised"
+    },
+    {
+     "on": "attack",
+     "to": "bareAtk1",
+     "if": "noImprovised"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    },
+    {
+     "on": "taunt",
+     "to": "taunt"
+    }
+   ]
+  },
+  "walk": {
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "back",
+     "to": "backAtk"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "attack",
+     "to": "atk1",
+     "if": "hasImprovised"
+    },
+    {
+     "on": "attack",
+     "to": "bareAtk1",
+     "if": "noImprovised"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    },
+    {
+     "on": "taunt",
+     "to": "taunt"
+    }
+   ]
+  },
+  "sleep": {
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "back",
+     "to": "backAtk"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "attack",
+     "to": "atk1",
+     "if": "hasImprovised"
+    },
+    {
+     "on": "attack",
+     "to": "bareAtk1",
+     "if": "noImprovised"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    },
+    {
+     "on": "taunt",
+     "to": "taunt"
+    }
+   ]
+  }
+ }
+}

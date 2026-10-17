@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootleg Brawl Sandbox</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <strong>SANDBOX</strong>
+      <nav>
+        <button data-mode="room" class="on">Character room</button>
+        <button data-mode="stage">Stage preview</button>
+      </nav>
+      <span id="status"></span>
+    </header>
+    <main>
+      <section id="view">
+        <div id="screen"></div>
+        <div id="transport">
+          <button id="pause">Pause (P)</button>
+          <button id="step">Step (.)</button>
+          <label
+            >Speed
+            <select id="speed">
+              <option>0.25</option>
+              <option>0.5</option>
+              <option selected>1</option>
+              <option>2</option>
+            </select></label
+          >
+          <label><input type="checkbox" id="ov-hit" checked /> hit</label>
+          <label><input type="checkbox" id="ov-hurt" checked /> hurt</label>
+          <label><input type="checkbox" id="ov-push" /> push</label>
+          <label><input type="checkbox" id="ov-lane" /> lanes</label>
+          <button id="reload">Reload content (R)</button>
+        </div>
+        <div id="stats"></div>
+        <pre id="log"></pre>
+      </section>
+      <aside id="panel"></aside>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

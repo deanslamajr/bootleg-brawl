@@ -1,0 +1,5 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {}
+}

@@ -1,0 +1,1324 @@
+{
+ "schemaVersion": 1,
+ "states": {
+  "idle": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "idle:0",
+     "dur": 10
+    },
+    {
+     "pose": "idle:1",
+     "dur": 10
+    },
+    {
+     "pose": "idle:2",
+     "dur": 10
+    },
+    {
+     "pose": "idle:3",
+     "dur": 10
+    }
+   ],
+   "loop": true,
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "back",
+     "to": "backAtk"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "attack",
+     "to": "atk1"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    },
+    {
+     "on": "taunt",
+     "to": "taunt"
+    }
+   ],
+   "facingLock": false
+  },
+  "walk": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "walk:0",
+     "dur": 6
+    },
+    {
+     "pose": "walk:1",
+     "dur": 6
+    },
+    {
+     "pose": "walk:2",
+     "dur": 6
+    },
+    {
+     "pose": "walk:3",
+     "dur": 6
+    },
+    {
+     "pose": "walk:4",
+     "dur": 6
+    },
+    {
+     "pose": "walk:5",
+     "dur": 6
+    }
+   ],
+   "loop": true,
+   "move": 1,
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "back",
+     "to": "backAtk"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "attack",
+     "to": "atk1"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    },
+    {
+     "on": "taunt",
+     "to": "taunt"
+    }
+   ],
+   "facingLock": false
+  },
+  "run": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "run:0",
+     "dur": 5
+    },
+    {
+     "pose": "run:1",
+     "dur": 5
+    },
+    {
+     "pose": "run:2",
+     "dur": 5
+    },
+    {
+     "pose": "run:3",
+     "dur": 5
+    },
+    {
+     "pose": "run:4",
+     "dur": 5
+    },
+    {
+     "pose": "run:5",
+     "dur": 5
+    }
+   ],
+   "loop": true,
+   "move": 1,
+   "transitions": [
+    {
+     "on": "dashAttack",
+     "to": "dashAtk"
+    },
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    }
+   ],
+   "facingLock": false
+  },
+  "jump": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "jump:0",
+     "dur": 10
+    },
+    {
+     "pose": "jump:1",
+     "dur": 8
+    },
+    {
+     "pose": "jump:2",
+     "dur": 90
+    }
+   ],
+   "gravity": true,
+   "landTo": "land",
+   "friction": 0,
+   "transitions": [
+    {
+     "on": "dive",
+     "to": "dive"
+    },
+    {
+     "on": "airAttack",
+     "to": "jumpAtk"
+    }
+   ]
+  },
+  "land": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "land:0",
+     "dur": 5
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "atk1",
+     "from": 2
+    },
+    {
+     "on": "jump",
+     "to": "jump",
+     "from": 2
+    }
+   ]
+  },
+  "jumpAtk": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "jumpAtk:0",
+     "dur": 4
+    },
+    {
+     "pose": "jumpAtk:1",
+     "dur": 60,
+     "hit": [
+      {
+       "box": [
+        4,
+        10,
+        22,
+        18
+       ],
+       "damage": 10,
+       "knock": [
+        2.6,
+        1.8
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "kick"
+      }
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "land",
+   "friction": 0
+  },
+  "dive": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "dive:0",
+     "dur": 3,
+     "vel": [
+      1.6,
+      -2.5
+     ]
+    },
+    {
+     "pose": "dive:1",
+     "dur": 60,
+     "hit": [
+      {
+       "box": [
+        2,
+        -2,
+        20,
+        16
+       ],
+       "damage": 12,
+       "knock": [
+        2.4,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "kick"
+      }
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "land",
+   "friction": 0
+  },
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 3
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        6,
+        30,
+        20,
+        14
+       ],
+       "damage": 5,
+       "knock": [
+        0.7,
+        0
+       ],
+       "hitstun": 22,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 7
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 4
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 4,
+     "until": 14
+    }
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk2:0",
+     "dur": 3
+    },
+    {
+     "pose": "atk2:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        6,
+        30,
+        20,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.7,
+        0
+       ],
+       "hitstun": 24,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk2:2",
+     "dur": 7
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 4
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 4,
+     "until": 14
+    }
+   ]
+  },
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        24,
+        18
+       ],
+       "damage": 10,
+       "knock": [
+        2.8,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "kick",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 11
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    }
+   ]
+  },
+  "dashAtk": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "dashAtk:0",
+     "dur": 3,
+     "vel": [
+      3.4,
+      null
+     ]
+    },
+    {
+     "pose": "dashAtk:1",
+     "dur": 6,
+     "hit": [
+      {
+       "box": [
+        4,
+        14,
+        22,
+        24
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "kick",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "dashAtk:2",
+     "dur": 6
+    },
+    {
+     "pose": "dashAtk:3",
+     "dur": 8,
+     "vel": [
+      0.4,
+      null
+     ]
+    }
+   ],
+   "next": "idle",
+   "friction": 0.12
+  },
+  "backAtk": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "backAtk:0",
+     "dur": 3
+    },
+    {
+     "pose": "backAtk:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        -28,
+        26,
+        22,
+        18
+       ],
+       "damage": 9,
+       "knock": [
+        -2.4,
+        2
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "punch",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "backAtk:2",
+     "dur": 8
+    }
+   ],
+   "next": "idle"
+  },
+  "grab": {
+   "kind": "grab",
+   "frames": [
+    {
+     "pose": "grab:0",
+     "dur": 8
+    },
+    {
+     "pose": "grab:1",
+     "dur": 8
+    }
+   ],
+   "loop": true,
+   "transitions": [
+    {
+     "on": "throwCam",
+     "to": "throwCam"
+    },
+    {
+     "on": "throwF",
+     "to": "throwF"
+    },
+    {
+     "on": "throwB",
+     "to": "throwB"
+    },
+    {
+     "on": "grabHit",
+     "to": "grabHit",
+     "if": "grabCount<2"
+    },
+    {
+     "on": "grabHit",
+     "to": "throwF",
+     "if": "grabCount>=2"
+    },
+    {
+     "on": "jump",
+     "to": "idle"
+    }
+   ]
+  },
+  "grabHit": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "grabHit:0",
+     "dur": 4
+    },
+    {
+     "pose": "grabHit:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        0,
+        0,
+        8,
+        8
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "hitstun": 30,
+       "hitstop": 6,
+       "sfx": "knee",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "grabHit:0",
+     "dur": 5
+    }
+   ],
+   "next": "grab",
+   "tags": [
+    "hold",
+    "grabHit"
+   ]
+  },
+  "throwF": {
+   "kind": "throw",
+   "frames": [
+    {
+     "pose": "throw:0",
+     "dur": 4
+    },
+    {
+     "pose": "throw:1",
+     "dur": 8
+    },
+    {
+     "pose": "throw:2",
+     "dur": 4,
+     "events": [
+      {
+       "release": true
+      }
+     ]
+    },
+    {
+     "pose": "throw:3",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  },
+  "throwB": {
+   "kind": "throw",
+   "frames": [
+    {
+     "pose": "throw:0",
+     "dur": 4
+    },
+    {
+     "pose": "throw:1",
+     "dur": 8
+    },
+    {
+     "pose": "throw:2",
+     "dur": 4,
+     "events": [
+      {
+       "release": true
+      }
+     ]
+    },
+    {
+     "pose": "throw:3",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "tags": [
+    "throwB"
+   ]
+  },
+  "throwCam": {
+   "kind": "throw",
+   "frames": [
+    {
+     "pose": "throw:0",
+     "dur": 4
+    },
+    {
+     "pose": "throw:1",
+     "dur": 10
+    },
+    {
+     "pose": "camFly:0",
+     "dur": 4,
+     "events": [
+      {
+       "release": true
+      }
+     ]
+    },
+    {
+     "pose": "throw:3",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "tags": [
+    "throwCam"
+   ]
+  },
+  "stomp": {
+   "kind": "stomp",
+   "frames": [
+    {
+     "pose": "stomp:0",
+     "dur": 5
+    },
+    {
+     "pose": "stomp:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        2,
+        0,
+        24,
+        10
+       ],
+       "damage": 8,
+       "knock": [
+        0.3,
+        0
+       ],
+       "hitstun": 12,
+       "hitstop": 5,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "stomp",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "stomp:2",
+     "dur": 7
+    }
+   ],
+   "next": "idle"
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "special:0",
+     "dur": 4
+    },
+    {
+     "pose": "special:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -24,
+        6,
+        48,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "special:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -24,
+        6,
+        48,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special"
+      }
+     ]
+    },
+    {
+     "pose": "special:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -24,
+        6,
+        48,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special"
+      }
+     ]
+    },
+    {
+     "pose": "special:4",
+     "dur": 4
+    },
+    {
+     "pose": "special:5",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    16
+   ]
+  },
+  "hurt": {
+   "kind": "hurt",
+   "frames": [
+    {
+     "pose": "hurt:0",
+     "dur": 6
+    },
+    {
+     "pose": "hurt:1",
+     "dur": 6
+    }
+   ],
+   "loop": true,
+   "next": "idle",
+   "friction": 0.2
+  },
+  "fall": {
+   "kind": "fall",
+   "frames": [
+    {
+     "pose": "fall:0",
+     "dur": 6
+    },
+    {
+     "pose": "fall:1",
+     "dur": 6
+    },
+    {
+     "pose": "fall:2",
+     "dur": 90
+    }
+   ],
+   "gravity": true,
+   "next": "down",
+   "friction": 0
+  },
+  "down": {
+   "kind": "down",
+   "frames": [
+    {
+     "pose": "down:0",
+     "dur": 30
+    },
+    {
+     "pose": "down:1",
+     "dur": 12
+    }
+   ],
+   "next": "getup"
+  },
+  "getup": {
+   "kind": "getup",
+   "frames": [
+    {
+     "pose": "getup:0",
+     "dur": 8
+    },
+    {
+     "pose": "getup:1",
+     "dur": 8
+    },
+    {
+     "pose": "getup:2",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    40
+   ]
+  },
+  "ko": {
+   "kind": "ko",
+   "frames": [
+    {
+     "pose": "ko:0",
+     "dur": 24,
+     "hurt": "none"
+    },
+    {
+     "pose": "ko:1",
+     "dur": 24,
+     "hurt": "none"
+    },
+    {
+     "pose": "ko:2",
+     "dur": 24,
+     "hurt": "none"
+    },
+    {
+     "pose": "ko:3",
+     "dur": 30,
+     "hurt": "none"
+    }
+   ]
+  },
+  "grabbed": {
+   "kind": "grabbed",
+   "frames": [
+    {
+     "pose": "grabbed:0",
+     "dur": 10
+    },
+    {
+     "pose": "grabbed:1",
+     "dur": 10
+    }
+   ],
+   "loop": true
+  },
+  "thrown": {
+   "kind": "thrown",
+   "frames": [
+    {
+     "pose": "thrown:0",
+     "dur": 5,
+     "hurt": "none"
+    },
+    {
+     "pose": "thrown:1",
+     "dur": 5,
+     "hurt": "none"
+    }
+   ],
+   "loop": true,
+   "gravity": true,
+   "friction": 0
+  },
+  "pickup": {
+   "kind": "pickup",
+   "frames": [
+    {
+     "pose": "pickup:0",
+     "dur": 6
+    },
+    {
+     "pose": "pickup:1",
+     "dur": 6
+    }
+   ],
+   "next": "idle"
+  },
+  "taunt": {
+   "kind": "taunt",
+   "frames": [
+    {
+     "pose": "taunt:0",
+     "dur": 14,
+     "events": [
+      {
+       "signal": "taunt",
+       "sfx": "taunt"
+      }
+     ]
+    },
+    {
+     "pose": "taunt:1",
+     "dur": 22
+    }
+   ],
+   "next": "idle"
+  },
+  "teamToss": {
+   "kind": "teamup",
+   "frames": [
+    {
+     "pose": "teamToss:0",
+     "dur": 8
+    },
+    {
+     "pose": "teamToss:1",
+     "dur": 14
+    },
+    {
+     "pose": "teamToss:2",
+     "dur": 4,
+     "events": [
+      {
+       "release": true
+      }
+     ]
+    },
+    {
+     "pose": "teamToss:3",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    40
+   ],
+   "tags": [
+    "teamToss"
+   ]
+  },
+  "teamPartnerToss": {
+   "kind": "grabbed",
+   "frames": [
+    {
+     "pose": "ball:0",
+     "dur": 10,
+     "hurt": "none"
+    }
+   ],
+   "loop": true,
+   "invuln": [
+    0,
+    999
+   ]
+  },
+  "teamFly": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "teamFly:0",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -18,
+        0,
+        36,
+        34
+       ],
+       "damage": 14,
+       "knock": [
+        3,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "special",
+       "score": 25
+      }
+     ]
+    },
+    {
+     "pose": "teamFly:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -18,
+        0,
+        36,
+        34
+       ],
+       "damage": 14,
+       "knock": [
+        3,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "special",
+       "score": 25
+      }
+     ]
+    },
+    {
+     "pose": "teamFly:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -18,
+        0,
+        36,
+        34
+       ],
+       "damage": 14,
+       "knock": [
+        3,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "special",
+       "score": 25
+      }
+     ]
+    },
+    {
+     "pose": "teamFly:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -18,
+        0,
+        36,
+        34
+       ],
+       "damage": 14,
+       "knock": [
+        3,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "special",
+       "score": 25
+      }
+     ]
+    }
+   ],
+   "loop": true,
+   "gravity": true,
+   "friction": 0,
+   "landTo": "land",
+   "tags": [
+    "teamFly"
+   ]
+  },
+  "teamCloud": {
+   "kind": "teamup",
+   "frames": [
+    {
+     "pose": "ball:0",
+     "dur": 96,
+     "hurt": "none"
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    999
+   ],
+   "tags": [
+    "teamCloud"
+   ]
+  },
+  "victory": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "victory:0",
+     "dur": 10
+    },
+    {
+     "pose": "victory:1",
+     "dur": 10
+    }
+   ],
+   "loop": true
+  },
+  "sleep": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "sleep:0",
+     "dur": 30
+    },
+    {
+     "pose": "sleep:1",
+     "dur": 30
+    }
+   ],
+   "loop": true,
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "@weapon",
+     "if": "hasWeapon"
+    },
+    {
+     "on": "back",
+     "to": "backAtk"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
+    },
+    {
+     "on": "special",
+     "to": "special"
+    },
+    {
+     "on": "attack",
+     "to": "atk1"
+    },
+    {
+     "on": "jump",
+     "to": "jump"
+    },
+    {
+     "on": "taunt",
+     "to": "taunt"
+    }
+   ]
+  },
+  "specialF": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "special:0",
+     "dur": 4,
+     "vel": [
+      2.6,
+      null
+     ]
+    },
+    {
+     "pose": "special:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -24,
+        6,
+        48,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "special:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -24,
+        6,
+        48,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special"
+      }
+     ]
+    },
+    {
+     "pose": "special:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -24,
+        6,
+        48,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special"
+      }
+     ]
+    },
+    {
+     "pose": "special:4",
+     "dur": 4,
+     "vel": [
+      0.4,
+      null
+     ]
+    },
+    {
+     "pose": "special:5",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    16
+   ],
+   "friction": 0.1
+  }
+ }
+}

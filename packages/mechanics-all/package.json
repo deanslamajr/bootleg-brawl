@@ -1,0 +1,19 @@
+{
+  "name": "@bb/mechanics",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@bb/engine": "workspace:*",
+    "@bb/mech-elevator": "workspace:*",
+    "@bb/mech-auto-scroll": "workspace:*",
+    "@bb/mech-throw-toward-camera": "workspace:*",
+    "@bb/mech-environmental-spawn": "workspace:*",
+    "@bb/mech-civilians": "workspace:*",
+    "@bb/mech-charge-shot": "workspace:*",
+    "@bb/mech-arena": "workspace:*"
+  }
+}

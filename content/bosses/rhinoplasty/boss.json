@@ -1,0 +1,97 @@
+{
+ "id": "rhinoplasty",
+ "schemaVersion": 1,
+ "displayName": "Rhinoplasty",
+ "catalogType": [
+  "boss-1"
+ ],
+ "rig": "large",
+ "palette": "rhinoplasty",
+ "stats": {
+  "hp": 150,
+  "walkSpeed": 0.85,
+  "runSpeed": 2.4,
+  "weight": 2.2
+ },
+ "card": {
+  "title": "PORKCHOP & RHINOPLASTY",
+  "stats": [
+   {
+    "label": "TEAMWORK",
+    "value": "0"
+   },
+   {
+    "label": "HORN",
+    "value": "BORROWED"
+   }
+  ],
+  "taunt": "MY HORN IS NON-REFUNDABLE.",
+  "bounty": 1800
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "gimmick",
+       "id": "tandemSetup",
+       "ticks": 80
+      },
+      {
+       "do": "charge",
+       "state": "charge",
+       "speed": 3.4,
+       "maxTicks": 140
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 32
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [
+  {
+   "id": "duoCollide",
+   "params": {}
+  }
+ ],
+ "partner": "porkchop",
+ "guardPct": 30,
+ "poise": 3,
+ "defeat": {
+  "kind": "ko",
+  "text": "THE HORN WAS A RENTAL."
+ },
+ "parodyMeta": {
+  "bootlegOf": "the other half of the colliding henchman pair",
+  "gag": "Only vulnerable when he and his partner run into each other",
+  "forbiddenTerms": [],
+  "tells": [
+   "His horn is on the wrong side on the card",
+   "The card spells his name RINOPLASTY"
+  ]
+ }
+}

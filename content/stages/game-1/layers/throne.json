@@ -1,0 +1,121 @@
+{
+ "id": "throne",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 270,
+   "color": "#3e1a6a"
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 170,
+   "every": 40,
+   "width": 4,
+   "color": "#6a2aa0",
+   "vertical": true
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 20,
+   "color": "#1a1420"
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 16,
+   "w": 480,
+   "h": 4,
+   "color": "#9a96a8"
+  },
+  {
+   "op": "rect",
+   "x": 200,
+   "y": 60,
+   "w": 80,
+   "h": 110,
+   "color": "#6a2aa0"
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     200,
+     60
+    ],
+    [
+     240,
+     30
+    ],
+    [
+     280,
+     60
+    ]
+   ],
+   "color": "#a04ad0"
+  },
+  {
+   "op": "rect",
+   "x": 220,
+   "y": 100,
+   "w": 40,
+   "h": 60,
+   "color": "#c02030"
+  },
+  {
+   "op": "rect",
+   "x": 214,
+   "y": 96,
+   "w": 52,
+   "h": 8,
+   "color": "#ffd93a"
+  },
+  {
+   "op": "text",
+   "x": 130,
+   "y": 180,
+   "text": "THE CHEESEGRATER WELCOMES YOU",
+   "color": "#ffd93a",
+   "scale": 1
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "color": "#4a4658"
+  },
+  {
+   "op": "tiles",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "tw": 24,
+   "th": 12,
+   "color": "#4a4658",
+   "alt": "#2e2a3a",
+   "skew": 6
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 3,
+   "color": "#9a96a8"
+  }
+ ]
+}

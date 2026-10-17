@@ -1,0 +1,62 @@
+{
+ "id": "lickspittle",
+ "schemaVersion": 1,
+ "displayName": "Lickspittle",
+ "catalogType": [
+  "boss-5"
+ ],
+ "rig": "medium",
+ "palette": "lickspittle",
+ "stats": {
+  "hp": 999,
+  "walkSpeed": 1.6,
+  "runSpeed": 3,
+  "weight": 1
+ },
+ "card": {
+  "title": "THE ASSISTANT WHO GOT AWAY",
+  "stats": [
+   {
+    "label": "LOYALTY",
+    "value": "EXCESSIVE"
+   },
+   {
+    "label": "BACKBONE",
+    "value": "OPTIONAL"
+   }
+  ],
+  "taunt": "YOUR BABY IS IN ANOTHER CARTRIDGE!",
+  "bounty": 1
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "wait",
+       "ticks": 60
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [],
+ "poise": 99,
+ "defeat": {
+  "kind": "escape",
+  "text": "LICKSPITTLE SWAPPED CARTRIDGES."
+ },
+ "parodyMeta": {
+  "bootlegOf": "the villain's assistant who runs off with the baby",
+  "gag": "Appears at the end of every game holding the baby, taunts and static-bursts away",
+  "forbiddenTerms": [],
+  "tells": [
+   "His combover has three strands in game and four on the card",
+   "The card lists his backbone as optional"
+  ]
+ }
+}

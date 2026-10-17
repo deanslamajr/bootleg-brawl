@@ -1,0 +1,87 @@
+{
+ "id": "bowling-alley",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 960,
+ "depth": [
+  176,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "bowling",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "bowl-1",
+   "at": 100,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 2,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "bowling-alley-roam-1",
+   "at": 280,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "bowl-pete",
+   "at": 480,
+   "waves": [
+    {
+     "family": "bowling-pins",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 200,
+   "y": 190
+  },
+  {
+   "kind": "breakable",
+   "id": "crate",
+   "x": 700,
+   "y": 200
+  }
+ ],
+ "gags": [],
+ "intro": "BOWL-O-RAMA-ISH. SOMEONE IS SETTING UP THE PINS."
+}

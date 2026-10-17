@@ -1,0 +1,47 @@
+{
+ "schemaVersion": 1,
+ "start": "game-0",
+ "finale": "game-2",
+ "nodes": [
+  {
+   "stageId": "game-0",
+   "position": [
+    40,
+    120
+   ],
+   "options": [
+    "game-1"
+   ]
+  },
+  {
+   "stageId": "game-1",
+   "position": [
+    160,
+    120
+   ],
+   "options": [
+    "game-2"
+   ]
+  },
+  {
+   "stageId": "game-2",
+   "position": [
+    280,
+    120
+   ],
+   "options": []
+  }
+ ],
+ "endingInterlude": "v1-ending",
+ "credits": [
+  "999-IN-1: THE BOOTLEG BRAWL",
+  "DESIGN, CODE, ART, MUSIC: A FAMILY OF COUNTERFEITERS",
+  "CHARACTERS: SARGE, BOOMER, BRAT, MENSA",
+  "WITH: DEADWEIGHT DAVE (FIRST, AGAIN)",
+  "DIRK HEADLINE AS HIMSELF",
+  "QUILLBERT (LEGALLY DISTINCT)",
+  "NO ANIMALS WERE HARMED. SOME PINS WERE.",
+  "\u00a9 NOBODY. ALL RIGHTS RESERVE.",
+  "THANK YOU FOR PLAYING THE 3 GAMES THAT LOADED"
+ ]
+}

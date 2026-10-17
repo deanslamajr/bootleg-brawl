@@ -1,0 +1,57 @@
+{
+ "id": "sarge",
+ "schemaVersion": 1,
+ "displayName": "Sarge Simpleton",
+ "shortName": "SARGE",
+ "archetype": "balanced",
+ "rig": "large",
+ "palette": "sarge",
+ "altPalettes": [
+  "sarge-alt"
+ ],
+ "stats": {
+  "hp": 110,
+  "walkSpeed": 1.25,
+  "runSpeed": 2.7,
+  "jumpVel": 4.9,
+  "weight": 1.0,
+  "reach": 1.1,
+  "damageMult": 1.0,
+  "specialCost": 10
+ },
+ "kit": {
+  "requires": [],
+  "flags": [],
+  "gags": [
+   "hairCatch"
+  ]
+ },
+ "improvisedWeapon": {
+  "id": "beehive",
+  "displayName": "Beehive Hairdo",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [],
+ "voice": {
+  "continueLine": "Somebody count the laundry quarters. We are not staying in here.",
+  "selectLine": "Shoes on. Hair up. Let us go.",
+  "tauntLines": [
+   "I had this hair done for a wedding.",
+   "Mm-hmm.",
+   "That is your one warning."
+  ],
+  "endingText": "Sarge combed seven pigeons, two knives and a mascot out of her hair and called it a weekend."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the mother of the family, a balanced fighter who keeps things in her hair",
+  "gag": "Anything that hits her hair gets stuck in it and falls out later as a pickup",
+  "forbiddenTerms": [],
+  "tells": [
+   "Her necklace is red on the sprite and green on the select portrait",
+   "The select screen lists her height as 9 FT 2 IN (HAIR INCLUDED)"
+  ]
+ }
+}

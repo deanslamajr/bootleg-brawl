@@ -1,0 +1,75 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "knifeThrow": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "shoot:0",
+     "dur": 12
+    },
+    {
+     "pose": "shoot:1",
+     "dur": 6,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "knife",
+        "offset": [
+         14,
+         34
+        ],
+        "vel": [
+         4,
+         0
+        ]
+       },
+       "sfx": "whoosh"
+      }
+     ]
+    },
+    {
+     "pose": "shoot:2",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  },
+  "knifeStab": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "stab:0",
+     "dur": 8
+    },
+    {
+     "pose": "stab:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        26,
+        10
+       ],
+       "damage": 9,
+       "knock": [
+        1,
+        0
+       ],
+       "hitstun": 22,
+       "sfx": "slash"
+      }
+     ]
+    },
+    {
+     "pose": "stab:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

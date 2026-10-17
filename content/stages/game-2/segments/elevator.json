@@ -1,0 +1,110 @@
+{
+ "id": "elevator",
+ "schemaVersion": 1,
+ "kind": "elevator",
+ "length": 480,
+ "depth": [
+  186,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "shaft",
+   "depth": 0,
+   "speedX": 0,
+   "speedY": 1
+  },
+  {
+   "layer": "elevator-cage",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [],
+ "placements": [],
+ "gags": [],
+ "elevator": {
+  "floors": [
+   {
+    "label": "FLOOR 12: ACCOUNTING",
+    "waves": [
+     {
+      "family": "interns",
+      "tier": 1,
+      "count": 3,
+      "side": "both",
+      "delayTicks": 0,
+      "spawnKind": "walk"
+     }
+    ]
+   },
+   {
+    "label": "FLOOR 27: MORE ACCOUNTING",
+    "waves": [
+     {
+      "family": "sid",
+      "tier": 1,
+      "count": 2,
+      "side": "both",
+      "delayTicks": 0,
+      "spawnKind": "walk"
+     },
+     {
+      "family": "interns",
+      "tier": 2,
+      "count": 1,
+      "side": "right",
+      "delayTicks": 60,
+      "spawnKind": "walk"
+     }
+    ]
+   },
+   {
+    "label": "FLOOR 41: HUMAN RESOURCES (THEY ARE ROBOTS)",
+    "waves": [
+     {
+      "family": "mungus",
+      "tier": 2,
+      "count": 1,
+      "side": "left",
+      "delayTicks": 0,
+      "spawnKind": "walk"
+     },
+     {
+      "family": "rollerinas",
+      "tier": 2,
+      "count": 2,
+      "side": "right",
+      "delayTicks": 60,
+      "spawnKind": "walk"
+     }
+    ]
+   },
+   {
+    "label": "FLOOR 60: THE BOARD",
+    "waves": [
+     {
+      "family": "interns",
+      "tier": 3,
+      "count": 1,
+      "side": "right",
+      "delayTicks": 0,
+      "spawnKind": "walk",
+      "fixed": true
+     },
+     {
+      "family": "interns",
+      "tier": 2,
+      "count": 2,
+      "side": "left",
+      "delayTicks": 60,
+      "spawnKind": "walk"
+     }
+    ]
+   }
+  ],
+  "speed": 1.5,
+  "travelTicks": 150
+ },
+ "intro": "CONSTRUCTION ELEVATOR. MIND THE GAP."
+}

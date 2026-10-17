@@ -1,0 +1,197 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:player-base",
+ "states": {
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 2
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 3,
+     "hit": [
+      {
+       "box": [
+        6,
+        30,
+        18,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.6,
+        0
+       ],
+       "hitstun": 20,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 5
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 3
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 3
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 3,
+     "until": 11
+    }
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk2:0",
+     "dur": 2
+    },
+    {
+     "pose": "atk2:1",
+     "dur": 3,
+     "hit": [
+      {
+       "box": [
+        6,
+        30,
+        18,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.6,
+        0
+       ],
+       "hitstun": 20,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk2:2",
+     "dur": 5
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 3
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 3
+    },
+    {
+     "on": "attack",
+     "to": "atk4",
+     "from": 3,
+     "until": 11
+    }
+   ]
+  },
+  "atk4": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 2
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 3,
+     "hit": [
+      {
+       "box": [
+        6,
+        30,
+        18,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.6,
+        0
+       ],
+       "hitstun": 20,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 5
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 3
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 3,
+     "until": 11
+    }
+   ]
+  },
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 3
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        24,
+        18
+       ],
+       "damage": 11,
+       "knock": [
+        2.8,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "kick",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

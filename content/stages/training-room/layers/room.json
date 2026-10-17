@@ -1,0 +1,98 @@
+{
+ "id": "room",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 270,
+   "color": "#2e2a3a"
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 176,
+   "every": 32,
+   "width": 1,
+   "color": "#4a4658",
+   "vertical": true
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 176,
+   "every": 32,
+   "width": 1,
+   "color": "#4a4658",
+   "vertical": false
+  },
+  {
+   "op": "text",
+   "x": 330,
+   "y": 40,
+   "text": "TRAINING ROOM (UNLICENSED)",
+   "color": "#ffd93a",
+   "scale": 1
+  },
+  {
+   "op": "text",
+   "x": 352,
+   "y": 54,
+   "text": "DUMMIES ARE PAID ACTORS",
+   "color": "#9a96a8",
+   "scale": 1
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 176,
+   "w": 960,
+   "h": 94,
+   "color": "#6e6a7e"
+  },
+  {
+   "op": "tiles",
+   "x": 0,
+   "y": 176,
+   "w": 960,
+   "h": 94,
+   "tw": 32,
+   "th": 16,
+   "color": "#6e6a7e",
+   "alt": "#4a4658",
+   "skew": 0
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 176,
+   "w": 960,
+   "h": 3,
+   "color": "#ffd93a"
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 120,
+   "count": 8,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 58,
+     "y": 186,
+     "w": 4,
+     "h": 4,
+     "color": "#f04a3a"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "flip": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "flip:0",
+     "dur": 6,
+     "vel": [
+      3.6,
+      4.6
+     ],
+     "hurt": "none"
+    },
+    {
+     "pose": "flip:1",
+     "dur": 6,
+     "hurt": "none"
+    },
+    {
+     "pose": "flip:2",
+     "dur": 60
+    }
+   ],
+   "gravity": true,
+   "landTo": "skateKick",
+   "friction": 0,
+   "invuln": [
+    0,
+    14
+   ]
+  },
+  "skateKick": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 6,
+     "vel": [
+      2.2,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        22,
+        18
+       ],
+       "damage": 8,
+       "knock": [
+        2.4,
+        2
+       ],
+       "knockdown": true,
+       "sfx": "kick"
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "friction": 0.1
+  }
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "id": "shoe-clan",
+ "schemaVersion": 1,
+ "displayName": "The Shoe Clan",
+ "catalogType": [
+  "etype-1",
+  "etype-8",
+  "etype-6"
+ ],
+ "rig": "medium",
+ "stats": {
+  "walkSpeed": 1.2,
+  "runSpeed": 2.6,
+  "jumpVel": 5,
+  "weight": 0.9
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Shoe Clan Trainee",
+   "palette": "shoe-clan-intern",
+   "hp": 16,
+   "moves": [
+    "atk1",
+    "sporkStab"
+   ],
+   "score": 100
+  },
+  {
+   "name": "associate",
+   "displayName": "Shoe Clan Associate",
+   "palette": "shoe-clan-associate",
+   "hp": 26,
+   "moves": [
+    "atk1",
+    "atk2",
+    "sporkStab"
+   ],
+   "score": 150
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Shoe Clan Senior Lace",
+   "palette": "shoe-clan-senior",
+   "hp": 36,
+   "moves": [
+    "atk1",
+    "atk2",
+    "sporkStab",
+    "jumpKick"
+   ],
+   "score": 200,
+   "aggressionBonus": 10
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Regional Shoe Manager",
+   "palette": "shoe-clan-vp",
+   "hp": 80,
+   "moves": [
+    "atk1",
+    "atk2",
+    "sporkStab",
+    "jumpKick"
+   ],
+   "badge": "REGIONAL SHOE MANAGER",
+   "miniBoss": true,
+   "score": 1000,
+   "aggressionBonus": 20
+  }
+ ],
+ "ai": {
+  "kind": "brawler",
+  "params": {
+   "range": 26,
+   "think": 18,
+   "aggression": 45,
+   "hover": 64,
+   "attacks": [
+    "atk1",
+    "atk2",
+    "sporkStab",
+    "jumpKick"
+   ],
+   "jumpChance": 6
+  }
+ },
+ "weapon": "spork",
+ "lines": {
+  "spawn": [
+   "HAI-YAH (UNPAID)",
+   "FOR THE SOLE!"
+  ],
+  "ko": [
+   "UNLACED!",
+   "MY ARCH!"
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "a ninja clan that wears shoes on their heads",
+  "gag": "They wear sneakers on their heads and carry sporks",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

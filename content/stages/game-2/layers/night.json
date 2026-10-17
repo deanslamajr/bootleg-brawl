@@ -1,0 +1,43 @@
+{
+ "id": "night",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 180,
+ "ops": [
+  {
+   "op": "gradient",
+   "y": 0,
+   "h": 180,
+   "colors": [
+    "#0e1a4a",
+    "#1e0a3a",
+    "#3e1a6a",
+    "#6a2aa0"
+   ]
+  },
+  {
+   "op": "circle",
+   "x": 400,
+   "y": 40,
+   "r": 14,
+   "color": "#f4f0e8"
+  },
+  {
+   "op": "circle",
+   "x": 396,
+   "y": 37,
+   "r": 12,
+   "color": "#ffffff"
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 90,
+   "color": "#c8c4d0",
+   "density": 1,
+   "seed": 4
+  }
+ ]
+}

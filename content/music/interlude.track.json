@@ -1,0 +1,53 @@
+{
+ "id": "interlude",
+ "schemaVersion": 1,
+ "title": "Fold the Laundry",
+ "bpm": 120,
+ "rowsPerBeat": 4,
+ "loop": true,
+ "loopRow": 0,
+ "instruments": {
+  "lead": {
+   "kind": "square",
+   "volume": 0.32,
+   "attack": 0.005,
+   "decay": 0.12,
+   "sustain": 0.5,
+   "release": 0.06,
+   "duty": 0.5
+  },
+  "tri": {
+   "kind": "triangle",
+   "volume": 0.45,
+   "attack": 0.003,
+   "decay": 0.1,
+   "sustain": 0.7,
+   "release": 0.05
+  },
+  "kick": {
+   "kind": "kick",
+   "volume": 0.6
+  },
+  "hat": {
+   "kind": "hat",
+   "volume": 0.14
+  }
+ },
+ "patterns": {
+  "A": {
+   "lead": "G5 . E5 . C5 . E5 . G5 . A5 . G5 - - . F5 . D5 . B4 . D5 . F5 . G5 . F5 - - .",
+   "tri": "C3 . . . E3 . . . G3 . . . E3 . . . G2 . . . B2 . . . D3 . . . B2 . . .",
+   "hat": ". . C6 . . . C6 . . . C6 . . . C6 . . . C6 . . . C6 . . . C6 . . . C6 .",
+   "kick": "C2 . . . . . . . C2 . . . . . . . C2 . . . . . . . C2 . . . . . . ."
+  }
+ },
+ "order": [
+  "A"
+ ],
+ "cues": [
+  {
+   "name": "top",
+   "bar": 0
+  }
+ ]
+}

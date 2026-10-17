@@ -1,0 +1,36 @@
+{
+ "id": "sewer-junction",
+ "schemaVersion": 1,
+ "width": 480,
+ "depth": [
+  186,
+  262
+ ],
+ "layers": [],
+ "hazards": [
+  {
+   "kind": "current",
+   "id": "sewer-current",
+   "params": {
+    "speed": -0.35
+   }
+  }
+ ],
+ "phases": [
+  {
+   "hpBelowPct": 50,
+   "spawn": {
+    "family": "sewer-rats",
+    "tier": 1,
+    "count": 4
+   },
+   "text": "RATS! THE CURRENT BROUGHT RATS!"
+  }
+ ],
+ "camera": {
+  "lockX": 0
+ },
+ "rules": {
+  "throwTowardCamera": true
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "id": "alley",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1440,
+ "depth": [
+  184,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "night",
+   "depth": 0,
+   "speedX": 0.05
+  },
+  {
+   "layer": "alley",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "alley-1",
+   "at": 200,
+   "waves": [
+    {
+     "family": "mungus",
+     "tier": 2,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sid",
+     "tier": 2,
+     "count": 2,
+     "side": "left",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "alley-roam-1",
+   "at": 400,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "alley-2",
+   "at": 600,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 2,
+     "count": 3,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "mungus",
+     "tier": 3,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 200,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "alley-roam-2",
+   "at": 800,
+   "waves": [
+    {
+     "family": "sid",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "alley-3",
+   "at": 960,
+   "waves": [
+    {
+     "family": "sid",
+     "tier": 3,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk",
+     "fixed": true
+    },
+    {
+     "family": "rollerinas",
+     "tier": 2,
+     "count": 3,
+     "side": "left",
+     "delayTicks": 80,
+     "spawnKind": "walk"
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "crate",
+   "x": 360,
+   "y": 200
+  },
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 700,
+   "y": 190
+  },
+  {
+   "kind": "pickup",
+   "id": "roast-chicken",
+   "x": 1000,
+   "y": 236
+  },
+  {
+   "kind": "pickup",
+   "id": "knife",
+   "x": 1200,
+   "y": 226
+  }
+ ],
+ "gags": [
+  {
+   "propId": "vending-machine",
+   "x": 1100,
+   "y": 180,
+   "trigger": "hit",
+   "effect": "drop",
+   "params": {
+    "item": "soda-can",
+    "count": 2,
+    "text": "OUT OF ORDER (LYING)",
+    "sfx": "coin"
+   },
+   "hits": 3
+  }
+ ],
+ "intro": "THE BACK ALLEY, THEN THE BAR."
+}

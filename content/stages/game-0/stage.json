@@ -1,0 +1,132 @@
+{
+ "id": "game-0",
+ "schemaVersion": 1,
+ "gameNumber": 0,
+ "titleCard": {
+  "title": "THE REAL WORLD (ALLEGEDLY)",
+  "subtitle": "A FAMILY ADVENTURE OF PUNCHING",
+  "houseRulesText": "HOUSE RULES: BREAK THINGS, EAT WHAT FALLS OUT, DO NOT HIT THE NEIGHBORS.",
+  "announcerLine": "NOW LOADING GAME 0 OF 999. GOOD LUCKY.",
+  "announcerLineCorrected": "NOW LOADING GAME 0 OF 999. GOOD LUCK."
+ },
+ "type": "walk-right",
+ "rules": {
+  "requires": [
+   "civilians"
+  ],
+  "laneTolerance": 10,
+  "difficultyBaseline": 2,
+  "friendlyFireDefault": "off"
+ },
+ "palette": [
+  "#1a1420",
+  "#2e2a3a",
+  "#4a4658",
+  "#6e6a7e",
+  "#9a96a8",
+  "#c8c4d0",
+  "#f4f0e8",
+  "#ffffff",
+  "#4aa0f0",
+  "#8ad0ff",
+  "#d8f4ff",
+  "#2e64d0",
+  "#1e3a8a",
+  "#5ac04a",
+  "#2e8a3a",
+  "#a0e070",
+  "#1e5a2a",
+  "#ffb04a",
+  "#e07a20",
+  "#ff8ac8",
+  "#f0e0a0",
+  "#c8a070",
+  "#9a6e40",
+  "#6e4a2a",
+  "#c02030",
+  "#f04a3a",
+  "#ffd93a",
+  "#6ae0c8",
+  "#2a9a8a",
+  "#a04ad0",
+  "#6a2aa0",
+  "#d03a8a"
+ ],
+ "skin": {
+  "outline": "#1a1420",
+  "shadow": "ellipse",
+  "hud": "default"
+ },
+ "segments": [
+  "front-yard",
+  "main-street",
+  "bowling-alley",
+  "laundromat"
+ ],
+ "bossTriggers": [
+  {
+   "at": "bowling-alley",
+   "lock": "bowl-pete",
+   "bossId": "pinhead-pete",
+   "introCard": true,
+   "midBoss": true
+  },
+  {
+   "at": "laundromat",
+   "lock": "laundro-boss",
+   "bossId": "hugh-mungus",
+   "introCard": true,
+   "midBoss": false
+  }
+ ],
+ "interludes": {
+  "before": [],
+  "after": [
+   "sucked-in",
+   "fold-the-laundry"
+  ]
+ },
+ "music": {
+  "track": "anytown",
+  "boss": "boss-theme",
+  "cues": []
+ },
+ "gagHooks": {
+  "deadweightDave": {
+   "costume": "none",
+   "line": "OH COME ON. FIRST AGAIN?"
+  },
+  "dirkHeadline": [
+   {
+    "lock": "yard-2",
+    "line": "BREAKING: LOCAL FAMILY PUNCHES INTERN. INTERN UNPAID."
+   },
+   {
+    "lock": "laundro-2",
+    "line": "DIRK HEADLINE HERE. THE SIMPLETONS ARE WINNING. I WAS TOLD TO SAY THAT."
+   }
+  ],
+  "sprinkles": [
+   "front-yard"
+  ],
+  "quillbert": [
+   {
+    "segment": "main-street",
+    "x": 980
+   }
+  ]
+ },
+ "outro": {
+  "lickspittle": "TOO SLOW! THE BABY AND I ARE TAKING THE COIN SLOT!",
+  "announcer": "INSERT FAMILY TO CONTINUE."
+ },
+ "parodyMeta": {
+  "bootlegOf": "the hometown stage of a family brawler",
+  "gag": "The real world is just Game 0 on the cabinet",
+  "forbiddenTerms": [],
+  "tells": [
+   "The welcome sign misspells nothing, which is suspicious",
+   "Every house has the same door"
+  ]
+ }
+}

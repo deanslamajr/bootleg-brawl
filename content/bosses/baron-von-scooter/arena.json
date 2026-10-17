@@ -1,0 +1,30 @@
+{
+ "id": "penthouse-office",
+ "schemaVersion": 1,
+ "width": 480,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [],
+ "hazards": [],
+ "phases": [
+  {
+   "hpBelowPct": 70,
+   "text": "THE BARON CALLS HIS INTERNS"
+  },
+  {
+   "hpBelowPct": 35,
+   "spawn": {
+    "family": "interns",
+    "tier": 2,
+    "count": 2
+   },
+   "text": "SENIOR INTERNS! FOR EQUITY!"
+  }
+ ],
+ "camera": {
+  "lockX": 0
+ },
+ "rules": {}
+}

@@ -1,0 +1,21 @@
+{
+ "id": "room",
+ "schemaVersion": 1,
+ "kind": "arena",
+ "length": 960,
+ "depth": [
+  182,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "room",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [],
+ "placements": [],
+ "gags": [],
+ "intro": "TRAINING ROOM"
+}

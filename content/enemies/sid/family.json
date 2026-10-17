@@ -1,0 +1,101 @@
+{
+ "id": "sid",
+ "schemaVersion": 1,
+ "displayName": "Switchblade Sid & Sons",
+ "catalogType": [
+  "etype-3",
+  "etype-6",
+  "enemy-2"
+ ],
+ "rig": "medium",
+ "stats": {
+  "walkSpeed": 1.1,
+  "runSpeed": 2.5,
+  "jumpVel": 4.6,
+  "weight": 0.9
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Sid Junior",
+   "palette": "sid-intern",
+   "hp": 18,
+   "moves": [
+    "atk1",
+    "knifeThrow"
+   ],
+   "score": 150
+  },
+  {
+   "name": "associate",
+   "displayName": "Sid the Second",
+   "palette": "sid-associate",
+   "hp": 28,
+   "moves": [
+    "atk1",
+    "knifeThrow",
+    "knifeStab"
+   ],
+   "score": 200
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Sid the Third",
+   "palette": "sid-senior",
+   "hp": 38,
+   "moves": [
+    "atk1",
+    "knifeThrow",
+    "knifeStab"
+   ],
+   "score": 250,
+   "aggressionBonus": 10
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Switchblade Sid",
+   "palette": "sid-vp",
+   "hp": 80,
+   "moves": [
+    "atk1",
+    "knifeThrow",
+    "knifeStab"
+   ],
+   "badge": "SID (SENIOR)",
+   "miniBoss": true,
+   "score": 1200
+  }
+ ],
+ "ai": {
+  "kind": "thrower",
+  "params": {
+   "range": 24,
+   "think": 20,
+   "aggression": 40,
+   "hover": 110,
+   "attacks": [
+    "atk1",
+    "knifeStab"
+   ],
+   "ranged": "knifeThrow",
+   "rangedMin": 110
+  }
+ },
+ "weapon": "knife",
+ "lines": {
+  "spawn": [
+   "NICE SHIRT. SHAME.",
+   "CATCH!"
+  ],
+  "ko": [
+   "DAD WILL HEAR ABOUT THIS.",
+   "MY GOOD JACKET."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the knife-throwing punks of every crime city",
+  "gag": "A family business of knife throwers who keep losing the knives",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

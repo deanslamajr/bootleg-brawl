@@ -1,0 +1,143 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:player-base",
+ "states": {
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "play:0",
+     "dur": 3
+    },
+    {
+     "pose": "play:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        8,
+        30,
+        30,
+        10
+       ],
+       "damage": 4,
+       "knock": [
+        0.8,
+        0
+       ],
+       "hitstun": 20,
+       "sfx": "toot"
+      }
+     ]
+    },
+    {
+     "pose": "play:0",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 4
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 4,
+     "until": 14
+    }
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "play:0",
+     "dur": 3
+    },
+    {
+     "pose": "play:1",
+     "dur": 6,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "note",
+        "offset": [
+         22,
+         36
+        ],
+        "vel": [
+         4.5,
+         0
+        ]
+       },
+       "sfx": "toot"
+      }
+     ]
+    },
+    {
+     "pose": "play:0",
+     "dur": 8
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        22,
+        18
+       ],
+       "damage": 8,
+       "knock": [
+        2.6,
+        2.2
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "kick",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 10
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

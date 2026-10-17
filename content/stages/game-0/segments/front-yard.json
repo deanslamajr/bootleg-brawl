@@ -1,0 +1,237 @@
+{
+ "id": "front-yard",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1200,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "sky",
+   "depth": 0,
+   "speedX": 0.1
+  },
+  {
+   "layer": "hills",
+   "depth": 1,
+   "speedX": 0.35,
+   "y": 80
+  },
+  {
+   "layer": "street",
+   "depth": 2,
+   "speedX": 1
+  },
+  {
+   "layer": "hedge",
+   "depth": 9,
+   "speedX": 1.25,
+   "y": 252,
+   "foreground": true
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "yard-1",
+   "at": 60,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 120,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "front-yard-roam-1",
+   "at": 260,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "yard-2",
+   "at": 420,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "left",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "front-yard-roam-2",
+   "at": 560,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "bystanders",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "yard-3",
+   "at": 720,
+   "waves": [
+    {
+     "family": "buffet-bob",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 90,
+     "spawnKind": "walk"
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 330,
+   "y": 190
+  },
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 350,
+   "y": 196
+  },
+  {
+   "kind": "breakable",
+   "id": "newspaper-box",
+   "x": 800,
+   "y": 184
+  },
+  {
+   "kind": "civilian",
+   "id": "bystanders",
+   "x": 620,
+   "y": 200
+  },
+  {
+   "kind": "pickup",
+   "id": "pizza-slice",
+   "x": 1000,
+   "y": 230
+  },
+  {
+   "kind": "breakable",
+   "id": "crate",
+   "x": 1100,
+   "y": 200
+  }
+ ],
+ "gags": [
+  {
+   "propId": "mailbox",
+   "x": 250,
+   "y": 180,
+   "trigger": "hit",
+   "effect": "drop",
+   "params": {
+    "item": "dollar-bill",
+    "count": 2,
+    "text": "FAN MAIL!",
+    "sfx": "coin"
+   },
+   "hits": 2
+  },
+  {
+   "propId": "sprinkler",
+   "x": 470,
+   "y": 206,
+   "trigger": "step",
+   "effect": "animate",
+   "params": {
+    "text": "PSSSHH",
+    "sfx": "spray",
+    "score": 5
+   },
+   "once": false,
+   "hits": 1
+  },
+  {
+   "propId": "mailbox",
+   "x": 690,
+   "y": 180,
+   "trigger": "hit",
+   "effect": "text",
+   "params": {
+    "text": "BILLS. ONLY BILLS.",
+    "score": 50
+   }
+  },
+  {
+   "propId": "fire-hydrant",
+   "x": 1120,
+   "y": 192,
+   "trigger": "hit",
+   "effect": "hazard",
+   "params": {
+    "text": "SPLOOSH",
+    "radius": 34,
+    "damage": 6,
+    "sfx": "spray"
+   },
+   "hits": 2
+  }
+ ],
+ "intro": "ANYTOWN. 4:58 PM. THE BABY IS MISSING.",
+ "startX": 50
+}

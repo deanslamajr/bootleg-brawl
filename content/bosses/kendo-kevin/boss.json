@@ -1,0 +1,155 @@
+{
+ "id": "kendo-kevin",
+ "schemaVersion": 1,
+ "displayName": "Kendo Kevin",
+ "catalogType": [
+  "boss-2"
+ ],
+ "rig": "medium",
+ "palette": "kendo-kevin",
+ "stats": {
+  "hp": 220,
+  "walkSpeed": 1.3,
+  "runSpeed": 3,
+  "weight": 1.2
+ },
+ "card": {
+  "title": "LEGALLY A SAMURAI",
+  "stats": [
+   {
+    "label": "SWORDS",
+    "value": "2 (FOAM)"
+   },
+   {
+    "label": "HONOR",
+    "value": "PENDING"
+   },
+   {
+    "label": "COMMUTE",
+    "value": "THIS TRAIN"
+   }
+  ],
+  "taunt": "I AM LEGALLY A SAMURAI. I HAVE THE CERTIFICATE.",
+  "bounty": 2000
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 90
+      },
+      {
+       "do": "attack",
+       "state": "lungeTell"
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 30
+      },
+      {
+       "do": "attack",
+       "state": "slash1"
+      },
+      {
+       "do": "wait",
+       "ticks": 30
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "retreat",
+       "ticks": 40
+      },
+      {
+       "do": "taunt",
+       "line": "YOUR STANCE IS CONCERNING."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hpBelowPct": 50,
+   "enterText": "KEVIN UNSHEATHES THE SECOND FOAM SWORD",
+   "haste": 12,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 90
+      },
+      {
+       "do": "attack",
+       "state": "lungeTell"
+      },
+      {
+       "do": "attack",
+       "state": "lungeTell"
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 30,
+       "run": true
+      },
+      {
+       "do": "attack",
+       "state": "slash1"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [
+  {
+   "id": "clashOnTell",
+   "params": {}
+  }
+ ],
+ "poise": 3,
+ "defeat": {
+  "kind": "ko",
+  "text": "KEVIN HAS MISSED HIS STOP."
+ },
+ "lines": {
+  "hurt": [
+   "THAT IS NOT IN THE MANUAL"
+  ],
+  "defeat": [
+   "MY CERTIFICATE..."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the sword-fighting mid-boss of a city stage",
+  "gag": "Hit him during his flashing windup and he staggers",
+  "forbiddenTerms": [],
+  "tells": [
+   "His helmet grill has five bars on the sprite and six on the card",
+   "The card lists his swords as foam"
+  ]
+ }
+}

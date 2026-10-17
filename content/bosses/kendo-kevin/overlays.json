@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "body": {
+  "scale": 0.98,
+  "headR": 7.5,
+  "torsoW": 12,
+  "armW": 3.5,
+  "legW": 4.5,
+  "footL": 5,
+  "handR": 2,
+  "skin": 2,
+  "torso": 6,
+  "legs": 8,
+  "feet": 13,
+  "arms": 2,
+  "hide": [
+   "face"
+  ]
+ },
+ "layers": {
+  "head": [
+   {
+    "shape": "ellipse",
+    "at": "head",
+    "w": 17,
+    "h": 17,
+    "color": 6,
+    "z": 51
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 4,
+    "dy": 0,
+    "w": 6,
+    "h": 10,
+    "color": 14,
+    "z": 52
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 4,
+    "dy": -2,
+    "w": 6,
+    "h": 1,
+    "color": 13,
+    "z": 53,
+    "outline": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 4,
+    "dy": 1,
+    "w": 6,
+    "h": 1,
+    "color": 13,
+    "z": 53,
+    "outline": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": -2,
+    "dy": 8,
+    "w": 16,
+    "h": 4,
+    "color": 8,
+    "z": 50
+   }
+  ],
+  "torso": [
+   {
+    "shape": "ellipse",
+    "at": "neck",
+    "dx": 2,
+    "dy": 10,
+    "w": 16,
+    "h": 16,
+    "color": 8,
+    "z": 34,
+    "exceptStates": [
+     "down",
+     "ko",
+     "fall",
+     "thrown",
+     "teamFly",
+     "flip",
+     "ball",
+     "roll",
+     "sleep",
+     "getup:0",
+     "camFly"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hip",
+    "dy": 4,
+    "w": 16,
+    "h": 12,
+    "color": 6,
+    "z": 45,
+    "exceptStates": [
+     "down",
+     "ko",
+     "fall",
+     "thrown",
+     "teamFly",
+     "flip",
+     "ball",
+     "roll",
+     "sleep",
+     "getup:0",
+     "camFly"
+    ]
+   }
+  ],
+  "legs": [],
+  "weapon": [
+   {
+    "shape": "rect",
+    "at": "hF",
+    "alignTo": "eF",
+    "dx": 13,
+    "w": 24,
+    "h": 2,
+    "color": 14,
+    "z": 62
+   },
+   {
+    "shape": "rect",
+    "at": "hF",
+    "alignTo": "eF",
+    "dx": 1,
+    "w": 4,
+    "h": 3,
+    "color": 10,
+    "z": 63
+   },
+   {
+    "shape": "rect",
+    "at": "hB",
+    "alignTo": "eB",
+    "dx": 11,
+    "w": 20,
+    "h": 2,
+    "color": 15,
+    "z": 12
+   },
+   {
+    "shape": "rect",
+    "at": "hB",
+    "alignTo": "eB",
+    "dx": 1,
+    "w": 4,
+    "h": 3,
+    "color": 11,
+    "z": 13
+   }
+  ],
+  "fx": []
+ },
+ "uniqueFrames": {}
+}

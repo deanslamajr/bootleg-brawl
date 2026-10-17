@@ -1,0 +1,20 @@
+{
+  "name": "@bb/sandbox",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4180 --strictPort"
+  },
+  "dependencies": {
+    "@bb/engine": "workspace:*",
+    "@bb/schema": "workspace:*",
+    "@bb/mechanics": "workspace:*",
+    "pixi.js": "8.14.3"
+  },
+  "devDependencies": {
+    "@bb/tools": "workspace:*"
+  }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "v1-ending",
+ "schemaVersion": 1,
+ "type": "interlude",
+ "subtype": "cutscene",
+ "title": "THE END??",
+ "steps": [
+  {
+   "text": "THE BARON IS TOWED. THE CITY IS SAFE FROM ITS MOST MEDIOCRE MAN.",
+   "ticks": 170,
+   "party": true,
+   "background": "penthouse"
+  },
+  {
+   "text": "BUT LICKSPITTLE STILL HAS THE BABY. AND THE BABY STILL HAS THE CHIP.",
+   "ticks": 170,
+   "speaker": "ANNOUNCER",
+   "actors": [
+    {
+     "def": "lickspittle",
+     "pose": "taunt:1",
+     "x": 380,
+     "y": 220
+    }
+   ],
+   "party": true,
+   "effect": "static",
+   "sfx": "static"
+  },
+  {
+   "text": "THE END?? NO. 996 GAMES REMAIN. INSERT COIN.",
+   "ticks": 220,
+   "speaker": "ANNOUNCER",
+   "effect": "flash"
+  }
+ ],
+ "music": "ending",
+ "credits": true
+}

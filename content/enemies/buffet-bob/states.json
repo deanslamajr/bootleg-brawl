@@ -1,0 +1,496 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "charge": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "run:0",
+     "dur": 14,
+     "events": [
+      {
+       "sfx": "stomp",
+       "text": "HUP"
+      }
+     ]
+    },
+    {
+     "pose": "run:0",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:1",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:2",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:3",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:4",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:5",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:0",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:1",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:2",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:3",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:4",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:5",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:0",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:1",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:2",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:3",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:4",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "run:5",
+     "dur": 4,
+     "vel": [
+      3.4,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        0,
+        4,
+        26,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "land:0",
+     "dur": 14
+    }
+   ],
+   "next": "idle",
+   "friction": 0.05,
+   "armor": -1
+  }
+ }
+}

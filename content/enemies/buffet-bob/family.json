@@ -1,0 +1,96 @@
+{
+ "id": "buffet-bob",
+ "schemaVersion": 1,
+ "displayName": "Buffet Bob",
+ "catalogType": [
+  "etype-5"
+ ],
+ "rig": "large",
+ "stats": {
+  "walkSpeed": 0.75,
+  "runSpeed": 3.4,
+  "jumpVel": 3.6,
+  "weight": 2.2
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Buffet Bob",
+   "palette": "buffet-bob-intern",
+   "hp": 50,
+   "moves": [
+    "atk1",
+    "charge"
+   ],
+   "score": 250
+  },
+  {
+   "name": "associate",
+   "displayName": "All-You-Can-Eat Bob",
+   "palette": "buffet-bob-associate",
+   "hp": 70,
+   "moves": [
+    "atk1",
+    "charge"
+   ],
+   "score": 300
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Bottomless Bob",
+   "palette": "buffet-bob-senior",
+   "hp": 90,
+   "moves": [
+    "atk1",
+    "charge"
+   ],
+   "score": 350,
+   "speedMult": 1.15
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Executive Chef Bob",
+   "palette": "buffet-bob-vp",
+   "hp": 140,
+   "moves": [
+    "atk1",
+    "charge"
+   ],
+   "badge": "EXECUTIVE CHEF",
+   "miniBoss": true,
+   "score": 1500,
+   "speedMult": 1.2
+  }
+ ],
+ "ai": {
+  "kind": "charger",
+  "params": {
+   "range": 26,
+   "think": 24,
+   "aggression": 30,
+   "hover": 120,
+   "attacks": [
+    "atk1"
+   ],
+   "charge": "charge"
+  }
+ },
+ "light": false,
+ "grabbable": true,
+ "shadow": 1.6,
+ "lines": {
+  "spawn": [
+   "SECONDS!",
+   "IS THAT A BUFFET?"
+  ],
+  "ko": [
+   "THE SNEEZE GUARD..."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the heavyweight charger",
+  "gag": "Knocks everyone down on contact; teaches you to jump",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

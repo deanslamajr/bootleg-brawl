@@ -1,0 +1,89 @@
+{
+ "id": "junction",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 270,
+   "color": "#2e2a3a"
+  },
+  {
+   "op": "bricks",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 170,
+   "color": "#4a4658",
+   "mortar": "#2e2a3a",
+   "bw": 16,
+   "bh": 8
+  },
+  {
+   "op": "circle",
+   "x": 240,
+   "y": 80,
+   "r": 70,
+   "color": "#1a1420"
+  },
+  {
+   "op": "circle",
+   "x": 240,
+   "y": 80,
+   "r": 60,
+   "color": "#0a2e2e"
+  },
+  {
+   "op": "stripes",
+   "x": 180,
+   "y": 40,
+   "w": 120,
+   "h": 90,
+   "every": 8,
+   "width": 2,
+   "color": "#1a5a5a",
+   "vertical": false
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "color": "#1a5a5a"
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "every": 10,
+   "width": 3,
+   "color": "#2a9a8a",
+   "vertical": false
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "color": "#6ae0c8",
+   "density": 3,
+   "seed": 14
+  },
+  {
+   "op": "text",
+   "x": 150,
+   "y": 20,
+   "text": "JUNCTION 9. CURRENT: RUDE.",
+   "color": "#d0d040",
+   "scale": 1
+  }
+ ]
+}

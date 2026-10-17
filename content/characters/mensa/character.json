@@ -1,0 +1,66 @@
+{
+ "id": "mensa",
+ "schemaVersion": 1,
+ "displayName": "Mensa Simpleton",
+ "shortName": "MENSA",
+ "archetype": "ranged",
+ "rig": "small",
+ "palette": "mensa",
+ "altPalettes": [
+  "mensa-alt"
+ ],
+ "stats": {
+  "hp": 95,
+  "walkSpeed": 1.35,
+  "runSpeed": 2.9,
+  "jumpVel": 5.0,
+  "weight": 0.8,
+  "reach": 1.4,
+  "damageMult": 0.95,
+  "specialCost": 10
+ },
+ "kit": {
+  "requires": [
+   "charge-shot"
+  ],
+  "flags": [],
+  "gags": [
+   "grammarPedant"
+  ],
+  "chargeShot": {
+   "state": "charge",
+   "fire": "chargeShot",
+   "threshold": 24,
+   "maxLevel": 3,
+   "levelTicks": 24
+  }
+ },
+ "improvisedWeapon": {
+  "id": "slide-trombone",
+  "displayName": "Slide Trombone",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [],
+ "voice": {
+  "continueLine": "Statistically, one more quarter gives us a 61 percent chance. Insert it.",
+  "selectLine": "I have read the instruction card. All of it.",
+  "tauntLines": [
+   "That is not how you spell VICTORY.",
+   "Please hold for a trombone.",
+   "Citation needed."
+  ],
+  "endingText": "Mensa rewrote the Announcer's entire script. He reads it with feeling now."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the daughter of the family, a ranged fighter with a slide trombone",
+  "gag": "Corrects the Announcer's grammar on title cards; the subtitles visibly change",
+  "forbiddenTerms": [],
+  "tells": [
+   "Her instrument is a trombone on the sprite and a saxophone on the portrait",
+   "Her select-screen IQ stat reads 9"
+  ]
+ }
+}

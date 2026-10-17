@@ -1,0 +1,130 @@
+{
+ "id": "subway",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1200,
+ "depth": [
+  186,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "tunnel",
+   "depth": 0,
+   "speedX": 1.8,
+   "y": 30,
+   "drift": -4
+  },
+  {
+   "layer": "subway",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "sub-1",
+   "at": 160,
+   "waves": [
+    {
+     "family": "rollerinas",
+     "tier": 1,
+     "count": 2,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sid",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 80,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "subway-walk-1",
+   "at": 290,
+   "hold": false,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "sub-roam-1",
+   "at": 420,
+   "waves": [
+    {
+     "family": "rollerinas",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "subway-walk-2",
+   "at": 570,
+   "hold": false,
+   "waves": [
+    {
+     "family": "rollerinas",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "sub-kevin",
+   "at": 720,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 400,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "subway-bench",
+   "x": 300,
+   "y": 188
+  },
+  {
+   "kind": "breakable",
+   "id": "subway-bench",
+   "x": 900,
+   "y": 188
+  },
+  {
+   "kind": "pickup",
+   "id": "subway-pole",
+   "x": 500,
+   "y": 240
+  }
+ ],
+ "gags": [],
+ "intro": "THE SUBWAY. PLEASE STAND CLEAR OF THE SAMURAI."
+}

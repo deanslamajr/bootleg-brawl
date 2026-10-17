@@ -1,0 +1,249 @@
+{
+ "id": "surf",
+ "schemaVersion": 1,
+ "kind": "travel",
+ "length": 2400,
+ "depth": [
+  196,
+  258
+ ],
+ "layers": [
+  {
+   "layer": "tunnel",
+   "depth": 0,
+   "speedX": 0.6
+  },
+  {
+   "layer": "water",
+   "depth": 2,
+   "speedX": 1,
+   "y": 170,
+   "drift": -2.4
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "surf-roam-1",
+   "at": 160,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "surf-walk-1",
+   "at": 290,
+   "hold": false,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-1",
+   "at": 420,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 3,
+     "side": "right",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-walk-2",
+   "at": 590,
+   "hold": false,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-roam-2",
+   "at": 760,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 40,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "surf-walk-3",
+   "at": 930,
+   "hold": false,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 3,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-2",
+   "at": 1100,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 1,
+     "count": 2,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "rollerinas",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-roam-5",
+   "at": 1250,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "surf-roam-3",
+   "at": 1400,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "surf-walk-4",
+   "at": 1550,
+   "hold": false,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 3,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-3",
+   "at": 1700,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 1,
+     "count": 3,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "surf-roam-4",
+   "at": 1880,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 3,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  }
+ ],
+ "placements": [],
+ "gags": [],
+ "autoScroll": {
+  "speed": 1.8,
+  "surf": true,
+  "pauseAtLocks": true,
+  "hazards": [
+   {
+    "x": 800,
+    "y": 210
+   },
+   {
+    "x": 1400,
+    "y": 240
+   },
+   {
+    "x": 1960,
+    "y": 220
+   }
+  ]
+ },
+ "intro": "THE MAIN LINE. GRAB A MANHOLE COVER."
+}

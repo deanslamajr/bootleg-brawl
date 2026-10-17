@@ -1,0 +1,40 @@
+{
+ "id": "tunnel",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 100,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 100,
+   "color": "#1a1420"
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 120,
+   "count": 4,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 40,
+     "y": 40,
+     "w": 30,
+     "h": 10,
+     "color": "#ffd93a"
+    },
+    {
+     "op": "rect",
+     "x": 44,
+     "y": 44,
+     "w": 22,
+     "h": 2,
+     "color": "#ffffff"
+    }
+   ]
+  }
+ ]
+}

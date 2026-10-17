@@ -1,0 +1,195 @@
+{
+ "id": "main-street",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1200,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "sky",
+   "depth": 0,
+   "speedX": 0.1
+  },
+  {
+   "layer": "mainstreet",
+   "depth": 2,
+   "speedX": 1
+  },
+  {
+   "layer": "hedge",
+   "depth": 9,
+   "speedX": 1.25,
+   "y": 252,
+   "foreground": true
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "main-1",
+   "at": 80,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "bystanders",
+     "tier": 2,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 0,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "main-street-walk-1",
+   "at": 190,
+   "hold": false,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "main-street-roam-1",
+   "at": 300,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "main-2",
+   "at": 440,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "buffet-bob",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 120,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "main-street-roam-2",
+   "at": 600,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "main-3",
+   "at": 720,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 2,
+     "count": 2,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "mungus",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 90,
+     "spawnKind": "walk"
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "oil-drum",
+   "x": 300,
+   "y": 196
+  },
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 640,
+   "y": 188
+  },
+  {
+   "kind": "civilian",
+   "id": "bystanders",
+   "x": 900,
+   "y": 210,
+   "params": {
+    "tier": 1
+   }
+  }
+ ],
+ "gags": [
+  {
+   "propId": "vending-machine",
+   "x": 420,
+   "y": 180,
+   "trigger": "hit",
+   "effect": "drop",
+   "params": {
+    "item": "soda-can",
+    "count": 3,
+    "text": "IT PAYS OUT!",
+    "sfx": "coin"
+   },
+   "hits": 3
+  },
+  {
+   "propId": "payphone",
+   "x": 820,
+   "y": 182,
+   "trigger": "taunt",
+   "effect": "text",
+   "params": {
+    "text": "HELLO? IS THIS THE REAL GAME?",
+    "score": 10
+   },
+   "once": false
+  }
+ ],
+ "intro": "MAIN STREET. THE CHASE CONTINUES."
+}

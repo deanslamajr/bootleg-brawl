@@ -1,0 +1,166 @@
+{
+ "id": "hugh-mungus",
+ "schemaVersion": 1,
+ "displayName": "Drew Mungus",
+ "catalogType": [
+  "boss-1"
+ ],
+ "rig": "huge",
+ "palette": "hugh-mungus",
+ "stats": {
+  "hp": 280,
+  "walkSpeed": 0.8,
+  "runSpeed": 2.2,
+  "weight": 3
+ },
+ "card": {
+  "title": "HELLO MY NAME IS: GENERIC BRUTE",
+  "stats": [
+   {
+    "label": "STRENGTH",
+    "value": "YES"
+   },
+   {
+    "label": "HUGS",
+    "value": "MANDATORY"
+   },
+   {
+    "label": "IQ",
+    "value": "SEE STRENGTH"
+   }
+  ],
+  "taunt": "COME HERE. HUG TIME IS NOT OPTIONAL.",
+  "bounty": 2500
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 28
+      },
+      {
+       "do": "attack",
+       "state": "grabLunge"
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    },
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 36
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      },
+      {
+       "do": "wait",
+       "ticks": 30
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "attack",
+       "state": "quake"
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hpBelowPct": 45,
+   "enterText": "DREW IS HUGELY UPSET",
+   "haste": 10,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 28,
+       "run": true
+      },
+      {
+       "do": "attack",
+       "state": "grabLunge"
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "attack",
+       "state": "quake"
+      },
+      {
+       "do": "approach",
+       "range": 36
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "spawn",
+       "family": "mungus",
+       "tier": 0,
+       "count": 1
+      },
+      {
+       "do": "taunt",
+       "line": "COUSINS!"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [],
+ "poise": 4,
+ "grabbable": false,
+ "defeat": {
+  "kind": "ko",
+  "text": "DREW MUNGUS IS HUGELY DEFEATED."
+ },
+ "lines": {
+  "hurt": [
+   "THAT TICKLED. MEANLY."
+  ],
+  "defeat": [
+   "TELL MY COUSINS... NOTHING."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the first big brute of every street brawler",
+  "gag": "Grab-and-slam; his name badge does the introducing",
+  "forbiddenTerms": [],
+  "tells": [
+   "His badge says GENERIC BRUTE in game and GENRIC BRUTE on the card",
+   "The card says he is 4 FT tall"
+  ]
+ }
+}

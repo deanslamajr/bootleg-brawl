@@ -1,0 +1,80 @@
+{
+ "id": "sewer-rats",
+ "schemaVersion": 1,
+ "displayName": "Sewer Rats",
+ "catalogType": [
+  "etype-7"
+ ],
+ "rig": "nonhuman",
+ "stats": {
+  "walkSpeed": 1.6,
+  "runSpeed": 2.6,
+  "jumpVel": 3,
+  "weight": 0.4
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Sewer Rat",
+   "palette": "sewer-rats-intern",
+   "hp": 3,
+   "moves": [
+    "atk1"
+   ],
+   "score": 30
+  },
+  {
+   "name": "associate",
+   "displayName": "Large Sewer Rat",
+   "palette": "sewer-rats-associate",
+   "hp": 5,
+   "moves": [
+    "atk1"
+   ],
+   "score": 40
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Unusually Large Sewer Rat",
+   "palette": "sewer-rats-senior",
+   "hp": 8,
+   "moves": [
+    "atk1"
+   ],
+   "score": 50
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Rat King (Interim)",
+   "palette": "sewer-rats-vp",
+   "hp": 24,
+   "moves": [
+    "atk1"
+   ],
+   "badge": "RAT KING (INTERIM)",
+   "miniBoss": true,
+   "score": 600
+  }
+ ],
+ "ai": {
+  "kind": "swarm",
+  "params": {
+   "range": 12,
+   "think": 10,
+   "aggression": 70,
+   "hover": 40,
+   "attacks": [
+    "atk1"
+   ]
+  }
+ },
+ "light": true,
+ "grabbable": false,
+ "shadow": 0.6,
+ "parodyMeta": {
+  "bootlegOf": "the vermin swarm of every sewer level",
+  "gag": "Tiny hurtbox, one hit, a dozen at a time",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

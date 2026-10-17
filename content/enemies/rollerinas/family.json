@@ -1,0 +1,98 @@
+{
+ "id": "rollerinas",
+ "schemaVersion": 1,
+ "displayName": "The Rollerinas",
+ "catalogType": [
+  "etype-4"
+ ],
+ "rig": "medium",
+ "stats": {
+  "walkSpeed": 1.5,
+  "runSpeed": 3,
+  "jumpVel": 5.4,
+  "weight": 0.8
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Rollerina",
+   "palette": "rollerinas-intern",
+   "hp": 16,
+   "moves": [
+    "atk1",
+    "flip"
+   ],
+   "score": 150
+  },
+  {
+   "name": "associate",
+   "displayName": "Rollerina Deluxe",
+   "palette": "rollerinas-associate",
+   "hp": 26,
+   "moves": [
+    "atk1",
+    "atk2",
+    "flip"
+   ],
+   "score": 200
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Rollerina Supreme",
+   "palette": "rollerinas-senior",
+   "hp": 36,
+   "moves": [
+    "atk1",
+    "atk2",
+    "flip",
+    "skateKick"
+   ],
+   "score": 250
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Head Rollerina",
+   "palette": "rollerinas-vp",
+   "hp": 70,
+   "moves": [
+    "atk1",
+    "atk2",
+    "flip",
+    "skateKick"
+   ],
+   "badge": "HEAD OF SPINNING",
+   "miniBoss": true,
+   "score": 1200
+  }
+ ],
+ "ai": {
+  "kind": "acrobat",
+  "params": {
+   "range": 24,
+   "think": 16,
+   "aggression": 45,
+   "hover": 70,
+   "attacks": [
+    "atk1",
+    "atk2",
+    "skateKick"
+   ]
+  }
+ },
+ "light": true,
+ "lines": {
+  "spawn": [
+   "WHEEE!",
+   "EIGHT WHEELS OF FURY!"
+  ],
+  "ko": [
+   "WRONG WAY ON THE RINK!"
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the roller-skating acrobat pair",
+  "gag": "They flip over you and attack from behind, then apologize",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

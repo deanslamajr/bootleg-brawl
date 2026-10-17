@@ -1,0 +1,26 @@
+{
+ "schemaVersion": 1,
+ "tolerancePct": 15,
+ "bands": {
+  "balanced": {
+   "dps": 6.7,
+   "taken": 24,
+   "clearSeconds": 24.9
+  },
+  "grappler": {
+   "dps": 13.7,
+   "taken": 0,
+   "clearSeconds": 13.5
+  },
+  "fast": {
+   "dps": 7.1,
+   "taken": 48,
+   "clearSeconds": 23.6
+  },
+  "ranged": {
+   "dps": 7.2,
+   "taken": 18,
+   "clearSeconds": 21.7
+  }
+ }
+}

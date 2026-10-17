@@ -1,0 +1,175 @@
+{
+ "id": "baron-von-scooter",
+ "schemaVersion": 1,
+ "displayName": "Baron Von Scooter",
+ "catalogType": [
+  "boss-7"
+ ],
+ "rig": "large",
+ "palette": "baron-von-scooter",
+ "stats": {
+  "hp": 300,
+  "walkSpeed": 1.2,
+  "runSpeed": 3,
+  "weight": 3
+ },
+ "card": {
+  "title": "THE MAN WHO OWNS MEDIOCRE CITY",
+  "stats": [
+   {
+    "label": "TOP SPEED",
+    "value": "4 MPH"
+   },
+   {
+    "label": "NET WORTH",
+    "value": "ONE CITY"
+   },
+   {
+    "label": "BATTERY",
+    "value": "12%"
+   }
+  ],
+  "taunt": "I BOUGHT THIS CITY. I CAN BUY YOUR CONTINUE TOO.",
+  "bounty": 5000,
+  "portrait": "sit:0"
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 160
+      },
+      {
+       "do": "charge",
+       "state": "ram",
+       "speed": 3.6,
+       "maxTicks": 120
+      },
+      {
+       "do": "retreat",
+       "ticks": 40
+      }
+     ]
+    },
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 130
+      },
+      {
+       "do": "attack",
+       "state": "nailGun"
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "spawn",
+       "family": "interns",
+       "tier": 0,
+       "count": 3
+      },
+      {
+       "do": "taunt",
+       "line": "INTERNS! EARN YOUR EXPOSURE!"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hpBelowPct": 45,
+   "enterText": "TURBO MODE (4.5 MPH)",
+   "haste": 10,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 160
+      },
+      {
+       "do": "charge",
+       "state": "ram",
+       "speed": 4.6,
+       "maxTicks": 120
+      },
+      {
+       "do": "attack",
+       "state": "nailGun"
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 130
+      },
+      {
+       "do": "attack",
+       "state": "nailGun"
+      },
+      {
+       "do": "attack",
+       "state": "nailGun"
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "spawn",
+       "family": "interns",
+       "tier": 1,
+       "count": 3
+      },
+      {
+       "do": "wait",
+       "ticks": 30
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [],
+ "poise": 5,
+ "defeat": {
+  "kind": "towed",
+  "text": "BATTERY LOW. THE BARON IS BEING TOWED."
+ },
+ "lines": {
+  "hurt": [
+   "MY SUSPENSION!"
+  ],
+  "defeat": [
+   "CALL MY LAWYER. CALL TRIPLE A."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the rich final boss who runs the city from the top floor",
+  "gag": "Rides a gold-plated electric moped with a nail gun. When he is beaten, the battery dies and he is towed",
+  "forbiddenTerms": [],
+  "tells": [
+   "His scooter is red in game and yellow on the card",
+   "The card lists his top speed as 4 MPH"
+  ]
+ }
+}

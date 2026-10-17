@@ -1,0 +1,55 @@
+{
+ "id": "ending",
+ "schemaVersion": 1,
+ "title": "The End??",
+ "bpm": 96,
+ "rowsPerBeat": 4,
+ "loop": true,
+ "loopRow": 0,
+ "instruments": {
+  "lead2": {
+   "kind": "fm",
+   "volume": 0.3,
+   "attack": 0.01,
+   "decay": 0.2,
+   "sustain": 0.4,
+   "release": 0.1,
+   "ratio": 2,
+   "index": 2.5
+  },
+  "arp": {
+   "kind": "square",
+   "volume": 0.14,
+   "attack": 0.002,
+   "decay": 0.06,
+   "sustain": 0.2,
+   "release": 0.03,
+   "duty": 0.25
+  },
+  "tri": {
+   "kind": "triangle",
+   "volume": 0.45,
+   "attack": 0.003,
+   "decay": 0.1,
+   "sustain": 0.7,
+   "release": 0.05
+  }
+ },
+ "patterns": {
+  "A": {
+   "lead2": "E5 - - - D5 - C5 - D5 - - - G4 - - - C5 - - - D5 - E5 - F5 - E5 - D5 - - -",
+   "tri": "C3 . . . G2 . . . G2 . . . B2 . . . A2 . . . E2 . . . F2 . . . G2 . . .",
+   "arp": "C5 E5 G5 E5 C5 E5 G5 E5 G4 B4 D5 B4 G4 B4 D5 B4 A4 C5 E5 C5 A4 C5 E5 C5 F4 A4 C5 A4 G4 B4 D5 B4"
+  }
+ },
+ "order": [
+  "A",
+  "A"
+ ],
+ "cues": [
+  {
+   "name": "top",
+   "bar": 0
+  }
+ ]
+}

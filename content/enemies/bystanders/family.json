@@ -1,0 +1,92 @@
+{
+ "id": "bystanders",
+ "schemaVersion": 1,
+ "displayName": "Anytown Bystanders",
+ "catalogType": [
+  "etype-10"
+ ],
+ "rig": "medium",
+ "stats": {
+  "walkSpeed": 0.7,
+  "runSpeed": 1.8,
+  "jumpVel": 4,
+  "weight": 1.0
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Howdy Neighbors",
+   "palette": "bystanders-a",
+   "hp": 999,
+   "moves": [
+    "idle"
+   ],
+   "score": 0
+  },
+  {
+   "name": "associate",
+   "displayName": "Sadsack Sal",
+   "palette": "bystanders-b",
+   "hp": 999,
+   "moves": [
+    "idle"
+   ],
+   "score": 0
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Dr. Discount",
+   "palette": "bystanders-c",
+   "hp": 999,
+   "moves": [
+    "idle"
+   ],
+   "score": 0
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Principal Cutbacks",
+   "palette": "bystanders-d",
+   "hp": 999,
+   "moves": [
+    "idle"
+   ],
+   "score": 0
+  }
+ ],
+ "ai": {
+  "kind": "civilian",
+  "params": {
+   "range": 20,
+   "think": 30,
+   "aggression": 0,
+   "hover": 60,
+   "attacks": [
+    "idle"
+   ]
+  }
+ },
+ "light": true,
+ "grabbable": false,
+ "civilian": {
+  "penalty": -200,
+  "rescueDrop": "donut"
+ },
+ "lines": {
+  "spawn": [
+   "Lovely day for a brawl!",
+   "My medical degree came in the mail."
+  ],
+  "ko": [
+   "Golly, sorry you had to do that!",
+   "I will put it in the newsletter.",
+   "OW. Which game is this?"
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the townsfolk of a suburb, all generic",
+  "gag": "Hitting them costs points; the nice neighbor apologizes to you",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

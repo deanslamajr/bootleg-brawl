@@ -1,0 +1,39 @@
+{
+ "id": "game-select",
+ "schemaVersion": 1,
+ "type": "interlude",
+ "subtype": "map",
+ "title": "GAME SELECT",
+ "entries": [
+  {
+   "label": "GAME 2: MEDIOCRE CITY ULTRA TURBO",
+   "stageId": "game-2"
+  },
+  {
+   "label": "GAME 3: GIGGLELAND",
+   "disabledText": "LOADING..."
+  },
+  {
+   "label": "GAME 4: BARGAIN BIN GRAVEYARD",
+   "disabledText": "LOADING..."
+  },
+  {
+   "label": "GAME 5: CHANNEL 9\u00bd LIVE",
+   "disabledText": "LOADING..."
+  },
+  {
+   "label": "GAME 6: BOOMER'S NAP",
+   "disabledText": "LOADING..."
+  },
+  {
+   "label": "GAME 7: THE CARTRIDGE GLITCH",
+   "disabledText": "LOADING..."
+  },
+  {
+   "label": "GAME 999: THE REAL GAME",
+   "disabledText": "LOCKED. OBVIOUSLY."
+  }
+ ],
+ "voteTicks": 600,
+ "footer": "THE OTHER 997 GAMES ARE LOADING. EVERY PLAYER VOTES. TIES GO TO PLAYER 1."
+}

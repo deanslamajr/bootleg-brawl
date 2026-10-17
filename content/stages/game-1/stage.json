@@ -1,0 +1,132 @@
+{
+ "id": "game-1",
+ "schemaVersion": 1,
+ "gameNumber": 1,
+ "titleCard": {
+  "title": "GECKO JUSTICE",
+  "subtitle": "SEWER OF THE NINJA",
+  "houseRulesText": "HOUSE RULES: NINJAS COME OUT OF ANYTHING ROUND. THROW THEM AT THE SCREEN. IT IS ALLOWED HERE.",
+  "announcerLine": "GAME 1 OF 999. THE REPTILES ARE WAITING YOU.",
+  "announcerLineCorrected": "GAME 1 OF 999. THE REPTILES ARE WAITING FOR YOU."
+ },
+ "type": "walk-right",
+ "rules": {
+  "requires": [
+   "auto-scroll",
+   "environmental-spawn",
+   "arena",
+   "throw-toward-camera"
+  ],
+  "laneTolerance": 10,
+  "difficultyBaseline": 3,
+  "friendlyFireDefault": "off"
+ },
+ "palette": [
+  "#1a1420",
+  "#2e2a3a",
+  "#4a4658",
+  "#6e6a7e",
+  "#9a96a8",
+  "#c8c4d0",
+  "#f4f0e8",
+  "#0e2a18",
+  "#1e5a2a",
+  "#2e8a3a",
+  "#5ac04a",
+  "#a0e070",
+  "#0a2e2e",
+  "#1a5a5a",
+  "#2a9a8a",
+  "#6ae0c8",
+  "#2a1a10",
+  "#4a2e1a",
+  "#6e4a2a",
+  "#9a6e40",
+  "#3e1a6a",
+  "#6a2aa0",
+  "#a04ad0",
+  "#c02030",
+  "#f04a3a",
+  "#ffd93a",
+  "#e8a820",
+  "#4a4a10",
+  "#8a8a20",
+  "#d0d040",
+  "#ffffff",
+  "#7a1420"
+ ],
+ "skin": {
+  "outline": "#1a1420",
+  "shadow": "dither",
+  "hud": "sewer"
+ },
+ "segments": [
+  "pipes",
+  "surf",
+  "junction",
+  "throne"
+ ],
+ "bossTriggers": [
+  {
+   "at": "junction",
+   "lock": "junction-duo",
+   "bossId": "porkchop",
+   "arenaId": "sewer-junction",
+   "introCard": true,
+   "midBoss": true
+  },
+  {
+   "at": "throne",
+   "lock": "throne-boss",
+   "bossId": "cheesegrater",
+   "arenaId": "cheesegrater-throne",
+   "introCard": true,
+   "midBoss": false
+  }
+ ],
+ "interludes": {
+  "before": [],
+  "after": [
+   "cartridge-swap",
+   "game-select"
+  ]
+ },
+ "music": {
+  "track": "sewer",
+  "boss": "boss-theme",
+  "cues": []
+ },
+ "gagHooks": {
+  "deadweightDave": {
+   "costume": "sewer",
+   "line": "A SEWER? THEY PUT ME FIRST IN A SEWER?"
+  },
+  "dirkHeadline": [
+   {
+    "lock": "pipe-2",
+    "line": "DIRK HEADLINE, LIVE FROM A PIPE. THE NINJAS ARE WEARING SHOES ON THEIR HEADS. MORE AT ELEVEN."
+   },
+   {
+    "lock": "surf-2",
+    "line": "UPDATE: THE FAMILY IS SURFING. WE HAVE NO FOLLOW-UP QUESTIONS."
+   }
+  ],
+  "sprinkles": [
+   "pipes"
+  ],
+  "quillbert": []
+ },
+ "outro": {
+  "lickspittle": "THE GECKOS CAN KEEP THEIR SEWER. I AM KEEPING THE BABY! CARTRIDGE SWAP!",
+  "announcer": "THE GECKOS SAY THANK YOU. IN THE NEXT CARTRIDGE."
+ },
+ "parodyMeta": {
+  "bootlegOf": "a sewer stage full of ninjas",
+  "gag": "The family helps four geckos get their sewer back",
+  "forbiddenTerms": [],
+  "tells": [
+   "The title card says (TM?) instead of a trademark",
+   "The sewer water scrolls the wrong way in the background"
+  ]
+ }
+}

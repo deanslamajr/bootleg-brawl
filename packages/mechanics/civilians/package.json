@@ -1,0 +1,14 @@
+{
+  "name": "@bb/mech-civilians",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@bb/engine": "workspace:*",
+    "@bb/schema": "workspace:*",
+    "zod": "4.1.13"
+  }
+}

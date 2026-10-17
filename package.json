@@ -1,0 +1,48 @@
+{
+  "name": "bootleg-brawl",
+  "version": "0.1.0",
+  "private": true,
+  "description": "999-IN-1: The Bootleg Brawl. A browser co-op beat 'em up inside a cursed counterfeit multicart.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.18.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm content && pnpm -r --parallel --filter @bb/game --filter @bb/sandbox dev",
+    "dev:game": "pnpm --filter @bb/game dev",
+    "dev:sandbox": "pnpm --filter @bb/sandbox dev",
+    "content": "pnpm tools export-sprites && pnpm tools bake-rigs --all && pnpm tools pack && pnpm tools validate",
+    "tools": "tsx packages/tools/src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:perf": "tsx packages/tools/src/cli.ts perf",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "build": "pnpm --filter @bb/game build",
+    "build:sandbox": "pnpm --filter @bb/sandbox build",
+    "preview": "pnpm --filter @bb/game preview",
+    "deploy": "pnpm build && tsx packages/tools/src/cli.ts deploy",
+    "deploy:status": "tsx packages/tools/src/cli.ts deploy-status"
+  },
+  "devDependencies": {
+    "@bb/engine": "workspace:*",
+    "@bb/mechanics": "workspace:*",
+    "@bb/schema": "workspace:*",
+    "@bb/tools": "workspace:*",
+    "@eslint/js": "9.39.1",
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.19.1",
+    "eslint": "9.39.1",
+    "prettier": "3.6.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.4",
+    "vite": "7.2.2",
+    "vitest": "3.2.4",
+    "zod": "4.1.13"
+  }
+}

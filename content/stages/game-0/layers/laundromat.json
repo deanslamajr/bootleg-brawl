@@ -1,0 +1,127 @@
+{
+ "id": "laundromat",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 270,
+   "color": "#6ae0c8"
+  },
+  {
+   "op": "tiles",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 96,
+   "tw": 16,
+   "th": 16,
+   "color": "#6ae0c8",
+   "alt": "#2a9a8a",
+   "skew": 0
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 96,
+   "w": 960,
+   "h": 4,
+   "color": "#f4f0e8"
+  },
+  {
+   "op": "text",
+   "x": 330,
+   "y": 20,
+   "text": "SUDS & DUDS 24 HR",
+   "color": "#ffffff",
+   "scale": 1
+  },
+  {
+   "op": "text",
+   "x": 352,
+   "y": 34,
+   "text": "NO DYEING. NO DYING.",
+   "color": "#2e2a3a",
+   "scale": 1
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 56,
+   "count": 17,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 4,
+     "y": 104,
+     "w": 50,
+     "h": 66,
+     "color": "#f4f0e8"
+    },
+    {
+     "op": "circle",
+     "x": 29,
+     "y": 132,
+     "r": 16,
+     "color": "#9a96a8"
+    },
+    {
+     "op": "circle",
+     "x": 29,
+     "y": 132,
+     "r": 11,
+     "color": "#8ad0ff"
+    },
+    {
+     "op": "rect",
+     "x": 8,
+     "y": 108,
+     "w": 42,
+     "h": 6,
+     "color": "#c8c4d0"
+    },
+    {
+     "op": "circle",
+     "x": 44,
+     "y": 111,
+     "r": 2,
+     "color": "#c02030"
+    }
+   ]
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 960,
+   "h": 8,
+   "color": "#9a96a8"
+  },
+  {
+   "op": "tiles",
+   "x": 0,
+   "y": 178,
+   "w": 960,
+   "h": 92,
+   "tw": 24,
+   "th": 12,
+   "color": "#f4f0e8",
+   "alt": "#c8c4d0",
+   "skew": 24
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 178,
+   "w": 960,
+   "h": 92,
+   "color": "#9a96a8",
+   "density": 3,
+   "seed": 11
+  }
+ ]
+}

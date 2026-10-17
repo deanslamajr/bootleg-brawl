@@ -1,0 +1,7 @@
+packages:
+  - apps/*
+  - packages/*
+  - packages/mechanics/*
+
+allowBuilds:
+  esbuild: true

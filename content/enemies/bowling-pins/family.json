@@ -1,0 +1,63 @@
+{
+ "id": "bowling-pins",
+ "schemaVersion": 1,
+ "displayName": "Bowling Pins",
+ "catalogType": [
+  "etype-1"
+ ],
+ "rig": "small",
+ "stats": {
+  "walkSpeed": 0.9,
+  "runSpeed": 2,
+  "jumpVel": 4,
+  "weight": 0.6
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Pin",
+   "palette": "bowling-pins-intern",
+   "hp": 6,
+   "moves": [
+    "atk1"
+   ],
+   "score": 50
+  },
+  {
+   "name": "associate",
+   "displayName": "Head Pin",
+   "palette": "bowling-pins-associate",
+   "hp": 12,
+   "moves": [
+    "atk1"
+   ],
+   "score": 80
+  }
+ ],
+ "ai": {
+  "kind": "brawler",
+  "params": {
+   "range": 20,
+   "think": 20,
+   "aggression": 50,
+   "hover": 50,
+   "attacks": [
+    "atk1"
+   ]
+  }
+ },
+ "light": true,
+ "grabbable": true,
+ "lines": {
+  "spawn": [],
+  "ko": [
+   "SPARE ME!"
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the respawning fodder of a joke boss",
+  "gag": "Pins that walk, punch and fall over in one hit",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

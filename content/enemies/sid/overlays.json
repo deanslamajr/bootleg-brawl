@@ -1,0 +1,116 @@
+{
+ "schemaVersion": 1,
+ "body": {
+  "scale": 1,
+  "headR": 7,
+  "torsoW": 9,
+  "armW": 3,
+  "legW": 4,
+  "footL": 5,
+  "handR": 2,
+  "skin": 2,
+  "torso": 6,
+  "legs": 8,
+  "feet": 13,
+  "arms": 2,
+  "hide": []
+ },
+ "layers": {
+  "head": [
+   {
+    "shape": "poly",
+    "at": "head",
+    "dy": -4,
+    "points": [
+     [
+      -3,
+      4
+     ],
+     [
+      -2,
+      -6
+     ],
+     [
+      0,
+      -6
+     ],
+     [
+      2,
+      -6
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "color": 4,
+    "z": 53,
+    "exceptStates": [
+     "down",
+     "ko",
+     "fall",
+     "thrown",
+     "teamFly",
+     "flip",
+     "ball",
+     "roll",
+     "sleep",
+     "getup:0",
+     "camFly"
+    ]
+   }
+  ],
+  "torso": [
+   {
+    "shape": "rect",
+    "at": "neck",
+    "dy": 8,
+    "w": 12,
+    "h": 11,
+    "color": 6,
+    "z": 31,
+    "exceptStates": [
+     "down",
+     "ko",
+     "fall",
+     "thrown",
+     "teamFly",
+     "flip",
+     "ball",
+     "roll",
+     "sleep",
+     "getup:0",
+     "camFly"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "neck",
+    "dx": 2,
+    "dy": 6,
+    "w": 2,
+    "h": 8,
+    "color": 13,
+    "z": 32,
+    "outline": false,
+    "exceptStates": [
+     "down",
+     "ko",
+     "fall",
+     "thrown",
+     "teamFly",
+     "flip",
+     "ball",
+     "roll",
+     "sleep",
+     "getup:0",
+     "camFly"
+    ]
+   }
+  ],
+  "legs": [],
+  "weapon": [],
+  "fx": []
+ },
+ "uniqueFrames": {}
+}

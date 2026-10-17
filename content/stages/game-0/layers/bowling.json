@@ -1,0 +1,183 @@
+{
+ "id": "bowling",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 270,
+   "color": "#6a2aa0"
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 20,
+   "w": 960,
+   "h": 10,
+   "every": 40,
+   "width": 20,
+   "color": "#a04ad0",
+   "vertical": true
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 46,
+   "w": 960,
+   "h": 4,
+   "color": "#d03a8a"
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 54,
+   "w": 960,
+   "h": 2,
+   "color": "#ff8ac8"
+  },
+  {
+   "op": "text",
+   "x": 380,
+   "y": 28,
+   "text": "BOWL-O-RAMA-ISH",
+   "color": "#ffd93a",
+   "scale": 1
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 120,
+   "count": 8,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 20,
+     "y": 70,
+     "w": 80,
+     "h": 40,
+     "color": "#1a1420"
+    },
+    {
+     "op": "text",
+     "x": 26,
+     "y": 84,
+     "text": "STRIKE?",
+     "color": "#6ae0c8",
+     "scale": 1
+    },
+    {
+     "op": "rect",
+     "x": 20,
+     "y": 110,
+     "w": 80,
+     "h": 6,
+     "color": "#2e2a3a"
+    }
+   ]
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 124,
+   "w": 960,
+   "h": 24,
+   "color": "#2e2a3a"
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 80,
+   "count": 12,
+   "ops": [
+    {
+     "op": "poly",
+     "points": [
+      [
+       30,
+       144
+      ],
+      [
+       40,
+       128
+      ],
+      [
+       50,
+       144
+      ]
+     ],
+     "color": "#f4f0e8"
+    }
+   ]
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 148,
+   "w": 960,
+   "h": 122,
+   "color": "#c8a070"
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 80,
+   "count": 12,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 0,
+     "y": 148,
+     "w": 3,
+     "h": 122,
+     "color": "#9a6e40"
+    },
+    {
+     "op": "rect",
+     "x": 76,
+     "y": 148,
+     "w": 4,
+     "h": 122,
+     "color": "#1a1420"
+    }
+   ]
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 150,
+   "w": 960,
+   "h": 120,
+   "color": "#9a6e40",
+   "density": 5,
+   "seed": 5
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 240,
+   "count": 4,
+   "ops": [
+    {
+     "op": "ellipse",
+     "x": 120,
+     "y": 200,
+     "w": 24,
+     "h": 8,
+     "color": "#2e64d0"
+    },
+    {
+     "op": "ellipse",
+     "x": 160,
+     "y": 236,
+     "w": 22,
+     "h": 8,
+     "color": "#c02030"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "id": "stinger-gameover",
+ "schemaVersion": 1,
+ "title": "Game Over (Allegedly)",
+ "bpm": 90,
+ "rowsPerBeat": 4,
+ "loop": false,
+ "loopRow": 0,
+ "instruments": {
+  "lead": {
+   "kind": "square",
+   "volume": 0.32,
+   "attack": 0.005,
+   "decay": 0.12,
+   "sustain": 0.5,
+   "release": 0.06,
+   "duty": 0.5
+  },
+  "bass": {
+   "kind": "fm",
+   "volume": 0.42,
+   "attack": 0.003,
+   "decay": 0.12,
+   "sustain": 0.6,
+   "release": 0.05,
+   "ratio": 1,
+   "index": 1.6
+  }
+ },
+ "patterns": {
+  "A": {
+   "lead": "C5 - B4 - A#4 - A4 - G#4 - G4 - - - - -",
+   "bass": "C3 . . . . . . . C2 . . . . . . ."
+  }
+ },
+ "order": [
+  "A"
+ ],
+ "cues": [
+  {
+   "name": "top",
+   "bar": 0
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "id": "title",
+ "schemaVersion": 1,
+ "title": "999 Games in 1",
+ "bpm": 140,
+ "rowsPerBeat": 4,
+ "loop": true,
+ "loopRow": 0,
+ "instruments": {
+  "lead": {
+   "kind": "square",
+   "volume": 0.32,
+   "attack": 0.005,
+   "decay": 0.12,
+   "sustain": 0.5,
+   "release": 0.06,
+   "duty": 0.5
+  },
+  "lead2": {
+   "kind": "fm",
+   "volume": 0.3,
+   "attack": 0.01,
+   "decay": 0.2,
+   "sustain": 0.4,
+   "release": 0.1,
+   "ratio": 2,
+   "index": 2.5
+  },
+  "arp": {
+   "kind": "square",
+   "volume": 0.14,
+   "attack": 0.002,
+   "decay": 0.06,
+   "sustain": 0.2,
+   "release": 0.03,
+   "duty": 0.25
+  },
+  "bass": {
+   "kind": "fm",
+   "volume": 0.42,
+   "attack": 0.003,
+   "decay": 0.12,
+   "sustain": 0.6,
+   "release": 0.05,
+   "ratio": 1,
+   "index": 1.6
+  },
+  "kick": {
+   "kind": "kick",
+   "volume": 0.6
+  },
+  "snare": {
+   "kind": "snare",
+   "volume": 0.32
+  },
+  "hat": {
+   "kind": "hat",
+   "volume": 0.14
+  }
+ },
+ "patterns": {
+  "A": {
+   "lead": "C5 . C5 . G5 - - . F5 . E5 . D5 . C5 . D5 - E5 - F5 - A5 - G5 - - - - - . .",
+   "bass": "C3 . C3 . C3 . C3 . F2 . F2 . F2 . F2 . D3 . D3 . D3 . D3 . G2 . G2 . G2 . B2 .",
+   "arp": "C5 E5 G5 C6 C5 E5 G5 C6 F4 A4 C5 F5 F4 A4 C5 F5 D5 F5 A5 D6 D5 F5 A5 D6 G4 B4 D5 G5 G4 B4 D5 G5",
+   "kick": "C2 . . . . . . . C2 . . . . . . . C2 . . . . . C2 . C2 . . . . . . .",
+   "snare": ". . . . C4 . . . . . . . C4 . . . . . . . C4 . . . . . . . C4 . . .",
+   "hat": ". . C6 . . . C6 . . . C6 . . . C6 . . . C6 . . . C6 . . . C6 . . . C6 ."
+  },
+  "B": {
+   "lead2": "E5 - - . D5 . C5 . G5 - - . F5 . E5 . D5 . E5 . F5 . D5 . C5 - - - - - . .",
+   "bass": "A2 . A2 . A2 . A2 . E2 . E2 . E2 . E2 . F2 . F2 . G2 . G2 . C3 . C3 . C3 . C3 .",
+   "kick": "C2 . . . . . . . C2 . . . . . . . C2 . . . . . . . C2 . . . . . . .",
+   "snare": ". . . . C4 . . . . . . . C4 . . . . . . . C4 . . . . . . . C4 . . .",
+   "hat": "C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 . C6 ."
+  }
+ },
+ "order": [
+  "A",
+  "A",
+  "B",
+  "A"
+ ],
+ "cues": [
+  {
+   "name": "top",
+   "bar": 0
+  }
+ ]
+}

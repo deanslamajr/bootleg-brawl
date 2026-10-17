@@ -1,0 +1,32 @@
+{
+ "id": "hedge",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 30,
+ "ops": [
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 40,
+   "count": 24,
+   "ops": [
+    {
+     "op": "ellipse",
+     "x": 20,
+     "y": 18,
+     "w": 46,
+     "h": 26,
+     "color": "#2e8a3a"
+    },
+    {
+     "op": "ellipse",
+     "x": 14,
+     "y": 14,
+     "w": 20,
+     "h": 12,
+     "color": "#5ac04a"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,463 @@
+{
+ "schemaVersion": 1,
+ "sounds": {
+  "punch": {
+   "wave": "noise",
+   "freq": 900,
+   "attack": 0,
+   "sustain": 0.02,
+   "decay": 0.08,
+   "punch": 0.5,
+   "freqEnd": 200,
+   "lpf": 0.6,
+   "crush": 8,
+   "volume": 0.5
+  },
+  "kick": {
+   "wave": "noise",
+   "freq": 600,
+   "sustain": 0.03,
+   "decay": 0.12,
+   "punch": 0.6,
+   "freqEnd": 120,
+   "lpf": 0.5,
+   "crush": 8,
+   "volume": 0.55
+  },
+  "hit": {
+   "wave": "square",
+   "freq": 320,
+   "sustain": 0.02,
+   "decay": 0.08,
+   "freqEnd": 90,
+   "punch": 0.4,
+   "crush": 6,
+   "volume": 0.4
+  },
+  "knee": {
+   "wave": "noise",
+   "freq": 500,
+   "sustain": 0.03,
+   "decay": 0.1,
+   "punch": 0.6,
+   "freqEnd": 150,
+   "lpf": 0.45,
+   "crush": 7,
+   "volume": 0.5
+  },
+  "slam": {
+   "wave": "noise",
+   "freq": 300,
+   "sustain": 0.06,
+   "decay": 0.25,
+   "punch": 0.8,
+   "freqEnd": 50,
+   "lpf": 0.35,
+   "crush": 6,
+   "volume": 0.65
+  },
+  "grab": {
+   "wave": "square",
+   "freq": 220,
+   "sustain": 0.03,
+   "decay": 0.06,
+   "freqEnd": 330,
+   "duty": 0.3,
+   "crush": 8,
+   "volume": 0.3
+  },
+  "throw": {
+   "wave": "noise",
+   "freq": 1200,
+   "sustain": 0.05,
+   "decay": 0.15,
+   "freqEnd": 300,
+   "hpf": 0.2,
+   "crush": 8,
+   "volume": 0.35
+  },
+  "land": {
+   "wave": "noise",
+   "freq": 250,
+   "sustain": 0.02,
+   "decay": 0.08,
+   "freqEnd": 80,
+   "lpf": 0.3,
+   "volume": 0.3
+  },
+  "stomp": {
+   "wave": "noise",
+   "freq": 350,
+   "sustain": 0.03,
+   "decay": 0.12,
+   "punch": 0.6,
+   "freqEnd": 60,
+   "lpf": 0.4,
+   "crush": 7,
+   "volume": 0.5
+  },
+  "special": {
+   "wave": "saw",
+   "freq": 200,
+   "sustain": 0.1,
+   "decay": 0.3,
+   "freqEnd": 800,
+   "vibratoDepth": 0.3,
+   "vibratoSpeed": 18,
+   "crush": 6,
+   "volume": 0.45
+  },
+  "whip": {
+   "wave": "noise",
+   "freq": 2400,
+   "sustain": 0.03,
+   "decay": 0.1,
+   "freqEnd": 600,
+   "hpf": 0.3,
+   "crush": 8,
+   "volume": 0.4
+  },
+  "clang": {
+   "wave": "square",
+   "freq": 880,
+   "sustain": 0.04,
+   "decay": 0.25,
+   "freqEnd": 820,
+   "duty": 0.15,
+   "arpeggio": 1.5,
+   "arpeggioAt": 0.1,
+   "crush": 6,
+   "volume": 0.4
+  },
+  "slash": {
+   "wave": "noise",
+   "freq": 3000,
+   "sustain": 0.02,
+   "decay": 0.1,
+   "freqEnd": 900,
+   "hpf": 0.4,
+   "crush": 8,
+   "volume": 0.4
+  },
+  "toot": {
+   "wave": "square",
+   "freq": 440,
+   "attack": 0.01,
+   "sustain": 0.06,
+   "decay": 0.06,
+   "duty": 0.25,
+   "vibratoDepth": 0.15,
+   "vibratoSpeed": 10,
+   "crush": 8,
+   "volume": 0.35
+  },
+  "toot-hit": {
+   "wave": "square",
+   "freq": 660,
+   "sustain": 0.02,
+   "decay": 0.08,
+   "freqEnd": 330,
+   "duty": 0.25,
+   "crush": 8,
+   "volume": 0.35
+  },
+  "tuba": {
+   "wave": "saw",
+   "freq": 110,
+   "attack": 0.02,
+   "sustain": 0.3,
+   "decay": 0.3,
+   "freqEnd": 90,
+   "vibratoDepth": 0.2,
+   "vibratoSpeed": 8,
+   "lpf": 0.5,
+   "crush": 7,
+   "volume": 0.6
+  },
+  "boing": {
+   "wave": "sine",
+   "freq": 220,
+   "sustain": 0.05,
+   "decay": 0.15,
+   "freqEnd": 660,
+   "vibratoDepth": 0.3,
+   "vibratoSpeed": 20,
+   "volume": 0.45
+  },
+  "bite": {
+   "wave": "noise",
+   "freq": 1800,
+   "sustain": 0.01,
+   "decay": 0.05,
+   "freqEnd": 900,
+   "crush": 6,
+   "volume": 0.3
+  },
+  "strike": {
+   "wave": "noise",
+   "freq": 700,
+   "sustain": 0.1,
+   "decay": 0.4,
+   "punch": 0.7,
+   "freqEnd": 200,
+   "crush": 5,
+   "volume": 0.6,
+   "repeat": 3
+  },
+  "clash": {
+   "wave": "square",
+   "freq": 1200,
+   "sustain": 0.05,
+   "decay": 0.3,
+   "freqEnd": 1100,
+   "duty": 0.1,
+   "arpeggio": 1.25,
+   "arpeggioAt": 0.05,
+   "crush": 5,
+   "volume": 0.5
+  },
+  "tell": {
+   "wave": "square",
+   "freq": 1600,
+   "sustain": 0.04,
+   "decay": 0.08,
+   "duty": 0.5,
+   "arpeggio": 2,
+   "arpeggioAt": 0.5,
+   "crush": 8,
+   "volume": 0.35
+  },
+  "charge": {
+   "wave": "saw",
+   "freq": 120,
+   "attack": 0.2,
+   "sustain": 0.2,
+   "decay": 0.1,
+   "freqEnd": 900,
+   "crush": 6,
+   "volume": 0.35
+  },
+  "zap": {
+   "wave": "saw",
+   "freq": 1400,
+   "sustain": 0.1,
+   "decay": 0.2,
+   "freqEnd": 200,
+   "vibratoDepth": 0.5,
+   "vibratoSpeed": 30,
+   "crush": 4,
+   "volume": 0.45
+  },
+  "tink": {
+   "wave": "square",
+   "freq": 1800,
+   "sustain": 0.01,
+   "decay": 0.05,
+   "duty": 0.1,
+   "volume": 0.25
+  },
+  "whoosh": {
+   "wave": "noise",
+   "freq": 800,
+   "attack": 0.03,
+   "sustain": 0.06,
+   "decay": 0.12,
+   "freqEnd": 2400,
+   "hpf": 0.3,
+   "volume": 0.3
+  },
+  "eat": {
+   "wave": "square",
+   "freq": 520,
+   "sustain": 0.04,
+   "decay": 0.06,
+   "arpeggio": 1.5,
+   "arpeggioAt": 0.4,
+   "duty": 0.4,
+   "crush": 8,
+   "volume": 0.35,
+   "repeat": 2
+  },
+  "pickup": {
+   "wave": "square",
+   "freq": 660,
+   "sustain": 0.04,
+   "decay": 0.1,
+   "arpeggio": 1.333,
+   "arpeggioAt": 0.3,
+   "duty": 0.5,
+   "volume": 0.35
+  },
+  "coin": {
+   "wave": "square",
+   "freq": 990,
+   "sustain": 0.03,
+   "decay": 0.18,
+   "arpeggio": 1.5,
+   "arpeggioAt": 0.15,
+   "duty": 0.5,
+   "volume": 0.35
+  },
+  "break": {
+   "wave": "noise",
+   "freq": 1500,
+   "sustain": 0.05,
+   "decay": 0.25,
+   "punch": 0.5,
+   "freqEnd": 300,
+   "crush": 5,
+   "volume": 0.5
+  },
+  "thud": {
+   "wave": "noise",
+   "freq": 200,
+   "sustain": 0.02,
+   "decay": 0.06,
+   "freqEnd": 90,
+   "lpf": 0.3,
+   "volume": 0.3
+  },
+  "ko": {
+   "wave": "square",
+   "freq": 440,
+   "sustain": 0.1,
+   "decay": 0.4,
+   "freqEnd": 110,
+   "duty": 0.3,
+   "crush": 6,
+   "volume": 0.45
+  },
+  "teamup": {
+   "wave": "square",
+   "freq": 392,
+   "sustain": 0.08,
+   "decay": 0.2,
+   "arpeggio": 1.5,
+   "arpeggioAt": 0.25,
+   "duty": 0.25,
+   "volume": 0.4,
+   "repeat": 2
+  },
+  "taunt": {
+   "wave": "square",
+   "freq": 300,
+   "sustain": 0.04,
+   "decay": 0.08,
+   "freqEnd": 500,
+   "duty": 0.5,
+   "crush": 8,
+   "volume": 0.25
+  },
+  "static": {
+   "wave": "noise",
+   "freq": 4000,
+   "sustain": 0.4,
+   "decay": 0.3,
+   "crush": 3,
+   "volume": 0.4
+  },
+  "spray": {
+   "wave": "noise",
+   "freq": 3000,
+   "attack": 0.05,
+   "sustain": 0.2,
+   "decay": 0.2,
+   "hpf": 0.5,
+   "volume": 0.3
+  },
+  "select": {
+   "wave": "square",
+   "freq": 880,
+   "sustain": 0.02,
+   "decay": 0.05,
+   "duty": 0.5,
+   "volume": 0.3
+  },
+  "confirm": {
+   "wave": "square",
+   "freq": 660,
+   "sustain": 0.04,
+   "decay": 0.15,
+   "arpeggio": 1.5,
+   "arpeggioAt": 0.3,
+   "duty": 0.5,
+   "volume": 0.35
+  },
+  "pause": {
+   "wave": "square",
+   "freq": 440,
+   "sustain": 0.05,
+   "decay": 0.1,
+   "arpeggio": 0.5,
+   "arpeggioAt": 0.5,
+   "duty": 0.5,
+   "volume": 0.3
+  },
+  "go": {
+   "wave": "square",
+   "freq": 523,
+   "sustain": 0.06,
+   "decay": 0.1,
+   "arpeggio": 1.26,
+   "arpeggioAt": 0.3,
+   "duty": 0.5,
+   "volume": 0.35,
+   "repeat": 2
+  },
+  "continue": {
+   "wave": "square",
+   "freq": 330,
+   "sustain": 0.04,
+   "decay": 0.1,
+   "duty": 0.5,
+   "volume": 0.3
+  },
+  "card": {
+   "wave": "saw",
+   "freq": 160,
+   "attack": 0.01,
+   "sustain": 0.15,
+   "decay": 0.35,
+   "freqEnd": 80,
+   "crush": 5,
+   "volume": 0.5
+  },
+  "bulletin": {
+   "wave": "sine",
+   "freq": 1046,
+   "sustain": 0.06,
+   "decay": 0.15,
+   "arpeggio": 0.75,
+   "arpeggioAt": 0.4,
+   "volume": 0.3
+  },
+  "announcer": {
+   "wave": "square",
+   "freq": 600,
+   "sustain": 0.02,
+   "decay": 0.04,
+   "duty": 0.25,
+   "arpeggio": 1.12,
+   "arpeggioAt": 0.5,
+   "crush": 6,
+   "volume": 0.25,
+   "repeat": 3
+  },
+  "mash": {
+   "wave": "square",
+   "freq": 700,
+   "sustain": 0.01,
+   "decay": 0.03,
+   "duty": 0.5,
+   "volume": 0.2
+  },
+  "fold": {
+   "wave": "noise",
+   "freq": 2000,
+   "sustain": 0.03,
+   "decay": 0.08,
+   "hpf": 0.4,
+   "volume": 0.3
+  }
+ }
+}

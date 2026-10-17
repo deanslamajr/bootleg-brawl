@@ -1,0 +1,177 @@
+{
+ "id": "pinhead-pete",
+ "schemaVersion": 1,
+ "displayName": "Pinhead Pete",
+ "catalogType": [
+  "boss-8"
+ ],
+ "rig": "large",
+ "palette": "pinhead-pete",
+ "stats": {
+  "hp": 170,
+  "walkSpeed": 0.8,
+  "runSpeed": 2,
+  "weight": 2.4
+ },
+ "card": {
+  "title": "THE PIN THAT FIGHTS BACK",
+  "stats": [
+   {
+    "label": "SPEED",
+    "value": "10 PINS"
+   },
+   {
+    "label": "WEIGHT",
+    "value": "3 LB 6 OZ"
+   },
+   {
+    "label": "FAVORITE FOOD",
+    "value": "GUTTERS"
+   }
+  ],
+  "taunt": "YOU WILL NEVER PICK UP THIS SPARE.",
+  "bounty": 1250
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 36
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      },
+      {
+       "do": "wait",
+       "ticks": 30
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 170
+      },
+      {
+       "do": "charge",
+       "state": "roll",
+       "speed": 3.6
+      },
+      {
+       "do": "wait",
+       "ticks": 50
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "spawn",
+       "family": "bowling-pins",
+       "tier": 0,
+       "count": 2
+      },
+      {
+       "do": "taunt",
+       "line": "SET 'EM UP!"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hpBelowPct": 50,
+   "enterText": "PETE IS ON TILT",
+   "haste": 12,
+   "patterns": [
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 36
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      }
+     ]
+    },
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 170
+      },
+      {
+       "do": "charge",
+       "state": "roll",
+       "speed": 4.4
+      },
+      {
+       "do": "wait",
+       "ticks": 30
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "spawn",
+       "family": "bowling-pins",
+       "tier": 1,
+       "count": 3
+      },
+      {
+       "do": "wait",
+       "ticks": 40
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [
+  {
+   "id": "strikeOnThrown",
+   "params": {}
+  }
+ ],
+ "poise": 3,
+ "defeat": {
+  "kind": "ko",
+  "text": "GUTTER BALL. PETE IS DOWN."
+ },
+ "lines": {
+  "hurt": [
+   "OOF, MY HEADPIN"
+  ],
+  "defeat": [
+   "SEVEN-TEN SPLIT..."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "a bowling-alley boss who is a man-sized bowling pin",
+  "gag": "Rolls at you; throwing an enemy into him scores a STRIKE",
+  "forbiddenTerms": [],
+  "tells": [
+   "His stripes are red in game and blue on the card",
+   "The card lists his weight in ounces"
+  ]
+ }
+}

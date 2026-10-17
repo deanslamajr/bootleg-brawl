@@ -1,0 +1,178 @@
+{
+ "id": "cheesegrater",
+ "schemaVersion": 1,
+ "displayName": "The Cheesegrater",
+ "catalogType": [
+  "boss-4"
+ ],
+ "rig": "large",
+ "palette": "cheesegrater",
+ "stats": {
+  "hp": 320,
+  "walkSpeed": 1.0,
+  "runSpeed": 2.8,
+  "weight": 2
+ },
+ "card": {
+  "title": "MASTER OF THE UN-BOOTLEG BEAM",
+  "stats": [
+   {
+    "label": "BLADES",
+    "value": "MANY"
+   },
+   {
+    "label": "CHEESE",
+    "value": "NONE"
+   },
+   {
+    "label": "CAPE",
+    "value": "DRY CLEAN ONLY"
+   }
+  ],
+  "taunt": "I WILL RETURN YOU TO YOUR ORIGINAL 8 BITS.",
+  "bounty": 3500
+ },
+ "phases": [
+  {
+   "hpBelowPct": 100,
+   "patterns": [
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 30
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      },
+      {
+       "do": "attack",
+       "state": "atk2"
+      },
+      {
+       "do": "wait",
+       "ticks": 30
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "gimmick",
+       "id": "beamVolley",
+       "ticks": 120
+      },
+      {
+       "do": "wait",
+       "ticks": 20
+      }
+     ]
+    },
+    {
+     "weight": 1,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 150
+      },
+      {
+       "do": "charge",
+       "state": "dashSlash",
+       "speed": 4.2,
+       "maxTicks": 70
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "hpBelowPct": 40,
+   "enterText": "THE GRATER GRATES HARDER",
+   "haste": 10,
+   "patterns": [
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "approach",
+       "range": 30,
+       "run": true
+      },
+      {
+       "do": "attack",
+       "state": "atk1"
+      },
+      {
+       "do": "attack",
+       "state": "atk2"
+      }
+     ]
+    },
+    {
+     "weight": 3,
+     "steps": [
+      {
+       "do": "gimmick",
+       "id": "beamVolley",
+       "ticks": 150
+      },
+      {
+       "do": "spawn",
+       "family": "shoe-clan",
+       "tier": 1,
+       "count": 2
+      }
+     ]
+    },
+    {
+     "weight": 2,
+     "steps": [
+      {
+       "do": "align",
+       "distance": 150
+      },
+      {
+       "do": "charge",
+       "state": "dashSlash",
+       "speed": 5,
+       "maxTicks": 70
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gimmicks": [
+  {
+   "id": "unbootlegBeam",
+   "params": {
+    "tinyTicks": 360
+   }
+  }
+ ],
+ "poise": 4,
+ "defeat": {
+  "kind": "ko",
+  "text": "THE CHEESEGRATER HAS BEEN GRATED."
+ },
+ "lines": {
+  "hurt": [
+   "MY CAPE!"
+  ],
+  "defeat": [
+   "THIS IS NOT CANON..."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the armoured arch-villain at the end of a sewer stage",
+  "gag": "His beam turns a player back into their tiny 8-bit sprite",
+  "forbiddenTerms": [],
+  "tells": [
+   "Holes in his helmet are square on the sprite and round on the card",
+   "The card says his cape is dry clean only"
+  ]
+ }
+}

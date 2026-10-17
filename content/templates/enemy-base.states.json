@@ -1,0 +1,378 @@
+{
+ "schemaVersion": 1,
+ "states": {
+  "idle": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "idle:0",
+     "dur": 12
+    },
+    {
+     "pose": "idle:1",
+     "dur": 12
+    },
+    {
+     "pose": "idle:2",
+     "dur": 12
+    },
+    {
+     "pose": "idle:3",
+     "dur": 12
+    }
+   ],
+   "loop": true
+  },
+  "walk": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "walk:0",
+     "dur": 7
+    },
+    {
+     "pose": "walk:1",
+     "dur": 7
+    },
+    {
+     "pose": "walk:2",
+     "dur": 7
+    },
+    {
+     "pose": "walk:3",
+     "dur": 7
+    },
+    {
+     "pose": "walk:4",
+     "dur": 7
+    },
+    {
+     "pose": "walk:5",
+     "dur": 7
+    }
+   ],
+   "loop": true,
+   "move": 1
+  },
+  "run": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "run:0",
+     "dur": 5
+    },
+    {
+     "pose": "run:1",
+     "dur": 5
+    },
+    {
+     "pose": "run:2",
+     "dur": 5
+    },
+    {
+     "pose": "run:3",
+     "dur": 5
+    },
+    {
+     "pose": "run:4",
+     "dur": 5
+    },
+    {
+     "pose": "run:5",
+     "dur": 5
+    }
+   ],
+   "loop": true,
+   "move": 1
+  },
+  "jump": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "jump:0",
+     "dur": 10
+    },
+    {
+     "pose": "jump:1",
+     "dur": 8
+    },
+    {
+     "pose": "jump:2",
+     "dur": 90
+    }
+   ],
+   "gravity": true,
+   "landTo": "land",
+   "friction": 0
+  },
+  "land": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "land:0",
+     "dur": 6
+    }
+   ],
+   "next": "idle"
+  },
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 8
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        30,
+        18,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        1,
+        0
+       ],
+       "hitstun": 20,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 10
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 6,
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        22,
+        18
+       ],
+       "damage": 9,
+       "knock": [
+        2.6,
+        2
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "kick"
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  },
+  "hurt": {
+   "kind": "hurt",
+   "frames": [
+    {
+     "pose": "hurt:0",
+     "dur": 6
+    },
+    {
+     "pose": "hurt:1",
+     "dur": 6
+    }
+   ],
+   "loop": true,
+   "next": "idle",
+   "friction": 0.2
+  },
+  "fall": {
+   "kind": "fall",
+   "frames": [
+    {
+     "pose": "fall:0",
+     "dur": 6
+    },
+    {
+     "pose": "fall:1",
+     "dur": 6
+    },
+    {
+     "pose": "fall:2",
+     "dur": 90
+    }
+   ],
+   "gravity": true,
+   "next": "down",
+   "friction": 0
+  },
+  "down": {
+   "kind": "down",
+   "frames": [
+    {
+     "pose": "down:0",
+     "dur": 34
+    },
+    {
+     "pose": "down:1",
+     "dur": 12
+    }
+   ],
+   "next": "getup"
+  },
+  "getup": {
+   "kind": "getup",
+   "frames": [
+    {
+     "pose": "getup:0",
+     "dur": 8
+    },
+    {
+     "pose": "getup:1",
+     "dur": 8
+    },
+    {
+     "pose": "getup:2",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    30
+   ]
+  },
+  "ko": {
+   "kind": "ko",
+   "frames": [
+    {
+     "pose": "ko:0",
+     "dur": 18,
+     "hurt": "none"
+    },
+    {
+     "pose": "ko:1",
+     "dur": 18,
+     "hurt": "none"
+    },
+    {
+     "pose": "ko:2",
+     "dur": 18,
+     "hurt": "none"
+    },
+    {
+     "pose": "ko:3",
+     "dur": 18,
+     "hurt": "none"
+    }
+   ]
+  },
+  "grabbed": {
+   "kind": "grabbed",
+   "frames": [
+    {
+     "pose": "grabbed:0",
+     "dur": 10
+    },
+    {
+     "pose": "grabbed:1",
+     "dur": 10
+    }
+   ],
+   "loop": true
+  },
+  "thrown": {
+   "kind": "thrown",
+   "frames": [
+    {
+     "pose": "thrown:0",
+     "dur": 5,
+     "hurt": "none"
+    },
+    {
+     "pose": "thrown:1",
+     "dur": 5,
+     "hurt": "none"
+    }
+   ],
+   "loop": true,
+   "gravity": true,
+   "friction": 0
+  },
+  "emerge": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "emerge:0",
+     "dur": 14,
+     "hurt": "none"
+    },
+    {
+     "pose": "emerge:1",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  },
+  "camFly": {
+   "kind": "thrown",
+   "frames": [
+    {
+     "pose": "camFly:0",
+     "dur": 6,
+     "hurt": "none"
+    },
+    {
+     "pose": "camFly:1",
+     "dur": 6,
+     "hurt": "none"
+    }
+   ],
+   "loop": true
+  },
+  "dizzy": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "dizzy:0",
+     "dur": 12
+    },
+    {
+     "pose": "dizzy:1",
+     "dur": 12
+    }
+   ],
+   "loop": true
+  },
+  "taunt": {
+   "kind": "taunt",
+   "frames": [
+    {
+     "pose": "taunt:0",
+     "dur": 14
+    },
+    {
+     "pose": "taunt:1",
+     "dur": 20
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

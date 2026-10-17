@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:ranged",
+ "states": {
+  "charge": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "charge:0",
+     "dur": 8
+    },
+    {
+     "pose": "charge:1",
+     "dur": 8
+    }
+   ],
+   "loop": true,
+   "tags": [
+    "charging"
+   ]
+  },
+  "chargeShot": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "play:0",
+     "dur": 3
+    },
+    {
+     "pose": "play:1",
+     "dur": 8,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "note-big",
+        "offset": [
+         24,
+         36
+        ],
+        "vel": [
+         5,
+         0
+        ]
+       },
+       "sfx": "tuba",
+       "signal": "chargeFire"
+      }
+     ]
+    },
+    {
+     "pose": "play:0",
+     "dur": 10
+    }
+   ],
+   "next": "idle"
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "charge:0",
+     "dur": 8
+    },
+    {
+     "pose": "play:1",
+     "dur": 14,
+     "hit": [
+      {
+       "box": [
+        -240,
+        0,
+        480,
+        64
+       ],
+       "damage": 6,
+       "knock": [
+        5,
+        1.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "tuba",
+       "score": 15,
+       "tags": [
+        "screen"
+       ]
+      }
+     ],
+     "events": [
+      {
+       "shake": 14,
+       "flash": true,
+       "text": "SOUSAPHONE SOLO",
+       "sfx": "tuba"
+      }
+     ]
+    },
+    {
+     "pose": "play:0",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    30
+   ]
+  }
+ }
+}

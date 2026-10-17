@@ -1,0 +1,254 @@
+{
+ "id": "downtown",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1680,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "night",
+   "depth": 0,
+   "speedX": 0.05
+  },
+  {
+   "layer": "skyline",
+   "depth": 1,
+   "speedX": 0.3
+  },
+  {
+   "layer": "downtown",
+   "depth": 2,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "down-1",
+   "at": 180,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sid",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 90,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "down-roam-1",
+   "at": 380,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "down-2",
+   "at": 560,
+   "waves": [
+    {
+     "family": "mungus",
+     "tier": 0,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "rollerinas",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 160,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "downtown-walk-1",
+   "at": 670,
+   "hold": false,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "down-roam-2",
+   "at": 780,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "sid",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 60,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "downtown-walk-2",
+   "at": 890,
+   "hold": false,
+   "waves": [
+    {
+     "family": "sid",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "down-3",
+   "at": 1000,
+   "waves": [
+    {
+     "family": "sid",
+     "tier": 0,
+     "count": 2,
+     "side": "both",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 120,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "down-roam-3",
+   "at": 1100,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 300,
+   "y": 192
+  },
+  {
+   "kind": "pickup",
+   "id": "lead-pipe",
+   "x": 420,
+   "y": 226
+  },
+  {
+   "kind": "breakable",
+   "id": "oil-drum",
+   "x": 760,
+   "y": 196
+  },
+  {
+   "kind": "breakable",
+   "id": "newspaper-box",
+   "x": 1100,
+   "y": 184
+  },
+  {
+   "kind": "pickup",
+   "id": "baseball-bat",
+   "x": 1300,
+   "y": 236
+  },
+  {
+   "kind": "breakable",
+   "id": "trash-can",
+   "x": 1500,
+   "y": 190
+  }
+ ],
+ "gags": [
+  {
+   "propId": "fire-hydrant",
+   "x": 900,
+   "y": 190,
+   "trigger": "hit",
+   "effect": "hazard",
+   "params": {
+    "text": "SPLOOSH",
+    "radius": 34,
+    "damage": 6,
+    "sfx": "spray"
+   },
+   "hits": 2
+  },
+  {
+   "propId": "payphone",
+   "x": 1250,
+   "y": 182,
+   "trigger": "taunt",
+   "effect": "text",
+   "params": {
+    "text": "THE BARON HAS PUT A BOUNTY ON YOU. COLLECT CALL.",
+    "score": 10
+   },
+   "once": false
+  }
+ ],
+ "intro": "MEDIOCRE CITY. EVERY GANG WANTS THE BOUNTY.",
+ "startX": 50
+}

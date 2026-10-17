@@ -1,0 +1,91 @@
+{
+ "id": "shaft",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 400,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 480,
+   "h": 400,
+   "color": "#2e2a3a"
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 60,
+   "count": 8,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 6,
+     "h": 400,
+     "color": "#4a4658"
+    },
+    {
+     "op": "rect",
+     "x": 28,
+     "y": 0,
+     "w": 2,
+     "h": 400,
+     "color": "#1a1420"
+    }
+   ]
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 100,
+   "count": 4,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 0,
+     "y": 40,
+     "w": 480,
+     "h": 6,
+     "color": "#e07a20"
+    },
+    {
+     "op": "rect",
+     "x": 0,
+     "y": 46,
+     "w": 480,
+     "h": 2,
+     "color": "#7a1420"
+    }
+   ]
+  },
+  {
+   "op": "text",
+   "x": 20,
+   "y": 120,
+   "text": "FLOOR ?",
+   "color": "#ffd93a",
+   "scale": 2
+  },
+  {
+   "op": "text",
+   "x": 300,
+   "y": 300,
+   "text": "CAUTION: GRAVITY",
+   "color": "#ffd93a",
+   "scale": 1
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 380,
+   "w": 480,
+   "h": 20,
+   "every": 12,
+   "width": 6,
+   "color": "#ffd93a",
+   "vertical": true
+  }
+ ]
+}

@@ -1,0 +1,134 @@
+{
+ "id": "game-2",
+ "schemaVersion": 1,
+ "gameNumber": 2,
+ "titleCard": {
+  "title": "MEDIOCRE CITY ULTRA TURBO",
+  "subtitle": "THE BOUNTY OF EVERYTHING",
+  "houseRulesText": "HOUSE RULES: PIPES BREAK, KNIVES DROP, THE ELEVATOR ONLY GOES UP. THE BARON PAYS IN EXPOSURE.",
+  "announcerLine": "GAME 2 OF 999. THE CITY IS VERY MUCH CRIME.",
+  "announcerLineCorrected": "GAME 2 OF 999. THE CITY IS FULL OF CRIME."
+ },
+ "type": "walk-right",
+ "rules": {
+  "requires": [
+   "elevator",
+   "arena"
+  ],
+  "laneTolerance": 10,
+  "difficultyBaseline": 4,
+  "friendlyFireDefault": "off"
+ },
+ "palette": [
+  "#1a1420",
+  "#2e2a3a",
+  "#4a4658",
+  "#6e6a7e",
+  "#9a96a8",
+  "#c8c4d0",
+  "#f4f0e8",
+  "#ffffff",
+  "#0e1a4a",
+  "#1e3a8a",
+  "#2e64d0",
+  "#4aa0f0",
+  "#8ad0ff",
+  "#1e0a3a",
+  "#3e1a6a",
+  "#6a2aa0",
+  "#d03a8a",
+  "#ff8ac8",
+  "#ffd93a",
+  "#e8a820",
+  "#ffb04a",
+  "#e07a20",
+  "#2a1a10",
+  "#4a2e1a",
+  "#6e4a2a",
+  "#9a6e40",
+  "#c8a070",
+  "#7a1420",
+  "#c02030",
+  "#f04a3a",
+  "#2a9a8a",
+  "#6ae0c8"
+ ],
+ "skin": {
+  "outline": "#1a1420",
+  "shadow": "ellipse",
+  "hud": "neon"
+ },
+ "segments": [
+  "downtown",
+  "subway",
+  "alley",
+  "elevator",
+  "penthouse"
+ ],
+ "bossTriggers": [
+  {
+   "at": "subway",
+   "lock": "sub-kevin",
+   "bossId": "kendo-kevin",
+   "introCard": true,
+   "midBoss": true
+  },
+  {
+   "at": "penthouse",
+   "lock": "penthouse-boss",
+   "bossId": "baron-von-scooter",
+   "arenaId": "penthouse-office",
+   "introCard": true,
+   "midBoss": false
+  }
+ ],
+ "interludes": {
+  "before": [],
+  "after": [
+   "v1-ending"
+  ]
+ },
+ "music": {
+  "track": "mediocre-city",
+  "boss": "boss-theme",
+  "cues": []
+ },
+ "gagHooks": {
+  "deadweightDave": {
+   "costume": "tux",
+   "line": "I RENTED A TUX FOR THIS. I AM STILL FIRST."
+  },
+  "dirkHeadline": [
+   {
+    "lock": "down-2",
+    "line": "DIRK HEADLINE: CRIME IS DOWN. BECAUSE IT IS BEING PUNCHED."
+   },
+   {
+    "lock": "alley-2",
+    "line": "WE NOW GO LIVE TO AN ALLEY. IT IS AN ALLEY."
+   }
+  ],
+  "sprinkles": [
+   "alley"
+  ],
+  "quillbert": [
+   {
+    "segment": "downtown",
+    "x": 1380
+   }
+  ]
+ },
+ "outro": {
+  "lickspittle": "996 GAMES TO GO, SIMPLETONS. BYE-BYE BABY GOES BYE-BYE!",
+  "announcer": "THE END?? NO."
+ },
+ "parodyMeta": {
+  "bootlegOf": "the crime-city stage of a street brawler",
+  "gag": "Every gang in the city is collecting the Baron's bounty on the family",
+  "forbiddenTerms": [],
+  "tells": [
+   "The arcade on the street sells only one game",
+   "The subway map lists the next stop as NOWHERE"
+  ]
+ }
+}

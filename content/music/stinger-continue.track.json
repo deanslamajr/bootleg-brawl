@@ -1,0 +1,45 @@
+{
+ "id": "stinger-continue",
+ "schemaVersion": 1,
+ "title": "Insert Coin",
+ "bpm": 120,
+ "rowsPerBeat": 4,
+ "loop": false,
+ "loopRow": 0,
+ "instruments": {
+  "lead": {
+   "kind": "square",
+   "volume": 0.32,
+   "attack": 0.005,
+   "decay": 0.12,
+   "sustain": 0.5,
+   "release": 0.06,
+   "duty": 0.5
+  },
+  "bass": {
+   "kind": "fm",
+   "volume": 0.42,
+   "attack": 0.003,
+   "decay": 0.12,
+   "sustain": 0.6,
+   "release": 0.05,
+   "ratio": 1,
+   "index": 1.6
+  }
+ },
+ "patterns": {
+  "A": {
+   "lead": "G5 . F#5 . F5 . E5 . D#5 . D5 . C#5 - C5 -",
+   "bass": "G2 . . . . . . . C2 . . . . . . ."
+  }
+ },
+ "order": [
+  "A"
+ ],
+ "cues": [
+  {
+   "name": "top",
+   "bar": 0
+  }
+ ]
+}

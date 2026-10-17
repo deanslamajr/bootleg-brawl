@@ -1,0 +1,71 @@
+{
+ "id": "elevator-cage",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "color": "#6e6a7e"
+  },
+  {
+   "op": "tiles",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "tw": 30,
+   "th": 14,
+   "color": "#6e6a7e",
+   "alt": "#4a4658",
+   "skew": 0
+  },
+  {
+   "op": "stripes",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 6,
+   "every": 14,
+   "width": 7,
+   "color": "#ffd93a",
+   "vertical": true
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 264,
+   "w": 480,
+   "h": 6,
+   "color": "#2e2a3a"
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 40,
+   "w": 6,
+   "h": 230,
+   "color": "#e07a20"
+  },
+  {
+   "op": "rect",
+   "x": 474,
+   "y": 40,
+   "w": 6,
+   "h": 230,
+   "color": "#e07a20"
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 40,
+   "w": 480,
+   "h": 6,
+   "color": "#e07a20"
+  }
+ ]
+}

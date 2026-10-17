@@ -1,0 +1,159 @@
+{
+ "id": "alley",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 270,
+ "ops": [
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 270,
+   "color": "#1a1420"
+  },
+  {
+   "op": "bricks",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 180,
+   "color": "#2e2a3a",
+   "mortar": "#1a1420",
+   "bw": 12,
+   "bh": 6
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 0,
+   "w": 960,
+   "h": 180,
+   "color": "#3e1a6a",
+   "density": 4,
+   "seed": 8
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 320,
+   "count": 3,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 40,
+     "y": 40,
+     "w": 60,
+     "h": 80,
+     "color": "#4a4658"
+    },
+    {
+     "op": "windows",
+     "x": 46,
+     "y": 46,
+     "cols": 3,
+     "rows": 4,
+     "ww": 14,
+     "wh": 14,
+     "gapX": 4,
+     "gapY": 4,
+     "color": "#1e0a3a",
+     "lit": "#ffb04a",
+     "litChance": 35
+    }
+   ]
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 200,
+   "count": 5,
+   "ops": [
+    {
+     "op": "line",
+     "x1": 20,
+     "y1": 0,
+     "x2": 60,
+     "y2": 60,
+     "color": "#6e6a7e",
+     "width": 2
+    },
+    {
+     "op": "line",
+     "x1": 60,
+     "y1": 60,
+     "x2": 60,
+     "y2": 180,
+     "color": "#6e6a7e",
+     "width": 2
+    }
+   ]
+  },
+  {
+   "op": "rect",
+   "x": 600,
+   "y": 60,
+   "w": 260,
+   "h": 120,
+   "color": "#3e1a6a"
+  },
+  {
+   "op": "rect",
+   "x": 620,
+   "y": 90,
+   "w": 100,
+   "h": 60,
+   "color": "#d03a8a"
+  },
+  {
+   "op": "text",
+   "x": 616,
+   "y": 68,
+   "text": "THE DIVE BAR (DIVING)",
+   "color": "#ff8ac8",
+   "scale": 1
+  },
+  {
+   "op": "rect",
+   "x": 760,
+   "y": 100,
+   "w": 50,
+   "h": 80,
+   "color": "#2a1a10"
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 180,
+   "w": 960,
+   "h": 90,
+   "color": "#2e2a3a"
+  },
+  {
+   "op": "noise",
+   "x": 0,
+   "y": 180,
+   "w": 960,
+   "h": 90,
+   "color": "#4a4658",
+   "density": 10,
+   "seed": 9
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 140,
+   "count": 7,
+   "ops": [
+    {
+     "op": "ellipse",
+     "x": 40,
+     "y": 230,
+     "w": 40,
+     "h": 8,
+     "color": "#1e0a3a"
+    }
+   ]
+  }
+ ]
+}

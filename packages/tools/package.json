@@ -1,0 +1,15 @@
+{
+  "name": "@bb/tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@bb/engine": "workspace:*",
+    "@bb/schema": "workspace:*",
+    "@bb/mechanics": "workspace:*",
+    "zod": "4.1.13"
+  }
+}

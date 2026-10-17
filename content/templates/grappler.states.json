@@ -1,0 +1,179 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:player-base",
+ "states": {
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        22,
+        16
+       ],
+       "damage": 8,
+       "knock": [
+        0.9,
+        0
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk4:0",
+     "dur": 5
+    },
+    {
+     "pose": "atk4:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        10,
+        26,
+        26
+       ],
+       "damage": 9,
+       "knock": [
+        0.9,
+        0
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk4:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 5,
+     "until": 16
+    }
+   ]
+  },
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 5
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 6,
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        26,
+        20
+       ],
+       "damage": 14,
+       "knock": [
+        3.2,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 10,
+       "sfx": "kick",
+       "score": 25
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  },
+  "throwF": {
+   "kind": "throw",
+   "frames": [
+    {
+     "pose": "grabSlam:0",
+     "dur": 5
+    },
+    {
+     "pose": "grabSlam:1",
+     "dur": 8
+    },
+    {
+     "pose": "grabSlam:2",
+     "dur": 8
+    },
+    {
+     "pose": "grabSlam:3",
+     "dur": 4,
+     "events": [
+      {
+       "release": true,
+       "shake": 8,
+       "sfx": "slam"
+      }
+     ]
+    },
+    {
+     "pose": "grabSlam:4",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

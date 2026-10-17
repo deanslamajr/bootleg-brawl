@@ -1,0 +1,164 @@
+{
+ "id": "laundromat",
+ "schemaVersion": 1,
+ "kind": "fight",
+ "length": 1080,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "laundromat",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "laundro-1",
+   "at": 80,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 2,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "mungus",
+     "tier": 1,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 90,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "laundromat-walk-1",
+   "at": 190,
+   "hold": false,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ]
+  },
+  {
+   "id": "laundromat-roam-1",
+   "at": 300,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "laundro-2",
+   "at": 420,
+   "waves": [
+    {
+     "family": "buffet-bob",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    },
+    {
+     "family": "interns",
+     "tier": 3,
+     "count": 1,
+     "side": "left",
+     "delayTicks": 120,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "laundro-boss",
+   "at": 600,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 400,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "kind": "breakable",
+   "id": "dryer",
+   "x": 330,
+   "y": 182
+  },
+  {
+   "kind": "breakable",
+   "id": "dryer",
+   "x": 600,
+   "y": 182
+  },
+  {
+   "kind": "breakable",
+   "id": "dryer",
+   "x": 880,
+   "y": 182
+  },
+  {
+   "kind": "pickup",
+   "id": "roast-chicken",
+   "x": 640,
+   "y": 240
+  }
+ ],
+ "gags": [
+  {
+   "propId": "arcade-cabinet",
+   "x": 1000,
+   "y": 180,
+   "trigger": "taunt",
+   "effect": "text",
+   "params": {
+    "text": "999 GAMES IN 1. ALL OF THEM COUNTERFEIT.",
+    "score": 99
+   },
+   "once": false
+  },
+  {
+   "propId": "vending-machine",
+   "x": 760,
+   "y": 180,
+   "trigger": "hit",
+   "effect": "drop",
+   "params": {
+    "item": "donut",
+    "count": 2,
+    "text": "SNACK OVERFLOW",
+    "sfx": "coin"
+   },
+   "hits": 3
+  }
+ ],
+ "intro": "THE LAUNDROMAT. THE CABINET IS HUMMING."
+}

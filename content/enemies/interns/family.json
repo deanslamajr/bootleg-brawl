@@ -1,0 +1,103 @@
+{
+ "id": "interns",
+ "schemaVersion": 1,
+ "displayName": "Lickspittle's Interns",
+ "catalogType": [
+  "etype-1",
+  "etype-9"
+ ],
+ "rig": "medium",
+ "stats": {
+  "walkSpeed": 1.0,
+  "runSpeed": 2.4,
+  "jumpVel": 4.5,
+  "weight": 1.0
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Intern",
+   "palette": "interns-intern",
+   "hp": 14,
+   "moves": [
+    "atk1"
+   ],
+   "score": 100
+  },
+  {
+   "name": "associate",
+   "displayName": "Associate",
+   "palette": "interns-associate",
+   "hp": 24,
+   "moves": [
+    "atk1",
+    "atk2"
+   ],
+   "score": 150,
+   "aggressionBonus": 5
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Senior Associate",
+   "palette": "interns-senior",
+   "hp": 34,
+   "moves": [
+    "atk1",
+    "atk2",
+    "dashPunch"
+   ],
+   "score": 200,
+   "aggressionBonus": 10
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Vice President Brad",
+   "palette": "interns-vp",
+   "hp": 80,
+   "moves": [
+    "atk1",
+    "atk2",
+    "dashPunch"
+   ],
+   "badge": "VICE PRESIDENT BRAD",
+   "miniBoss": true,
+   "score": 1000,
+   "aggressionBonus": 20,
+   "damageMult": 1.3
+  }
+ ],
+ "ai": {
+  "kind": "brawler",
+  "params": {
+   "range": 24,
+   "think": 20,
+   "aggression": 40,
+   "hover": 70,
+   "attacks": [
+    "atk1",
+    "atk2",
+    "dashPunch"
+   ]
+  }
+ },
+ "light": false,
+ "grabbable": true,
+ "lines": {
+  "spawn": [
+   "IS THIS PAID?",
+   "I HAVE A DEGREE.",
+   "SYNERGY!"
+  ],
+  "ko": [
+   "I QUIT.",
+   "PUT IT IN MY REVIEW.",
+   "WORTH IT FOR THE LANYARD."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the matching-uniform rank and file of every brawler, as unpaid interns",
+  "gag": "Every tier is a rung on a corporate ladder; the VP has a name badge",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

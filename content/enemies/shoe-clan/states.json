@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "sporkStab": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "stab:0",
+     "dur": 8
+    },
+    {
+     "pose": "stab:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        26,
+        10
+       ],
+       "damage": 8,
+       "knock": [
+        1,
+        0
+       ],
+       "hitstun": 22,
+       "sfx": "slash"
+      }
+     ]
+    },
+    {
+     "pose": "stab:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  },
+  "jumpKick": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "jump:0",
+     "dur": 6,
+     "vel": [
+      2.4,
+      4
+     ]
+    },
+    {
+     "pose": "jumpAtk:1",
+     "dur": 60,
+     "hit": [
+      {
+       "box": [
+        4,
+        10,
+        22,
+        18
+       ],
+       "damage": 9,
+       "knock": [
+        2.4,
+        2
+       ],
+       "knockdown": true,
+       "sfx": "kick"
+      }
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "land",
+   "friction": 0
+  }
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "id": "mungus",
+ "schemaVersion": 1,
+ "displayName": "The Mungus Family",
+ "catalogType": [
+  "etype-2",
+  "enemy-1",
+  "enemy-8"
+ ],
+ "rig": "large",
+ "stats": {
+  "walkSpeed": 0.85,
+  "runSpeed": 2,
+  "jumpVel": 4,
+  "weight": 1.7
+ },
+ "tiers": [
+  {
+   "name": "intern",
+   "displayName": "Pugh Mungus",
+   "palette": "mungus-intern",
+   "hp": 40,
+   "moves": [
+    "atk1",
+    "grabLunge"
+   ],
+   "score": 200
+  },
+  {
+   "name": "associate",
+   "displayName": "Lou Mungus",
+   "palette": "mungus-associate",
+   "hp": 55,
+   "moves": [
+    "atk1",
+    "atk2",
+    "grabLunge"
+   ],
+   "score": 250
+  },
+  {
+   "name": "senior-associate",
+   "displayName": "Stu Mungus",
+   "palette": "mungus-senior",
+   "hp": 70,
+   "moves": [
+    "atk1",
+    "atk2",
+    "grabLunge"
+   ],
+   "score": 300,
+   "aggressionBonus": 10
+  },
+  {
+   "name": "vice-president",
+   "displayName": "Vice President Mungus",
+   "palette": "mungus-vp",
+   "hp": 120,
+   "moves": [
+    "atk1",
+    "atk2",
+    "grabLunge",
+    "mount"
+   ],
+   "badge": "VP OF HOLDING YOU",
+   "miniBoss": true,
+   "score": 1500,
+   "damageMult": 1.2
+  }
+ ],
+ "ai": {
+  "kind": "grabber",
+  "params": {
+   "range": 18,
+   "think": 24,
+   "aggression": 35,
+   "hover": 80,
+   "attacks": [
+    "atk1",
+    "atk2",
+    "grabLunge"
+   ]
+  }
+ },
+ "light": false,
+ "grabbable": true,
+ "shadow": 1.4,
+ "lines": {
+  "spawn": [
+   "HOLD STILL.",
+   "I HUG FOR A LIVING."
+  ],
+  "ko": [
+   "I NEED A NAP.",
+   "TELL COUSIN DREW."
+  ]
+ },
+ "parodyMeta": {
+  "bootlegOf": "the brute family that holds you while others hit",
+  "gag": "Cousins of the first boss, each with a name that rhymes",
+  "forbiddenTerms": [],
+  "tells": []
+ }
+}

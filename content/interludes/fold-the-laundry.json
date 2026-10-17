@@ -1,0 +1,15 @@
+{
+ "id": "fold-the-laundry",
+ "schemaVersion": 1,
+ "type": "interlude",
+ "subtype": "minigame",
+ "title": "BONUS: FOLD THE LAUNDRY",
+ "instructions": "MASH ATTACK TO FOLD. MOST FOLDS WINS. NOBODY KNOWS WHY.",
+ "game": "button-mash",
+ "durationTicks": 600,
+ "pressesPerItem": 6,
+ "itemNoun": "SHIRTS",
+ "scorePerItem": 100,
+ "winnerBonus": 2000,
+ "music": "interlude"
+}

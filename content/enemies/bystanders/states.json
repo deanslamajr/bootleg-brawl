@@ -1,0 +1,35 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "panic": {
+   "kind": "free",
+   "frames": [
+    {
+     "pose": "panic:0",
+     "dur": 6
+    },
+    {
+     "pose": "panic:1",
+     "dur": 6
+    }
+   ],
+   "loop": true,
+   "move": 1.6
+  },
+  "cheer": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "victory:0",
+     "dur": 10
+    },
+    {
+     "pose": "victory:1",
+     "dur": 10
+    }
+   ],
+   "loop": true
+  }
+ }
+}

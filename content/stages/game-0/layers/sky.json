@@ -1,0 +1,57 @@
+{
+ "id": "sky",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 190,
+ "ops": [
+  {
+   "op": "gradient",
+   "y": 0,
+   "h": 190,
+   "colors": [
+    "#4aa0f0",
+    "#8ad0ff",
+    "#d8f4ff"
+   ]
+  },
+  {
+   "op": "ellipse",
+   "x": 80,
+   "y": 40,
+   "w": 60,
+   "h": 16,
+   "color": "#ffffff"
+  },
+  {
+   "op": "ellipse",
+   "x": 110,
+   "y": 34,
+   "w": 40,
+   "h": 14,
+   "color": "#ffffff"
+  },
+  {
+   "op": "ellipse",
+   "x": 330,
+   "y": 60,
+   "w": 70,
+   "h": 14,
+   "color": "#f4f0e8"
+  },
+  {
+   "op": "ellipse",
+   "x": 360,
+   "y": 54,
+   "w": 40,
+   "h": 12,
+   "color": "#ffffff"
+  },
+  {
+   "op": "circle",
+   "x": 420,
+   "y": 30,
+   "r": 12,
+   "color": "#ffd93a"
+  }
+ ]
+}

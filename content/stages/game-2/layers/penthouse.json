@@ -1,0 +1,108 @@
+{
+ "id": "penthouse",
+ "schemaVersion": 1,
+ "width": 480,
+ "height": 270,
+ "ops": [
+  {
+   "op": "gradient",
+   "y": 0,
+   "h": 170,
+   "colors": [
+    "#0e1a4a",
+    "#3e1a6a",
+    "#d03a8a"
+   ]
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 80,
+   "count": 6,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 10,
+     "y": 90,
+     "w": 40,
+     "h": 80,
+     "color": "#1e0a3a"
+    },
+    {
+     "op": "windows",
+     "x": 14,
+     "y": 96,
+     "cols": 3,
+     "rows": 7,
+     "ww": 8,
+     "wh": 6,
+     "gapX": 4,
+     "gapY": 4,
+     "color": "#1e0a3a",
+     "lit": "#ffd93a",
+     "litChance": 30
+    }
+   ]
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 20,
+   "w": 480,
+   "h": 6,
+   "color": "#c8c4d0"
+  },
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 96,
+   "count": 5,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 0,
+     "y": 20,
+     "w": 6,
+     "h": 150,
+     "color": "#c8c4d0"
+    }
+   ]
+  },
+  {
+   "op": "text",
+   "x": 140,
+   "y": 40,
+   "text": "PENTHOUSE. KNOCK FIRST.",
+   "color": "#ffd93a",
+   "scale": 1
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "color": "#7a1420"
+  },
+  {
+   "op": "tiles",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 100,
+   "tw": 32,
+   "th": 16,
+   "color": "#7a1420",
+   "alt": "#c02030",
+   "skew": 12
+  },
+  {
+   "op": "rect",
+   "x": 0,
+   "y": 170,
+   "w": 480,
+   "h": 3,
+   "color": "#ffd93a"
+  }
+ ]
+}

@@ -1,0 +1,373 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "grab": {
+   "kind": "grab",
+   "frames": [
+    {
+     "pose": "grab:0",
+     "dur": 8
+    },
+    {
+     "pose": "grab:1",
+     "dur": 8
+    }
+   ],
+   "loop": true
+  },
+  "grabHit": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "grabHit:0",
+     "dur": 6
+    },
+    {
+     "pose": "grabHit:1",
+     "dur": 6,
+     "hit": [
+      {
+       "box": [
+        0,
+        0,
+        8,
+        8
+       ],
+       "damage": 7,
+       "knock": [
+        0.2,
+        0
+       ],
+       "hitstun": 30,
+       "hitstop": 7,
+       "sfx": "knee"
+      }
+     ]
+    },
+    {
+     "pose": "grabHit:0",
+     "dur": 8
+    }
+   ],
+   "next": "grab",
+   "tags": [
+    "hold",
+    "grabHit"
+   ]
+  },
+  "throwF": {
+   "kind": "throw",
+   "frames": [
+    {
+     "pose": "throw:0",
+     "dur": 6
+    },
+    {
+     "pose": "throw:1",
+     "dur": 10
+    },
+    {
+     "pose": "throw:2",
+     "dur": 4,
+     "events": [
+      {
+       "release": true
+      }
+     ]
+    },
+    {
+     "pose": "throw:3",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  },
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 10
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 6,
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        22,
+        18
+       ],
+       "damage": 10,
+       "knock": [
+        1.4,
+        0
+       ],
+       "hitstun": 24,
+       "hitstop": 8,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  },
+  "grabLunge": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "grab:0",
+     "dur": 10
+    },
+    {
+     "pose": "grab:1",
+     "dur": 8,
+     "vel": [
+      2.2,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        4,
+        18,
+        22,
+        28
+       ],
+       "damage": 0,
+       "knock": [
+        0,
+        0
+       ],
+       "grab": true,
+       "sfx": "grab"
+      }
+     ]
+    },
+    {
+     "pose": "grab:0",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "friction": 0.15
+  },
+  "mount": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "mount:0",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:1",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:0",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:1",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:0",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:1",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:0",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "mount:1",
+     "dur": 10,
+     "hit": [
+      {
+       "box": [
+        -6,
+        0,
+        28,
+        14
+       ],
+       "damage": 6,
+       "knock": [
+        0.2,
+        0
+       ],
+       "rehit": 20,
+       "hitstun": 20,
+       "tags": [
+        "ground"
+       ],
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "getup:1",
+     "dur": 10
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

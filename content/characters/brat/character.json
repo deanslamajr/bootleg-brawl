@@ -1,0 +1,64 @@
+{
+ "id": "brat",
+ "schemaVersion": 1,
+ "displayName": "Brat Simpleton",
+ "shortName": "BRAT",
+ "archetype": "fast",
+ "rig": "small",
+ "palette": "brat",
+ "altPalettes": [
+  "brat-alt"
+ ],
+ "stats": {
+  "hp": 90,
+  "walkSpeed": 1.55,
+  "runSpeed": 3.2,
+  "jumpVel": 5.3,
+  "weight": 0.75,
+  "reach": 0.85,
+  "damageMult": 1.0,
+  "specialCost": 8
+ },
+ "kit": {
+  "requires": [],
+  "flags": [],
+  "gags": [
+   "permissionSlip"
+  ]
+ },
+ "improvisedWeapon": {
+  "id": "pogo-stick",
+  "displayName": "Pogo Stick",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [
+  {
+   "partnerId": "mensa",
+   "moveId": "teamRivalry",
+   "displayName": "Sibling Rivalry",
+   "bothDirections": true
+  }
+ ],
+ "voice": {
+  "continueLine": "I regret nothing.",
+  "selectLine": "I have a permission slip for this. I made it myself.",
+  "tauntLines": [
+   "Detention can wait.",
+   "Too slow, intern.",
+   "Nobody saw that."
+  ],
+  "endingText": "Brat forged a permission slip to leave the cabinet. It worked, which worries everyone."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the son of the family, a fast fighter on a pogo stick",
+  "gag": "Carries a forged permission slip for everything, including leaving the cabinet",
+  "forbiddenTerms": [],
+  "tells": [
+   "Nine hair spikes on the sprite, eleven on the portrait",
+   "His shorts are blue in game and purple on the box art the cabinet shows"
+  ]
+ }
+}

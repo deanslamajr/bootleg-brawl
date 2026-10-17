@@ -1,0 +1,29 @@
+{
+ "id": "cartridge-swap",
+ "schemaVersion": 1,
+ "type": "interlude",
+ "subtype": "cutscene",
+ "title": "CARTRIDGE SWAP",
+ "steps": [
+  {
+   "text": "THE SEWER FLICKERS. SOMEWHERE, A CARTRIDGE IS BEING BLOWN ON.",
+   "ticks": 150,
+   "speaker": "ANNOUNCER",
+   "effect": "static",
+   "sfx": "static",
+   "party": true
+  },
+  {
+   "text": "FOUR LEGALLY DISTINCT REPTILES WAVE GOODBYE. ONE OF THEM IS HOLDING A SPORK.",
+   "ticks": 160,
+   "party": true
+  },
+  {
+   "text": "PLEASE SELECT NEXT GAME.",
+   "ticks": 90,
+   "speaker": "ANNOUNCER",
+   "effect": "flash"
+  }
+ ],
+ "music": "interlude"
+}

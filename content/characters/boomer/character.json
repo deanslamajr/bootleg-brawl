@@ -1,0 +1,66 @@
+{
+ "id": "boomer",
+ "schemaVersion": 1,
+ "displayName": "Boomer Simpleton",
+ "shortName": "BOOMER",
+ "archetype": "grappler",
+ "rig": "large",
+ "palette": "boomer",
+ "altPalettes": [
+  "boomer-alt"
+ ],
+ "stats": {
+  "hp": 140,
+  "walkSpeed": 1.0,
+  "runSpeed": 2.3,
+  "jumpVel": 4.4,
+  "weight": 1.6,
+  "reach": 1.2,
+  "damageMult": 1.0,
+  "specialCost": 12
+ },
+ "kit": {
+  "requires": [],
+  "flags": [],
+  "gags": [
+   "autoEat",
+   "sleepIdle"
+  ]
+ },
+ "improvisedWeapon": {
+  "id": "lawn-chair",
+  "displayName": "Lawn Chair",
+  "hits": 8,
+  "respawnTicks": 480,
+  "breakText": "THE CHAIR FOLDED. FOREVER."
+ },
+ "teamUps": [
+  {
+   "partnerId": "sarge",
+   "moveId": "teamSuplex",
+   "displayName": "Suburban Suplex",
+   "bothDirections": true
+  }
+ ],
+ "voice": {
+  "continueLine": "Hold on, I can get the coin door open with a spoon. Probably.",
+  "selectLine": "Is there a snack bar in this one?",
+  "tauntLines": [
+   "Smells like nachos in here.",
+   "I am on my break.",
+   "Who ordered the knuckle sandwich? Me. I did."
+  ],
+  "endingText": "Boomer ate every turkey leg in 996 games and still claims he was the brains of the operation."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the father of the family, a slow grappler who stops for snacks",
+  "gag": "Stops to eat any food within reach; his idle animation is sleeping",
+  "forbiddenTerms": [],
+  "tells": [
+   "Two hairs on his head on the sprite, three on the portrait",
+   "The select screen rates his speed as FAST (IT IS NOT)"
+  ]
+ }
+}

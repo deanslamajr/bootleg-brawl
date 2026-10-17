@@ -1,0 +1,306 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:fast",
+ "states": {
+  "jump": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "pogo:1",
+     "dur": 10
+    },
+    {
+     "pose": "pogo:1",
+     "dur": 8
+    },
+    {
+     "pose": "pogo:0",
+     "dur": 90
+    }
+   ],
+   "gravity": true,
+   "landTo": "pogoLand",
+   "friction": 0,
+   "transitions": [
+    {
+     "on": "dive",
+     "to": "dive"
+    },
+    {
+     "on": "airAttack",
+     "to": "jumpAtk"
+    }
+   ]
+  },
+  "pogoLand": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "pogo:0",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        -12,
+        -2,
+        24,
+        10
+       ],
+       "damage": 5,
+       "knock": [
+        1.6,
+        1.6
+       ],
+       "knockdown": true,
+       "hitstop": 4,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ],
+       "score": 10
+      }
+     ]
+    },
+    {
+     "pose": "land:0",
+     "dur": 4
+    }
+   ],
+   "next": "idle"
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "pogo:1",
+     "dur": 14,
+     "vel": [
+      1.8,
+      4.4
+     ],
+     "hit": [
+      {
+       "box": [
+        -12,
+        -2,
+        24,
+        12
+       ],
+       "damage": 8,
+       "knock": [
+        2,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "pogo:0",
+     "dur": 90,
+     "hit": [
+      {
+       "box": [
+        -12,
+        -2,
+        24,
+        12
+       ],
+       "damage": 8,
+       "knock": [
+        2,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ]
+      }
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "pogo2",
+   "invuln": [
+    0,
+    12
+   ],
+   "friction": 0,
+   "tags": [
+    "improvised"
+   ]
+  },
+  "pogo2": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "pogo:1",
+     "dur": 14,
+     "vel": [
+      1.8,
+      4.4
+     ],
+     "hit": [
+      {
+       "box": [
+        -12,
+        -2,
+        24,
+        12
+       ],
+       "damage": 8,
+       "knock": [
+        2,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "pogo:0",
+     "dur": 90,
+     "hit": [
+      {
+       "box": [
+        -12,
+        -2,
+        24,
+        12
+       ],
+       "damage": 8,
+       "knock": [
+        2,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 5,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ]
+      }
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "pogo3",
+   "friction": 0
+  },
+  "pogo3": {
+   "kind": "air",
+   "frames": [
+    {
+     "pose": "pogo:1",
+     "dur": 14,
+     "vel": [
+      1.8,
+      5
+     ],
+     "hit": [
+      {
+       "box": [
+        -14,
+        -2,
+        28,
+        12
+       ],
+       "damage": 12,
+       "knock": [
+        2.6,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "pogo:0",
+     "dur": 90,
+     "hit": [
+      {
+       "box": [
+        -14,
+        -2,
+        28,
+        12
+       ],
+       "damage": 12,
+       "knock": [
+        2.6,
+        3
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "boing",
+       "tags": [
+        "ground",
+        "any"
+       ]
+      }
+     ]
+    }
+   ],
+   "gravity": true,
+   "landTo": "land",
+   "friction": 0
+  },
+  "teamRivalry": {
+   "kind": "teamup",
+   "frames": [
+    {
+     "pose": "ball:0",
+     "dur": 96,
+     "hurt": "none",
+     "events": [
+      {
+       "spawn": {
+        "projectile": "dust-cloud",
+        "offset": [
+         12,
+         0
+        ],
+        "vel": [
+         1.2,
+         0
+        ]
+       },
+       "text": "SIBLING RIVALRY"
+      }
+     ]
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    999
+   ],
+   "tags": [
+    "teamCloud"
+   ]
+  }
+ }
+}

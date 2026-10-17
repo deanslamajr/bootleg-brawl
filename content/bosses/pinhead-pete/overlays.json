@@ -1,0 +1,121 @@
+{
+ "schemaVersion": 1,
+ "body": {
+  "scale": 0.9,
+  "headR": 8,
+  "torsoW": 9,
+  "armW": 4,
+  "legW": 5,
+  "footL": 5,
+  "handR": 2,
+  "skin": 2,
+  "torso": 6,
+  "legs": 6,
+  "feet": 13,
+  "arms": 2,
+  "hide": [
+   "torso",
+   "face"
+  ]
+ },
+ "layers": {
+  "head": [
+   {
+    "shape": "ellipse",
+    "at": "head",
+    "w": 16,
+    "h": 16,
+    "color": 6,
+    "z": 50
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 3,
+    "dy": -1,
+    "r": 1.2,
+    "color": 10,
+    "z": 56,
+    "outline": false
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": -1,
+    "dy": -1,
+    "r": 1.2,
+    "color": 10,
+    "z": 56,
+    "outline": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 1,
+    "dy": 4,
+    "w": 6,
+    "h": 1.5,
+    "color": 10,
+    "z": 56,
+    "outline": false,
+    "exceptStates": [
+     "down",
+     "ko",
+     "fall",
+     "thrown",
+     "teamFly",
+     "flip",
+     "ball",
+     "roll",
+     "sleep",
+     "getup:0",
+     "camFly"
+    ]
+   }
+  ],
+  "torso": [
+   {
+    "shape": "ellipse",
+    "at": "hip",
+    "dy": -10,
+    "w": 26,
+    "h": 34,
+    "color": 6,
+    "z": 31
+   },
+   {
+    "shape": "ellipse",
+    "at": "neck",
+    "dy": -2,
+    "w": 14,
+    "h": 12,
+    "color": 6,
+    "z": 32
+   },
+   {
+    "shape": "rect",
+    "at": "neck",
+    "dy": -1,
+    "w": 14,
+    "h": 3,
+    "color": 4,
+    "z": 33,
+    "outline": false
+   },
+   {
+    "shape": "rect",
+    "at": "neck",
+    "dy": 3,
+    "w": 15,
+    "h": 3,
+    "color": 4,
+    "z": 33,
+    "outline": false
+   }
+  ],
+  "legs": [],
+  "weapon": [],
+  "fx": []
+ },
+ "uniqueFrames": {}
+}

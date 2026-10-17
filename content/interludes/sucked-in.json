@@ -1,0 +1,58 @@
+{
+ "id": "sucked-in",
+ "schemaVersion": 1,
+ "type": "interlude",
+ "subtype": "cutscene",
+ "title": "MEANWHILE, AT THE LAUNDROMAT",
+ "steps": [
+  {
+   "text": "THE CABINET MARQUEE READS: 999 GAMES IN 1. ALL OF THEM COUNTERFEIT.",
+   "ticks": 180,
+   "speaker": "ANNOUNCER",
+   "background": "laundromat",
+   "actors": [
+    {
+     "def": "lickspittle",
+     "pose": "walk:0",
+     "x": 300,
+     "y": 220,
+     "toX": 380,
+     "facing": 1
+    }
+   ],
+   "party": true
+  },
+  {
+   "text": "LICKSPITTLE DIVES INTO THE COIN SLOT WITH THE BABY. SHE ATE THE MASTER CARTRIDGE'S CHIP.",
+   "ticks": 200,
+   "speaker": "ANNOUNCER",
+   "background": "laundromat",
+   "actors": [
+    {
+     "def": "lickspittle",
+     "pose": "taunt:0",
+     "x": 380,
+     "y": 220
+    }
+   ],
+   "party": true,
+   "effect": "static",
+   "sfx": "static"
+  },
+  {
+   "text": "THE FAMILY FOLLOWS. NOBODY READS THE WARNING STICKER.",
+   "ticks": 160,
+   "background": "laundromat",
+   "party": true,
+   "effect": "suck",
+   "sfx": "whoosh"
+  },
+  {
+   "text": "NOW ENTERING: THE CABINET. PLEASE KEEP HANDS INSIDE THE GAME AT ALL TIMES.",
+   "ticks": 160,
+   "speaker": "ANNOUNCER",
+   "effect": "flash"
+  }
+ ],
+ "music": "interlude"
+}

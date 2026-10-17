@@ -1,0 +1,15 @@
+{
+  "id": "fixture",
+  "schemaVersion": 0,
+  "name": "Fixture Person",
+  "hp": 100,
+  "continueLine": "Insert a coin, please.",
+  "shortName": "FIX",
+  "archetype": "balanced",
+  "rig": "medium",
+  "palette": "brat",
+  "stats": { "walkSpeed": 1.2, "runSpeed": 2.6, "jumpVel": 4.8, "weight": 1, "reach": 1, "damageMult": 1, "specialCost": 10 },
+  "voice": { "selectLine": "Ready.", "tauntLines": ["Hm."], "endingText": "The end." },
+  "unlock": "secret",
+  "parodyMeta": { "bootlegOf": "a generic test role", "gag": "exists only in tests", "tells": ["a", "b"] }
+}

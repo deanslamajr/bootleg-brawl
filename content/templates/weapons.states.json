@@ -1,0 +1,211 @@
+{
+ "schemaVersion": 1,
+ "states": {
+  "wpn-swing-1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "swing:0",
+     "dur": 5
+    },
+    {
+     "pose": "swing:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        8,
+        14,
+        32,
+        32
+       ],
+       "damage": 12,
+       "knock": [
+        1.4,
+        0.5
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "clang",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "swing:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "wpn-swing-2",
+     "from": 6,
+     "until": 17
+    }
+   ]
+  },
+  "wpn-swing-2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "swing:0",
+     "dur": 5
+    },
+    {
+     "pose": "swing:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        8,
+        14,
+        32,
+        32
+       ],
+       "damage": 12,
+       "knock": [
+        3,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 9,
+       "sfx": "clang",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "swing:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle"
+  },
+  "wpn-stab-1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "stab:0",
+     "dur": 3
+    },
+    {
+     "pose": "stab:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        8,
+        28,
+        28,
+        10
+       ],
+       "damage": 9,
+       "knock": [
+        0.8,
+        0
+       ],
+       "hitstun": 22,
+       "hitstop": 5,
+       "sfx": "slash",
+       "score": 15
+      }
+     ]
+    },
+    {
+     "pose": "stab:2",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "attack",
+     "to": "wpn-stab-2",
+     "from": 4,
+     "until": 13
+    }
+   ]
+  },
+  "wpn-stab-2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "stab:0",
+     "dur": 3
+    },
+    {
+     "pose": "stab:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        8,
+        28,
+        28,
+        10
+       ],
+       "damage": 9,
+       "knock": [
+        2.6,
+        2
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "slash",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "stab:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle"
+  },
+  "wpn-heavy-1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk4:0",
+     "dur": 8
+    },
+    {
+     "pose": "atk4:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        8,
+        0,
+        36,
+        40
+       ],
+       "damage": 16,
+       "knock": [
+        3.2,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 10,
+       "sfx": "clang",
+       "score": 25
+      }
+     ],
+     "events": [
+      {
+       "shake": 6
+      }
+     ]
+    },
+    {
+     "pose": "atk4:2",
+     "dur": 14
+    }
+   ],
+   "next": "idle"
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "junction",
+ "schemaVersion": 1,
+ "kind": "arena",
+ "length": 480,
+ "depth": [
+  186,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "junction",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "junction-duo",
+   "at": 0,
+   "waves": [
+    {
+     "family": "sewer-rats",
+     "tier": 0,
+     "count": 2,
+     "side": "both",
+     "delayTicks": 300,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [],
+ "gags": [],
+ "intro": "JUNCTION 9"
+}

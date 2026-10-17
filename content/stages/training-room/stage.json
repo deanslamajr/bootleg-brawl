@@ -1,0 +1,52 @@
+{
+ "id": "training-room",
+ "schemaVersion": 1,
+ "gameNumber": 998,
+ "titleCard": {
+  "title": "TRAINING ROOM",
+  "subtitle": "FOR TESTING ONLY",
+  "houseRulesText": "HOUSE RULES: HIT THE DUMMIES. THE DUMMIES HAVE A UNION.",
+  "announcerLine": "GAME 998 OF 999. PRACTICE IS MAKING PERFECT."
+ },
+ "type": "arena",
+ "rules": {
+  "requires": [],
+  "laneTolerance": 10,
+  "difficultyBaseline": 1,
+  "friendlyFireDefault": "off"
+ },
+ "palette": [
+  "#1a1420",
+  "#2e2a3a",
+  "#4a4658",
+  "#6e6a7e",
+  "#9a96a8",
+  "#c8c4d0",
+  "#f4f0e8",
+  "#ffd93a",
+  "#f04a3a",
+  "#4aa0f0",
+  "#5ac04a"
+ ],
+ "segments": [
+  "room"
+ ],
+ "bossTriggers": [],
+ "interludes": {
+  "before": [],
+  "after": []
+ },
+ "music": {
+  "track": "interlude",
+  "cues": []
+ },
+ "parodyMeta": {
+  "bootlegOf": "the practice mode every fighting cabinet hid behind a code",
+  "gag": "The dummies are paid actors with a union",
+  "forbiddenTerms": [],
+  "tells": [
+   "The floor grid does not line up with the wall grid",
+   "The sign says UNLICENSED in the licensed font"
+  ]
+ }
+}

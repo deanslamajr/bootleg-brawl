@@ -1,0 +1,37 @@
+{
+ "id": "throne",
+ "schemaVersion": 1,
+ "kind": "arena",
+ "length": 480,
+ "depth": [
+  180,
+  262
+ ],
+ "layers": [
+  {
+   "layer": "throne",
+   "depth": 1,
+   "speedX": 1
+  }
+ ],
+ "scrollLocks": [
+  {
+   "id": "throne-boss",
+   "at": 0,
+   "waves": [
+    {
+     "family": "shoe-clan",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 500,
+     "spawnKind": "walk",
+     "fixed": true
+    }
+   ]
+  }
+ ],
+ "placements": [],
+ "gags": [],
+ "intro": "THE THRONE ROOM"
+}

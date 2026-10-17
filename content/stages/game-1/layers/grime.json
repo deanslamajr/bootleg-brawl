@@ -1,0 +1,32 @@
+{
+ "id": "grime",
+ "schemaVersion": 1,
+ "width": 960,
+ "height": 30,
+ "ops": [
+  {
+   "op": "repeat",
+   "x": 0,
+   "every": 64,
+   "count": 15,
+   "ops": [
+    {
+     "op": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 6,
+     "h": 30,
+     "color": "#2e2a3a"
+    },
+    {
+     "op": "rect",
+     "x": 2,
+     "y": 0,
+     "w": 2,
+     "h": 30,
+     "color": "#4a4658"
+    }
+   ]
+  }
+ ]
+}

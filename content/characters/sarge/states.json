@@ -1,0 +1,181 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:balanced",
+ "states": {
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "hairwhip:0",
+     "dur": 4
+    },
+    {
+     "pose": "hairwhip:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        4,
+        26,
+        40,
+        34
+       ],
+       "damage": 11,
+       "knock": [
+        3,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "whip",
+       "score": 20,
+       "tags": [
+        "hair"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "hairwhip:2",
+     "dur": 11
+    }
+   ],
+   "next": "idle",
+   "tags": [
+    "improvised"
+   ],
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    }
+   ]
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "hairspin:0",
+     "dur": 4
+    },
+    {
+     "pose": "hairspin:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -34,
+        10,
+        68,
+        50
+       ],
+       "damage": 10,
+       "knock": [
+        3.2,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "whip",
+       "score": 20,
+       "tags": [
+        "hair"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "hairspin:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -34,
+        10,
+        68,
+        50
+       ],
+       "damage": 10,
+       "knock": [
+        3.2,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "whip",
+       "score": 20,
+       "tags": [
+        "hair"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "hairspin:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -34,
+        10,
+        68,
+        50
+       ],
+       "damage": 10,
+       "knock": [
+        3.2,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "whip",
+       "score": 20,
+       "tags": [
+        "hair"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "hairspin:4",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -34,
+        10,
+        68,
+        50
+       ],
+       "damage": 10,
+       "knock": [
+        3.2,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "whip",
+       "score": 20,
+       "tags": [
+        "hair"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "hairspin:5",
+     "dur": 4
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    18
+   ],
+   "tags": [
+    "improvised"
+   ]
+  }
+ }
+}

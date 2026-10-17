@@ -1,0 +1,47 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:enemy-base",
+ "states": {
+  "dashPunch": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "run:0",
+     "dur": 10
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 6,
+     "vel": [
+      3,
+      null
+     ],
+     "hit": [
+      {
+       "box": [
+        6,
+        28,
+        20,
+        16
+       ],
+       "damage": 9,
+       "knock": [
+        2.6,
+        2
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "punch"
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 14
+    }
+   ],
+   "next": "idle",
+   "friction": 0.15
+  }
+ }
+}
