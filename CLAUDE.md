@@ -27,7 +27,7 @@ Tests, lint and the validator enforce these. Do not weaken a test or a rule to g
 ## What needs the user's approval
 
 - Free inside the scope of a request: code, content, tests, `DECISIONS.md` rows and read-only cluster commands (`pnpm deploy:status`, `kubectl get`).
-- Always ask first: every deploy, every push, new cost, new dependencies and version bumps.
+- Always ask first: every deploy (`pnpm run deploy`), every push, new cost, new dependencies and version bumps.
 - Always ask before you change shared cluster resources: the Gateway `default/external-https`, the certificate map, or anything in another namespace.
 - If a rollout fails, run `kubectl rollout undo deployment/bootleg -n bootleg-brawl` at once and then tell the user.
 

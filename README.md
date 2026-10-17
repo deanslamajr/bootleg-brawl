@@ -118,12 +118,13 @@ Before an end-to-end run, make sure that nothing listens on port 4180.
 
 ## Deploying
 
-The game is a static SPA in an nginx image. It runs on the same GKE cluster and shared Gateway as Marble Melancholy. Every deploy needs the owner's approval.
+The game is a static SPA in an nginx image. It runs on the same GKE cluster and shared Gateway as Marble Melancholy. Every deploy needs the owner's approval. Use `pnpm run deploy`, because `pnpm deploy` is a built-in pnpm command.
 
 1. Create the Artifact Registry repository `bootleg-brawl` in project `example-gcp-project`.
-2. Add a Certificate Manager certificate and map entry for the host. The default host is `bootleg.llmgag.world`. Set `BOOTLEG_HOST` to use another one.
-3. Run `pnpm deploy:status` and record the state of the shared Gateway.
-4. Run `pnpm deploy`. It builds `dist/`, pushes the image, applies `deploy/k8s/bootleg.yaml` and waits for the rollout.
-5. Run `pnpm deploy:status` again and compare the Gateway state with step 3.
+2. Add a Certificate Manager DNS authorization, certificate and map entry (in `example-cert-map`) for the host. The default host is `bootleg.llmgag.world`. Set `BOOTLEG_HOST` to use another one.
+3. At your DNS registrar, add an A record for the host that points to the Gateway IP `203.0.113.10`, and the `_acme-challenge` CNAME that the DNS authorization names.
+4. Run `pnpm deploy:status` and record the state of the shared Gateway. Also record the status code of every other site on the Gateway.
+5. Run `pnpm run deploy`. It builds `dist/`, pushes the image, applies `deploy/k8s/bootleg.yaml` and waits for the rollout.
+6. Run `pnpm deploy:status` again. Compare the Gateway state and the status codes with step 4.
 
 If the repository variable `DEPLOY_ENABLED` is `true` and the workload identity secrets exist, the CI `deploy` job does the same from `main`.
