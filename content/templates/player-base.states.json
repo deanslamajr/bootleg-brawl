@@ -33,6 +33,18 @@
      "to": "backAtk"
     },
     {
+     "on": "specialU",
+     "to": "specialU"
+    },
+    {
+     "on": "specialD",
+     "to": "specialD"
+    },
+    {
+     "on": "specialB",
+     "to": "specialB"
+    },
+    {
      "on": "specialF",
      "to": "specialF"
     },
@@ -101,6 +113,18 @@
      "to": "backAtk"
     },
     {
+     "on": "specialU",
+     "to": "specialU"
+    },
+    {
+     "on": "specialD",
+     "to": "specialD"
+    },
+    {
+     "on": "specialB",
+     "to": "specialB"
+    },
+    {
      "on": "specialF",
      "to": "specialF"
     },
@@ -167,6 +191,22 @@
      "on": "attack",
      "to": "@weapon",
      "if": "hasWeapon"
+    },
+    {
+     "on": "specialU",
+     "to": "specialU"
+    },
+    {
+     "on": "specialD",
+     "to": "specialD"
+    },
+    {
+     "on": "specialB",
+     "to": "specialB"
+    },
+    {
+     "on": "specialF",
+     "to": "specialF"
     },
     {
      "on": "special",
@@ -1353,6 +1393,285 @@
     16
    ],
    "friction": 0.1
+  },
+  "specialB": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "special:0",
+     "dur": 4
+    },
+    {
+     "pose": "special:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        40,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        -3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "special:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        40,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        -3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special"
+      }
+     ]
+    },
+    {
+     "pose": "special:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        40,
+        38
+       ],
+       "damage": 10,
+       "knock": [
+        -3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special"
+      }
+     ]
+    },
+    {
+     "pose": "special:4",
+     "dur": 4
+    },
+    {
+     "pose": "special:5",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    16
+   ]
+  },
+  "specialU": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "special:0",
+     "dur": 4
+    },
+    {
+     "pose": "special:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -16,
+        34,
+        32,
+        52
+       ],
+       "damage": 9,
+       "knock": [
+        1,
+        4.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "score": 20,
+       "launch": true
+      }
+     ]
+    },
+    {
+     "pose": "special:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -16,
+        34,
+        32,
+        52
+       ],
+       "damage": 9,
+       "knock": [
+        1,
+        4.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "launch": true
+      }
+     ]
+    },
+    {
+     "pose": "special:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -16,
+        34,
+        32,
+        52
+       ],
+       "damage": 9,
+       "knock": [
+        1,
+        4.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "launch": true
+      }
+     ]
+    },
+    {
+     "pose": "special:4",
+     "dur": 4
+    },
+    {
+     "pose": "special:5",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    16
+   ]
+  },
+  "specialD": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "special:0",
+     "dur": 4
+    },
+    {
+     "pose": "special:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -36,
+        0,
+        72,
+        16
+       ],
+       "damage": 10,
+       "knock": [
+        2,
+        1.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "score": 20,
+       "tags": [
+        "ground"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "special:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -36,
+        0,
+        72,
+        16
+       ],
+       "damage": 10,
+       "knock": [
+        2,
+        1.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "tags": [
+        "ground"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "special:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -36,
+        0,
+        72,
+        16
+       ],
+       "damage": 10,
+       "knock": [
+        2,
+        1.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "tags": [
+        "ground"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "special:4",
+     "dur": 4
+    },
+    {
+     "pose": "special:5",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    16
+   ]
   }
  }
 }

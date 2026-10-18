@@ -73,6 +73,32 @@ describe("drop weapon", () => {
   });
 });
 
+describe("directional specials", () => {
+  const cases = [
+    { dir: IN.UP, cmd: "specialU", state: "specialU" },
+    { dir: IN.DOWN, cmd: "specialD", state: "specialD" },
+    { dir: IN.LEFT, cmd: "specialB", state: "specialB" },
+    { dir: IN.RIGHT, cmd: "specialF", state: "specialF" },
+  ] as const;
+  for (const { dir, cmd, state } of cases)
+    it(`attack + jump + a direction enters ${state}`, () => {
+      const sim = room();
+      const p = sim.g.players[0]!.ent;
+      sim.c.facing[p] = 1;
+      parseCommands(sim, p, IN.ATTACK | IN.JUMP | dir, 0);
+      expect(sim.c.cmd[p]! & CMD[cmd]).toBeTruthy();
+      sim.step([IN.ATTACK | IN.JUMP | dir, 0, 0, 0]);
+      expect(sim.st(p).name).toBe(state);
+    });
+  it("lets up win over forward on a diagonal", () => {
+    const sim = room();
+    const p = sim.g.players[0]!.ent;
+    sim.c.facing[p] = 1;
+    sim.step([IN.ATTACK | IN.JUMP | IN.UP | IN.RIGHT, 0, 0, 0]);
+    expect(sim.st(p).name).toBe("specialU");
+  });
+});
+
 describe("command parser", () => {
   it("turns a double tap into a dash and a run", () => {
     const sim = room();

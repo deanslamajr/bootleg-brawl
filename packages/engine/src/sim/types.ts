@@ -108,7 +108,9 @@ export const CMD_ANY_MASK =
   CMD.taunt |
   CMD.drop |
   CMD.specialF |
-  CMD.specialB;
+  CMD.specialB |
+  CMD.specialU |
+  CMD.specialD;
 
 export const CONDITIONS = [
   "none",
