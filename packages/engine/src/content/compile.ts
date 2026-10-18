@@ -565,23 +565,123 @@ export function compileContent(raw: RawContent): CompiledContent {
     return i;
   });
 
+  // Everything the sim reads goes into the hash, so a failed replay can name a content change.
+  // Art and text stay out: layers, palettes, sheets, rigs, portraits, display names, voices, boss
+  // cards, sfx ids and every text line except the counts of lines picked with the RNG. The
+  // browser never loads layer ops, so leaving layers out also lets it match the packer's hash.
   const h = new Hasher();
   h.value(raw.roster);
-  // Everything that changes sim behavior goes into the hash, so replays can name the cause.
-  for (const d of defs) {
-    h.str(d.id).int(d.scalePct).int(d.hp).int(d.walk).int(d.runSpeed).int(d.jumpVel).int(d.weightPct).int(d.damagePct);
-    h.int(d.states.length);
-    for (const s of d.states) {
-      h.str(s.name).int(s.total).int(s.kind).int(s.next).int(s.move).int(s.armor);
-      for (const f of s.frames) {
-        h.int(f.dur);
-        for (const b of f.hurt) h.int(b.x).int(b.z).int(b.w).int(b.h);
-        for (const x of f.hit) h.int(x.box.x).int(x.box.z).int(x.box.w).int(x.box.h).int(x.damage).int(x.kx).int(x.kz).int(x.hitstun).int(x.hitstop);
-      }
-      for (const t of s.transitions) h.int(t.cmd).int(t.to).int(t.from).int(t.until).int(t.cond);
-    }
+  for (const d of defs) h.value(simRelevant(d));
+  for (const id of Object.keys(raw.stages).sort()) {
+    const st = raw.stages[id]!;
+    h.str(id).value(st.file).value(st.segments);
   }
-  h.value(raw.stages);
   h.value(raw.items);
+  h.value(raw.arenas);
   return { raw, defs, defIndex, weapons, weaponIndex, roster, hash: hex32(h.digest()) };
+}
+
+/** The fields of a compiled def that the sim reads, as plain JSON for the content hash. */
+export function simRelevant(d: CDef): unknown {
+  const box = (b: CBox) => [b.x, b.z, b.w, b.h];
+  return {
+    id: d.id,
+    kind: d.kind,
+    scalePct: d.scalePct,
+    hp: d.hp,
+    walk: d.walk,
+    walkY: d.walkY,
+    runSpeed: d.runSpeed,
+    jumpVel: d.jumpVel,
+    weightPct: d.weightPct,
+    damagePct: d.damagePct,
+    pushW: d.pushW,
+    states: d.states.map((s) => ({
+      name: s.name,
+      kind: s.kind,
+      loop: s.loop,
+      total: s.total,
+      next: s.next,
+      move: s.move,
+      moveY: s.moveY,
+      facingLock: s.facingLock,
+      gravity: s.gravity,
+      landTo: s.landTo,
+      armor: s.armor,
+      invulnFrom: s.invulnFrom,
+      invulnTo: s.invulnTo,
+      costHp: s.costHp,
+      costOnHit: s.costOnHit,
+      friction: s.friction,
+      tags: s.tags,
+      transitions: s.transitions.map((t) => [t.cmd, t.to, t.from, t.until, t.cond]),
+      frames: s.frames.map((f) => ({
+        start: f.start,
+        dur: f.dur,
+        velX: f.velX,
+        velZ: f.velZ,
+        hurt: f.hurt.map(box),
+        hit: f.hit.map((x) => ({
+          box: box(x.box),
+          damage: x.damage,
+          kx: x.kx,
+          kz: x.kz,
+          hitstop: x.hitstop,
+          hitstun: x.hitstun,
+          knockdown: x.knockdown,
+          launch: x.launch,
+          grab: x.grab,
+          rehit: x.rehit,
+          score: x.score,
+          tags: x.tags,
+          ground: x.ground,
+        })),
+        events: f.events.map((e) => ({
+          at: e.at,
+          spawn: e.spawn,
+          shake: e.shake,
+          release: e.release,
+          flash: e.flash,
+          signal: e.signal,
+          text: e.text === undefined ? 0 : 1,
+        })),
+      })),
+    })),
+    player: d.player && {
+      specialCost: d.player.specialCost,
+      teamUps: d.player.teamUps.map((t) => [t.partner, t.state, t.both]),
+      improvised: d.player.improvised && [d.player.improvised.id, d.player.improvised.hits, d.player.improvised.respawn],
+      gags: d.player.gags,
+      requires: d.player.requires,
+      kit: d.player.kit,
+    },
+    enemy: d.enemy && {
+      family: d.enemy.family,
+      tiers: d.enemy.tiers.map((t) => [t.hp, t.damagePct, t.speedPct, t.moves, t.miniBoss, t.score, t.aggression]),
+      ai: d.enemy.ai,
+      aiParams: d.enemy.aiParams,
+      attackStates: d.enemy.attackStates,
+      rangedState: d.enemy.rangedState,
+      chargeState: d.enemy.chargeState,
+      light: d.enemy.light,
+      grabbable: d.enemy.grabbable,
+      weapon: d.enemy.weapon,
+      civilian: d.enemy.civilian,
+      // The KO and spawn lines are picked with sim.rng, so their counts move the RNG.
+      lines: [d.enemy.lines.spawn.length, d.enemy.lines.ko.length],
+    },
+    boss: d.boss && {
+      phases: d.boss.phases,
+      // Hasher.value sees a Map as an object with no keys.
+      gimmicks: [...d.boss.gimmicks.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)),
+      guardPct: d.boss.guardPct,
+      poise: d.boss.poise,
+      partner: d.boss.partner,
+      grabbable: d.boss.file.grabbable,
+      defeat: d.boss.defeat.kind,
+    },
+    projectile: d.projectile && { ...d.projectile, sfx: undefined },
+    pickup: d.pickup && { ...d.pickup, text: undefined },
+    prop: d.prop && { ...d.prop, breakSfx: undefined },
+  };
 }

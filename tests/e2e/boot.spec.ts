@@ -8,8 +8,11 @@ import { IN, press, status, waitForScene } from "./helpers";
 test("boot to the first interlude with four players", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
+  const hashWarnings: string[] = [];
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
+    if (m.type() === "warning" && m.text().includes("manifest content hash"))
+      hashWarnings.push(m.text());
   });
   await page.goto("/?debug");
   await page.waitForFunction(
@@ -86,4 +89,6 @@ test("boot to the first interlude with four players", async ({ page }) => {
   expect(Number(g1.kos)).toBeGreaterThan(0);
   expect(Number(g1.tick)).toBeLessThanOrEqual(1800);
   expect(errors).toEqual([]);
+  // The browser compiles the same content hash as the packer.
+  expect(hashWarnings).toEqual([]);
 });
