@@ -574,7 +574,9 @@ export function compileContent(raw: RawContent): CompiledContent {
   for (const d of defs) h.value(simRelevant(d));
   for (const id of Object.keys(raw.stages).sort()) {
     const st = raw.stages[id]!;
-    h.str(id).value(st.file).value(st.segments);
+    // Bundles ship stage files without parodyMeta (D62), so the hash leaves it out too.
+    const { parodyMeta: _parodyMeta, ...file } = st.file as typeof st.file & { parodyMeta?: unknown };
+    h.str(id).value(file).value(st.segments);
   }
   h.value(raw.items);
   h.value(raw.arenas);

@@ -2,7 +2,7 @@
 
 A browser beat 'em up for one to four players. The Simpletons, a family of five, chase a sycophant named Lickspittle into a cursed counterfeit arcade cabinet. Every stage is one of the cabinet's 999 games, and every game is a bootleg of a different arcade brawler.
 
-The design lives in [the implementation plan](docs/999-IN-1%20The%20Bootleg%20Brawl%20%E2%80%94%20Implementation%20Plan.md). Choices the plan did not settle are in [DECISIONS.md](DECISIONS.md). Agent rules are in [CLAUDE.md](CLAUDE.md).
+The design lives in a private implementation plan. Choices the plan did not settle are in [DECISIONS.md](DECISIONS.md). Agent rules are in [CLAUDE.md](CLAUDE.md).
 
 ## Quick start
 
@@ -53,8 +53,9 @@ packages/tools            the content CLI (validate, pack, metrics, balance, gol
 content/                  every character, enemy, boss, stage, interlude, sound and track
 tests/                    sim, content, golden replay and Playwright suites
 deploy/                   nginx and Kubernetes configuration
-docs/                     the implementation plan
 ```
+
+Two paths stay out of git on purpose (D60, D61). `docs/` holds the private planning documents. `content/forbidden-terms.json` is the private deny list for the IP scan. `pnpm tools validate` fails without it. Ask the owner for a copy. CI writes it from the `FORBIDDEN_TERMS_JSON` repository secret.
 
 ## Commands
 
@@ -120,13 +121,13 @@ Before an end-to-end run, make sure that nothing listens on port 4180.
 
 ## Deploying
 
-The game is a static SPA in an nginx image. It runs on the same GKE cluster and shared Gateway as Marble Melancholy. Every deploy needs the owner's approval. Use `pnpm run deploy`, because `pnpm deploy` is a built-in pnpm command.
+The game is a static SPA in an nginx image. It runs on a GKE cluster behind a shared Gateway. Every deploy needs the owner's approval. Use `pnpm run deploy`, because `pnpm deploy` is a built-in pnpm command. The cluster details are in the owner's private notes, not in this repository (D63).
 
-1. Create the Artifact Registry repository `bootleg-brawl` in project `example-gcp-project`.
-2. Add a Certificate Manager DNS authorization, certificate and map entry (in `example-cert-map`) for the host. The default host is `bootleg.llmgag.world`. Set `BOOTLEG_HOST` to use another one.
-3. At your DNS registrar, add an A record for the host that points to the Gateway IP `203.0.113.10`, and the `_acme-challenge` CNAME that the DNS authorization names.
+1. Put `KUBE_CONTEXT` and `IMAGE_REPO` in `.env.deploy` at the repository root. Git ignores the file.
+2. Create the Artifact Registry repository that `IMAGE_REPO` names.
+3. Add a certificate for the host to the Gateway's certificate map. The default host is `bootleg.llmgag.world`. Set `BOOTLEG_HOST` to use another one.
 4. Run `pnpm deploy:status` and record the state of the shared Gateway. Also record the status code of every other site on the Gateway.
 5. Run `pnpm run deploy`. It builds `dist/`, pushes the image, applies `deploy/k8s/bootleg.yaml` and waits for the rollout.
 6. Run `pnpm deploy:status` again. Compare the Gateway state and the status codes with step 4.
 
-If the repository variable `DEPLOY_ENABLED` is `true` and the workload identity secrets exist, the CI `deploy` job does the same from `main`.
+If the repository variable `DEPLOY_ENABLED` is `true` and the secrets exist, the CI `deploy` job does the same from `main`. It needs `GCP_WORKLOAD_IDENTITY_PROVIDER`, `GCP_SERVICE_ACCOUNT`, `IMAGE_REPO`, `GKE_CLUSTER` and `GKE_LOCATION`.

@@ -20,9 +20,12 @@ function hashOf(tamper: (r: RawContent) => void): string {
 }
 
 describe("compiled content hash", () => {
-  it("matches the browser's raw content, which has no layer ops", () => {
-    // AssetStore.loadAllData fabricates each layer like this (render/assets.ts).
+  it("matches the browser's raw content, which has no layer ops and no parodyMeta", () => {
+    // AssetStore.loadAllData fabricates each layer like this (render/assets.ts), and bundles
+    // ship files without parodyMeta (D62).
     const browser = hashOf((r) => {
+      for (const st of Object.values(r.stages))
+        delete (st.file as { parodyMeta?: unknown }).parodyMeta;
       for (const st of Object.values(r.stages))
         for (const [k, v] of Object.entries(st.layers))
           st.layers[k] = { id: k, schemaVersion: 1, width: v.width, height: v.height, ops: [] };

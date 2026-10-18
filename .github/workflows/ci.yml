@@ -17,6 +17,14 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
+      # The deny list is private (D61). Without the secret, validate fails and says why.
+      - name: Write the forbidden-terms deny list
+        env:
+          FORBIDDEN_TERMS_JSON: ${{ secrets.FORBIDDEN_TERMS_JSON }}
+        run: |
+          if [ -n "$FORBIDDEN_TERMS_JSON" ]; then
+            printf '%s' "$FORBIDDEN_TERMS_JSON" > content/forbidden-terms.json
+          fi
       # export -> bake -> pack -> validate, including the forbidden-terms scan and bundle budgets.
       - run: pnpm content
       - name: Rig poses are up to date
@@ -84,7 +92,8 @@ jobs:
       contents: read
       id-token: write
     env:
-      IMAGE: us-central1-docker.pkg.dev/example-gcp-project/bootleg-brawl/web:${{ github.sha }}
+      # Cloud identifiers are secrets, not committed text (D63).
+      IMAGE: ${{ secrets.IMAGE_REPO }}:${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -98,9 +107,9 @@ jobs:
       - uses: google-github-actions/setup-gcloud@v2
       - uses: google-github-actions/get-gke-credentials@v2
         with:
-          cluster_name: cluster-1
-          location: us-central1-a
-      - run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+          cluster_name: ${{ secrets.GKE_CLUSTER }}
+          location: ${{ secrets.GKE_LOCATION }}
+      - run: gcloud auth configure-docker "${IMAGE%%/*}" --quiet
       - run: docker build --platform linux/amd64 -t "$IMAGE" . && docker push "$IMAGE"
       - run: kubectl -n bootleg-brawl set image deployment/bootleg web="$IMAGE"
       - run: kubectl -n bootleg-brawl rollout status deployment/bootleg --timeout=180s

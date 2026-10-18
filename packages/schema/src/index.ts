@@ -95,8 +95,7 @@ export const CONTENT_VERSIONS: Record<ContentType, ContentTypeInfo> = {
   manifest: { current: 1, minimum: 1 },
 };
 
-/** Builds the full schema set with every registered module's fragments merged in. */
-export function buildSchemas(fragments: readonly SchemaFragments[] = []) {
+function fileSchemas(fragments: readonly SchemaFragments[]) {
   const merge = (key: keyof SchemaFragments): z.ZodRawShape =>
     Object.assign({}, ...fragments.map((f) => f[key] ?? {}));
   const characterKit = kit.extend(merge("character"));
@@ -104,6 +103,21 @@ export function buildSchemas(fragments: readonly SchemaFragments[] = []) {
     kit: characterKit.default({ requires: [], flags: [], gags: [] }),
   });
   const stage = stageFile.extend({ rules: stageFile.shape.rules.extend(merge("stage")) });
+  return { merge, character, stage };
+}
+
+/** Character and stage schemas for files as bundles ship them, without parodyMeta (D62). */
+export function buildShippedSchemas(fragments: readonly SchemaFragments[] = []) {
+  const { character, stage } = fileSchemas(fragments);
+  return {
+    character: character.omit({ parodyMeta: true }),
+    stage: stage.omit({ parodyMeta: true }),
+  };
+}
+
+/** Builds the full schema set with every registered module's fragments merged in. */
+export function buildSchemas(fragments: readonly SchemaFragments[] = []) {
+  const { merge, character, stage } = fileSchemas(fragments);
   const segment = segmentBase.extend(merge("segment")).strict();
   const enemy = enemyFamilyFile.extend(merge("enemy"));
   const boss = bossFile.extend(merge("boss"));

@@ -514,14 +514,24 @@ export function validateRaw(
     E(`content/campaign.json: unknown ending interlude ${camp.endingInterlude}`);
 
   // ---- forbidden terms over every validated document and file name
+  if (!load.docs.some((d) => d.type === "forbidden-terms"))
+    E(
+      "content/forbidden-terms.json: missing. The deny list is private, so ask the owner for it. CI writes it from the FORBIDDEN_TERMS_JSON secret.",
+    );
   const scanner = new ForbiddenScanner(raw.forbiddenTerms);
+  // CI logs are public, so they name the file but not the term or the text around it.
+  const hidden = !!process.env.CI;
   for (const d of load.docs) {
     if (d.type === "forbidden-terms" || d.type === "rig") continue;
     if (!inScope(d.file)) continue;
     const extra = ((d.doc as { parodyMeta?: { forbiddenTerms?: string[] } }).parodyMeta
       ?.forbiddenTerms ?? []) as string[];
     for (const hit of scanner.scanDoc(d.doc, d.file, extra))
-      E(`${hit.path}: forbidden term "${hit.term}" in "${hit.text.slice(0, 60)}"`);
+      E(
+        hidden
+          ? `${hit.path}: forbidden term (hidden in CI)`
+          : `${hit.path}: forbidden term "${hit.term}" in "${hit.text.slice(0, 60)}"`,
+      );
   }
 
   // ---- compile (catches dangling references the checks above missed)

@@ -22,6 +22,14 @@ describe("content", () => {
     const r = validateRaw(raw, registry, { errors: [], warnings: [], docs }, "characters/brat");
     expect(r.errors.some((e) => e.includes("forbidden term"))).toBe(true);
   });
+  it("fails when the private deny list is missing", () => {
+    const registry = createRegistry();
+    const load = loadContent(registry);
+    const raw = { ...structuredClone(load.raw), forbiddenTerms: [] };
+    const docs = load.docs.filter((d) => d.type !== "forbidden-terms");
+    const r = validateRaw(raw, registry, { errors: [], warnings: [], docs });
+    expect(r.errors.filter((e) => e.includes("forbidden-terms.json"))).toHaveLength(1);
+  });
   it("rejects bystanders on a stage that does not require civilians", () => {
     const registry = createRegistry();
     const load = loadContent(registry);

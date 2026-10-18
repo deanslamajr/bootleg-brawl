@@ -40,6 +40,14 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # The deny list is private (D61). Without the secret, validate fails and says why.
+      - name: Write the forbidden-terms deny list
+        env:
+          FORBIDDEN_TERMS_JSON: ${{ secrets.FORBIDDEN_TERMS_JSON }}
+        run: |
+          if [ -n "$FORBIDDEN_TERMS_JSON" ]; then
+            printf '%s' "$FORBIDDEN_TERMS_JSON" > content/forbidden-terms.json
+          fi
       - run: pnpm content && pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm exec playwright test --project=perf

@@ -86,9 +86,11 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     return r.data as T;
   };
 
+  // The deny list is private and not in git (D61). Loading works without it; validate does not.
   const forbidden = read<{ terms: string[] }>(
     join(root, "forbidden-terms.json"),
     "forbidden-terms",
+    true,
   );
   const master = read<{ colors: string[] }>(join(root, "palettes/master.json"), "master-palette");
   const palettes: Record<string, string[]> = {};

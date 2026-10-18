@@ -53,6 +53,12 @@ describe("bundles and manifest", () => {
     expect(sheets.sarge!.frames["idle:0"]).toBeDefined();
     expect(sheets.sarge!.frames["hairspin:0"]).toBeDefined();
   });
+  it("keeps parodyMeta out of every bundle", () => {
+    for (const b of bundles) {
+      expect(JSON.stringify(b.content), `${b.type}:${b.id}`).not.toContain('"parodyMeta"');
+      expect("parodyMeta" in b, `${b.type}:${b.id}`).toBe(false);
+    }
+  });
   it("rejects a sheet whose side is not a power of two", () => {
     const meta = { ...sheets.sarge!, width: 600 };
     expect(sheetSizeErrors({ sarge: meta })).toHaveLength(1);

@@ -29,7 +29,6 @@ interface Bundle {
   files: BundleFile[];
   requires: string[];
   unlock?: string;
-  parodyMeta?: { bootlegOf: string; gag: string };
   portrait?: string;
   displayName?: string;
 }
@@ -135,7 +134,7 @@ export function buildBundles(raw: RawContent): {
     type: "character" | "enemy" | "boss",
     id: string,
     src: {
-      file: { rig: string; displayName: string; parodyMeta: { bootlegOf: string; gag: string } };
+      file: { rig: string; displayName: string; parodyMeta?: unknown };
       states: RawContent["templates"][string];
       overlays: RawContent["characters"][string]["overlays"];
     },
@@ -171,14 +170,13 @@ export function buildBundles(raw: RawContent): {
     bundles.push({
       id,
       type,
-      content: { ...src, sheet: baked.meta, ...extra },
+      content: { ...src, file: shipped(src.file), sheet: baked.meta, ...extra },
       files,
       requires:
         type === "character"
           ? ((src.file as { kit?: { requires?: string[] } }).kit?.requires ?? [])
           : [],
       unlock: (src.file as { unlock?: string }).unlock,
-      parodyMeta: { bootlegOf: src.file.parodyMeta.bootlegOf, gag: src.file.parodyMeta.gag },
       portrait,
       displayName: src.file.displayName,
     });
@@ -220,10 +218,9 @@ export function buildBundles(raw: RawContent): {
     bundles.push({
       id,
       type: "stage",
-      content: { file: st.file, segments: st.segments, layers: layerMeta },
+      content: { file: shipped(st.file), segments: st.segments, layers: layerMeta },
       files,
       requires: st.file.rules.requires,
-      parodyMeta: { bootlegOf: st.file.parodyMeta.bootlegOf, gag: st.file.parodyMeta.gag },
       displayName: st.file.titleCard.title,
     });
   }
@@ -264,6 +261,15 @@ export function sheetSizeErrors(sheets: Record<string, SheetMeta>): string[] {
       ([id, m]) =>
         `sheet ${id} is ${m.width}x${m.height}; each side must be a power of two up to ${MAX_SHEET_SIDE}`,
     );
+}
+
+/**
+ * A content file as bundles ship it. parodyMeta is authoring metadata for the IP review, so it
+ * stays in the repository and never reaches the browser (D62).
+ */
+export function shipped<T extends { parodyMeta?: unknown }>(file: T): Omit<T, "parodyMeta"> {
+  const { parodyMeta: _parodyMeta, ...rest } = file;
+  return rest;
 }
 
 /** Writes bundles to generated/public/bundles and the manifest; returns the manifest. */
@@ -310,7 +316,6 @@ export function pack(raw: RawContent, outDir = PUBLIC): PackResult {
       bytes: size,
       requires: b.requires,
       ...(b.unlock ? { unlock: b.unlock } : {}),
-      ...(b.parodyMeta ? { parodyMeta: b.parodyMeta } : {}),
       ...(b.portrait ? { portrait: b.portrait } : {}),
       ...(b.displayName ? { displayName: b.displayName } : {}),
     });

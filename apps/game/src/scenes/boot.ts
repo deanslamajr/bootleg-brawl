@@ -2,7 +2,7 @@
 // tables and preloads the core assets.
 
 import { Container } from "pixi.js";
-import { buildSchemas } from "@bb/schema";
+import { buildShippedSchemas } from "@bb/schema";
 import { compileContent, VIEW_W } from "@bb/engine";
 import { createRegistry } from "@bb/mechanics";
 import type { GameApp, Scene } from "../app";
@@ -37,7 +37,7 @@ export class BootScene implements Scene {
     app.registry = createRegistry([...raw.flags, ...app.flags]);
     if (import.meta.env.DEV) {
       // Dev builds validate on load; production trusts the build step.
-      const s = buildSchemas(app.registry.schemaFragments());
+      const s = buildShippedSchemas(app.registry.schemaFragments());
       for (const c of Object.values(raw.characters)) s.character.parse(c.file);
       for (const st of Object.values(raw.stages)) s.stage.parse(st.file);
     }

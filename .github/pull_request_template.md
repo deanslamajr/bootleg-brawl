@@ -7,7 +7,7 @@
 - [ ] `pnpm lint`, `pnpm typecheck` and `pnpm test` pass
 - [ ] `pnpm content` passes (validate, forbidden-terms scan, bundle budgets)
 - [ ] Golden replays still match, or the PR says why they were re-recorded
-- [ ] Milestone gate: `docs/playtest-checklist.md` completed and attached
+- [ ] Milestone gate: the manual playtest checklist (private, in `docs/`) completed and attached
 
 ## New or changed character or stage (human checklist)
 
