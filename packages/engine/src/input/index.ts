@@ -84,6 +84,38 @@ export const DEFAULT_PAD: Record<Action, number[]> = {
 };
 
 const STORAGE_KEY = "bootleg-brawl.keys.v1";
+const PAD_STORAGE_KEY = "bootleg-brawl.pad.v1";
+
+const KEY_NAMES: Record<string, string> = {
+  ArrowUp: "↑",
+  ArrowDown: "↓",
+  ArrowLeft: "←",
+  ArrowRight: "→",
+  Comma: ",",
+  Period: ".",
+  Semicolon: ";",
+  Quote: "'",
+  Slash: "/",
+  Backslash: "BACKSLASH",
+  Minus: "-",
+  Equal: "=",
+  ShiftLeft: "L.SHIFT",
+  ShiftRight: "R.SHIFT",
+  ControlLeft: "L.CTRL",
+  ControlRight: "R.CTRL",
+  AltLeft: "L.ALT",
+  AltRight: "R.ALT",
+  NumpadEnter: "NUM ENTER",
+};
+
+/** A short on-screen name for a KeyboardEvent.code. */
+export function keyName(code: string): string {
+  if (KEY_NAMES[code]) return KEY_NAMES[code];
+  if (code.startsWith("Key")) return code.slice(3);
+  if (code.startsWith("Digit")) return code.slice(5);
+  if (code.startsWith("Numpad")) return `NUM ${code.slice(6).toUpperCase()}`;
+  return code.toUpperCase();
+}
 
 type Device = { kind: "kb"; layout: number } | { kind: "pad"; index: number };
 
@@ -92,7 +124,11 @@ export class InputManager {
   /** Keys pressed since the last sample, so a tap shorter than one tick still registers. */
   private readonly tapped = new Set<string>();
   keys: KeyMap[];
-  pad = DEFAULT_PAD;
+  pad: Record<Action, number[]>;
+  /** The last key pressed, for the controls screen. Cleared by takeLastKey. */
+  private lastKey: string | null = null;
+  /** Pad buttons held at the last takeLastPadButton call, as "pad:button". */
+  private padHeld = new Set<string>();
   /** Slot -> device. */
   readonly slots: (Device | null)[] = [null, null, null, null];
   /** Inputs injected by tests (window.__bootleg) override devices for a slot when set. */
@@ -103,8 +139,10 @@ export class InputManager {
   enabled = true;
 
   constructor(private readonly target: Window = window) {
-    this.keys = this.loadKeys();
+    this.keys = this.load(STORAGE_KEY, DEFAULT_KEYS);
+    this.pad = this.load(PAD_STORAGE_KEY, DEFAULT_PAD);
     target.addEventListener("keydown", (e) => {
+      if (!e.repeat) this.lastKey = e.code;
       if (!this.enabled) return;
       if (this.isBound(e.code)) e.preventDefault();
       this.down.add(e.code);
@@ -114,27 +152,90 @@ export class InputManager {
     target.addEventListener("blur", () => this.down.clear());
   }
 
-  private loadKeys(): KeyMap[] {
+  private load<T>(key: string, fallback: T): T {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) return JSON.parse(raw) as KeyMap[];
+      const raw = localStorage.getItem(key);
+      if (raw) return JSON.parse(raw) as T;
     } catch {
       // Private mode or blocked storage: defaults.
     }
-    return structuredClone(DEFAULT_KEYS);
+    return structuredClone(fallback);
   }
 
-  saveKeys(): void {
+  private save(key: string, value: unknown): void {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.keys));
+      localStorage.setItem(key, JSON.stringify(value));
     } catch {
       /* not persisted */
     }
   }
 
+  saveKeys(): void {
+    this.save(STORAGE_KEY, this.keys);
+  }
+
+  savePad(): void {
+    this.save(PAD_STORAGE_KEY, this.pad);
+  }
+
+  /** Restores the default keys for both layouts and the default pad buttons. */
   resetKeys(): void {
     this.keys = structuredClone(DEFAULT_KEYS);
+    this.pad = structuredClone(DEFAULT_PAD);
     this.saveKeys();
+    this.savePad();
+  }
+
+  /**
+   * Binds one key to an action and saves. The key leaves any other action it had, in either
+   * layout, so one key never drives two slots. Returns where it was before, if anywhere else.
+   */
+  setKey(layout: number, action: Action, code: string): { layout: number; action: Action } | null {
+    let from: { layout: number; action: Action } | null = null;
+    for (const [l, m] of this.keys.entries())
+      for (const a of ACTIONS) {
+        if ((l === layout && a === action) || !m[a].includes(code)) continue;
+        m[a] = m[a].filter((k) => k !== code);
+        from ??= { layout: l, action: a };
+      }
+    this.keys[layout]![action] = [code];
+    this.saveKeys();
+    return from;
+  }
+
+  /** Binds one pad button to an action for every pad and saves. Returns its old action. */
+  setPadButton(action: Action, button: number): Action | null {
+    let from: Action | null = null;
+    for (const a of ACTIONS) {
+      if (a === action || !this.pad[a].includes(button)) continue;
+      this.pad[a] = this.pad[a].filter((b) => b !== button);
+      from ??= a;
+    }
+    this.pad[action] = [button];
+    this.savePad();
+    return from;
+  }
+
+  /** The code of the last key pressed since the previous call, once. */
+  takeLastKey(): string | null {
+    const k = this.lastKey;
+    this.lastKey = null;
+    return k;
+  }
+
+  /** A pad button index newly pressed since the previous call, on any pad, once. */
+  takeLastPadButton(): number | null {
+    const held = new Set<string>();
+    let found: number | null = null;
+    for (const p of this.pads())
+      for (const [i, b] of p.buttons.entries()) {
+        if (!b.pressed) continue;
+        const id = `${p.index}:${i}`;
+        held.add(id);
+        if (found === null && !this.padHeld.has(id)) found = i;
+      }
+    this.padHeld = held;
+    return found;
   }
 
   private isBound(code: string): boolean {

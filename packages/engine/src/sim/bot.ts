@@ -17,6 +17,8 @@ export interface BotOptions {
 export class Bot {
   private lastAttack = -100;
   private lastJump = -100;
+  /** The last tick seen. A lower tick means a new sim, so the cooldowns start over. */
+  private lastTick = -1;
   constructor(
     readonly slot: number,
     readonly opts: BotOptions = {},
@@ -26,6 +28,11 @@ export class Bot {
     const g = sim.g;
     const p = g.players[this.slot]!;
     const t = g.tick;
+    if (t < this.lastTick) {
+      this.lastAttack = -100;
+      this.lastJump = -100;
+    }
+    this.lastTick = t;
     if (p.status === SLOT.picking) return t % 30 === 0 ? IN.ATTACK : 0;
     if (p.status === SLOT.continue || p.status === SLOT.out) return t % 20 === 0 ? IN.START : 0;
     if (p.status !== SLOT.playing || p.ent < 0 || !sim.world.alive[p.ent]) return 0;

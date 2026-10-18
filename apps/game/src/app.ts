@@ -184,6 +184,19 @@ export class GameApp {
       setSpeed: (n: number) => {
         this.speed = Math.max(1, Math.min(32, n));
       },
+      /**
+       * Screen rectangle of the first display object with this Pixi label in the scene, measured
+       * as if the object itself were visible (GO blinks). Null when it is missing or empty.
+       */
+      bounds: (name: string) => {
+        const node = this.scene?.root.getChildByLabel(name, true);
+        if (!node) return null;
+        const was = node.visible;
+        node.visible = true;
+        const b = node.getBounds();
+        node.visible = was;
+        return b.isEmpty() ? null : { x: b.x, y: b.y, w: b.width, h: b.height };
+      },
       ready: false,
     };
     (window as unknown as { __bootleg: typeof hook }).__bootleg = hook;

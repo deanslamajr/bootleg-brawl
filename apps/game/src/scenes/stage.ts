@@ -35,9 +35,19 @@ export class StageScene implements Scene {
   private typed = 0;
   private pauseMenu: Menu | null = null;
   private bossCardTicks = 0;
+  /** Events the sim emitted while it was built (the first segment's intro banner). */
+  private startEvents: SimEvent[] = [];
   private escHeld = false;
   private readonly onKey = (e: KeyboardEvent) => {
     if (e.code === "Escape") this.escHeld = true;
+  };
+  /** Losing focus or hiding the tab pauses play, so an alt-tab does not cost a life. */
+  private readonly onBlur = () => {
+    if (this.mode === "play") this.pause();
+  };
+  private readonly onVisibility = () => {
+    if (!document.hidden) return;
+    this.onBlur();
   };
 
   constructor(
@@ -65,6 +75,8 @@ export class StageScene implements Scene {
       credits: run.credits === -999 ? undefined : run.credits,
       cabinetMode: run.cabinetMode,
     });
+    // The first step clears these, so the renderer gets them when the card ends.
+    this.startEvents = [...this.sim.events];
     this.buildCard();
     this.mode = "card";
     // Assets load during the title card; the next stage is not known until the map vote.
@@ -73,11 +85,15 @@ export class StageScene implements Scene {
     this.renderer = new StageRenderer(app.assets, content, this.sim, this.stageId);
     this.root.addChildAt(this.renderer.root, 0);
     window.addEventListener("keydown", this.onKey);
+    window.addEventListener("blur", this.onBlur);
+    document.addEventListener("visibilitychange", this.onVisibility);
     app.music("stinger-title");
   }
 
   exit(): void {
     window.removeEventListener("keydown", this.onKey);
+    window.removeEventListener("blur", this.onBlur);
+    document.removeEventListener("visibilitychange", this.onVisibility);
   }
 
   status(): Record<string, unknown> {
@@ -91,6 +107,7 @@ export class StageScene implements Scene {
       tick: sim.g.tick,
       cam: sim.g.camX >> 16,
       ents: sim.world.count(),
+      kos: sim.g.players.reduce((n, p) => n + p.kos, 0),
       hash: sim.hash().toString(16),
     };
   }
@@ -179,6 +196,8 @@ export class StageScene implements Scene {
     if (ready && (this.t > 330 || (skip && this.t > 40))) {
       this.mode = "play";
       this.cardLayer.visible = false;
+      this.renderer!.onStep(this.startEvents);
+      this.startEvents = [];
     }
   }
 

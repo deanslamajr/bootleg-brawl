@@ -84,6 +84,8 @@ export class Menu extends Container {
     else if (pressed & (IN.ATTACK | IN.START | IN.JUMP)) {
       const it = this.items[this.index]!;
       if (!it.disabled?.()) it.select?.();
+      // RESUME destroys the pause overlay and this menu with it.
+      if (this.destroyed) return true;
     } else return false;
     this.refresh();
     return true;

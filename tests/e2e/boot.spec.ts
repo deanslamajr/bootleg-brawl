@@ -1,5 +1,6 @@
 // Boot, title, select four characters, play Game 0 to the boss with deterministic bot input,
-// and reach the interlude. Runs against the built dist/ in Chromium and WebKit.
+// reach the interlude, and see the same bots score in Game 1. Runs against the built dist/ in
+// Chromium and WebKit.
 
 import { expect, test } from "@playwright/test";
 import { IN, press, status, waitForScene } from "./helpers";
@@ -58,5 +59,31 @@ test("boot to the first interlude with four players", async ({ page }) => {
 
   const scene = await waitForScene(page, ["cutscene", "minigame"]);
   expect(["cutscene", "minigame"]).toContain(scene);
+
+  // The same bots play Game 1. Its sim starts at tick 0 again, so stale cooldowns would stop
+  // them attacking for thousands of ticks.
+  await page.waitForFunction(
+    () => {
+      const s = (
+        window as unknown as { __bootleg: { status(): Record<string, unknown> } }
+      ).__bootleg.status();
+      return s.scene === "stage" && s.stage === "game-1" && s.mode === "play";
+    },
+    null,
+    { timeout: 180_000, polling: 250 },
+  );
+  await page.waitForFunction(
+    () => {
+      const s = (
+        window as unknown as { __bootleg: { status(): Record<string, unknown> } }
+      ).__bootleg.status();
+      return Number(s.kos) > 0 || Number(s.tick) > 1800;
+    },
+    null,
+    { timeout: 60_000, polling: 100 },
+  );
+  const g1 = await status(page);
+  expect(Number(g1.kos)).toBeGreaterThan(0);
+  expect(Number(g1.tick)).toBeLessThanOrEqual(1800);
   expect(errors).toEqual([]);
 });

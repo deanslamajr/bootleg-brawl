@@ -17,7 +17,64 @@ export interface Hook {
   inject(slot: number, bits: number | null): void;
   useBots(on: boolean): void;
   setSpeed(n: number): void;
+  bounds(label: string): Rect | null;
   ready: boolean;
+}
+
+export interface Rect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+export function intersects(a: Rect | null, b: Rect | null): boolean {
+  if (!a || !b) return false;
+  return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+}
+
+export async function bounds(page: Page, label: string): Promise<Rect | null> {
+  return page.evaluate(
+    (label) => (window as unknown as { __bootleg: Hook }).__bootleg.bounds(label),
+    label,
+  );
+}
+
+/** Opens the game and waits for the boot scene to hand over to the title. */
+export async function boot(page: Page, url = "/"): Promise<void> {
+  await page.goto(url);
+  await page.waitForFunction(
+    () => (window as unknown as { __bootleg?: { ready: boolean } }).__bootleg?.ready === true,
+    null,
+    { timeout: 60_000 },
+  );
+  await waitForScene(page, ["title"]);
+}
+
+/** Waits until the stage scene is in the given mode. */
+export async function waitForMode(page: Page, mode: string, timeout = 60_000): Promise<void> {
+  await page.waitForFunction(
+    (mode) => {
+      const s = (window as unknown as { __bootleg: Hook }).__bootleg.status();
+      return s.scene === "stage" && s.mode === mode;
+    },
+    mode,
+    { timeout, polling: 50 },
+  );
+}
+
+/** From the title: one player picks the first character and skips the title card. */
+export async function startSoloStage(page: Page): Promise<void> {
+  await press(page, [0], IN.START);
+  await press(page, [0], IN.START);
+  await waitForScene(page, ["select"]);
+  await press(page, [0], IN.START);
+  await press(page, [0], IN.ATTACK);
+  await waitForScene(page, ["stage"]);
+  await waitForMode(page, "card");
+  await page.waitForTimeout(1000);
+  await press(page, [0], IN.ATTACK);
+  await waitForMode(page, "play");
 }
 
 export async function status(page: Page): Promise<Record<string, unknown>> {

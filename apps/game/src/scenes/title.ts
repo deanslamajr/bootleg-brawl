@@ -39,8 +39,9 @@ export class TitleScene implements Scene {
         ? [{ label: () => "GAME SELECT: ALL", select: () => void this.allGames() }]
         : []),
     ]);
-    this.menu.position.set(VIEW_W / 2 - 60, 140);
+    this.menu.position.set(VIEW_W / 2 - 60, 112);
     this.menu.visible = false;
+    this.menu.label = "title-menu";
     const bg = new Graphics().rect(0, 0, VIEW_W, VIEW_H).fill(0x1a1420);
     for (let i = 0; i < 12; i++)
       bg.rect(0, 40 + i * 6, VIEW_W, 3).fill({
@@ -65,11 +66,13 @@ export class TitleScene implements Scene {
   private async addFamily(): Promise<void> {
     const roster = this.app.content.raw.roster.rosterOrder;
     let x = 60;
-    for (const id of roster) {
+    for (const [i, id] of roster.entries()) {
       const t = await this.app.assets.portrait(id);
       if (!t || this.root.destroyed) continue;
+      // Below the menu's last row (the debug row ends at y 182), above the copyright at 242.
       const s = new Sprite(t);
-      s.position.set(x, 180);
+      s.position.set(x, 192);
+      s.label = `title-portrait-${i}`;
       x += 100;
       this.root.addChild(s);
     }

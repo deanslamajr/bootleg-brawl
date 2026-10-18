@@ -12,6 +12,8 @@ import type { AssetStore } from "./assets";
 import { Label, hexNum } from "./text";
 
 const SLOT_COLORS = [0xffd93a, 0x4aa0f0, 0x5ac04a, 0xff8ac8];
+/** Top of a banner's text. Its backing starts 4 px higher. */
+const BANNER_Y = 52;
 
 interface Effect {
   node: Container;
@@ -229,12 +231,22 @@ export class StageRenderer {
       const bgr = new Graphics().rect(0, -4, VIEW_W, h).fill({ color: 0x1a1420, alpha: 0.8 });
       lab.position.set(VIEW_W / 2, 0);
       c.addChild(bgr, lab);
-      c.position.set(0, 112);
+      // Below the HUD panels and combo counters, above GO (y 120) and the continue box.
+      c.position.set(0, BANNER_Y);
+      c.label = "hud-banner";
       // Replace an existing banner.
       for (const e of this.effects)
         if ((e.node as Container & { banner?: boolean }).banner) e.ttl = 0;
       (c as Container & { banner?: boolean }).banner = true;
-      this.effects.push({ node: c, ttl: ev.ticks, vy: 0, ent: -1, ox: 0, oy: 112, world: false });
+      this.effects.push({
+        node: c,
+        ttl: ev.ticks,
+        vy: 0,
+        ent: -1,
+        ox: 0,
+        oy: BANNER_Y,
+        world: false,
+      });
       this.overlay.addChild(c);
       return;
     }
@@ -596,6 +608,7 @@ export class StageRenderer {
     for (let i = 0; i < 4; i++) {
       const root = new Container();
       root.position.set(4 + i * 119, 3);
+      root.label = `hud-panel-${i}`;
       const name = new Label("", { color: SLOT_COLORS[i] });
       const score = new Label("", { color: 0xf4f0e8 });
       score.position.set(0, 9);
@@ -603,13 +616,17 @@ export class StageRenderer {
       bar.position.set(0, 19);
       const lives = new Label("", { color: 0xf4f0e8 });
       lives.position.set(88, 0);
+      lives.label = `hud-lives-${i}`;
       const info = new Label("", { color: 0x8ad0ff });
       info.position.set(0, 26);
+      info.label = `hud-info-${i}`;
       root.addChild(name, score, bar, lives, info);
       this.hud.addChild(root);
       this.panels.push({ root, name, score, lives, info, bar });
+      // Under the weapon line, which can be as wide as the panel.
       const combo = new Label("", { color: 0xffd93a });
-      combo.position.set(4 + i * 119 + 60, 9);
+      combo.position.set(4 + i * 119 + 4, 39);
+      combo.label = `hud-combo-${i}`;
       this.comboLabels.push(combo);
       this.hud.addChild(combo);
     }
@@ -626,6 +643,7 @@ export class StageRenderer {
     this.contBox.position.set(VIEW_W / 2, 150);
     this.hud.addChild(this.contBox);
     this.goLabel.position.set(VIEW_W - 90, 120);
+    this.goLabel.label = "hud-go";
     this.hud.addChild(this.goLabel);
   }
 

@@ -59,6 +59,7 @@ export class SelectScene implements Scene {
         .fill(0x2e2a3a)
         .rect(x, 40, 96, 2)
         .fill(C.yellow);
+      card.label = `select-card-${i}`;
       this.root.addChild(card);
       this.root.addChild(
         label(d.player!.shortName, x + 48, 46, { color: C.white, align: "center" }),
@@ -66,9 +67,14 @@ export class SelectScene implements Scene {
       this.root.addChild(
         label(d.player!.archetype.toUpperCase(), x + 48, 128, { color: C.gray, align: "center" }),
       );
-      this.root.addChild(
-        label(WRONG_STATS[id] ?? "STATS: YES", x + 48, 140, { color: C.pink, align: "center" }),
-      );
+      // The card is 96 px wide; a long stat wraps to a second line at y 150.
+      const stat = label(WRONG_STATS[id] ?? "STATS: YES", x + 48, 140, {
+        color: C.pink,
+        align: "center",
+        maxWidth: 92,
+      });
+      stat.label = `select-stat-${i}`;
+      this.root.addChild(stat);
       void app.assets.portrait(id).then((t) => {
         if (!t || this.root.destroyed) return;
         const s = new Sprite(t);
