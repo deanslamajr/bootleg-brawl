@@ -69,6 +69,7 @@ export const command = z.enum([
   "land",
   "chargeRelease",
   "any",
+  "drop",
 ]);
 export type Command = z.infer<typeof command>;
 

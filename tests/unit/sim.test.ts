@@ -32,6 +32,47 @@ function dummy(sim: Sim, x: number, y: number, family = "interns", tier = 1): nu
   return e;
 }
 
+describe("drop weapon", () => {
+  const armed = () => {
+    const sim = room();
+    const p = sim.g.players[0]!.ent;
+    sim.c.weapon[p] = 1;
+    sim.c.weaponHits[p] = 5;
+    return { sim, p };
+  };
+  it("reads down + taunt with a weapon as drop, not taunt", () => {
+    const { sim, p } = armed();
+    parseCommands(sim, p, IN.DOWN | IN.TAUNT, 0);
+    expect(sim.c.cmd[p]! & CMD.drop).toBeTruthy();
+    expect(sim.c.cmd[p]! & CMD.taunt).toBeFalsy();
+  });
+  it("reads down + taunt without a weapon as taunt", () => {
+    const sim = room();
+    const p = sim.g.players[0]!.ent;
+    parseCommands(sim, p, IN.DOWN | IN.TAUNT, 0);
+    expect(sim.c.cmd[p]! & CMD.taunt).toBeTruthy();
+    expect(sim.c.cmd[p]! & CMD.drop).toBeFalsy();
+  });
+  it("drops the weapon at the player's feet", () => {
+    const { sim, p } = armed();
+    const pickup = content.weapons[0]!.pickup;
+    sim.step([IN.DOWN | IN.TAUNT, 0, 0, 0]);
+    expect(sim.st(p).name).toBe("drop");
+    for (let i = 0; i < 12; i++) sim.step([0, 0, 0, 0]);
+    expect(sim.c.weapon[p]).toBe(0);
+    let near = false;
+    for (let e = 0; e < sim.world.high; e++)
+      if (
+        sim.world.alive[e] &&
+        sim.c.kind[e] === KIND.pickup &&
+        sim.c.def[e] === pickup &&
+        Math.abs(sim.c.x[e]! - sim.c.x[p]!) <= intToFx(16)
+      )
+        near = true;
+    expect(near).toBe(true);
+  });
+});
+
 describe("command parser", () => {
   it("turns a double tap into a dash and a run", () => {
     const sim = room();

@@ -90,6 +90,8 @@ export const COMMANDS = [
   "land",
   "chargeRelease",
   "any",
+  // Appended last so the earlier command bits keep their values.
+  "drop",
 ] as const;
 export type CommandName = (typeof COMMANDS)[number];
 export const CMD = Object.fromEntries(COMMANDS.map((k, i) => [k, 1 << i])) as Record<
@@ -104,6 +106,7 @@ export const CMD_ANY_MASK =
   CMD.back |
   CMD.dash |
   CMD.taunt |
+  CMD.drop |
   CMD.specialF |
   CMD.specialB;
 

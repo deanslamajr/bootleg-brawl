@@ -49,6 +49,11 @@
      "to": "jump"
     },
     {
+     "on": "drop",
+     "to": "drop",
+     "if": "hasWeapon"
+    },
+    {
      "on": "taunt",
      "to": "taunt"
     }
@@ -112,6 +117,11 @@
      "to": "jump"
     },
     {
+     "on": "drop",
+     "to": "drop",
+     "if": "hasWeapon"
+    },
+    {
      "on": "taunt",
      "to": "taunt"
     }
@@ -165,6 +175,11 @@
     {
      "on": "jump",
      "to": "jump"
+    },
+    {
+     "on": "drop",
+     "to": "drop",
+     "if": "hasWeapon"
     }
    ],
    "facingLock": false
@@ -967,6 +982,25 @@
     },
     {
      "pose": "pickup:1",
+     "dur": 6
+    }
+   ],
+   "next": "idle"
+  },
+  "drop": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "pickup:1",
+     "dur": 6,
+     "events": [
+      {
+       "signal": "dropWeapon"
+      }
+     ]
+    },
+    {
+     "pose": "pickup:0",
      "dur": 6
     }
    ],

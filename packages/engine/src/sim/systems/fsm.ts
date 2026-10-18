@@ -5,7 +5,7 @@ import { FX, intToFx } from "../../math/fixed";
 import type { CState } from "../../content/types";
 import type { Sim } from "../sim";
 import { CMD, COND, F, KIND, SK, SLOT, TEAM } from "../types";
-import { startGrab, releaseThrow, applyPickup, koFinished } from "./combat";
+import { startGrab, releaseThrow, applyPickup, koFinished, dropWeapon } from "./combat";
 
 const GRAB_RANGE = 16;
 const TEAMUP_RANGE = 26;
@@ -402,6 +402,10 @@ function coreSignal(sim: Sim, e: number, signal: string): void {
   }
   if (signal === "wake") {
     c.idle[e] = 0;
+    return;
+  }
+  if (signal === "dropWeapon") {
+    dropWeapon(sim, e);
     return;
   }
   if (signal === "slotCheck") {

@@ -182,8 +182,9 @@ export function parse(sim: Sim, e: number, inp: number, prev: number): void {
   }
   if (inp & IN.ATTACK) cmd |= CMD.attackHeld;
   if (released & IN.ATTACK) cmd |= CMD.attackRelease;
-  if (pressed & IN.TAUNT) cmd |= CMD.taunt;
-  if (cmd & (CMD.attack | CMD.jump | CMD.special | CMD.taunt)) cmd |= CMD.any;
+  // Down + taunt with a weapon in hand drops it. It wins over the taunt and the team-up (D31).
+  if (pressed & IN.TAUNT) cmd |= my > 0 && c.weapon[e]! > 0 ? CMD.drop : CMD.taunt;
+  if (cmd & (CMD.attack | CMD.jump | CMD.special | CMD.taunt | CMD.drop)) cmd |= CMD.any;
   c.cmd[e] = cmd;
   for (const m of sim.modules) m.hooks?.onCommands?.(sim, e, pressed, inp, released);
 }

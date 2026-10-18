@@ -47,6 +47,7 @@ const PLAYER_STATES = [
   "grabbed",
   "thrown",
   "pickup",
+  "drop",
 ];
 const ACTOR_STATES = ["idle", "walk", "hurt", "fall", "down", "getup", "ko"];
 
