@@ -21,6 +21,21 @@
  ],
  "scrollLocks": [
   {
+   "id": "alley-walk-0",
+   "at": 0,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
    "id": "alley-1",
    "at": 200,
    "waves": [

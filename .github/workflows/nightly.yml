@@ -19,7 +19,9 @@ jobs:
       - run: pnpm tools balance
       - run: |
           for stage in game-0 game-1 game-2; do
-            pnpm tools metrics "$stage" --players=2 --strict
+            for seed in 1 2 3; do
+              pnpm tools metrics "$stage" --players=1,2,4 --seed="$seed" --strict
+            done
           done
       - run: pnpm tools perf
       - uses: actions/upload-artifact@v4

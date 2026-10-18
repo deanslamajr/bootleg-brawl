@@ -125,8 +125,9 @@
      "tier": 0,
      "count": 1,
      "side": "right",
-     "delayTicks": 0,
-     "spawnKind": "walk"
+     "delayTicks": 120,
+     "spawnKind": "walk",
+     "fixed": true
     },
     {
      "family": "interns",

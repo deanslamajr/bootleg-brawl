@@ -16,6 +16,21 @@
  ],
  "scrollLocks": [
   {
+   "id": "bowling-alley-walk-0",
+   "at": 0,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
    "id": "bowl-1",
    "at": 100,
    "waves": [
@@ -38,8 +53,38 @@
    ]
   },
   {
+   "id": "bowling-alley-walk-1",
+   "at": 180,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
    "id": "bowling-alley-roam-1",
    "at": 280,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 1,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
+   "id": "bowling-alley-walk-2",
+   "at": 380,
    "waves": [
     {
      "family": "interns",

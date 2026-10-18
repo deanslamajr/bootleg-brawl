@@ -23,6 +23,21 @@
  ],
  "scrollLocks": [
   {
+   "id": "subway-walk-0",
+   "at": 0,
+   "waves": [
+    {
+     "family": "rollerinas",
+     "tier": 0,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
    "id": "sub-1",
    "at": 160,
    "waves": [

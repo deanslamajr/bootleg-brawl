@@ -39,7 +39,7 @@ const commands: Record<string, { run: Command; help: string }> = {
   },
   metrics: {
     run: metricsCommand,
-    help: "bot pacing metrics for a stage <stage> [--players=1,2] [--strict]",
+    help: "bot pacing metrics for a stage <stage> [--players=1,2,4] [--seed=N] [--strict]",
   },
   "gen-waves": {
     run: genWavesCommand,

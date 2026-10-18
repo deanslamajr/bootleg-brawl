@@ -1,6 +1,7 @@
-// tools metrics <stage> [--players 1,2,3,4] [--strict]: bot playthroughs per player count with
-// per-segment time-to-clear, enemies on screen, damage taken per family, pickup density, idle
-// scroll time and a difficulty curve plot (generated/metrics/<stage>.svg).
+// tools metrics <stage> [--players=1,2,3,4] [--seed=N] [--strict]: bot playthroughs per player
+// count with per-segment time-to-clear, enemies on screen, damage taken per family, pickup
+// density, idle scroll time, deaths per player and a difficulty curve plot
+// (generated/metrics/<stage>.svg).
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -23,12 +24,15 @@ export interface SegmentMetrics {
 export interface StageMetrics {
   stage: string;
   players: number;
+  seed: number;
   cleared: boolean;
   ticks: number;
   idleScrollPct: number;
   bossTicks: number;
   segments: SegmentMetrics[];
   damageByFamily: Record<string, number>;
+  /** Lives lost per player slot. */
+  deaths: number[];
   /** Enemies on screen sampled every second, for the plot. */
   curve: number[];
   failures: string[];
@@ -116,12 +120,14 @@ export function measureStage(stage: string, players: number, seed = 1): StageMet
   return {
     stage,
     players,
+    seed,
     cleared: r.cleared,
     ticks: r.ticks,
     idleScrollPct: idlePct,
     bossTicks,
     segments: segs,
     damageByFamily: byFamily,
+    deaths: r.sim.g.players.slice(0, players).map((p) => p.deaths),
     curve,
     failures,
   };
@@ -149,7 +155,8 @@ export function metricsCommand(args: string[]): number {
     .split(",")
     .map(Number);
   const strict = args.includes("--strict");
-  const all = players.map((p) => measureStage(stage, p));
+  const seed = Number(args.find((a) => a.startsWith("--seed="))?.split("=")[1] ?? 1);
+  const all = players.map((p) => measureStage(stage, p, seed));
   const out = join(GENERATED, "metrics");
   mkdirSync(out, { recursive: true });
   writeFileSync(join(out, `${stage}.json`), JSON.stringify(all, null, 1));
@@ -157,7 +164,7 @@ export function metricsCommand(args: string[]): number {
   let failed = 0;
   for (const m of all) {
     console.log(
-      `\n${stage} at ${m.players}P: ${m.cleared ? "cleared" : "NOT cleared"} in ${(m.ticks / 60).toFixed(0)} s, idle scroll ${m.idleScrollPct.toFixed(1)}%, boss ${(m.bossTicks / 60).toFixed(0)} s`,
+      `\n${stage} at ${m.players}P, seed ${m.seed}: ${m.cleared ? "cleared" : "NOT cleared"} in ${(m.ticks / 60).toFixed(0)} s, idle scroll ${m.idleScrollPct.toFixed(1)}%, boss ${(m.bossTicks / 60).toFixed(0)} s, deaths ${m.deaths.join("/")}`,
     );
     for (const s of m.segments)
       console.log(

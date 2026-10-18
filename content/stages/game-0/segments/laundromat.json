@@ -16,6 +16,21 @@
  ],
  "scrollLocks": [
   {
+   "id": "laundromat-walk-0",
+   "at": 0,
+   "waves": [
+    {
+     "family": "interns",
+     "tier": 2,
+     "count": 2,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
+  },
+  {
    "id": "laundro-1",
    "at": 80,
    "waves": [
@@ -89,6 +104,21 @@
      "fixed": true
     }
    ]
+  },
+  {
+   "id": "laundromat-walk-2",
+   "at": 510,
+   "waves": [
+    {
+     "family": "buffet-bob",
+     "tier": 1,
+     "count": 1,
+     "side": "right",
+     "delayTicks": 0,
+     "spawnKind": "walk"
+    }
+   ],
+   "hold": false
   },
   {
    "id": "laundro-boss",
