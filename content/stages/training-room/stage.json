@@ -13,7 +13,8 @@
   "requires": [],
   "laneTolerance": 10,
   "difficultyBaseline": 1,
-  "friendlyFireDefault": "off"
+  "friendlyFireDefault": "off",
+  "gore": true
  },
  "palette": [
   "#1a1420",

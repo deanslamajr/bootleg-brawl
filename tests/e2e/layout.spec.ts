@@ -54,8 +54,14 @@ test("title, options and controls text do not overlap", async ({ page }) => {
   }
   await page.screenshot({ path: `${SHOTS}/options.png` });
 
-  // CONTROLS P1 follows DIFFICULTY, FRIENDLY FIRE, CABINET MODE, MUSIC and SOUND.
-  await down(page, 5);
+  // GORE follows DIFFICULTY, FRIENDLY FIRE and CABINET MODE. Right toggles it and saves.
+  await down(page, 3);
+  await press(page, [0], IN.RIGHT);
+  const settings = await page.evaluate(() => localStorage.getItem("bootleg-brawl.settings.v1"));
+  expect(settings).toContain('"gore":true');
+
+  // CONTROLS P1 follows GORE, MUSIC and SOUND.
+  await down(page, 3);
   await press(page, [0], IN.ATTACK);
   expect(await waitForScene(page, ["controls"])).toBe("controls");
   expect((await status(page)).target).toBe("p1");

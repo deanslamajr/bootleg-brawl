@@ -114,7 +114,7 @@ async function build(next: SceneConfig): Promise<void> {
   sim = nextSim;
   bots = [0, 1, 2, 3].map((i) => new Bot(i));
   for (const d of cfg.dummies) spawnDummy(d.family, d.tier, d.x, d.y, d.active);
-  renderer = new StageRenderer(assets, content, sim, cfg.stage);
+  renderer = new StageRenderer(assets, content, sim, cfg.stage, { gore: false });
   app.stage.addChildAt(renderer.root, 0);
   app.stage.addChild(overlay);
   bestCombo = 0;

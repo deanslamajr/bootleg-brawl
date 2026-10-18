@@ -82,7 +82,9 @@ export class StageScene implements Scene {
     // Assets load during the title card; the next stage is not known until the map vote.
     const sheets = StageRenderer.sheetsFor(content, this.sim);
     await Promise.all([app.assets.ensureSheets(sheets), app.assets.ensureLayers(this.stageId)]);
-    this.renderer = new StageRenderer(app.assets, content, this.sim, this.stageId);
+    this.renderer = new StageRenderer(app.assets, content, this.sim, this.stageId, {
+      gore: app.settings.gore && (this.sim.stage.rules.gore ?? false),
+    });
     this.root.addChildAt(this.renderer.root, 0);
     window.addEventListener("keydown", this.onKey);
     window.addEventListener("blur", this.onBlur);

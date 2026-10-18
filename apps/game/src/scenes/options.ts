@@ -1,4 +1,5 @@
-// Options: difficulty preset, friendly fire, cabinet mode, volumes, controls remap and reset.
+// Options: difficulty preset, friendly fire, cabinet mode, gore, volumes, controls remap and
+// reset.
 
 import { Container, Graphics } from "pixi.js";
 import { IN, VIEW_H, VIEW_W, type Difficulty, type FriendlyFire } from "@bb/engine";
@@ -31,6 +32,11 @@ export class OptionsScene implements Scene {
         {
           label: () => `CABINET MODE    ${s.cabinetMode ? "ON" : "OFF"}`,
           change: () => (s.cabinetMode = !s.cabinetMode),
+        },
+        {
+          // Display only, and only on stages that opt in with rules.gore.
+          label: () => `GORE            ${s.gore ? "ON" : "OFF"}`,
+          change: () => (s.gore = !s.gore),
         },
         {
           label: () => `MUSIC           ${Math.round(s.musicVolume * 10)}`,

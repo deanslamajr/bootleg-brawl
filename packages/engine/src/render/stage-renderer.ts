@@ -84,6 +84,8 @@ export class StageRenderer {
     readonly content: CompiledContent,
     public sim: Sim,
     readonly stageId: string,
+    /** Display options. Gore needs the player's option and the stage's rules.gore opt-in. */
+    readonly opts: { gore?: boolean } = {},
   ) {
     this.world.sortableChildren = true;
     this.root.addChild(
@@ -181,6 +183,9 @@ export class StageRenderer {
         case "crack":
           this.crack(ev.x, ev.y);
           break;
+        case "ko":
+          if (this.opts.gore) this.splatter(ev.ent);
+          break;
       }
     }
     for (const e of this.effects) e.ttl--;
@@ -204,8 +209,23 @@ export class StageRenderer {
     const g = new Graphics();
     const r = Math.min(12, 4 + power / 3);
     g.star(0, 0, 5, r, r / 2.4).fill(0xffffff);
-    g.star(0, 0, 5, r * 0.6, r / 4).fill(0xffd93a);
+    g.star(0, 0, 5, r * 0.6, r / 4).fill(this.opts.gore ? 0xf04a3a : 0xffd93a);
     this.effects.push({ node: g, ttl: 7, vy: 0, ent: -1, ox: x, oy: y - z, world: true });
+    this.fx.addChild(g);
+  }
+
+  /** Gore option: six red drops burst from a KO'd actor. Display only. */
+  private splatter(e: number): void {
+    const c = this.sim.c;
+    const g = new Graphics();
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * Math.PI * 2;
+      g.circle(Math.cos(a) * 9, Math.sin(a) * 6 - 18, 2 + (i % 3)).fill(0xc02030);
+    }
+    g.label = "gore-splatter";
+    const ox = c.x[e]! / FX;
+    const oy = c.y[e]! / FX - c.z[e]! / FX;
+    this.effects.push({ node: g, ttl: 40, vy: 0.15, ent: -1, ox, oy, world: true });
     this.fx.addChild(g);
   }
 
