@@ -7,6 +7,7 @@
 - [ ] `pnpm lint`, `pnpm typecheck` and `pnpm test` pass
 - [ ] `pnpm content` passes (validate, forbidden-terms scan, bundle budgets)
 - [ ] Golden replays still match, or the PR says why they were re-recorded
+- [ ] Milestone gate: `docs/playtest-checklist.md` completed and attached
 
 ## New or changed character or stage (human checklist)
 
@@ -15,4 +16,5 @@
 - [ ] It plays like its archetype (`pnpm tools balance` is within band)
 - [ ] The continue line reads well
 - [ ] Two bootleg tells are listed in `parodyMeta.tells`
-- [ ] Stages: `pnpm tools metrics <stage> --players=2` meets the pacing targets
+- [ ] Stages: `pnpm tools metrics <stage> --players=1,2,4 --strict` meets the pacing targets
+- [ ] No file under `packages/engine` changed, or the PR says why (plan P2 proof)
