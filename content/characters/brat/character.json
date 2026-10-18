@@ -41,14 +41,14 @@
   }
  ],
  "voice": {
-  "continueLine": "I regret nothing.",
-  "selectLine": "I have a permission slip for this. I made it myself.",
+  "continueLine": "Stitches are just zippers for skin. Insert coin.",
+  "selectLine": "I jumped the septic tank on a bike. Mostly over it.",
   "tauntLines": [
-   "Detention can wait.",
-   "Too slow, intern.",
-   "Nobody saw that."
+   "I licked the joystick. Twice.",
+   "This scab is older than you.",
+   "I peed in the ball pit. Come on in."
   ],
-  "endingText": "Brat forged a permission slip to leave the cabinet. It worked, which worries everyone."
+  "endingText": "Brat pogoed off the cabinet roof, broke both arms and signed his own casts. He spelled his name wrong both times."
  },
  "unlock": "v1",
  "portrait": "idle:0",
@@ -57,7 +57,7 @@
   "gag": "Carries a forged permission slip for everything, including leaving the cabinet",
   "forbiddenTerms": [],
   "tells": [
-   "Nine hair spikes on the sprite, eleven on the portrait",
+   "His helmet has one stripe on the sprite and two on the portrait",
    "His shorts are blue in game and purple on the box art the cabinet shows"
   ]
  }

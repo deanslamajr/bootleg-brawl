@@ -44,13 +44,13 @@
  "teamUps": [],
  "voice": {
   "continueLine": "Statistically, one more quarter gives us a 61 percent chance. Insert it.",
-  "selectLine": "I have read the instruction card. All of it.",
+  "selectLine": "I welded the garage door shut. Dad is still in there. He is fine.",
   "tauntLines": [
-   "That is not how you spell VICTORY.",
+   "I lost both eyebrows for this. You can lose a tooth.",
    "Please hold for a trombone.",
-   "Citation needed."
+   "You smell like burnt hair. That one is on me."
   ],
-  "endingText": "Mensa rewrote the Announcer's entire script. He reads it with feeling now."
+  "endingText": "Mensa welded the cabinet shut from the inside, then billed the arcade for labor."
  },
  "unlock": "v1",
  "portrait": "idle:0",

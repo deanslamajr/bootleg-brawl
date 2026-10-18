@@ -38,19 +38,19 @@
   {
    "partnerId": "sarge",
    "moveId": "teamSuplex",
-   "displayName": "Suburban Suplex",
+   "displayName": "Date Night Suplex",
    "bothDirections": true
   }
  ],
  "voice": {
-  "continueLine": "Hold on, I can get the coin door open with a spoon. Probably.",
-  "selectLine": "Is there a snack bar in this one?",
+  "continueLine": "Do not leave. I can go again. Give me eleven minutes and a sandwich.",
+  "selectLine": "Is there a hot tub in this one? I already took my pants off.",
   "tauntLines": [
-   "Smells like nachos in here.",
-   "I am on my break.",
-   "Who ordered the knuckle sandwich? Me. I did."
+   "Eyes up here, sweetheart. Higher. Past the belly.",
+   "The robe stays open. Doctor's orders.",
+   "Rub the belly for luck. Lower for a lot of luck."
   ],
-  "endingText": "Boomer ate every turkey leg in 996 games and still claims he was the brains of the operation."
+  "endingText": "Boomer was voted Sexiest Man in the Cabinet. He was the only entry. He still wears the sash, and only the sash."
  },
  "unlock": "v1",
  "portrait": "idle:0",
@@ -59,8 +59,8 @@
   "gag": "Stops to eat any food within reach; his idle animation is sleeping",
   "forbiddenTerms": [],
   "tells": [
-   "Two hairs on his head on the sprite, three on the portrait",
-   "The select screen rates his speed as FAST (IT IS NOT)"
+   "His boxers have six hearts on the sprite and nine on the portrait",
+   "The select screen rates his stamina as ALL NIGHT (IT IS NOT)"
   ]
  }
 }

@@ -28,20 +28,20 @@
  },
  "improvisedWeapon": {
   "id": "beehive",
-  "displayName": "Beehive Hairdo",
+  "displayName": "Big Hair Energy",
   "hits": 0,
   "respawnTicks": 0
  },
  "teamUps": [],
  "voice": {
-  "continueLine": "Somebody count the laundry quarters. We are not staying in here.",
-  "selectLine": "Shoes on. Hair up. Let us go.",
+  "continueLine": "Put another quarter in. Slowly.",
+  "selectLine": "Spread them. We start with lunges.",
   "tauntLines": [
-   "I had this hair done for a wedding.",
-   "Mm-hmm.",
-   "That is your one warning."
+   "Feel the burn? That is not from the workout.",
+   "Thrust. Thrust. Now hold it. Good boy.",
+   "Yes, the carpet matches. No, you may not check."
   ],
-  "endingText": "Sarge combed seven pigeons, two knives and a mascot out of her hair and called it a weekend."
+  "endingText": "Sarge taught one last class in the parking lot. Twelve men signed up. None of them walked right for a week."
  },
  "unlock": "v1",
  "portrait": "idle:0",
@@ -50,7 +50,7 @@
   "gag": "Anything that hits her hair gets stuck in it and falls out later as a pickup",
   "forbiddenTerms": [],
   "tells": [
-   "Her necklace is red on the sprite and green on the select portrait",
+   "Her leotard is cut higher on the box art than on the sprite. The censors only checked the sprite",
    "The select screen lists her height as 9 FT 2 IN (HAIR INCLUDED)"
   ]
  }

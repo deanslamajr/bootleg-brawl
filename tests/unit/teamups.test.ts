@@ -21,7 +21,7 @@ function pair(a: string, b: string): Sim {
 }
 
 describe("team-ups", () => {
-  it("Boomer and Sarge: Suburban Suplex launches Sarge as a spinning attack", () => {
+  it("Boomer and Sarge: Date Night Suplex launches Sarge as a spinning attack", () => {
     const sim = pair("boomer", "sarge");
     const boomer = sim.g.players[0]!.ent;
     const sarge = sim.g.players[1]!.ent;
