@@ -1,5 +1,6 @@
 // Controls: remaps one keyboard layout or the pad buttons. Pick an action, then press the new
-// key or button. Escape stays the pause key and cancels a capture.
+// key or button. Escape stays the pause key and cancels a capture, and so does the touch PAUSE
+// button, so a player with no keyboard can leave a capture.
 
 import { Container, Graphics } from "pixi.js";
 import { IN, VIEW_H, VIEW_W } from "@bb/engine";
@@ -82,6 +83,11 @@ export class ControlsScene implements Scene {
     this.prompt.set("");
     this.note.set(note);
     this.menu.refresh();
+  }
+
+  /** What Escape does here: cancel an open capture. */
+  escape(): void {
+    if (this.capturing) this.endCapture();
   }
 
   tick(): void {

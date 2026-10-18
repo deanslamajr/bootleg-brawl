@@ -20,7 +20,19 @@ export interface Hook {
   bounds(label: string): Rect | null;
   samplePerf(on: boolean): void;
   perf(): { frame: number[]; tick: number[] };
+  /** What the Escape key does on the current scene. */
+  escape(): void;
+  /** The touch pad: whether it shows, its last mask, and the screen rectangles in CSS px. */
+  touch(): TouchStatus;
   ready: boolean;
+}
+
+export interface TouchStatus {
+  shown: boolean;
+  rotate: boolean;
+  bits: number;
+  canvas: Rect;
+  controls: Record<string, Rect>;
 }
 
 export interface Rect {

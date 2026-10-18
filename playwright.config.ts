@@ -35,7 +35,8 @@ export default defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"], viewport: { width: 960, height: 540 } },
-      testMatch: /(boot|pause|layout)\.spec\.ts/,
+      // touch.spec.ts sets its own phone profile with test.use, so it needs no project of its own.
+      testMatch: /(boot|pause|layout|touch)\.spec\.ts/,
     },
     {
       name: "webkit",

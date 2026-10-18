@@ -1,8 +1,11 @@
-// Input: two keyboard layouts plus any number of gamepads, polled once per sim tick into one
-// InputFrame per player slot. Devices are assigned to slots on first input. The action map is
-// remappable and stored in the browser.
+// Input: two keyboard layouts, any number of gamepads and one touch pad, polled once per sim tick
+// into one InputFrame per player slot. Devices are assigned to slots on first input. The action
+// map is remappable and stored in the browser. The touch pad's bits come from the app's overlay
+// through setTouch; the stick math that feeds it is in ./stick.
 
 import { IN, type InputFrame } from "../sim/types";
+
+export { stickBits, DEAD_ENTER, DEAD_EXIT, RUN_RING, SECTOR_HYSTERESIS } from "./stick";
 
 export type Action =
   | "up"
@@ -117,7 +120,10 @@ export function keyName(code: string): string {
   return code.toUpperCase();
 }
 
-type Device = { kind: "kb"; layout: number } | { kind: "pad"; index: number };
+export type Device =
+  | { kind: "kb"; layout: number }
+  | { kind: "pad"; index: number }
+  | { kind: "touch" };
 
 export class InputManager {
   private readonly down = new Set<string>();
@@ -129,6 +135,10 @@ export class InputManager {
   private lastKey: string | null = null;
   /** Pad buttons held at the last takeLastPadButton call, as "pad:button". */
   private padHeld = new Set<string>();
+  /** Bits the touch overlay holds now. setTouch replaces them. */
+  private touchHeld = 0;
+  /** Bits setTouch turned on since the last sample, so a tap shorter than one tick registers. */
+  private touchTapped = 0;
   /** Slot -> device. */
   readonly slots: (Device | null)[] = [null, null, null, null];
   /** Inputs injected by tests (window.__bootleg) override devices for a slot when set. */
@@ -242,6 +252,22 @@ export class InputManager {
     return this.keys.some((m) => ACTIONS.some((a) => m[a].includes(code)));
   }
 
+  /** The touch overlay's current mask. Bits that turn on are latched until the next sample. */
+  setTouch(bits: InputFrame): void {
+    this.touchTapped |= bits & ~this.touchHeld;
+    this.touchHeld = bits;
+  }
+
+  /** The touch overlay's mask as the sim sees it this tick. */
+  readTouch(): InputFrame {
+    return this.touchHeld | this.touchTapped;
+  }
+
+  /** Whether a slot holds the given device kind. */
+  holds(kind: Device["kind"]): boolean {
+    return this.slots.some((s) => s?.kind === kind);
+  }
+
   private readKb(layout: number): InputFrame {
     const m = this.keys[layout];
     if (!m) return 0;
@@ -276,13 +302,16 @@ export class InputManager {
           s.kind === d.kind &&
           (d.kind === "kb"
             ? (s as { layout: number }).layout === d.layout
-            : (s as { index: number }).index === d.index),
+            : d.kind === "pad"
+              ? (s as { index: number }).index === d.index
+              : true),
       );
     const candidates: [Device, InputFrame][] = [];
     for (let l = 0; l < this.keys.length; l++)
       candidates.push([{ kind: "kb", layout: l }, this.readKb(l)]);
     for (const p of this.pads())
       candidates.push([{ kind: "pad", index: p.index }, this.readPad(p)]);
+    candidates.push([{ kind: "touch" }, this.readTouch()]);
     for (const [d, bits] of candidates) {
       if (!bits || taken(d)) continue;
       const free = this.slots.findIndex((s, i) => !s && i < this.maxSlots);
@@ -301,10 +330,12 @@ export class InputManager {
       if (inj !== null && inj !== undefined) return inj;
       if (!d || !this.enabled) return 0;
       if (d.kind === "kb") return this.readKb(d.layout);
+      if (d.kind === "touch") return this.readTouch();
       const p = pads.find((x) => x.index === d.index);
       return p ? this.readPad(p) : 0;
     });
     this.tapped.clear();
+    this.touchTapped = 0;
     return this.cur.slice();
   }
 
@@ -326,6 +357,7 @@ export class InputManager {
   deviceLabel(slot: number): string {
     const d = this.slots[slot];
     if (!d) return "—";
+    if (d.kind === "touch") return "TOUCH";
     return d.kind === "kb" ? `KEYBOARD ${d.layout + 1}` : `PAD ${d.index + 1}`;
   }
 

@@ -1,5 +1,6 @@
-// The shipped SPA's shell: Pixi app at 480x270 integer-scaled, the fixed 60 Hz loop, scene
-// switching, audio routing, the ?debug overlay and the window.__bootleg test hook.
+// The shipped SPA's shell: Pixi app at 480x270 integer-scaled (or scaled to leave thumb gutters
+// when the touch pad shows), the fixed 60 Hz loop, scene switching, audio routing, the ?debug
+// overlay and the window.__bootleg test hook.
 
 import { Application, Container, TextureSource, UPDATE_PRIORITY } from "pixi.js";
 import {
@@ -15,6 +16,7 @@ import { AssetStore, Label } from "@bb/engine/render";
 import { AudioEngine } from "@bb/engine/audio";
 import { InputManager } from "@bb/engine/input";
 import { loadSettings, saveSettings, type RunState, type Settings } from "./settings";
+import { MIN_GUTTER, TouchOverlay, type TouchStatus } from "./touch";
 
 export interface Scene {
   readonly name: string;
@@ -26,6 +28,10 @@ export interface Scene {
   exit?(): void;
   /** Exposed to the test hook and the debug overlay. */
   status?(): Record<string, unknown>;
+  /** What the Escape key does on this scene. The touch PAUSE button calls it too. */
+  escape?(): void;
+  /** Pauses play without a way to resume from here: a blur, a hidden tab or the rotate message. */
+  interrupt?(): void;
 }
 
 export class GameApp {
@@ -40,6 +46,8 @@ export class GameApp {
   /** Set by the GAME SELECT: ALL debug menu: the next new run starts at this stage. */
   pendingStage: string | null = null;
   scene: Scene | null = null;
+  /** The on-screen pad. Null until init. */
+  touch: TouchOverlay | null = null;
   private acc = 0;
   private last = 0;
   readonly debug = new URLSearchParams(location.search).has("debug");
@@ -72,11 +80,16 @@ export class GameApp {
     });
     mount.appendChild(this.app.canvas);
     this.input = new InputManager(window);
+    this.touch = new TouchOverlay(this, mount.parentElement ?? document.body, mount);
     window.addEventListener("resize", () => this.fit());
+    this.touch.evaluate();
     this.fit();
     const unlock = () => this.audio.unlock();
     window.addEventListener("keydown", unlock, { once: false });
     window.addEventListener("pointerdown", unlock, { once: false });
+    // A touch grants user activation on release, not on press.
+    window.addEventListener("pointerup", unlock, { once: false });
+    window.addEventListener("touchend", unlock, { once: false });
     window.addEventListener("gamepadconnected", unlock);
     this.audio.setVolumes(this.settings.musicVolume, this.settings.sfxVolume);
     if (this.debug) {
@@ -103,14 +116,31 @@ export class GameApp {
     this.app.start();
   }
 
-  /** Integer scaling with letterboxing; 4:3 bezel in cabinet mode. */
+  /**
+   * Integer scaling with letterboxing; 4:3 bezel in cabinet mode. When the touch pad shows, the
+   * scale is not snapped: the canvas fills the height if the width allows it, and never leaves a
+   * control strip under MIN_GUTTER px plus the safe-area inset on each side.
+   */
   fit(): void {
     const w = window.innerWidth;
     const h = window.innerHeight;
     const cab = this.settings.cabinetMode;
+    const pad = this.touch?.shown ?? false;
     // Cabinet mode letterboxes the 16:9 frame inside a 4:3 screen, like the original monitors.
     const boxH = cab ? (VIEW_W * 3) / 4 : VIEW_H;
-    const scale = Math.max(1, Math.floor(Math.min(w / VIEW_W, h / boxH)));
+    let scale = Math.max(1, Math.floor(Math.min(w / VIEW_W, h / boxH)));
+    let insetL = 0;
+    let insetR = 0;
+    if (pad && this.touch) {
+      const ins = this.touch.insets();
+      insetL = ins.left;
+      insetR = ins.right;
+      const avail = w - insetL - insetR;
+      const scaleH = h / boxH;
+      const leftover = (avail - VIEW_W * scaleH) / 2;
+      const gutter = Math.max(MIN_GUTTER, leftover);
+      scale = Math.max(0.1, Math.min(scaleH, (avail - 2 * gutter) / VIEW_W));
+    }
     this.app.canvas.style.width = `${VIEW_W * scale}px`;
     this.app.canvas.style.height = `${VIEW_H * scale}px`;
     const bar = cab ? ((boxH - VIEW_H) / 2) * scale : 0;
@@ -119,13 +149,20 @@ export class GameApp {
       screen.style.paddingTop = `${bar}px`;
       screen.style.paddingBottom = `${bar}px`;
       screen.style.background = cab ? "#000" : "";
+      const cabinet = screen.parentElement;
+      if (cabinet) {
+        cabinet.style.paddingLeft = insetL ? `${insetL}px` : "";
+        cabinet.style.paddingRight = insetR ? `${insetR}px` : "";
+      }
     }
     document.body.classList.toggle("cabinet-mode", cab);
+    this.touch?.layout(w, h);
   }
 
   saveSettings(): void {
     saveSettings(this.settings);
     this.audio.setVolumes(this.settings.musicVolume, this.settings.sfxVolume);
+    this.touch?.evaluate();
     this.fit();
   }
 
@@ -163,6 +200,7 @@ export class GameApp {
     while (this.acc >= step && n < 8 * this.speed) {
       const t0 = performance.now();
       const inputs = this.input.sample();
+      this.touch?.afterSample();
       if (this.bots && "sim" in scene) {
         const sim = (scene as unknown as { sim: import("@bb/engine").Sim | null }).sim;
         if (sim) for (let i = 0; i < 4; i++) if (this.bots[i]) inputs[i] = this.bots[i]!.input(sim);
@@ -209,6 +247,15 @@ export class GameApp {
         this.sampling = on;
       },
       perf: () => ({ frame: this.frameWork.values(), tick: this.tickWork.values() }),
+      /** What the Escape key does on the current scene (the touch PAUSE button's path). */
+      escape: () => this.scene?.escape?.(),
+      /** The touch pad's state and its control rectangles in CSS px. */
+      touch: (): TouchStatus => {
+        if (this.touch) return this.touch.status();
+        const b = this.app.canvas.getBoundingClientRect();
+        const canvas = { x: b.x, y: b.y, w: b.width, h: b.height };
+        return { shown: false, rotate: false, bits: 0, canvas, controls: {} };
+      },
       /**
        * Screen rectangle of the first display object with this Pixi label in the scene, measured
        * as if the object itself were visible (GO blinks). Null when it is missing or empty.

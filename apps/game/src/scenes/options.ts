@@ -1,9 +1,10 @@
-// Options: difficulty preset, friendly fire, cabinet mode, gore, volumes, controls remap and
-// reset.
+// Options: difficulty preset, friendly fire, cabinet mode, gore, volumes, the touch pad, controls
+// remap and reset.
 
 import { Container, Graphics } from "pixi.js";
 import { IN, VIEW_H, VIEW_W, type Difficulty, type FriendlyFire } from "@bb/engine";
 import type { GameApp, Scene } from "../app";
+import { TOUCH_CONTROLS } from "../settings";
 import { C, Menu, label } from "../ui";
 import type { ControlsTarget } from "./controls";
 
@@ -46,18 +47,22 @@ export class OptionsScene implements Scene {
           label: () => `SOUND           ${Math.round(s.sfxVolume * 10)}`,
           change: (d) => (s.sfxVolume = Math.max(0, Math.min(1, s.sfxVolume + d / 10))),
         },
+        {
+          label: () => `TOUCH CONTROLS  ${s.touchControls.toUpperCase()}`,
+          change: (d) => (s.touchControls = cycle(TOUCH_CONTROLS, s.touchControls, d)),
+        },
         { label: () => "CONTROLS P1", select: () => void this.controls(0) },
         { label: () => "CONTROLS P2", select: () => void this.controls(1) },
         { label: () => "CONTROLS PAD", select: () => void this.controls("pad") },
         { label: () => "RESET CONTROLS", select: () => app.input.resetKeys() },
         { label: () => "BACK", select: () => void this.back() },
       ],
-      13,
+      12,
     );
     this.menu.position.set(110, 56);
     this.menu.label = "options-menu";
     const bg = new Graphics().rect(0, 0, VIEW_W, VIEW_H).fill(0x1a1420);
-    // One line each: the menu's last row ends near y 195.
+    // One line each: the twelve-row menu's last row ends near y 196.
     const hints = [
       label("P1 DEFAULT: WASD  J ATTACK  K JUMP  U SPECIAL  L TAUNT", VIEW_W / 2, 210, {
         color: C.gray,
