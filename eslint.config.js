@@ -11,6 +11,48 @@ const deterministicFiles = [
   "packages/mechanics/*/src/**/*.ts",
 ];
 
+// Invariant 2 (CLAUDE.md): the renderer, audio, input and app read the sim and never write it.
+// The sandbox is left out on purpose: it is a tool that edits a paused sim. This is a tripwire,
+// not a proof: an alias such as `const c = sim.c` followed by a write escapes it (D48).
+const readerFiles = [
+  "apps/game/src/**/*.ts",
+  "packages/engine/src/render/**/*.ts",
+  "packages/engine/src/audio/**/*.ts",
+  "packages/engine/src/input/**/*.ts",
+];
+const READER_MESSAGE = "The renderer, audio, input and app read the sim and never write to it.";
+const SIM_STATE = "/^(c|g|world|rng|inputs|events|prevX|prevY|prevZ|segController)$/";
+const SIM_MUTATORS =
+  "/^(enterState|spawnActor|spawnPlayer|spawnPickup|spawnProp|despawn|restore|emit|text|sfx|" +
+  "addScore|payCost|queueWave|hitLogPush)$/";
+const ARRAY_MUTATORS = "/^(push|pop|shift|unshift|splice|sort|reverse|fill|set|copyWithin)$/";
+
+/**
+ * Selectors for `root` (an AST path) being `sim.X...`, `<obj>.sim.X...` or the same with a
+ * non-null `sim!`, where X is a state field.
+ */
+function simChain(root) {
+  const out = [];
+  for (let depth = 0; depth < 4; depth++) {
+    const at = root + ".object".repeat(depth);
+    for (const sim of ["name", "property.name", "expression.name", "expression.property.name"])
+      out.push(`[${at}.property.name=${SIM_STATE}][${at}.object.${sim}='sim']`);
+  }
+  return out;
+}
+
+const readerSelectors = [
+  ...simChain("left").map((c) => `AssignmentExpression${c}`),
+  ...simChain("argument").map((c) => `UpdateExpression${c}`),
+  ...simChain("argument").map((c) => `UnaryExpression[operator='delete']${c}`),
+  ...simChain("callee.object").map(
+    (c) => `CallExpression[callee.property.name=${ARRAY_MUTATORS}]${c}`,
+  ),
+  ...["name", "property.name", "expression.name", "expression.property.name"].map(
+    (sim) => `CallExpression[callee.property.name=${SIM_MUTATORS}][callee.object.${sim}='sim']`,
+  ),
+].map((selector) => ({ selector, message: READER_MESSAGE }));
+
 export default tseslint.config(
   {
     ignores: [
@@ -64,5 +106,9 @@ export default tseslint.config(
         },
       ],
     },
+  },
+  {
+    files: readerFiles,
+    rules: { "no-restricted-syntax": ["error", ...readerSelectors] },
   },
 );

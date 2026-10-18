@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createRegistry } from "@bb/mechanics";
 import { loadContent } from "../src/lib/content-fs";
-import { buildBundles, BUDGETS } from "../src/lib/pack";
+import { buildBundles, BUDGETS, MAX_SHEET_SIDE, sheetSizeErrors } from "../src/lib/pack";
 import { decodeIndexedPng } from "@bb/engine/render/png";
 import { inflateSync } from "node:zlib";
 
@@ -32,13 +32,30 @@ describe("bundles and manifest", () => {
       expect(size, `${b.type}:${b.id}`).toBeLessThanOrEqual(budget);
     }
   });
-  it("bakes indexed atlases with at most 16 colors and every referenced pose", async () => {
-    const sarge = bundles.find((b) => b.id === "sarge")!;
-    const png = sarge.files.find((f) => f.path === "atlas.png")!.bytes;
-    const img = await decodeIndexedPng(png, (z) => new Uint8Array(inflateSync(z)));
-    expect(img.palette.length).toBeLessThanOrEqual(16);
-    expect(img.data.reduce((m, v) => Math.max(m, v), 0)).toBeLessThan(16);
+  it("bakes indexed atlases with at most 16 colors and power-of-two sides", async () => {
+    expect(sheetSizeErrors(sheets)).toEqual([]);
+    const atlases = bundles.flatMap((b) =>
+      b.files
+        .filter((f) => f.path === "atlas.png" || f.path === "items.png")
+        .map((f) => [b.id, f.bytes] as const),
+    );
+    expect(atlases.length).toBe(Object.keys(sheets).length);
+    const pow2 = (n: number) => n > 0 && n <= MAX_SHEET_SIDE && (n & (n - 1)) === 0;
+    for (const [id, png] of atlases) {
+      const img = await decodeIndexedPng(png, (z) => new Uint8Array(inflateSync(z)));
+      expect(img.palette.length, id).toBeLessThanOrEqual(16);
+      expect(
+        img.data.reduce((m, v) => Math.max(m, v), 0),
+        id,
+      ).toBeLessThan(16);
+      expect(pow2(img.width) && pow2(img.height), `${id} ${img.width}x${img.height}`).toBe(true);
+    }
     expect(sheets.sarge!.frames["idle:0"]).toBeDefined();
     expect(sheets.sarge!.frames["hairspin:0"]).toBeDefined();
+  });
+  it("rejects a sheet whose side is not a power of two", () => {
+    const meta = { ...sheets.sarge!, width: 600 };
+    expect(sheetSizeErrors({ sarge: meta })).toHaveLength(1);
+    expect(sheetSizeErrors({ sarge: { ...meta, width: 2048 } })).toHaveLength(1);
   });
 });

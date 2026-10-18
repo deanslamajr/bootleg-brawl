@@ -2,6 +2,9 @@
 
 import { expect, test } from "@playwright/test";
 
+if (!process.env.SMOKE_URL)
+  throw new Error("The smoke test needs SMOKE_URL, the deployed URL to check.");
+
 test("live URL boots to the title", async ({ page, request }) => {
   const health = await request.get("healthz");
   expect(health.ok()).toBe(true);

@@ -18,6 +18,8 @@ export interface Hook {
   useBots(on: boolean): void;
   setSpeed(n: number): void;
   bounds(label: string): Rect | null;
+  samplePerf(on: boolean): void;
+  perf(): { frame: number[]; tick: number[] };
   ready: boolean;
 }
 

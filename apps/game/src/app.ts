@@ -1,7 +1,7 @@
 // The shipped SPA's shell: Pixi app at 480x270 integer-scaled, the fixed 60 Hz loop, scene
 // switching, audio routing, the ?debug overlay and the window.__bootleg test hook.
 
-import { Application, Container, TextureSource } from "pixi.js";
+import { Application, Container, TextureSource, UPDATE_PRIORITY } from "pixi.js";
 import {
   Bot,
   type CompiledContent,
@@ -46,6 +46,11 @@ export class GameApp {
   private debugLabel: Label | null = null;
   private tickMs = 0;
   private fps = 0;
+  /** Test hook perf sampling: main-thread frame work and sim tick times, in ms. */
+  private sampling = false;
+  private readonly frameWork = new Ring(1200);
+  private readonly tickWork = new Ring(1200);
+  private frameStart = 0;
   /** Test hook: bots drive the joined slots, and the loop can run several ticks per frame. */
   bots: Bot[] | null = null;
   speed = 1;
@@ -87,6 +92,14 @@ export class GameApp {
       console.error("[bootleg]", String(e.reason), this.scene?.status?.() ?? {}),
     );
     this.app.ticker.add(() => this.frame());
+    // Runs after Pixi draws the stage (UPDATE_PRIORITY.LOW), so a sample covers the whole frame.
+    this.app.ticker.add(
+      () => {
+        if (this.sampling) this.frameWork.push(performance.now() - this.frameStart);
+      },
+      undefined,
+      UPDATE_PRIORITY.UTILITY,
+    );
     this.app.start();
   }
 
@@ -138,6 +151,7 @@ export class GameApp {
 
   private frame(): void {
     const now = performance.now();
+    this.frameStart = now;
     const dt = this.last ? Math.min(0.25, (now - this.last) / 1000) : 1 / TICK_HZ;
     this.last = now;
     this.fps = this.fps * 0.95 + (1 / Math.max(1e-3, dt)) * 0.05;
@@ -154,7 +168,9 @@ export class GameApp {
         if (sim) for (let i = 0; i < 4; i++) if (this.bots[i]) inputs[i] = this.bots[i]!.input(sim);
       }
       scene.tick(inputs);
-      this.tickMs = this.tickMs * 0.9 + (performance.now() - t0) * 0.1;
+      const ms = performance.now() - t0;
+      this.tickMs = this.tickMs * 0.9 + ms * 0.1;
+      if (this.sampling) this.tickWork.push(ms);
       this.acc -= step;
       n++;
       if (this.scene !== scene) return;
@@ -184,6 +200,15 @@ export class GameApp {
       setSpeed: (n: number) => {
         this.speed = Math.max(1, Math.min(32, n));
       },
+      /** Starts (clearing old samples) or stops perf sampling. */
+      samplePerf: (on: boolean) => {
+        if (on) {
+          this.frameWork.clear();
+          this.tickWork.clear();
+        }
+        this.sampling = on;
+      },
+      perf: () => ({ frame: this.frameWork.values(), tick: this.tickWork.values() }),
       /**
        * Screen rectangle of the first display object with this Pixi label in the scene, measured
        * as if the object itself were visible (GO blinks). Null when it is missing or empty.
@@ -215,5 +240,24 @@ export class GameApp {
     const t = this.content.raw.tracks[id];
     if (stingerAfter) this.audio.stinger(t, this.content.raw.tracks[stingerAfter]);
     else this.audio.playMusic(t);
+  }
+}
+
+/** A fixed-size buffer that keeps the most recent samples. */
+class Ring {
+  private readonly data: Float64Array;
+  private n = 0;
+  constructor(size: number) {
+    this.data = new Float64Array(size);
+  }
+  push(v: number): void {
+    this.data[this.n % this.data.length] = v;
+    this.n++;
+  }
+  clear(): void {
+    this.n = 0;
+  }
+  values(): number[] {
+    return Array.from(this.data.subarray(0, Math.min(this.n, this.data.length)));
   }
 }

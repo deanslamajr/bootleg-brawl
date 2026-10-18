@@ -252,10 +252,24 @@ function decodeForPortrait(meta: SheetMeta, png: Uint8Array): IndexedImage | nul
   return img;
 }
 
+/** The largest baked sheet side. Older WebGL devices cap textures near this size. */
+export const MAX_SHEET_SIDE = 1024;
+
+/** One line per baked sheet whose sides are not powers of two up to MAX_SHEET_SIDE. */
+export function sheetSizeErrors(sheets: Record<string, SheetMeta>): string[] {
+  const ok = (n: number) => n > 0 && n <= MAX_SHEET_SIDE && (n & (n - 1)) === 0;
+  return Object.entries(sheets)
+    .filter(([, m]) => !ok(m.width) || !ok(m.height))
+    .map(
+      ([id, m]) =>
+        `sheet ${id} is ${m.width}x${m.height}; each side must be a power of two up to ${MAX_SHEET_SIDE}`,
+    );
+}
+
 /** Writes bundles to generated/public/bundles and the manifest; returns the manifest. */
 export function pack(raw: RawContent, outDir = PUBLIC): PackResult {
   const { bundles, warnings, sheets } = buildBundles(raw);
-  const errors: string[] = [];
+  const errors: string[] = sheetSizeErrors(sheets);
   const bytes: Record<string, number> = {};
   const bundlesDir = join(outDir, "bundles");
   mkdirSync(bundlesDir, { recursive: true });

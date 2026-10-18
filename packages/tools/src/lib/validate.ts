@@ -2,7 +2,7 @@
 // module availability, rig coverage, frame data sanity, palettes, team-ups, bootleg tells,
 // campaign reachability and the forbidden-terms scan. Output is one line per problem.
 
-import { ForbiddenScanner, type StateDef } from "@bb/schema";
+import { ForbiddenScanner, stageFile, type StateDef } from "@bb/schema";
 import {
   compileContent,
   ContentError,
@@ -13,6 +13,7 @@ import {
 import { loadContent, type LoadResult } from "./content-fs";
 import { LayerPainter } from "../art/layers";
 import { drawPose } from "../art/sprite";
+import type { IndexedImage } from "../art/raster";
 
 export interface ValidateReport {
   errors: string[];
@@ -266,6 +267,19 @@ export function validateRaw(
       E(
         `${where}/overlays.json: ${f.overflow} px of the idle pose fall outside the ${rig.id} rig frame box (${rig.frameBox.join("x")})`,
       );
+    // The anchor is the foot point: the soles sit on the anchor row (the outline may add one row
+    // below) and the feet straddle the anchor column.
+    const feet = feetOf(f.img);
+    if (!feet) continue;
+    const [ax, ay] = f.anchor;
+    if (feet.bottom > ay + 1)
+      E(`${where}/overlays.json: idle pose feet are ${feet.bottom - ay} px below the anchor row`);
+    else if (feet.bottom < ay - 1)
+      E(`${where}/overlays.json: idle pose feet are ${ay - feet.bottom} px above the anchor row`);
+    if (Math.abs(feet.center - ax) > FEET_CENTER_TOLERANCE)
+      E(
+        `${where}/overlays.json: idle pose feet are centered ${Math.abs(feet.center - ax)} px from the anchor column`,
+      );
   }
 
   // ---- items
@@ -293,6 +307,13 @@ export function validateRaw(
   }
 
   // ---- stages
+  const moduleRuleKeys = new Set(
+    registry.schemaFragments().flatMap((f) => Object.keys(f.stage ?? {})),
+  );
+  const ruleKeys = new Set([...Object.keys(stageFile.shape.rules.shape), ...moduleRuleKeys]);
+  const controllerKinds = new Set(
+    registry.all().flatMap((m) => Object.keys(m.segmentControllers ?? {})),
+  );
   for (const [id, st] of Object.entries(raw.stages)) {
     const where = `content/stages/${id}`;
     if (!inScope(where)) continue;
@@ -300,6 +321,17 @@ export function validateRaw(
     const missing = registry.missing(f.rules.requires);
     if (missing.length)
       E(`${where}/stage.json: requires unavailable modules: ${missing.join(", ")}`);
+    // Post-v1 fields parse so a later module can read them without a migration. Until a module
+    // does, a stage that sets one is rejected: it would parse and do nothing.
+    for (const [key, value] of Object.entries(f.rules)) {
+      if (!ruleKeys.has(key))
+        E(`${where}/stage.json: rules.${key} is not a rule any module declares`);
+      else if (POST_V1_RULES.includes(key) && !moduleRuleKeys.has(key) && value)
+        E(`${where}/stage.json: rules.${key} is a post-v1 field that no module reads`);
+    }
+    if (f.forks.length) E(`${where}/stage.json: forks is a post-v1 field that no module reads`);
+    if (!V1_STAGE_TYPES.includes(f.type))
+      E(`${where}/stage.json: stage type ${f.type} is a post-v1 field that no module reads`);
     if (f.parodyMeta.tells.length < 2)
       E(`${where}/stage.json: parodyMeta.tells needs at least two bootleg tells`);
     for (const c of f.palette)
@@ -312,6 +344,19 @@ export function validateRaw(
         E(`${where}/stage.json: cue uses unknown track ${q.track}`);
     for (const i of [...f.interludes.before, ...f.interludes.after])
       if (!raw.interludes[i]) E(`${where}/stage.json: unknown interlude ${i}`);
+    // Bystanders only behave as bystanders when the civilians module runs on the stage.
+    const civilians = f.segments.flatMap((sid) =>
+      (st.segments[sid]?.placements ?? [])
+        .filter((p) => p.kind === "civilian")
+        .map((p) => `${sid}: ${p.id}`),
+    );
+    if (civilians.length && !f.rules.requires.includes("civilians")) {
+      E(
+        `${where}/stage.json: civilian placements (${civilians.join(", ")}) need civilians in rules.requires`,
+      );
+      if (!registry.isOn("civilians"))
+        E(`${where}/stage.json: civilian placements need the civilians module, which is off`);
+    }
     const painter = new LayerPainter(f.palette, raw.items, raw.palettes);
     for (const [lid, layer] of Object.entries(st.layers))
       painter.paintLayer(layer, `${where}/layers/${lid}.json`);
@@ -323,6 +368,8 @@ export function validateRaw(
         E(`${where}/stage.json: segment ${sid} has no file`);
         continue;
       }
+      if (POST_V1_SEGMENT_KINDS.includes(seg.kind) && !controllerKinds.has(seg.kind))
+        E(`${sw}: segment kind ${seg.kind} is a post-v1 field that no module reads`);
       if (seg.depth[0] >= seg.depth[1] || seg.depth[0] < 100 || seg.depth[1] > 270)
         E(
           `${sw}: depth band ${seg.depth.join("..")} has no reachable ground inside the 270px frame`,
@@ -485,4 +532,36 @@ export function validateRaw(
 export function validateRepo(registry: ModuleRegistry, only?: string): ValidateReport {
   const load = loadContent(registry);
   return validateRaw(load.raw, registry, load, only);
+}
+
+/** Stage rules the schema keeps for later modules. A module that declares one in its stage
+ * schema fragment makes it legal. */
+const POST_V1_RULES = ["widescreen", "timerHealth", "invertGravity"];
+/** Segment kinds with no v1 controller. A module segment controller for the kind makes it legal. */
+const POST_V1_SEGMENT_KINDS = ["fork", "qte", "cutscene"];
+/** Stage types v1 runs: walk-right with modules on top, and the arena. */
+const V1_STAGE_TYPES = ["walk-right", "elevator", "auto-scroll", "arena"];
+
+/** How far the middle of the feet may sit from the anchor column. Big rigs stand wider. */
+const FEET_CENTER_TOLERANCE = 4;
+
+/** The lowest ink row, and the column midpoint of the ink in the lowest three rows. */
+function feetOf(img: IndexedImage): { bottom: number; center: number } | null {
+  let bottom = -1;
+  for (let y = img.height - 1; y >= 0 && bottom < 0; y--)
+    for (let x = 0; x < img.width; x++)
+      if (img.data[y * img.width + x]) {
+        bottom = y;
+        break;
+      }
+  if (bottom < 0) return null;
+  let left = img.width;
+  let right = -1;
+  for (let y = Math.max(0, bottom - 2); y <= bottom; y++)
+    for (let x = 0; x < img.width; x++)
+      if (img.data[y * img.width + x]) {
+        left = Math.min(left, x);
+        right = Math.max(right, x);
+      }
+  return { bottom, center: (left + right) / 2 };
 }
