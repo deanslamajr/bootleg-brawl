@@ -11,6 +11,7 @@ import {
   downsample,
   erodeAlpha,
   keyBackground,
+  neckAnchor,
   pixelize,
   quantize,
 } from "../src/art/pixelize";
@@ -153,6 +154,19 @@ describe("the conversion pipeline", () => {
     expect([...used].sort()).toEqual([0, 1, 2, 3]);
     expect(r.anchor).toEqual([6, 11]);
     expect(r.conversion.factor).toBe(3);
+  });
+
+  it("puts a neck anchor under the lowest skin, or at the bottom middle without skin", () => {
+    // Hair (4) over a face (2), a 2-pixel neck at x 3..4, and a beard (5) hanging lower.
+    const img = new IndexedImage(8, 8);
+    for (let x = 1; x < 7; x++) img.set(x, 0, 4);
+    for (let y = 1; y < 4; y++) for (let x = 1; x < 7; x++) img.set(x, y, 2);
+    for (let y = 4; y < 6; y++) for (let x = 3; x < 5; x++) img.set(x, y, 3);
+    for (let y = 4; y < 8; y++) img.set(6, y, 5);
+    expect(neckAnchor(img)).toEqual([4, 6]);
+    const helmet = new IndexedImage(6, 4);
+    helmet.fill(14);
+    expect(neckAnchor(helmet)).toEqual([3, 4]);
   });
 
   it("stretches a part with both sizes to exactly that size", () => {

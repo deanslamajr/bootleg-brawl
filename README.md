@@ -98,6 +98,8 @@ Generated art is optional. A `sprite` shape in `overlays.json` places a generate
 3. Look at the contact sheet, then run `pnpm tools art accept <target> <part> <n>`. This copies the candidate and its `.gen.json` sidecar into `content/`. If a part comes out at the wrong size, change `heightPx` or `widthPx` in `art.json` and run `pnpm tools art gen <target> --part <id> --reconvert`. It converts the saved images again with no request and no charge.
 4. Add the `sprite` shape, the `image` op or the `image` field that the command prints, then run `pnpm tools validate`.
 
+A head hangs from the neck. Its part in `art.json` sets `"anchor": "neck"`, and its shape is `{ "shape": "sprite", "file": "sprites/head.png", "at": "neck", "alignTo": "head" }`. The head then turns with the neck and lies flat when the actor is down. Use `dy` to sink the neck into the collar until the idle pose fits the frame box.
+
 The tool reads `RUNWARE_API_KEY` from the environment or from `.env` at the repository root. Every charged image adds a line to `content/art/ledger.jsonl`, which git tracks. If a request would pass the $5.00 cap or its phase cap, the tool refuses it. `pnpm tools art ledger` prints the spend.
 
 To add a character:

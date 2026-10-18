@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 21,
    "indices": [
     2,
@@ -20,7 +20,8 @@
     12,
     13
    ],
-   "prompt": "only the head of the same intern with short brown hair, side view facing right, no neck, no shoulders"
+   "prompt": "only the head of the same intern with short brown hair, side view facing right, no neck, no shoulders",
+   "anchor": "neck"
   },
   {
    "id": "torso",

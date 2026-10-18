@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 24,
    "indices": [
     2,
@@ -21,10 +21,7 @@
     13
    ],
    "prompt": "only the head of the same punk with the tall green mohawk, side view facing right, no neck, no shoulders",
-   "anchor": [
-    0.5,
-    0.62
-   ]
+   "anchor": "neck"
   },
   {
    "id": "torso",

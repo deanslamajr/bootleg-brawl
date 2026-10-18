@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 19,
    "indices": [
     2,
@@ -22,10 +22,7 @@
     12,
     13
    ],
-   "anchor": [
-    0.5,
-    0.55
-   ],
+   "anchor": "neck",
    "prompt": "only the head of the same boy in a dented red football helmet with a white stripe and a wild gap-toothed grin, side view facing right, no neck, no shoulders"
   },
   {

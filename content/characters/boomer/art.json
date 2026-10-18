@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 28,
    "indices": [
     2,
@@ -22,10 +22,7 @@
     12,
     13
    ],
-   "anchor": [
-    0.5,
-    0.55
-   ],
+   "anchor": "neck",
    "prompt": "only the head of the same man with a thin brown comb-over, a thick brown beard and a red rose clenched in his teeth, side view facing right, no neck, no shoulders"
   },
   {

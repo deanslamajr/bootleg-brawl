@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 32,
    "indices": [
     4,
@@ -23,10 +23,7 @@
     15
    ],
    "prompt": "only the head of the same villain: a round steel pot helmet with one spike on top and a dark visor slit, side view facing right, no neck, no shoulders",
-   "anchor": [
-    0.5,
-    0.62
-   ]
+   "anchor": "neck"
   },
   {
    "id": "torso",

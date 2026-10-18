@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 31,
    "indices": [
     2,
@@ -22,7 +22,8 @@
     12,
     13
    ],
-   "prompt": "only the head of the same brute: a pink pig head with a big round snout and small pointed ears on a smooth bald head, side view facing right, no neck, no shoulders"
+   "prompt": "only the head of the same brute: a pink pig head with a big round snout and small pointed ears on a smooth bald head, side view facing right, no neck, no shoulders",
+   "anchor": "neck"
   },
   {
    "id": "torso",

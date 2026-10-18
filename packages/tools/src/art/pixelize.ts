@@ -17,8 +17,8 @@ export interface PixelizeRecipe {
   widthPx?: number;
   /** Indices the quantizer may use. Defaults to every palette entry after index 0. */
   indices?: number[];
-  /** Anchor as a fraction of the final image. */
-  anchor?: [number, number];
+  /** Anchor as a fraction of the final image, or "neck" (see neckAnchor). */
+  anchor?: [number, number] | "neck";
   tile?: boolean;
   conversion?: ArtConversion;
 }
@@ -78,6 +78,30 @@ const DEFAULT_ANCHOR: Record<PixelizeUse, [number, number]> = {
 
 /** Columns a tiling layer blends across its seam. */
 export const SEAM = 32;
+
+/** Actor palette indices 2 and 3 are skin. */
+const SKIN = new Set([2, 3]);
+
+/**
+ * Where a head meets the body: under the middle of the skin in the lowest three skin rows, which
+ * is the neck or, on a head drawn without one, the chin. A head with no skin gets the bottom
+ * middle.
+ */
+export function neckAnchor(img: IndexedImage): [number, number] {
+  let bottom = -1;
+  for (let y = img.height - 1; y >= 0 && bottom < 0; y--)
+    for (let x = 0; x < img.width; x++) if (SKIN.has(img.get(x, y))) bottom = y;
+  if (bottom < 0) return [img.width / 2, img.height];
+  let sum = 0;
+  let n = 0;
+  for (let y = Math.max(0, bottom - 2); y <= bottom; y++)
+    for (let x = 0; x < img.width; x++)
+      if (SKIN.has(img.get(x, y))) {
+        sum += x + 0.5;
+        n++;
+      }
+  return [sum / n, bottom + 1];
+}
 
 export function resolveConversion(use: PixelizeUse, c: ArtConversion = {}): ResolvedConversion {
   const d = DEFAULTS[use];
@@ -490,7 +514,7 @@ export function pixelize(
   const frac = recipe.anchor ?? DEFAULT_ANCHOR[recipe.use];
   return {
     img: out,
-    anchor: [frac[0] * out.width, frac[1] * out.height],
+    anchor: frac === "neck" ? neckAnchor(out) : [frac[0] * out.width, frac[1] * out.height],
     conversion: {
       use: recipe.use,
       ...conv,

@@ -67,8 +67,10 @@ export function blitSprite(
   const scale = opts.scale ?? 1;
   const flip = opts.flip ? -1 : 1;
   const { img, anchor } = sp;
-  const c = Math.cos(turns * Math.PI * 2);
-  const s = Math.sin(turns * Math.PI * 2);
+  // A quarter turn gets exact 0 and 1, so no source pixel is lost to rounding.
+  const quarter = Number.isInteger(turns * 4);
+  const c = quarter ? Math.round(Math.cos(turns * Math.PI * 2)) : Math.cos(turns * Math.PI * 2);
+  const s = quarter ? Math.round(Math.sin(turns * Math.PI * 2)) : Math.sin(turns * Math.PI * 2);
   // Destination bounds: the rotated, scaled source rectangle around the anchor.
   const corners = [
     [0, 0],

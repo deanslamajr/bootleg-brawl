@@ -83,7 +83,11 @@ const shapeObject = z.strictObject({
   shape: shapeKind,
   /** Joint the shape is attached to. */
   at: z.string().default("hip"),
-  /** For `line`: second joint. For `alignTo`: rotate the shape along at -> alignTo. */
+  /**
+   * For `line`: second joint. For `alignTo`: rotate the shape along at -> alignTo. A sprite turns
+   * by the change from the idle pose, so it looks as generated at rest, and it snaps to a quarter
+   * turn within 9 degrees of one.
+   */
   to: z.string().optional(),
   alignTo: z.string().optional(),
   dx: z.number().default(0),

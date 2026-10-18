@@ -716,10 +716,12 @@ function accept(args: string[]): number {
   else if (t.owner === "items")
     console.log(`art: next, set "image": "${rel}" on the item's sprite in ${where}/items.json`);
   else if (part === "portrait") console.log(`art: next, set "portraitImage": "${rel}" in ${where}`);
-  else if (t.owner !== "title")
+  else if (t.owner !== "title") {
+    const at = part === "head" ? `"at": "neck", "alignTo": "head"` : `"at": "<joint>"`;
     console.log(
-      `art: next, add { "shape": "sprite", "file": "${rel}", "at": "<joint>" } to ${where}/overlays.json and hide the parts it replaces`,
+      `art: next, add { "shape": "sprite", "file": "${rel}", ${at} } to ${where}/overlays.json and hide the parts it replaces`,
     );
+  }
   console.log("art: then run pnpm tools validate " + where);
   return 0;
 }

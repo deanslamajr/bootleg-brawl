@@ -53,8 +53,13 @@ export const artPart = z.strictObject({
   indices: z.array(z.number().int().min(1).max(255)).optional(),
   prompt: z.string().min(3),
   candidates: z.number().int().min(1).max(4).default(2),
-  /** The anchor as a fraction of the final image, [0.5, 1] is the bottom middle. */
-  anchor: z.tuple([z.number().min(0).max(1), z.number().min(0).max(1)]).optional(),
+  /**
+   * The anchor as a fraction of the final image, [0.5, 1] is the bottom middle. "neck" puts it
+   * under the lowest skin pixels, where a head meets the body.
+   */
+  anchor: z
+    .union([z.tuple([z.number().min(0).max(1), z.number().min(0).max(1)]), z.literal("neck")])
+    .optional(),
   model: artModel.optional(),
   /** Actor parts use the accepted look image as the identity reference. */
   reference: z.boolean().default(true),

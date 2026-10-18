@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 44,
    "indices": [
     2,
@@ -22,10 +22,7 @@
     12,
     13
    ],
-   "anchor": [
-    0.5,
-    0.8
-   ],
+   "anchor": "neck",
    "prompt": "only the head of the same woman with her towering cloud of bubblegum-pink curls, a white sweatband, smeared mascara and a sly smirk, side view facing right, no neck, no shoulders"
   },
   {

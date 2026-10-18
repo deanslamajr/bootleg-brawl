@@ -34,6 +34,20 @@ interface Part {
 
 const TURN = 1 / 256;
 
+/** The turn from straight up to the vector from (ax, ay) to (bx, by). */
+function upTurns(ax: number, ay: number, bx: number, by: number): number {
+  return Math.atan2(by - ay, bx - ax) / (Math.PI * 2) + 0.25;
+}
+
+/**
+ * Within 9 degrees of a quarter turn, a sprite snaps to it. Nearest sampling then keeps its pixels
+ * whole, and the one-unit joint jitter between poses does not shear it.
+ */
+function snapQuarter(turns: number): number {
+  const q = Math.round(turns * 4) / 4;
+  return Math.abs(turns - q) < 1 / 40 ? q : turns;
+}
+
 /** A filter prefix matches a pose name exactly, as "name:" or as a plain prefix ("atk" matches "atk1:0"). */
 function prefixHit(prefix: string, name: string): boolean {
   return name === prefix || name.startsWith(prefix);
@@ -167,6 +181,8 @@ export function drawPose(
   }
 
   const impro = opts.impro ?? true;
+  const idle = rig.poses["idle:0"]?.j;
+  const rest = (name: string) => idle?.[name];
   const layerShapes = [
     ...overlays.layers.legs,
     ...overlays.layers.torso,
@@ -181,7 +197,7 @@ export function drawPose(
   const names = unique?.base ? [poseName, unique.base] : [poseName];
   for (const sh of shapes) {
     if (!matches(sh, names, impro)) continue;
-    add(sh.z, (im) => drawShape(im, sh, J, s, rot, opts.sprites));
+    add(sh.z, (im) => drawShape(im, sh, J, s, rot, opts.sprites, rest));
   }
 
   parts.sort((a, b) => a.z - b.z || a.order - b.order);
@@ -220,6 +236,7 @@ export function drawShape(
   s: number,
   bodyRot: number,
   sprites?: SpriteTable,
+  rest?: (name: string) => [number, number] | undefined,
 ): void {
   const [jx, jy] = J(sh.at);
   if (sh.shape === "sprite") {
@@ -227,11 +244,16 @@ export function drawShape(
     const sp = sh.file ? sprites?.[sh.file] : undefined;
     if (!sp) return;
     // Sprites are drawn upright, so alignTo measures from straight up rather than along +x.
+    // The idle pose's angle is subtracted, so a part generated upright stays upright at rest.
     let turns = sh.rot * TURN + bodyRot;
     if (sh.alignTo) {
       const [bx, by] = J(sh.alignTo);
-      turns = Math.atan2(by - jy, bx - jx) / (Math.PI * 2) + 0.25 + sh.rot * TURN;
+      turns = upTurns(jx, jy, bx, by) + sh.rot * TURN;
+      const ra = rest?.(sh.at);
+      const rb = rest?.(sh.alignTo);
+      if (ra && rb) turns -= upTurns(...ra, ...rb);
     }
+    turns = snapQuarter(turns);
     const c = Math.cos(turns * Math.PI * 2);
     const n = Math.sin(turns * Math.PI * 2);
     blitSprite(im, sp, jx + (sh.dx * c - sh.dy * n) * s, jy + (sh.dx * n + sh.dy * c) * s, turns, {

@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 34,
    "indices": [
     2,
@@ -22,10 +22,7 @@
     13
    ],
    "prompt": "only the head of the same cook wearing the tall white chef hat, side view facing right, no neck, no shoulders",
-   "anchor": [
-    0.5,
-    0.66
-   ]
+   "anchor": "neck"
   },
   {
    "id": "torso",

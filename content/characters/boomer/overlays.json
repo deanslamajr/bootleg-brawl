@@ -26,7 +26,9 @@
    {
     "shape": "sprite",
     "file": "sprites/head.png",
-    "at": "head",
+    "at": "neck",
+    "alignTo": "head",
+    "dy": -1.5,
     "z": 50
    }
   ],

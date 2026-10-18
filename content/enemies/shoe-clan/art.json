@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 24,
    "indices": [
     2,
@@ -25,7 +25,7 @@
    "prompt": "only the head of the same ninja: a black face mask and a big white sneaker worn as a hat, side view facing right, no neck, no shoulders",
    "anchor": [
     0.5,
-    0.6
+    0.917
    ]
   },
   {

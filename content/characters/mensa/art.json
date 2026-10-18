@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 20,
    "indices": [
     2,
@@ -20,10 +20,7 @@
     12,
     13
    ],
-   "anchor": [
-    0.5,
-    0.5
-   ],
+   "anchor": "neck",
    "prompt": "only the head of the same girl with a big black welding mask flipped up on top of her head, frizzy dark brown hair and soot smudges on her face, side view facing right, no neck, no shoulders"
   },
   {

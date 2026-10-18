@@ -10,7 +10,7 @@
  "parts": [
   {
    "id": "head",
-   "joint": "head",
+   "joint": "neck",
    "heightPx": 23,
    "indices": [
     4,
@@ -24,7 +24,8 @@
     14,
     15
    ],
-   "prompt": "only the head of the same fighter in a dark blue kendo helmet with a metal face grill, side view facing right, no neck, no shoulders"
+   "prompt": "only the head of the same fighter in a dark blue kendo helmet with a metal face grill, side view facing right, no neck, no shoulders",
+   "anchor": "neck"
   },
   {
    "id": "torso",
