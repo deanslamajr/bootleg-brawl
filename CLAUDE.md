@@ -1,6 +1,6 @@
 # Agent rules for 999-IN-1: The Bootleg Brawl
 
-Read `README.md` first, then the last rows of `DECISIONS.md`. The plan is `docs/999-IN-1 The Bootleg Brawl — Implementation Plan.md`. It is long, so search it for a topic instead of reading it whole. `docs/` is private and git-ignored (D60). The plan exists only on the owner's machine.
+Read `README.md` first, then the last rows of `DECISIONS.md`. The plan is `999-IN-1 The Bootleg Brawl — Implementation Plan.md` in the owner's private docs repository, under `projects/bootleg-brawl/`. It is long, so search it for a topic instead of reading it whole. Plans, reviews and the playtest checklist live there too (D65). The owner's global Claude configuration names the repository. If you cannot find it, ask the owner. Do not add planning documents to this repository.
 
 ## Invariants
 

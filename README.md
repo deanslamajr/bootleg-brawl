@@ -55,7 +55,7 @@ tests/                    sim, content, golden replay and Playwright suites
 deploy/                   nginx and Kubernetes configuration
 ```
 
-Two paths stay out of git on purpose (D60, D61). `docs/` holds the private planning documents. `content/forbidden-terms.json` is the private deny list for the IP scan. `pnpm tools validate` fails without it. Ask the owner for a copy. CI writes it from the `FORBIDDEN_TERMS_JSON` repository secret.
+Two paths stay out of git on purpose (D60, D61, D65). The planning documents live in the owner's private docs repository. `docs/` stays ignored, so a stray copy cannot be committed. `content/forbidden-terms.json` is the private deny list for the IP scan. `pnpm tools validate` fails without it. Ask the owner for a copy. CI writes it from the `FORBIDDEN_TERMS_JSON` repository secret.
 
 ## Commands
 
