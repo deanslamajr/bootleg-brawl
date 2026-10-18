@@ -1,0 +1,48 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 8606,
+ "look": {
+  "prompt": "a man-sized living bowling pin with long white arms and legs, two black dot eyes, a small black mouth and two red stripes around its neck, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 21,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    10,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "prompt": "only the round top of the same bowling pin with two black dot eyes and a small mouth, side view facing right, no stripes, no body"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 42,
+   "widthPx": 32,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.8
+   ],
+   "prompt": "only the torso of the same bowling pin: its fat lower body with two red stripes at the top, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

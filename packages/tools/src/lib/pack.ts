@@ -10,9 +10,10 @@ import type { ManifestEntry, ManifestFile, BeatmapFile } from "@bb/schema";
 import { compileContent, type RawContent } from "@bb/engine";
 import { encodeIndexedPng } from "@bb/engine/render/png";
 import { encodeWav, renderSfx } from "@bb/engine/audio";
-import { bakeActor, bakeItems, posesUsed, type SheetMeta } from "../art/bake";
+import { bakeActor, bakeItems, PORTRAIT_FRAME, posesUsed, type SheetMeta } from "../art/bake";
 import { LayerPainter } from "../art/layers";
 import { IndexedImage } from "../art/raster";
+import { emptySprites, type SpriteTables } from "../art/sprites";
 import { CONTENT, PUBLIC } from "./paths";
 
 export const BUDGETS = { core: 3_000_000, stage: 4_000_000, character: 1_000_000 } as const;
@@ -90,7 +91,10 @@ function portraitPng(
   );
 }
 
-export function buildBundles(raw: RawContent): {
+export function buildBundles(
+  raw: RawContent,
+  sprites: SpriteTables = emptySprites(),
+): {
   bundles: Bundle[];
   warnings: string[];
   sheets: Record<string, SheetMeta>;
@@ -100,7 +104,7 @@ export function buildBundles(raw: RawContent): {
   const bundles: Bundle[] = [];
 
   // core
-  const items = bakeItems(raw);
+  const items = bakeItems(raw, sprites.items);
   sheets.items = items.meta;
   const sfxFiles: BundleFile[] = [];
   for (const id of Object.keys(raw.sfx.sounds).sort()) {
@@ -150,7 +154,13 @@ export function buildBundles(raw: RawContent): {
       const w = raw.templates["template:weapons"];
       if (w) for (const p of posesUsed(w, templates)) if (!poses.includes(p)) poses.push(p);
     }
-    const baked = bakeActor(id, rig, src.overlays, poses.sort(), pal);
+    const table = sprites.actors[id] ?? {};
+    const portraitImage = (src.file as { portraitImage?: string }).portraitImage;
+    const bust = portraitImage ? table[portraitImage] : undefined;
+    const baked = bakeActor(id, rig, src.overlays, poses.sort(), pal, {
+      sprites: table,
+      portrait: bust,
+    });
     warnings.push(...baked.warnings);
     sheets[id] = baked.meta;
     const files: BundleFile[] = [{ path: "atlas.png", bytes: baked.png }];
@@ -160,7 +170,7 @@ export function buildBundles(raw: RawContent): {
       const pp = portraitPng(
         baked.meta,
         atlas,
-        (src.file as { portrait?: string }).portrait ?? "idle:0",
+        bust ? PORTRAIT_FRAME : ((src.file as { portrait?: string }).portrait ?? "idle:0"),
       );
       if (pp) {
         files.push({ path: "portrait.png", bytes: pp });
@@ -196,7 +206,10 @@ export function buildBundles(raw: RawContent): {
   }
   for (const id of Object.keys(raw.stages).sort()) {
     const st = raw.stages[id]!;
-    const painter = new LayerPainter(st.file.palette, raw.items, raw.palettes);
+    const painter = new LayerPainter(st.file.palette, raw.items, raw.palettes, {
+      layers: sprites.layers[id],
+      items: sprites.items,
+    });
     const files: BundleFile[] = [];
     const layerMeta: Record<string, { width: number; height: number; file: string }> = {};
     for (const lid of Object.keys(st.layers).sort()) {
@@ -273,8 +286,12 @@ export function shipped<T extends { parodyMeta?: unknown }>(file: T): Omit<T, "p
 }
 
 /** Writes bundles to generated/public/bundles and the manifest; returns the manifest. */
-export function pack(raw: RawContent, outDir = PUBLIC): PackResult {
-  const { bundles, warnings, sheets } = buildBundles(raw);
+export function pack(
+  raw: RawContent,
+  outDir = PUBLIC,
+  sprites: SpriteTables = emptySprites(),
+): PackResult {
+  const { bundles, warnings, sheets } = buildBundles(raw, sprites);
   const errors: string[] = sheetSizeErrors(sheets);
   const bytes: Record<string, number> = {};
   const bundlesDir = join(outDir, "bundles");

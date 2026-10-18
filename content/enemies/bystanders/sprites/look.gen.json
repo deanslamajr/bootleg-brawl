@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:bystanders",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, an ordinary small-town resident with short brown hair, a plain orange t-shirt and blue jeans, standing, facing right, full body",
+ "seed": 7303,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "e6055e0b-0916-426e-89e5-f586cf76017c",
+ "imageUUID": "532fce26-4da6-42b5-ae56-537c40c6d8d1",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T05:58:18.840Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

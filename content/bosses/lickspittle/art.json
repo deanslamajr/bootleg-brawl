@@ -1,0 +1,45 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 8505,
+ "look": {
+  "prompt": "a thin, nervous office assistant with neatly parted brown hair and bright eyes, a white shirt, a gray vest and a blue tie, standing stiffly, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 19,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same assistant with neatly parted brown hair, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 23,
+   "widthPx": 12,
+   "indices": [
+    6,
+    7,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same assistant in a white shirt, a gray vest and a blue tie, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:hugh-mungus",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a giant bald brute with brown skin, a thick black beard, a white tank top with a small red patch and dark blue jeans, standing, facing right, full body",
+ "seed": 8303,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "8ed99a4b-daeb-4a3f-94b6-c788f3349ae0",
+ "imageUUID": "651b5f7e-1d1e-49c0-88fb-b2cd9340ab1e",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T05:58:52.225Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

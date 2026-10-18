@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:sid",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a street punk with a short green mohawk, a black leather vest over a red shirt and blue jeans, standing, facing right, full body",
+ "seed": 7910,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "13256da4-d1df-40da-96dc-8c49db288664",
+ "imageUUID": "16cdfeab-6d9e-4cd9-b6ff-8c6aebc1b68a",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:40.732Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -1,0 +1,52 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 8404,
+ "look": {
+  "prompt": "a kendo fighter in dark blue kendo armor and a kendo helmet with a metal face grill, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 23,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    12,
+    13,
+    14,
+    15
+   ],
+   "prompt": "only the head of the same fighter in a dark blue kendo helmet with a metal face grill, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 24,
+   "widthPx": 17,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same fighter in dark blue kendo chest armor, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

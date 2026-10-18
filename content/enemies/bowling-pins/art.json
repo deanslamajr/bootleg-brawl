@@ -1,0 +1,31 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 7101,
+ "look": {
+  "prompt": "a small living bowling pin with stubby white arms and legs, two black dot eyes and a red stripe around its neck, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 24,
+   "widthPx": 13,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.82
+   ],
+   "prompt": "only the bowling pin body of the same character, white with two red stripes around the neck and two black dot eyes, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

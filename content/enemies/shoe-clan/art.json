@@ -1,0 +1,52 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 7808,
+ "look": {
+  "prompt": "a ninja in a purple outfit with a black face mask, wearing a big white sneaker on his head as a hat, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 24,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    11,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same ninja: a black face mask and a big white sneaker worn as a hat, side view facing right, no neck, no shoulders",
+   "anchor": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 24,
+   "widthPx": 13,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same ninja in a purple ninja jacket with a white sash, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

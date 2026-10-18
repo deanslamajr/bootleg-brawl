@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "prefix": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background",
+ "layerPrefix": "1990s arcade pixel art background for a side-scrolling brawler, flat colors, side view, no people, no text, no letters, no logo",
+ "models": {
+  "klein4b": {
+   "steps": 4,
+   "CFGScale": 7
+  },
+  "schnell": {
+   "steps": 4,
+   "CFGScale": 43,
+   "scheduler": "FlowMatchEulerDiscreteScheduler",
+   "lora": [
+    {
+     "model": "civitai:720776@805962",
+     "weight": 0.64
+    }
+   ]
+  }
+ }
+}

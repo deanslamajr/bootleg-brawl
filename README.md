@@ -83,12 +83,22 @@ The content CLI commands:
 - `play <stage> [party]` runs one headless bot playthrough.
 - `perf` measures sim tick and snapshot time at the worst-case entity count.
 - `migrate [--write]` upgrades content files to the current schema versions.
+- `art probe|gen|accept|sheet|ledger` generates sprites and backgrounds through Runware. It spends money, so every run without `--dry-run` needs the owner's approval. The phase caps are in `PHASE_CAPS` in `packages/tools/src/art/runware.ts`.
 
 ## How the content pipeline works
 
 Characters, enemies, bosses and stages are JSON files under `content/`. The engine never lists content. The manifest does.
 
 Sprites are not hand-drawn frames. Each actor has a body on one of five shared rigs and an `overlays.json` of vector shapes. The bake step draws every pose the actor's states use, with outlines and shading, and packs an indexed 16-color atlas. Enemy tiers are palette swaps of one atlas. Backgrounds are painter ops in `layers/*.json`. Sounds are synth parameters rendered to WAV at build time. Music is tracker JSON that the game synthesizes at run time.
+
+Generated art is optional. A `sprite` shape in `overlays.json` places a generated PNG part, such as a head, on a joint. A layer can start with an `image` op, and an item sprite can name an `image`. Each folder's `art.json` holds the prompts, and `content/art/style.json` holds the shared prompt prefix and the model settings. The work goes in four steps:
+
+1. Run `pnpm tools art gen <target> --dry-run` and read every prompt it prints.
+2. Run `pnpm tools art gen <target>`. It writes candidates and a contact sheet to `generated/art/`, never to `content/`.
+3. Look at the contact sheet, then run `pnpm tools art accept <target> <part> <n>`. This copies the candidate and its `.gen.json` sidecar into `content/`.
+4. Add the `sprite` shape, the `image` op or the `image` field that the command prints, then run `pnpm tools validate`.
+
+The tool reads `RUNWARE_API_KEY` from the environment or from `.env` at the repository root. Every charged image adds a line to `content/art/ledger.jsonl`, which git tracks. If a request would pass the $5.00 cap or its phase cap, the tool refuses it. `pnpm tools art ledger` prints the spend.
 
 To add a character:
 
@@ -100,6 +110,8 @@ To add a character:
 6. Run `pnpm tools validate content/characters/<id>` until it passes.
 7. Run `pnpm tools balance <id>` and `pnpm tools record-golden --character <id>`.
 8. Add the id to `rosterOrder` in `content/roster.json`, then run `pnpm tools pack`.
+
+To give the character generated parts, write `art.json` in its folder and follow the generated-art steps above with the target `character:<id>`. Generate the look first and accept it, because every part uses the accepted look as its identity reference.
 
 To add a stage:
 

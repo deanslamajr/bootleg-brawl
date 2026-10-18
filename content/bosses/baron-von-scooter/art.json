@@ -1,0 +1,47 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 8101,
+ "look": {
+  "prompt": "an old rich tycoon with neat gray hair and a gray mustache, a purple suit jacket, a red cravat and black trousers, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 27,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same old tycoon with neat gray hair and a gray mustache, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 31,
+   "widthPx": 22,
+   "indices": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same tycoon in a purple suit jacket with a red cravat, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

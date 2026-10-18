@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 8808,
+ "look": {
+  "prompt": "a gray rhino-faced brute with one big horn on a bare gray head, a brown leather vest and green trousers, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 33,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    11,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same brute: a gray rhino head with one big horn on a bare gray head, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 33,
+   "widthPx": 29,
+   "indices": [
+    2,
+    3,
+    6,
+    7,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same brute in a brown leather vest over gray skin, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

@@ -106,6 +106,8 @@ export const bossFile = z.strictObject({
       defeat: z.array(z.string()).default([]),
     })
     .default({ hurt: [], defeat: [] }),
+  /** A generated bust (relative to the boss folder). The bake adds it as the frame `portrait`. */
+  portraitImage: z.string().optional(),
   parodyMeta,
 });
 export type BossFile = z.infer<typeof bossFile>;

@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 7606,
+ "look": {
+  "prompt": "a roller-skating acrobat woman with an orange ponytail, a pink leotard and white roller skates, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 22,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same skater with the orange ponytail, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 24,
+   "widthPx": 12,
+   "indices": [
+    6,
+    7,
+    8,
+    9,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same skater in a pink leotard, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

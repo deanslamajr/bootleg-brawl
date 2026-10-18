@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:bowling-pins",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a small living bowling pin with stubby white arms and legs, two black dot eyes and a red stripe around its neck, standing, facing right, full body",
+ "seed": 7101,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "b857d086-5066-4775-9209-d13717996d08",
+ "imageUUID": "64039c26-27d8-4504-9368-325c1495c517",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T05:58:09.923Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

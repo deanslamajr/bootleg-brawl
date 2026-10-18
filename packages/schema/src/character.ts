@@ -88,6 +88,8 @@ export const characterFile = z.strictObject({
   sfx: sfxMap.default({}),
   unlock: z.string().regex(/^(v1|secret|stageCleared:[a-z0-9-]+)$/),
   portrait: z.string().default("idle:0"),
+  /** A generated bust (relative to the character folder). It replaces the atlas crop. */
+  portraitImage: z.string().optional(),
   parodyMeta,
 });
 export type CharacterFile = z.infer<typeof characterFile>;

@@ -3,14 +3,25 @@ import { box, id, schemaVersion, shape } from "./common";
 
 export const ITEMS_SCHEMA_VERSION = 1;
 
-/** A static sprite drawn from shapes around a single anchor joint named "c" at the item's feet. */
-export const itemSprite = z.strictObject({
-  size: z.tuple([z.number().int().positive(), z.number().int().positive()]),
-  shapes: z.array(shape).min(1),
-  /** Extra frames, e.g. "broken" or animation frames "f1", "f2". */
-  frames: z.record(z.string(), z.array(shape)).default({}),
-  palette: id,
-});
+/**
+ * A static sprite drawn from shapes around a single anchor joint named "c" at the item's feet.
+ * With `image`, the bake blits that indexed PNG (relative to content/items) instead, and
+ * `shapes` can be empty. `frameImages` does the same per extra frame.
+ */
+export const itemSprite = z
+  .strictObject({
+    size: z.tuple([z.number().int().positive(), z.number().int().positive()]),
+    shapes: z.array(shape),
+    /** Extra frames, e.g. "broken" or animation frames "f1", "f2". */
+    frames: z.record(z.string(), z.array(shape)).default({}),
+    palette: id,
+    image: z.string().optional(),
+    frameImages: z.record(z.string(), z.string()).optional(),
+  })
+  .refine((s) => s.shapes.length > 0 || !!s.image, {
+    message: "an item sprite needs shapes or an image",
+    path: ["shapes"],
+  });
 export type ItemSprite = z.infer<typeof itemSprite>;
 
 export const propDef = z.strictObject({

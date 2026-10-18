@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:deadweight-dave",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a scrawny street punk with a tall green mohawk, a black tank top and blue jeans, standing, facing right, full body",
+ "seed": 7405,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "e067c798-0a01-4f77-a662-2d385cb9cf8e",
+ "imageUUID": "6e1e8193-75aa-449c-86da-49cabfddf9fe",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:21.855Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:cheesegrater",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a stout villain in armor made from steel cheese graters, a round steel pot helmet with one spike on top and a dark visor slit, a red belt and a short purple cape, standing, facing right, full body",
+ "seed": 8202,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "c973f1b3-54cc-487a-a4dc-282f72ccb918",
+ "imageUUID": "383aeeaa-8e39-4a4d-a94b-7387568b7bf5",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:47.691Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

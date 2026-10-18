@@ -1,0 +1,30 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 7707,
+ "look": {
+  "prompt": "a fat gray sewer rat with pink ears and a pink nose, walking on all fours, side view, facing right, full body",
+  "width": 768,
+  "height": 512
+ },
+ "parts": [
+  {
+   "id": "body",
+   "joint": "c",
+   "heightPx": 12,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "anchor": [
+    0.4,
+    0.62
+   ],
+   "prompt": "the same gray rat with pink ears, side view facing right, without its tail and without legs"
+  }
+ ]
+}

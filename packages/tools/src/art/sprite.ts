@@ -13,6 +13,7 @@ import {
   shadeOf,
   type Geometry,
 } from "./raster";
+import { blitSprite, type SpriteTable } from "./sprites";
 
 export interface DrawnFrame {
   img: IndexedImage;
@@ -51,7 +52,7 @@ export function drawPose(
   rig: RigFile,
   overlays: OverlaysFile,
   poseName: string,
-  opts: { impro?: boolean } = {},
+  opts: { impro?: boolean; sprites?: SpriteTable } = {},
 ): DrawnFrame {
   const body = overlays.body;
   const s = rig.scale * (body.scale ?? 1);
@@ -180,7 +181,7 @@ export function drawPose(
   const names = unique?.base ? [poseName, unique.base] : [poseName];
   for (const sh of shapes) {
     if (!matches(sh, names, impro)) continue;
-    add(sh.z, (im) => drawShape(im, sh, J, s, rot));
+    add(sh.z, (im) => drawShape(im, sh, J, s, rot, opts.sprites));
   }
 
   parts.sort((a, b) => a.z - b.z || a.order - b.order);
@@ -218,8 +219,28 @@ export function drawShape(
   J: (name: string) => [number, number],
   s: number,
   bodyRot: number,
+  sprites?: SpriteTable,
 ): void {
   const [jx, jy] = J(sh.at);
+  if (sh.shape === "sprite") {
+    // A missing file draws nothing; the validator reports it.
+    const sp = sh.file ? sprites?.[sh.file] : undefined;
+    if (!sp) return;
+    // Sprites are drawn upright, so alignTo measures from straight up rather than along +x.
+    let turns = sh.rot * TURN + bodyRot;
+    if (sh.alignTo) {
+      const [bx, by] = J(sh.alignTo);
+      turns = Math.atan2(by - jy, bx - jx) / (Math.PI * 2) + 0.25 + sh.rot * TURN;
+    }
+    const c = Math.cos(turns * Math.PI * 2);
+    const n = Math.sin(turns * Math.PI * 2);
+    blitSprite(im, sp, jx + (sh.dx * c - sh.dy * n) * s, jy + (sh.dx * n + sh.dy * c) * s, turns, {
+      scale: sh.scale ?? 1,
+      flip: sh.flip ?? false,
+      outline: sh.outline,
+    });
+    return;
+  }
   let ang = sh.rot * TURN + bodyRot;
   if (sh.alignTo) {
     const [bx, by] = J(sh.alignTo);

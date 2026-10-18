@@ -16,6 +16,7 @@ import { balanceCommand } from "./commands/balance";
 import { recordGoldenCommand, verifyGoldenCommand } from "./commands/record-golden";
 import { perfCommand } from "./commands/perf";
 import { deployCommand, deployStatusCommand } from "./commands/deploy";
+import { artCommand } from "./commands/art";
 
 type Command = (args: string[]) => void | number | Promise<void | number>;
 
@@ -70,6 +71,10 @@ const commands: Record<string, { run: Command; help: string }> = {
   "gen-rigs": {
     run: () => genRigs(),
     help: "regenerate content/rigs/*.rig.json from the pose library",
+  },
+  art: {
+    run: (args) => artCommand(args),
+    help: "generated sprites via Runware: probe, gen, accept, sheet, ledger (spends money)",
   },
   deploy: { run: deployCommand, help: "build, push and roll out to the cluster (needs approval)" },
   "deploy-status": { run: deployStatusCommand, help: "rollout, route, Gateway and HTTPS state" },

@@ -5,6 +5,8 @@ import type { ItemsFile, LayerFile, LayerOp } from "@bb/schema";
 import { rasterText } from "@bb/engine/render/font";
 import { IndexedImage, capsuleGeo, ellipseGeo, paint, polyGeo } from "./raster";
 import { drawShape } from "./sprite";
+import { blitSprite, type SpriteTable } from "./sprites";
+import { itemImage } from "./bake";
 
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 
@@ -20,6 +22,8 @@ export class LayerPainter {
     private readonly palette: string[],
     private readonly items?: ItemsFile,
     private readonly itemPalettes?: Record<string, string[]>,
+    /** Generated layer PNGs (relative to the layers folder) and item PNGs (to content/items). */
+    private readonly images: { layers?: SpriteTable; items?: SpriteTable } = {},
   ) {
     palette.forEach((c, i) => this.index.set(c, i + 1));
   }
@@ -185,6 +189,16 @@ export class LayerPainter {
           }
         return;
       }
+      case "image": {
+        // Generated backgrounds use stage indices directly; later ops paint on top.
+        const sp = this.images.layers?.[op.file];
+        if (!sp) {
+          this.errors.push(`${file}: image ${op.file} is missing`);
+          return;
+        }
+        img.blit(sp.img, Math.round(ox + op.x), Math.round(op.y));
+        return;
+      }
       case "item": {
         const it = this.items;
         const def = it?.props[op.item]?.sprite ?? it?.pickups[op.item]?.sprite;
@@ -193,10 +207,15 @@ export class LayerPainter {
           return;
         }
         const pal = this.itemPalettes?.[def.palette] ?? [];
-        const tmp = new IndexedImage(def.size[0] + 8, def.size[1] + 8);
+        const image = itemImage(def, undefined, this.images.items ?? {});
+        const tmp = new IndexedImage(
+          Math.max(def.size[0], image?.img.width ?? 0) + 8,
+          Math.max(def.size[1], image?.img.height ?? 0) + 8,
+        );
         const ax = Math.floor(tmp.width / 2);
         const ay = tmp.height - 3;
-        for (const s of def.shapes) drawShape(tmp, s, () => [ax, ay], 1, 0);
+        if (image) blitSprite(tmp, image, ax, ay, 0);
+        else for (const s of def.shapes) drawShape(tmp, s, () => [ax, ay], 1, 0);
         // Map the item's palette onto the nearest stage colors.
         const map = pal.map((h, i) => (i === 0 ? 0 : (this.index.get(h) ?? this.nearest(h))));
         for (let y = 0; y < tmp.height; y++)

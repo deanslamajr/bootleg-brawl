@@ -88,17 +88,28 @@ function paeth(a: number, b: number, c: number): number {
   return pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
 }
 
-export async function decodeIndexedPng(
-  bytes: Uint8Array,
-  inflate: (z: Uint8Array) => Uint8Array | Promise<Uint8Array>,
-): Promise<IndexedPng> {
+/** The chunks of a PNG that the decoders need. */
+export interface PngChunks {
+  width: number;
+  height: number;
+  depth: number;
+  colorType: number;
+  interlace: number;
+  /** PLTE entries as #rrggbb. */
+  palette: string[];
+  /** The concatenated IDAT payload (still deflated). */
+  idat: Uint8Array;
+}
+
+export function readPngChunks(bytes: Uint8Array): PngChunks {
   for (let i = 0; i < 8; i++) if (bytes[i] !== SIG[i]) throw new Error("not a PNG");
   const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   let o = 8;
   let width = 0;
   let height = 0;
   let depth = 0;
-  let ctype = 0;
+  let colorType = 0;
+  let interlace = 0;
   const palette: string[] = [];
   const idat: Uint8Array[] = [];
   while (o < bytes.length) {
@@ -109,7 +120,8 @@ export async function decodeIndexedPng(
       width = dv.getUint32(o + 8);
       height = dv.getUint32(o + 12);
       depth = data[8]!;
-      ctype = data[9]!;
+      colorType = data[9]!;
+      interlace = data[12]!;
     } else if (type === "PLTE") {
       for (let i = 0; i < data.length; i += 3)
         palette.push(
@@ -122,26 +134,34 @@ export async function decodeIndexedPng(
     else if (type === "IEND") break;
     o += 12 + len;
   }
-  if (ctype !== 3 || depth !== 8)
-    throw new Error(`only 8-bit indexed PNGs are supported (got type ${ctype}, depth ${depth})`);
   const z = new Uint8Array(idat.reduce((n, d) => n + d.length, 0));
   let zo = 0;
   for (const d of idat) {
     z.set(d, zo);
     zo += d.length;
   }
-  const raw = await inflate(z);
-  const out = new Uint8Array(width * height);
-  const stride = width + 1;
+  return { width, height, depth, colorType, interlace, palette, idat: z };
+}
+
+/**
+ * Reverses the PNG row filters of an inflated, non-interlaced image. `bpp` is bytes per pixel
+ * (1 for indexed, 3 for RGB, 4 for RGBA). Returns width * bpp bytes per row with no filter bytes.
+ */
+export function unfilter(raw: Uint8Array, width: number, height: number, bpp: number): Uint8Array {
+  const rowBytes = width * bpp;
+  const stride = rowBytes + 1;
+  if (raw.length < stride * height) throw new Error("PNG image data is truncated");
+  const out = new Uint8Array(rowBytes * height);
   for (let y = 0; y < height; y++) {
     const f = raw[y * stride]!;
-    const row = raw.subarray(y * stride + 1, y * stride + 1 + width);
-    const prev = y > 0 ? out.subarray((y - 1) * width, y * width) : null;
-    const cur = out.subarray(y * width, (y + 1) * width);
-    for (let x = 0; x < width; x++) {
-      const a = x > 0 ? cur[x - 1]! : 0;
+    if (f > 4) throw new Error(`unknown PNG filter type ${f}`);
+    const row = raw.subarray(y * stride + 1, y * stride + 1 + rowBytes);
+    const prev = y > 0 ? out.subarray((y - 1) * rowBytes, y * rowBytes) : null;
+    const cur = out.subarray(y * rowBytes, (y + 1) * rowBytes);
+    for (let x = 0; x < rowBytes; x++) {
+      const a = x >= bpp ? cur[x - bpp]! : 0;
       const b = prev ? prev[x]! : 0;
-      const c = prev && x > 0 ? prev[x - 1]! : 0;
+      const c = prev && x >= bpp ? prev[x - bpp]! : 0;
       let v = row[x]!;
       if (f === 1) v += a;
       else if (f === 2) v += b;
@@ -150,5 +170,18 @@ export async function decodeIndexedPng(
       cur[x] = v & 0xff;
     }
   }
-  return { width, height, data: out, palette };
+  return out;
+}
+
+export async function decodeIndexedPng(
+  bytes: Uint8Array,
+  inflate: (z: Uint8Array) => Uint8Array | Promise<Uint8Array>,
+): Promise<IndexedPng> {
+  const { width, height, depth, colorType, palette, idat } = readPngChunks(bytes);
+  if (colorType !== 3 || depth !== 8)
+    throw new Error(
+      `only 8-bit indexed PNGs are supported (got type ${colorType}, depth ${depth})`,
+    );
+  const raw = await inflate(idat);
+  return { width, height, data: unfilter(raw, width, height, 1), palette };
 }

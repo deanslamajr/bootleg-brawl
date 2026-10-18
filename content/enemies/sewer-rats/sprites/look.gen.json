@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:sewer-rats",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a fat gray sewer rat with pink ears and a pink nose, walking on all fours, side view, facing right, full body",
+ "seed": 7708,
+ "width": 768,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "f9586a41-79fb-4d31-9720-89ac844cf35e",
+ "imageUUID": "de5968de-d7fa-4954-ac5d-be0c5a7be480",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:34.438Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:rollerinas",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a roller-skating acrobat woman with an orange ponytail, a pink leotard and white roller skates, standing, facing right, full body",
+ "seed": 7606,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "07998a99-fd71-48a9-9573-d34dc37c68b0",
+ "imageUUID": "cb684400-841f-48ac-a6c4-3eac9c93ef51",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:29.675Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

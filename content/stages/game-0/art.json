@@ -1,0 +1,11 @@
+{
+ "schemaVersion": 1,
+ "model": "schnell",
+ "seed": 2345678,
+ "parts": [
+  {
+   "id": "mainstreet",
+   "prompt": "a row of small-town brick shops with striped awnings and big windows, daytime, a gray sidewalk strip along the bottom"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:buffet-bob",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a huge round cook in a tall white chef hat and a white apron over a big belly, gray trousers, standing, facing right, full body",
+ "seed": 7203,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "ceb3744c-c313-4aea-8da6-065033a3ed32",
+ "imageUUID": "903c0dbf-32a2-4941-8b07-37cb1d4c3f6d",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:16.024Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

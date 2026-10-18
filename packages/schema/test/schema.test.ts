@@ -65,3 +65,65 @@ describe("forbidden terms", () => {
     expect(hits.length).toBe(2);
   });
 });
+
+describe("generated art", () => {
+  const s = buildSchemas();
+  const overlays = (shape: Record<string, unknown>) =>
+    s.overlays.safeParse({ schemaVersion: 1, layers: { head: [shape] } });
+  const layer = (op: Record<string, unknown>) =>
+    s.layer.safeParse({ id: "a", schemaVersion: 1, width: 10, height: 10, ops: [op] });
+
+  it("parses a sprite shape with a file, and refuses one without", () => {
+    const r = overlays({ shape: "sprite", file: "sprites/head.png", at: "head", dy: -2, z: 50 });
+    expect(r.success).toBe(true);
+    expect(overlays({ shape: "sprite", at: "head" }).success).toBe(false);
+    expect(overlays({ shape: "sprite", file: "a.png", bogus: 1 }).success).toBe(false);
+  });
+
+  it("leaves vector shapes exactly as before", () => {
+    const r = overlays({ shape: "rect", color: 2 });
+    const parsed = (r.data as { layers: { head: Record<string, unknown>[] } }).layers.head[0]!;
+    expect(Object.keys(parsed)).not.toContain("scale");
+    expect(Object.keys(parsed)).not.toContain("flip");
+    expect(parsed.outline).toBe(true);
+    expect(overlays({ shape: "rect" }).success).toBe(false);
+  });
+
+  it("parses an image op and refuses an unknown key on it", () => {
+    expect(layer({ op: "image", file: "mainstreet.png", x: 0, y: 0 }).success).toBe(true);
+    expect(layer({ op: "image", file: "mainstreet.png", alpha: 1 }).success).toBe(false);
+  });
+
+  it("parses the plan's art.json sample and refuses an unknown key", () => {
+    const sample = {
+      schemaVersion: 1,
+      model: "klein4b",
+      seed: 1234567,
+      look: { prompt: "a tired office intern, standing, facing right", width: 512, height: 768 },
+      parts: [
+        {
+          id: "head",
+          joint: "head",
+          heightPx: 18,
+          indices: [2, 3, 4, 5, 12, 13],
+          prompt: "only the head",
+        },
+        { id: "hairwhip:0", heightPx: 30, prompt: "a hair whip" },
+      ],
+    };
+    expect(s.art.safeParse(sample).success).toBe(true);
+    expect(s.art.safeParse({ ...sample, style: "x", palette: "y" }).success).toBe(false);
+    expect(s.art.safeParse({ ...sample, parts: [{ id: "Head", prompt: "abc" }] }).success).toBe(
+      false,
+    );
+  });
+
+  it("lets an item sprite use an image instead of shapes, but not neither", () => {
+    const items = (sprite: Record<string, unknown>) =>
+      s.items.safeParse({ schemaVersion: 1, props: { crate: { sprite } } });
+    expect(
+      items({ size: [8, 8], shapes: [], palette: "items-a", image: "sprites/crate.png" }).success,
+    ).toBe(true);
+    expect(items({ size: [8, 8], shapes: [], palette: "items-a" }).success).toBe(false);
+  });
+});

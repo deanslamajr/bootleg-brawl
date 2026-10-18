@@ -9,6 +9,9 @@ import {
   formatIssues,
   migrateDoc,
   type ArenaFile,
+  type ArtFile,
+  type ArtStyleFile,
+  type SpriteMeta,
   type ContentType,
   type InterludeFile,
   type LayerFile,
@@ -17,6 +20,9 @@ import {
 } from "@bb/schema";
 import type { ModuleRegistry, RawContent, StageSource } from "@bb/engine";
 import { CONTENT, ROOT } from "./paths";
+import { decodeIndexedPngSync } from "../art/png-rgba";
+import { IndexedImage } from "../art/raster";
+import { emptySprites, type SpriteTable, type SpriteTables } from "../art/sprites";
 
 export interface LoadedDoc {
   file: string;
@@ -31,6 +37,8 @@ export interface LoadResult {
   docs: LoadedDoc[];
   /** Number of files that needed a migration. */
   migrated: { file: string; from: number; to: number }[];
+  /** Accepted generated PNGs and art.json files. Tools only: RawContent does not carry them. */
+  sprites: SpriteTables;
 }
 
 function listDirs(dir: string): string[] {
@@ -86,6 +94,45 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     return r.data as T;
   };
 
+  const sprites = emptySprites();
+  /** Reads every PNG in `dir` (and its `.gen.json` sidecar) into `table` under `prefix + name`. */
+  const readPngs = (dir: string, prefix: string, table: SpriteTable) => {
+    for (const f of listFiles(dir, ".png")) {
+      const path = join(dir, f);
+      const rel = relative(ROOT, path);
+      let png;
+      try {
+        png = decodeIndexedPngSync(new Uint8Array(readFileSync(path)));
+      } catch (e) {
+        errors.push(`${rel}: ${(e as Error).message}`);
+        continue;
+      }
+      const img = new IndexedImage(png.width, png.height);
+      img.data.set(png.data);
+      const meta = read<SpriteMeta>(
+        join(dir, f.replace(/\.png$/, ".gen.json")),
+        "sprite-meta",
+        true,
+      );
+      table[prefix + f] = {
+        img,
+        anchor: meta?.anchor ?? [png.width / 2, png.height / 2],
+        file: rel,
+        meta,
+        paletteSize: png.palette.length,
+      };
+    }
+    // A sidecar with no PNG (the look's record) still loads, so the scan covers its prompt.
+    for (const f of listFiles(dir, ".gen.json"))
+      if (!existsSync(join(dir, f.replace(/\.gen\.json$/, ".png"))))
+        read<SpriteMeta>(join(dir, f), "sprite-meta");
+  };
+  const readArt = (dir: string) => {
+    const art = read<ArtFile>(join(dir, "art.json"), "art", true);
+    // Keyed as "content/..." even when `root` is a copy, so the validator finds it by folder.
+    if (art) sprites.art[join("content", relative(root, dir))] = art;
+  };
+
   // The deny list is private and not in git (D61). Loading works without it; validate does not.
   const forbidden = read<{ terms: string[] }>(
     join(root, "forbidden-terms.json"),
@@ -117,6 +164,7 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     projectiles: {},
   };
   for (const f of listFiles(join(root, "items"), ".json")) {
+    if (f === "art.json") continue;
     const it = read<RawContent["items"]>(join(root, "items", f), "items");
     if (it)
       items = {
@@ -154,6 +202,10 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
         "overlays",
       );
       if (states && overlays) out[id] = { file, states, overlays };
+      readArt(base);
+      const table: SpriteTable = {};
+      readPngs(join(base, "sprites"), "sprites/", table);
+      if (Object.keys(table).length) sprites.actors[id] = table;
     }
     return out;
   };
@@ -190,10 +242,15 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     }
     const layers: Record<string, LayerFile> = {};
     for (const f of listFiles(join(base, "layers"), ".json")) {
+      if (f.endsWith(".gen.json")) continue;
       const l = read<LayerFile>(join(base, "layers", f), "layer");
       if (l) layers[l.id] = l;
     }
     stages[id] = { file, segments, layers };
+    readArt(base);
+    const table: SpriteTable = {};
+    readPngs(join(base, "layers"), "", table);
+    if (Object.keys(table).length) sprites.layers[id] = table;
   }
   const interludes: Record<string, InterludeFile> = {};
   for (const f of listFiles(join(root, "interludes"), ".json")) {
@@ -210,6 +267,11 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     const s = read<RawContent["sfx"]>(join(root, "sfx", f), "sfx");
     if (s) sfx = { schemaVersion: 1, sounds: { ...sfx.sounds, ...s.sounds } };
   }
+  readArt(join(root, "items"));
+  readPngs(join(root, "items", "sprites"), "sprites/", sprites.items);
+  sprites.style = read<ArtStyleFile>(join(root, "art", "style.json"), "art-style", true);
+  readArt(join(root, "art"));
+  readPngs(join(root, "art", "sprites"), "sprites/", sprites.shared);
   const settings = read<{ flags: string[] }>(join(root, "settings.json"), "settings", true);
   const campaign = read<RawContent["campaign"]>(join(root, "campaign.json"), "campaign");
   const roster = read<RawContent["roster"]>(join(root, "roster.json"), "roster");
@@ -240,5 +302,5 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     forbiddenTerms: forbidden?.terms ?? [],
     flags: settings?.flags ?? [],
   };
-  return { raw, errors, warnings, docs, migrated };
+  return { raw, errors, warnings, docs, migrated, sprites };
 }

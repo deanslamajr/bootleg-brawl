@@ -1,0 +1,38 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 3456789,
+ "parts": [
+  {
+   "id": "trash-can",
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    13
+   ],
+   "prompt": "a dented metal street trash can with a lid, alone"
+  },
+  {
+   "id": "crate",
+   "indices": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "prompt": "a wooden shipping crate with cross planks, alone"
+  },
+  {
+   "id": "fire-hydrant",
+   "indices": [
+    6,
+    7,
+    12,
+    13
+   ],
+   "prompt": "a short red fire hydrant, alone"
+  }
+ ]
+}

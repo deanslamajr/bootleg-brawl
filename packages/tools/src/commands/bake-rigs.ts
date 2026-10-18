@@ -9,7 +9,7 @@ import { bakeActor, bakeItems, posesUsed } from "../art/bake";
 import { GENERATED } from "../lib/paths";
 
 export function bakeRigsCommand(args: string[]): number {
-  const { raw, errors } = loadContent(createRegistry());
+  const { raw, errors, sprites } = loadContent(createRegistry());
   if (errors.length) {
     errors.forEach((e) => console.error(e));
     return 1;
@@ -48,7 +48,12 @@ export function bakeRigsCommand(args: string[]): number {
     if (raw.characters[id])
       for (const p of posesUsed(raw.templates["template:weapons"]!, raw.templates))
         if (!poses.includes(p)) poses.push(p);
-    const b = bakeActor(id, rig, src.overlays, poses.sort(), raw.palettes[palette] ?? []);
+    const table = sprites.actors[id] ?? {};
+    const bust = (src.file as { portraitImage?: string }).portraitImage;
+    const b = bakeActor(id, rig, src.overlays, poses.sort(), raw.palettes[palette] ?? [], {
+      sprites: table,
+      portrait: bust ? table[bust] : undefined,
+    });
     writeFileSync(join(out, `${id}.png`), b.png);
     writeFileSync(join(out, `${id}.sheet.json`), JSON.stringify(b.meta));
     for (const w of b.warnings) console.warn(`warning: ${w}`);
@@ -58,7 +63,7 @@ export function bakeRigsCommand(args: string[]): number {
     );
   }
   if (all || want.includes("items")) {
-    const items = bakeItems(raw);
+    const items = bakeItems(raw, sprites.items);
     writeFileSync(join(out, "items.png"), items.png);
     console.log(`baked items: ${Object.keys(items.meta.frames).length} frames`);
   }

@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:shoe-clan",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a ninja in a purple outfit with a black face mask, wearing a big white sneaker on his head as a hat, standing, facing right, full body",
+ "seed": 7809,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "211d87af-fd3a-443c-9bf0-0cb36cf53c50",
+ "imageUUID": "5ce7df29-3e76-4b1c-b64c-b20f3d0101c7",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:37.647Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:interns",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a tired office intern in a short-sleeved shirt and a lanyard, standing, facing right, full body",
+ "seed": 1234568,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "3e92472d-4d18-4d2c-a8a4-69e7131ad6d4",
+ "imageUUID": "c69474ce-985a-46a5-a1ca-51f1d8dd6c75",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:06.272Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

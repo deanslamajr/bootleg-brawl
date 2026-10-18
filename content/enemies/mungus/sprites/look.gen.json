@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:mungus",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a big bald brute with brown skin, a thick black beard, a white tank top, a tan belt and blue jeans, standing, facing right, full body",
+ "seed": 7505,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "a1b5b666-0c62-4d2d-9909-db7e47307403",
+ "imageUUID": "518d46b4-d63d-48f4-ba9f-84e5ec6028a8",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:26.623Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -363,6 +363,13 @@ export const layerOp: z.ZodType<LayerOp> = z.lazy(() =>
       vertical: z.boolean().default(false),
     }),
     z.strictObject({
+      op: z.literal("image"),
+      /** A generated indexed PNG in the stage palette, relative to the layers folder. */
+      file: z.string(),
+      x: z.number().default(0),
+      y: z.number().default(0),
+    }),
+    z.strictObject({
       op: z.literal("item"),
       /** Draw a prop or pickup sprite into the layer (background clutter). */
       item: z.string(),
@@ -440,6 +447,7 @@ export type LayerOp =
       color: string;
       vertical: boolean;
     }
+  | { op: "image"; file: string; x: number; y: number }
   | { op: "item"; item: string; x: number; y: number };
 
 export const layerFile = z.strictObject({

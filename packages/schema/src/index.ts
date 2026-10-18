@@ -18,6 +18,7 @@ import {
   trackFile,
 } from "./assets";
 import { statesFile } from "./states";
+import { artFile, artStyleFile, spriteMeta } from "./art";
 
 export * from "./common";
 export * from "./states";
@@ -28,6 +29,7 @@ export * from "./stage";
 export * from "./items";
 export * from "./interlude";
 export * from "./assets";
+export * from "./art";
 export * from "./forbidden";
 export * from "./migrations";
 
@@ -62,7 +64,10 @@ export type ContentType =
   | "sfx"
   | "forbidden-terms"
   | "settings"
-  | "manifest";
+  | "manifest"
+  | "art"
+  | "art-style"
+  | "sprite-meta";
 
 export interface ContentTypeInfo {
   current: number;
@@ -93,6 +98,9 @@ export const CONTENT_VERSIONS: Record<ContentType, ContentTypeInfo> = {
   "forbidden-terms": { current: 1, minimum: 1 },
   settings: { current: 1, minimum: 1 },
   manifest: { current: 1, minimum: 1 },
+  art: { current: 1, minimum: 1 },
+  "art-style": { current: 1, minimum: 1 },
+  "sprite-meta": { current: 1, minimum: 1 },
 };
 
 function fileSchemas(fragments: readonly SchemaFragments[]) {
@@ -144,6 +152,9 @@ export function buildSchemas(fragments: readonly SchemaFragments[] = []) {
     "forbidden-terms": forbiddenTermsFile,
     settings: settingsFile,
     manifest: manifestFile,
+    art: artFile,
+    "art-style": artStyleFile,
+    "sprite-meta": spriteMeta,
   };
   return schemas;
 }

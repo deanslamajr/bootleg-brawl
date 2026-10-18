@@ -7,6 +7,7 @@ import { resolveStates, type RawContent } from "@bb/engine";
 import { encodeIndexedPng } from "@bb/engine/render/png";
 import { IndexedImage } from "./raster";
 import { drawPose, drawShape } from "./sprite";
+import { blitSprite, type SpriteImage, type SpriteTable } from "./sprites";
 
 export interface FrameMeta {
   x: number;
@@ -140,23 +141,41 @@ function hasWeaponVariant(overlays: OverlaysFile, pose: string): boolean {
   );
 }
 
+/** The frame name a generated bust bakes to. */
+export const PORTRAIT_FRAME = "portrait";
+
 export function bakeActor(
   id: string,
   rig: RigFile,
   overlays: OverlaysFile,
   poses: string[],
   palette: string[],
+  opts: { sprites?: SpriteTable; portrait?: SpriteImage } = {},
 ): BakedSheet {
   const cells: Cell[] = [];
   const warnings: string[] = [];
   let overflow = 0;
+  if (opts.portrait) {
+    const img = opts.portrait.img;
+    // The head point sits so that the 48x48 portrait crop (head - [24, 18]) centers the bust.
+    cells.push({
+      key: PORTRAIT_FRAME,
+      img,
+      ax: Math.floor(img.width / 2),
+      ay: img.height - 1,
+      hand: [0, 0],
+      handAngle: 0,
+      head: [Math.floor(img.width / 2), Math.floor(img.height / 2) - 6],
+    });
+  }
   for (const pose of poses) {
+    if (pose === PORTRAIT_FRAME && opts.portrait) continue;
     if (!rig.poses[pose] && !overlays.uniqueFrames[pose])
       warnings.push(`${id}: pose ${pose} is not in rig ${rig.id} or uniqueFrames`);
     const variants: [string, boolean][] = [[pose, true]];
     if (hasWeaponVariant(overlays, pose)) variants.push([`${pose}~bare`, false]);
     for (const [key, impro] of variants) {
-      const f = drawPose(rig, overlays, pose, { impro });
+      const f = drawPose(rig, overlays, pose, { impro, sprites: opts.sprites });
       overflow += f.overflow;
       const t = trim(f.img, f.anchor);
       cells.push({
@@ -178,25 +197,40 @@ export function bakeActor(
   return { meta, png, warnings, overflow };
 }
 
+/** The generated image an item frame uses, if it has one (paths are relative to content/items). */
+export function itemImage(
+  sprite: ItemSprite,
+  frame: string | undefined,
+  images: SpriteTable,
+): SpriteImage | undefined {
+  const file = frame ? sprite.frameImages?.[frame] : sprite.image;
+  return file ? images[file] : undefined;
+}
+
 export function drawItem(
   sprite: ItemSprite,
   frame?: string,
+  images: SpriteTable = {},
 ): { img: IndexedImage; ax: number; ay: number } {
   const shapes = frame ? (sprite.frames[frame] ?? sprite.shapes) : sprite.shapes;
-  const W = sprite.size[0] * 2 + 16;
-  const H = sprite.size[1] * 2 + 16;
+  const image = itemImage(sprite, frame, images);
+  const W = Math.max(sprite.size[0], image?.img.width ?? 0) * 2 + 16;
+  const H = Math.max(sprite.size[1], image?.img.height ?? 0) * 2 + 16;
   const img = new IndexedImage(W, H);
   const ax = Math.floor(W / 2);
   const ay = H - 8;
-  for (const s of [...shapes].sort((a, b) => a.z - b.z)) drawShape(img, s, () => [ax, ay], 1, 0);
+  if (image) blitSprite(img, image, ax, ay, 0);
+  else
+    for (const s of [...shapes].sort((a, b) => a.z - b.z))
+      drawShape(img, s, () => [ax, ay], 1, 0, images);
   return { img, ax, ay };
 }
 
 /** The shared items atlas: props, pickups, weapons (in-hand) and projectiles. */
-export function bakeItems(raw: RawContent): BakedSheet {
+export function bakeItems(raw: RawContent, images: SpriteTable = {}): BakedSheet {
   const cells: Cell[] = [];
   const add = (key: string, sprite: ItemSprite, frame?: string) => {
-    const d = drawItem(sprite, frame);
+    const d = drawItem(sprite, frame, images);
     const t = trim(d.img, [d.ax, d.ay]);
     cells.push({
       key,
@@ -223,7 +257,11 @@ export function bakeItems(raw: RawContent): BakedSheet {
       seen.add(key);
       const sprite = table[id]!.sprite;
       add(key, sprite);
-      for (const f of Object.keys(sprite.frames).sort()) add(`${key}:${f}`, sprite, f);
+      const frames = new Set([
+        ...Object.keys(sprite.frames),
+        ...Object.keys(sprite.frameImages ?? {}),
+      ]);
+      for (const f of [...frames].sort()) add(`${key}:${f}`, sprite, f);
     }
   }
   // Items share one index space; each frame is colored with its own palette at load time.

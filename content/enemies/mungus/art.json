@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 7505,
+ "look": {
+  "prompt": "a big bald brute with brown skin, a thick black beard, a white tank top, a tan belt and blue jeans, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 27,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same brute: bald, with a thick black beard, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 31,
+   "widthPx": 28,
+   "indices": [
+    2,
+    3,
+    6,
+    7,
+    10,
+    11,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same brute: a broad chest in a white tank top with a tan belt, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

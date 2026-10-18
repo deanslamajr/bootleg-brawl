@@ -2,7 +2,7 @@
 // module availability, rig coverage, frame data sanity, palettes, team-ups, bootleg tells,
 // campaign reachability and the forbidden-terms scan. Output is one line per problem.
 
-import { ForbiddenScanner, stageFile, type StateDef } from "@bb/schema";
+import { ForbiddenScanner, stageFile, type ArtFile, type Shape, type StateDef } from "@bb/schema";
 import {
   compileContent,
   ContentError,
@@ -14,6 +14,13 @@ import { loadContent, type LoadResult } from "./content-fs";
 import { LayerPainter } from "../art/layers";
 import { drawPose } from "../art/sprite";
 import type { IndexedImage } from "../art/raster";
+import {
+  emptySprites,
+  maxIndex,
+  usedIndices,
+  type SpriteTable,
+  type SpriteTables,
+} from "../art/sprites";
 
 export interface ValidateReport {
   errors: string[];
@@ -58,9 +65,10 @@ const ACTOR_STATES = ["idle", "walk", "hurt", "fall", "down", "getup", "ko"];
 export function validateRaw(
   raw: RawContent,
   registry: ModuleRegistry,
-  load: Pick<LoadResult, "errors" | "warnings" | "docs">,
+  load: Pick<LoadResult, "errors" | "warnings" | "docs"> & { sprites?: SpriteTables },
   only?: string,
 ): ValidateReport {
+  const sprites = load.sprites ?? emptySprites();
   const errors = [...load.errors];
   const warnings = [...load.warnings];
   const E = (m: string) => errors.push(m);
@@ -251,7 +259,10 @@ export function validateRaw(
   const actors: [
     string,
     string,
-    { file: { rig: string }; overlays: RawContent["characters"][string]["overlays"] },
+    {
+      file: { rig: string; portraitImage?: string; card?: { portrait: string } };
+      overlays: RawContent["characters"][string]["overlays"];
+    },
   ][] = [
     ...Object.entries(raw.characters).map(
       ([id, a]) => [`content/characters/${id}`, id, a] as [string, string, typeof a],
@@ -263,11 +274,12 @@ export function validateRaw(
       ([id, a]) => [`content/bosses/${id}`, id, a] as [string, string, typeof a],
     ),
   ];
-  for (const [where, , a] of actors) {
+  for (const [where, id, a] of actors) {
     if (!inScope(where)) continue;
     const rig = raw.rigs[a.file.rig];
     if (!rig) continue;
-    const f = drawPose(rig, a.overlays, "idle:0");
+    checkActorSprites(where, a, sprites.actors[id] ?? {}, sprites.art[where], E);
+    const f = drawPose(rig, a.overlays, "idle:0", { sprites: sprites.actors[id] });
     if (f.overflow > 0)
       E(
         `${where}/overlays.json: ${f.overflow} px of the idle pose fall outside the ${rig.id} rig frame box (${rig.frameBox.join("x")})`,
@@ -288,6 +300,20 @@ export function validateRaw(
   }
 
   // ---- items
+  const itemSprites = [
+    ...Object.entries(raw.items.props),
+    ...Object.entries(raw.items.pickups),
+    ...Object.entries(raw.items.weapons),
+    ...Object.entries(raw.items.projectiles),
+  ];
+  for (const [id, it] of itemSprites) {
+    const files = [it.sprite.image, ...Object.values(it.sprite.frameImages ?? {})];
+    for (const file of files) {
+      if (!file) continue;
+      if (!sprites.items[file]) E(`content/items: item ${id} image ${file} is missing`);
+    }
+  }
+  checkSpriteFiles(sprites.items, sprites.art["content/items"], 16, "16-color item palette", E);
   for (const [id, p] of Object.entries(raw.items.props)) {
     palette(p.sprite.palette, `content/items: prop ${id}`);
     sfxRef(p.breakSfx, `content/items: prop ${id}`);
@@ -362,10 +388,30 @@ export function validateRaw(
       if (!registry.isOn("civilians"))
         E(`${where}/stage.json: civilian placements need the civilians module, which is off`);
     }
-    const painter = new LayerPainter(f.palette, raw.items, raw.palettes);
-    for (const [lid, layer] of Object.entries(st.layers))
+    const layerImages = sprites.layers[id] ?? {};
+    const painter = new LayerPainter(f.palette, raw.items, raw.palettes, {
+      layers: layerImages,
+      items: sprites.items,
+    });
+    for (const [lid, layer] of Object.entries(st.layers)) {
       painter.paintLayer(layer, `${where}/layers/${lid}.json`);
+      for (const op of layer.ops) {
+        if (op.op !== "image") continue;
+        const sp = layerImages[op.file];
+        if (sp && (sp.img.width > layer.width || sp.img.height > layer.height))
+          E(
+            `${where}/layers/${lid}.json: image ${op.file} is ${sp.img.width}x${sp.img.height}, larger than the ${layer.width}x${layer.height} layer`,
+          );
+      }
+    }
     for (const e of painter.errors) E(e);
+    checkSpriteFiles(
+      layerImages,
+      sprites.art[where],
+      f.palette.length + 1,
+      `${f.palette.length}-color stage palette`,
+      E,
+    );
     for (const sid of f.segments) {
       const seg = st.segments[sid];
       const sw = `${where}/segments/${sid}.json`;
@@ -547,6 +593,68 @@ export function validateRaw(
 export function validateRepo(registry: ModuleRegistry, only?: string): ValidateReport {
   const load = loadContent(registry);
   return validateRaw(load.raw, registry, load, only);
+}
+
+/** Every shape an actor draws: its layers and its unique frames. */
+function actorShapes(overlays: RawContent["characters"][string]["overlays"]): Shape[] {
+  return [
+    ...Object.values(overlays.layers).flat(),
+    ...Object.values(overlays.uniqueFrames).flatMap((u) => u.shapes),
+  ];
+}
+
+/** File name of a part's PNG: the part id with colons as hyphens. */
+export function partFile(partId: string): string {
+  return `${partId.replace(/:/g, "-")}.png`;
+}
+
+/**
+ * Generated PNGs in one folder: indices inside the palette, inside the part's allowed indices
+ * (plus the outline, index 1), and a sidecar for each.
+ */
+function checkSpriteFiles(
+  table: SpriteTable,
+  art: ArtFile | undefined,
+  paletteSize: number,
+  paletteName: string,
+  E: (m: string) => void,
+): void {
+  const parts = new Map((art?.parts ?? []).map((p) => [partFile(p.id), p]));
+  for (const [key, sp] of Object.entries(table)) {
+    const top = maxIndex(sp.img);
+    if (top >= paletteSize) E(`${sp.file}: index ${top} is outside the ${paletteName}`);
+    const part = parts.get(key.replace(/^sprites\//, ""));
+    if (part?.indices) {
+      const allowed = new Set([1, ...part.indices]);
+      const bad = usedIndices(sp.img).filter((i) => !allowed.has(i));
+      if (bad.length)
+        E(`${sp.file}: uses index ${bad.join(", ")}, which part ${part.id} does not allow`);
+    }
+    if (!sp.meta)
+      E(
+        `${sp.file}: generated image has no sidecar ${key.replace(/^.*\//, "").replace(/\.png$/, ".gen.json")}`,
+      );
+  }
+}
+
+function checkActorSprites(
+  where: string,
+  a: {
+    overlays: RawContent["characters"][string]["overlays"];
+    file: { portraitImage?: string; card?: { portrait: string } };
+  },
+  table: SpriteTable,
+  art: ArtFile | undefined,
+  E: (m: string) => void,
+): void {
+  for (const sh of actorShapes(a.overlays))
+    if (sh.shape === "sprite" && sh.file && !table[sh.file])
+      E(`${where}/overlays.json: sprite ${sh.file} is missing`);
+  const bust = a.file.portraitImage;
+  if (bust && !table[bust]) E(`${where}: portraitImage ${bust} is missing`);
+  if (a.file.card?.portrait === "portrait" && !bust)
+    E(`${where}/boss.json: card.portrait "portrait" needs portraitImage`);
+  checkSpriteFiles(table, art, 16, "16-color actor palette", E);
 }
 
 /** Stage rules the schema keeps for later modules. A module that declares one in its stage

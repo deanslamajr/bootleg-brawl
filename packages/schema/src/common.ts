@@ -73,10 +73,13 @@ export const command = z.enum([
 ]);
 export type Command = z.infer<typeof command>;
 
-export const shapeKind = z.enum(["ellipse", "rect", "poly", "line", "circle", "tri"]);
+export const shapeKind = z.enum(["ellipse", "rect", "poly", "line", "circle", "tri", "sprite"]);
 
-/** A vector primitive drawn by the bake step onto a rig pose. */
-export const shape = z.strictObject({
+/**
+ * A vector primitive drawn by the bake step onto a rig pose. A `sprite` shape blits a generated
+ * indexed PNG instead: `file` names it, `scale` and `flip` transform it, and `color` is unused.
+ */
+const shapeObject = z.strictObject({
   shape: shapeKind,
   /** Joint the shape is attached to. */
   at: z.string().default("hip"),
@@ -101,7 +104,28 @@ export const shape = z.strictObject({
   exceptStates: z.array(z.string()).optional(),
   /** Only drawn while the entity holds its improvised weapon (or only when it does not). */
   whenWeapon: z.boolean().optional(),
+  /** `sprite` only: the PNG, relative to the folder of the file that holds the shape. */
+  file: z.string().optional(),
+  /** `sprite` only: pixel scale of the PNG (1 when unset). The rig scale does not apply to it. */
+  scale: z.number().positive().optional(),
+  /** `sprite` only: mirror the PNG horizontally (false when unset). */
+  flip: z.boolean().optional(),
 });
+
+/**
+ * Sprite shapes need no color and draw no outline unless asked, because the converter already
+ * drew one. `scale` and `flip` stay optional so vector shapes parse exactly as before.
+ */
+export const shape = z.preprocess(
+  (v) =>
+    v && typeof v === "object" && (v as { shape?: unknown }).shape === "sprite"
+      ? { color: 1, outline: false, shade: false, ...(v as object) }
+      : v,
+  shapeObject.refine((s) => s.shape !== "sprite" || !!s.file, {
+    message: "a sprite shape needs a file",
+    path: ["file"],
+  }),
+);
 export type Shape = z.infer<typeof shape>;
 
 export const overlaysFile = z.strictObject({

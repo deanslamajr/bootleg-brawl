@@ -1,0 +1,54 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 8202,
+ "look": {
+  "prompt": "a stout villain in armor made from steel cheese graters, a round steel pot helmet with one spike on top and a dark visor slit, a red belt and a short purple cape, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 32,
+   "indices": [
+    4,
+    5,
+    6,
+    7,
+    12,
+    13,
+    14,
+    15
+   ],
+   "prompt": "only the head of the same villain: a round steel pot helmet with one spike on top and a dark visor slit, side view facing right, no neck, no shoulders",
+   "anchor": [
+    0.5,
+    0.62
+   ]
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 34,
+   "widthPx": 26,
+   "indices": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same villain in cheese-grater steel armor with a red belt and a short purple cape, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

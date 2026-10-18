@@ -1,0 +1,43 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 7303,
+ "look": {
+  "prompt": "an ordinary small-town resident with short brown hair, a plain orange t-shirt and blue jeans, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 21,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "prompt": "only the head of the same person with short brown hair, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 24,
+   "widthPx": 13,
+   "indices": [
+    6,
+    7,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same person in a plain orange t-shirt, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

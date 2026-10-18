@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:baron-von-scooter",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, an old rich tycoon with neat gray hair and a gray mustache, a purple suit jacket, a red cravat and black trousers, standing, facing right, full body",
+ "seed": 8102,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "b0eb3e7d-6087-4f9f-972c-dcb0a013e9c9",
+ "imageUUID": "de1af8d4-437c-4ef2-9886-5ada72712378",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T05:58:44.644Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}
