@@ -28,8 +28,9 @@
     "file": "sprites/head.png",
     "at": "neck",
     "alignTo": "head",
+    "dx": 4.5,
     "dy": 2.5,
-    "z": 50
+    "z": 25
    }
   ],
   "torso": [
