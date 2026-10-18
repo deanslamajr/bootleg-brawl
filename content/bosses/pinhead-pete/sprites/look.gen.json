@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:pinhead-pete",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a man-sized living bowling pin with long white arms and legs, two black dot eyes, a small black mouth and two red stripes around its neck, standing, facing right, full body",
+ "seed": 8606,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "e3451a73-3a3b-470b-8420-323e44316c1d",
+ "imageUUID": "01d43e00-4b22-43fd-8ba2-d9f2604a6fea",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:18:27.641Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

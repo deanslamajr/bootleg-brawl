@@ -107,8 +107,10 @@ describe("content", () => {
       tamper: (raw: typeof load.raw, sprites: ReturnType<typeof emptySprites>) => void,
     ) => {
       const raw = structuredClone(load.raw);
+      // The real parts, so wired overlays validate; each test swaps in its own images.
       const sprites = emptySprites();
       sprites.art = load.sprites.art;
+      for (const [id, t] of Object.entries(load.sprites.actors)) sprites.actors[id] = { ...t };
       tamper(raw, sprites);
       return validateRaw(raw, registry, { errors: [], warnings: [], docs: load.docs, sprites }, scope)
         .errors;
@@ -126,7 +128,7 @@ describe("content", () => {
     it("reports an index past the actor palette, a disallowed index and a missing sidecar", () => {
       const errors = run("enemies/interns", (raw, sp) => {
         raw.enemies["interns"]!.overlays.layers.head.push(head());
-        sp.actors["interns"] = { "sprites/head.png": png(4, 4, 16, F, false) };
+        sp.actors["interns"] = { ...sp.actors["interns"], "sprites/head.png": png(4, 4, 16, F, false) };
       });
       expect(errors).toEqual([
         `${F}: index 16 is outside the 16-color actor palette`,
@@ -135,18 +137,18 @@ describe("content", () => {
       ]);
       const ok = run("enemies/interns", (raw, sp) => {
         raw.enemies["interns"]!.overlays.layers.head.push(head());
-        sp.actors["interns"] = { "sprites/head.png": png(4, 4, 4, F) };
+        sp.actors["interns"] = { ...sp.actors["interns"], "sprites/head.png": png(4, 4, 4, F) };
       });
       expect(ok).toEqual([]);
       const bad = run("enemies/interns", (_raw, sp) => {
-        sp.actors["interns"] = { "sprites/head.png": png(4, 4, 9, F) };
+        sp.actors["interns"] = { ...sp.actors["interns"], "sprites/head.png": png(4, 4, 9, F) };
       });
       expect(bad).toEqual([`${F}: uses index 9, which part head does not allow`]);
     });
     it("rejects a sprite that pushes the idle pose out of the frame box", () => {
       const errors = run("enemies/interns", (raw, sp) => {
         raw.enemies["interns"]!.overlays.layers.head.push(head());
-        sp.actors["interns"] = { "sprites/head.png": png(60, 10, 4, F) };
+        sp.actors["interns"] = { ...sp.actors["interns"], "sprites/head.png": png(60, 10, 4, F) };
       });
       expect(errors.some((e) => e.includes("fall outside the medium rig frame box"))).toBe(true);
     });

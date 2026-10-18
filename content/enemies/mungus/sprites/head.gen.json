@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:mungus",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same brute: bald, with a thick black beard, side view facing right, no neck, no shoulders",
+ "seed": 7505,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "9ae33067-0d99-445c-acac-c92086878a5a",
+ "imageUUID": "364c0868-5a99-4562-ac0e-a5dc69c7dac8",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:19:44.821Z",
+ "anchor": [
+  11.5,
+  13.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e923e5",
+  "heightPx": 27,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   68,
+   55,
+   350,
+   407
+  ],
+  "factor": 16,
+  "size": [
+   23,
+   27
+  ]
+ }
+}

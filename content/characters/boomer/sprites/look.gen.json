@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "character:boomer",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a round, hairy father with a thin brown comb-over and a bushy brown mustache, a short gold satin bathrobe hanging open over a big hairy belly, red boxer shorts with white hearts, fuzzy brown slippers, a red rose clenched in his teeth, sweat stains and a smoldering look, standing, facing right, full body",
+ "seed": 9209,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "392b268a-e0ae-4b28-81a9-78242c23c151",
+ "imageUUID": "b6e5a36a-7b89-46a6-addb-6ac38cb1fb9d",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:24:54.723Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

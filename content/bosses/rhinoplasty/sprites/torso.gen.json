@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:rhinoplasty",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same brute in a brown leather vest over gray skin, side view facing right, no head, no arms, no legs",
+ "seed": 8809,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "21d7e6ff-5f00-4caa-841e-dcd16a7ee5cf",
+ "imageUUID": "784edde9-e610-431a-afeb-0f256f30555c",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:21:15.322Z",
+ "anchor": [
+  14.5,
+  28.05
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e714bb",
+  "heightPx": 33,
+  "widthPx": 29,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   108,
+   118,
+   242,
+   309
+  ],
+  "factor": 8,
+  "size": [
+   29,
+   33
+  ]
+ }
+}

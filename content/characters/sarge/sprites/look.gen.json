@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "character:sarge",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a tall, curvy, muscular mother with a towering cloud of bubblegum-pink curls, a shiny black high-cut aerobics leotard with a white stripe, a white sweatband, slouchy white leg warmers and white high-top sneakers, sweat on her brow, smeared mascara and a sly smirk, standing, facing right, full body",
+ "seed": 9109,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "76b0aee7-2f20-4710-8e18-76590f07a06a",
+ "imageUUID": "dd070297-4022-4c1d-9daa-bbe8dcd6f89a",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:23:40.781Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

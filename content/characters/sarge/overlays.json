@@ -13,93 +13,55 @@
   "legs": 2,
   "feet": 8,
   "arms": 2,
-  "hide": [],
+  "hide": [
+   "head",
+   "face",
+   "torso"
+  ],
   "headW": 15,
   "headH": 16
  },
  "layers": {
   "head": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dx": -1,
-    "dy": -21,
-    "w": 17,
-    "h": 38,
-    "color": 4,
-    "z": 49,
-    "exceptStates": [
-     "hairwhip",
-     "hairspin",
-     "down",
-     "ko",
-     "sleep",
-     "getup:0"
-    ]
-   },
-   {
-    "shape": "ellipse",
-    "at": "head",
-    "dx": -1,
-    "dy": -4,
-    "w": 17,
-    "h": 7,
-    "color": 4,
-    "z": 53,
-    "shade": false,
-    "exceptStates": [
-     "hairwhip",
-     "hairspin",
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "ellipse",
-    "at": "head",
-    "dx": -21,
-    "dy": 1,
-    "w": 38,
-    "h": 17,
-    "color": 4,
-    "z": 49,
-    "states": [
-     "down",
-     "ko",
-     "sleep",
-     "getup:0"
-    ]
+    "dy": 4,
+    "z": 50
    }
   ],
   "torso": [
    {
+    "shape": "sprite",
+    "file": "sprites/torso.png",
+    "at": "hip",
+    "alignTo": "neck",
+    "z": 30
+   },
+   {
     "shape": "poly",
     "at": "hip",
     "points": [
      [
-      -7,
-      -6
+      -5,
+      -5
      ],
      [
-      7,
-      -6
+      5,
+      -5
      ],
      [
-      10,
-      10
+      4,
+      2
      ],
      [
-      -10,
-      10
+      0,
+      4
+     ],
+     [
+      -4,
+      2
      ]
     ],
     "color": 6,
@@ -107,15 +69,8 @@
     "exceptStates": [
      "down",
      "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
      "sleep",
-     "getup:0",
-     "camFly"
+     "getup:0"
     ]
    },
    {
@@ -123,64 +78,59 @@
     "at": "hip",
     "points": [
      [
-      -6,
-      -4
+      -5,
+      -5
      ],
      [
-      6,
-      -4
+      5,
+      -5
      ],
      [
-      12,
-      6
+      4,
+      2
      ],
      [
-      -12,
-      6
+      0,
+      4
+     ],
+     [
+      -4,
+      2
      ]
     ],
     "color": 6,
     "z": 45,
+    "rot": 64,
     "states": [
      "down",
      "ko",
      "sleep",
      "getup:0"
-    ],
-    "rot": 64
-   },
-   {
-    "shape": "circle",
-    "at": "neck",
-    "dx": -2,
-    "dy": 2,
-    "r": 1.4,
-    "color": 10,
-    "z": 58,
-    "shade": false
-   },
-   {
-    "shape": "circle",
-    "at": "neck",
-    "dx": 0,
-    "dy": 3,
-    "r": 1.4,
-    "color": 10,
-    "z": 58,
-    "shade": false
-   },
-   {
-    "shape": "circle",
-    "at": "neck",
-    "dx": 2,
-    "dy": 2,
-    "r": 1.4,
-    "color": 10,
-    "z": 58,
-    "shade": false
+    ]
    }
   ],
-  "legs": [],
+  "legs": [
+   {
+    "shape": "rect",
+    "at": "fB",
+    "alignTo": "kB",
+    "dx": -3,
+    "w": 6,
+    "h": 5,
+    "color": 9,
+    "z": 21
+   },
+   {
+    "shape": "rect",
+    "at": "fF",
+    "alignTo": "kF",
+    "dx": -3,
+    "w": 6,
+    "h": 5,
+    "color": 8,
+    "z": 41
+   }
+  ],
   "weapon": [],
   "fx": []
  },

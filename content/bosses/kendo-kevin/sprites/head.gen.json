@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:kendo-kevin",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same fighter in a dark blue kendo helmet with a metal face grill, side view facing right, no neck, no shoulders",
+ "seed": 8405,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "f4a1a513-d36a-4101-81c7-53d8c8aac77c",
+ "imageUUID": "c351691c-fffa-4a81-8171-b578607e469e",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:21:42.258Z",
+ "anchor": [
+  10.5,
+  11.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f727b8",
+  "heightPx": 23,
+  "indices": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   12,
+   13,
+   14,
+   15
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   105,
+   75,
+   298,
+   332
+  ],
+  "factor": 15,
+  "size": [
+   21,
+   23
+  ]
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "character:brat",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same boy in a dented red football helmet with a white stripe and a wild gap-toothed grin, side view facing right, no neck, no shoulders",
+ "seed": 9305,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "2487f327-498e-4a58-852b-8f63471fb14d",
+ "imageUUID": "b46ea088-0779-4a6f-a7d9-4cc0717de70a",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T17:44:06.993Z",
+ "anchor": [
+  9.5,
+  10.450000000000001
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f32aa7",
+  "heightPx": 19,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   62,
+   41,
+   374,
+   366
+  ],
+  "factor": 21,
+  "size": [
+   19,
+   19
+  ]
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:sid",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same punk with the short green mohawk, side view facing right, no neck, no shoulders",
+ "seed": 7909,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "a5b4c6c6-bea6-47f1-afe7-541b4e4e125d",
+ "imageUUID": "a4fb7692-2b49-4bc2-9492-5db545928b4c",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:20:20.328Z",
+ "anchor": [
+  9.5,
+  14.879999999999999
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f324db",
+  "heightPx": 24,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   107,
+   32,
+   312,
+   397
+  ],
+  "factor": 18,
+  "size": [
+   19,
+   24
+  ]
+ }
+}

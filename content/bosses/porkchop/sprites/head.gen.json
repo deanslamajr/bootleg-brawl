@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:porkchop",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same brute: a pink pig head with a big round snout and small pointed ears on a smooth bald head, side view facing right, no neck, no shoulders",
+ "seed": 8707,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "a1204043-6bae-4df7-b829-d4d787bfc594",
+ "imageUUID": "62bd98a4-225c-420d-981e-6249d5a21ab1",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:23:43.788Z",
+ "anchor": [
+  17.5,
+  15.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e60ab1",
+  "heightPx": 31,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   82,
+   69,
+   377,
+   330
+  ],
+  "factor": 11,
+  "size": [
+   35,
+   31
+  ]
+ }
+}

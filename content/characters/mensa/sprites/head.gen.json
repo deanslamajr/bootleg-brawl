@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "character:mensa",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same girl with a big black welding mask flipped up on top of her head, frizzy dark brown hair and soot smudges on her face, side view facing right, no neck, no shoulders",
+ "seed": 9411,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "29e3bc8c-d7cc-4f6b-93f1-bd19bfbf5427",
+ "imageUUID": "11bf38ab-1a69-4490-bbb1-46de9caf9a6e",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T17:44:59.558Z",
+ "anchor": [
+  7.5,
+  10
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#fb128c",
+  "heightPx": 20,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   56,
+   21,
+   366,
+   490
+  ],
+  "factor": 27,
+  "size": [
+   15,
+   20
+  ]
+ }
+}

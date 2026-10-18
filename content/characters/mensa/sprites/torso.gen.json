@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "character:mensa",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same girl in a heavy brown leather apron over a blue striped shirt, side view facing right, no head, no arms, no legs",
+ "seed": 9413,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "6adc12fe-d951-4e20-891c-9a29fe38f2d3",
+ "imageUUID": "68b75415-a8bd-4408-a41d-2442732a192e",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:45:25.740Z",
+ "anchor": [
+  5.5,
+  12.75
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#fb1080",
+  "heightPx": 15,
+  "widthPx": 11,
+  "indices": [
+   6,
+   7,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   149,
+   178,
+   200,
+   316
+  ],
+  "factor": 22,
+  "size": [
+   11,
+   15
+  ]
+ }
+}

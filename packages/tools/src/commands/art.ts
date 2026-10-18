@@ -448,6 +448,29 @@ function readCandidates(dir: string): IndexedImage[] {
     });
 }
 
+/**
+ * Converts every saved raw-n.png in `dir` again with the current recipe and rewrites its
+ * cand-n.png, its sidecar's anchor and conversion, and the sheet. No network call, no charge.
+ */
+export function reconvertDir(dir: string, recipe: PixelizeRecipe, palette: string[]): number {
+  if (!existsSync(dir)) return 0;
+  let n = 0;
+  for (const f of readdirSync(dir).filter((f) => /^raw-\d+\.png$/.test(f))) {
+    const k = f.match(/\d+/)![0];
+    const metaPath = join(dir, `cand-${k}.json`);
+    if (!existsSync(metaPath)) continue;
+    const meta = JSON.parse(readFileSync(metaPath, "utf8")) as SpriteMeta;
+    const px = pixelize(decodeRgbaPng(new Uint8Array(readFileSync(join(dir, f)))), recipe, palette);
+    writeIndexed(join(dir, `cand-${k}.png`), px.img, palette);
+    meta.anchor = px.anchor;
+    meta.conversion = px.conversion;
+    writeFileSync(metaPath, JSON.stringify(meta, null, 1) + "\n");
+    n++;
+  }
+  sheet(join(dir, "sheet.png"), readCandidates(dir), palette);
+  return n;
+}
+
 function sheet(path: string, images: IndexedImage[], palette: string[]): boolean {
   if (!images.length) return false;
   contactSheet(path, images, palette, 3, Math.min(8, images.length));
@@ -525,9 +548,22 @@ async function gen(args: string[], fetchImpl?: typeof fetch): Promise<number> {
   const name = flags.rest[0];
   if (!name)
     throw new ArtError([
-      "art: usage: art gen <target> [--part <id>] [--candidates 2] [--model m] [--dry-run]",
+      "art: usage: art gen <target> [--part <id>] [--candidates 2] [--model m] [--dry-run|--reconvert]",
     ]);
   const t = parseTarget(name);
+  if (flags.reconvert) {
+    // After a change to heightPx, indices or conversion: the saved images, converted again.
+    const ctx = loadCtx();
+    for (const plan of planTarget(ctx, t, flags)) {
+      if (!plan.recipe) continue;
+      const dir = join(t.out, plan.part);
+      const n = reconvertDir(dir, plan.recipe, plan.palette);
+      console.log(
+        `art: ${t.name} ${plan.part}: converted ${n} candidate(s) again, sheet ${relative(ROOT, join(dir, "sheet.png"))}`,
+      );
+    }
+    return 0;
+  }
   const apiKey = requireKey(flags);
   const ctx = loadCtx();
   const run = makeRun(flags, t.phase, apiKey, ctx, fetchImpl);
@@ -1014,6 +1050,7 @@ const USAGE = [
   "usage: pnpm tools art <subcommand>",
   "  probe [--dry-run|--reconvert]                       the fixed Phase 0 probe set",
   "  gen <target> [--part id] [--candidates 2] [--model klein4b|schnell|dev|kontext] [--dry-run]",
+  "  gen <target> [--part id] --reconvert                convert the saved candidates again, free",
   "  accept <target> <part> <n>                          copy candidate n into content/",
   "  sheet <target> [--baked]                            contact sheets at 3x",
   "  ledger                                              spend per phase and the remaining budget",

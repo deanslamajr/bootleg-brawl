@@ -1,0 +1,49 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 9411,
+ "look": {
+  "prompt": "a small girl with a big black welding mask flipped up on top of her head, frizzy dark brown hair poking out, soot smudges on her face, a heavy brown leather apron over a blue striped shirt, oversized leather gloves, scuffed red sneakers and a fierce grin, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 20,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "prompt": "only the head of the same girl with a big black welding mask flipped up on top of her head, frizzy dark brown hair and soot smudges on her face, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 15,
+   "widthPx": 11,
+   "indices": [
+    6,
+    7,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same girl in a heavy brown leather apron over a blue striped shirt, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

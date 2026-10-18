@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:hugh-mungus",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same giant: a huge chest in a white tank top with a small red patch, side view facing right, no head, no arms, no legs",
+ "seed": 8303,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "34602d4d-8286-4470-90e3-a4c1d649b4d5",
+ "imageUUID": "ebd81c97-a197-4607-91e6-63c216d763ae",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:20:55.956Z",
+ "anchor": [
+  19,
+  33.15
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#fb1ec5",
+  "heightPx": 39,
+  "widthPx": 38,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   10,
+   11,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   75,
+   94,
+   309,
+   417
+  ],
+  "factor": 8,
+  "size": [
+   38,
+   39
+  ]
+ }
+}

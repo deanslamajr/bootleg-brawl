@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:lickspittle",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a thin, nervous office assistant with neatly parted brown hair and bright eyes, a white shirt, a gray vest and a blue tie, standing stiffly, facing right, full body",
+ "seed": 8506,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "ddfcf61c-f9fb-42ef-a965-0a8cfc9f9b70",
+ "imageUUID": "8bcb0ad5-ed54-4d97-b7da-1b54394cc544",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:18:24.612Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:bystanders",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same person in a plain orange t-shirt, side view facing right, no head, no arms, no legs",
+ "seed": 7304,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "6889799e-44dc-4b59-b121-065b6d82f3e9",
+ "imageUUID": "572098f5-d30c-46bd-bfd1-ef5575d4245b",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:19:28.777Z",
+ "anchor": [
+  6.5,
+  20.4
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f125de",
+  "heightPx": 24,
+  "widthPx": 13,
+  "indices": [
+   6,
+   7,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   154,
+   196,
+   182,
+   288
+  ],
+  "factor": 13,
+  "size": [
+   13,
+   24
+  ]
+ }
+}

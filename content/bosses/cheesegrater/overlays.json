@@ -14,188 +14,27 @@
   "feet": 13,
   "arms": 2,
   "hide": [
-   "face"
+   "face",
+   "head",
+   "torso"
   ]
  },
  "layers": {
   "head": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "w": 16,
-    "h": 16,
-    "color": 14,
-    "z": 51
-   },
-   {
-    "shape": "rect",
-    "at": "head",
-    "dx": 3,
-    "dy": -1,
-    "w": 9,
-    "h": 3,
-    "color": 13,
-    "z": 52,
-    "outline": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "circle",
-    "at": "head",
-    "dx": -3,
-    "dy": -4,
-    "r": 0.9,
-    "color": 15,
-    "z": 52,
-    "outline": false
-   },
-   {
-    "shape": "circle",
-    "at": "head",
-    "dx": 0,
-    "dy": -6,
-    "r": 0.9,
-    "color": 15,
-    "z": 52,
-    "outline": false
-   },
-   {
-    "shape": "circle",
-    "at": "head",
-    "dx": -4,
-    "dy": 1,
-    "r": 0.9,
-    "color": 15,
-    "z": 52,
-    "outline": false
-   },
-   {
-    "shape": "tri",
-    "at": "head",
-    "dx": 0,
-    "dy": -10,
-    "w": 4,
-    "h": 8,
-    "color": 14,
     "z": 50
    }
   ],
   "torso": [
    {
-    "shape": "poly",
-    "at": "neck",
-    "dx": -4,
-    "dy": 2,
-    "points": [
-     [
-      0,
-      0
-     ],
-     [
-      -10,
-      28
-     ],
-     [
-      4,
-      30
-     ],
-     [
-      6,
-      4
-     ]
-    ],
-    "color": 8,
-    "z": 5,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "tri",
-    "at": "sF",
-    "dx": 0,
-    "dy": -4,
-    "w": 6,
-    "h": 9,
-    "color": 14,
-    "z": 61
-   },
-   {
-    "shape": "tri",
-    "at": "sB",
-    "dx": 0,
-    "dy": -4,
-    "w": 6,
-    "h": 9,
-    "color": 15,
-    "z": 11
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dy": 8,
-    "w": 13,
-    "h": 10,
-    "color": 6,
-    "z": 31,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dy": 8,
-    "w": 13,
-    "h": 2,
-    "color": 10,
-    "z": 32,
-    "outline": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "shape": "sprite",
+    "file": "sprites/torso.png",
+    "at": "hip",
+    "alignTo": "neck",
+    "z": 30
    }
   ],
   "legs": [],

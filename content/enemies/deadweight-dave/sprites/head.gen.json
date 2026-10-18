@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:deadweight-dave",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same punk with the tall green mohawk, side view facing right, no neck, no shoulders",
+ "seed": 7404,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "3792fbd4-7174-4244-8298-5790540aad94",
+ "imageUUID": "f104293c-c02f-4aa6-8b92-d12ecccdf870",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:19:34.765Z",
+ "anchor": [
+  7.5,
+  14.879999999999999
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f315a1",
+  "heightPx": 24,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   136,
+   31,
+   241,
+   413
+  ],
+  "factor": 18,
+  "size": [
+   15,
+   24
+  ]
+ }
+}

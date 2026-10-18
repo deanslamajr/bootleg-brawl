@@ -13,27 +13,18 @@
   "legs": 8,
   "feet": 13,
   "arms": 2,
-  "hide": []
+  "hide": [
+   "head",
+   "face"
+  ]
  },
  "layers": {
   "head": [
    {
-    "shape": "rect",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dy": -8,
-    "w": 12,
-    "h": 8,
-    "color": 6,
-    "z": 53
-   },
-   {
-    "shape": "ellipse",
-    "at": "head",
-    "dy": -12,
-    "w": 16,
-    "h": 7,
-    "color": 6,
-    "z": 54
+    "z": 50
    }
   ],
   "torso": [

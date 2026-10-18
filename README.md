@@ -95,7 +95,7 @@ Generated art is optional. A `sprite` shape in `overlays.json` places a generate
 
 1. Run `pnpm tools art gen <target> --dry-run` and read every prompt it prints.
 2. Run `pnpm tools art gen <target>`. It writes candidates and a contact sheet to `generated/art/`, never to `content/`.
-3. Look at the contact sheet, then run `pnpm tools art accept <target> <part> <n>`. This copies the candidate and its `.gen.json` sidecar into `content/`.
+3. Look at the contact sheet, then run `pnpm tools art accept <target> <part> <n>`. This copies the candidate and its `.gen.json` sidecar into `content/`. If a part comes out at the wrong size, change `heightPx` or `widthPx` in `art.json` and run `pnpm tools art gen <target> --part <id> --reconvert`. It converts the saved images again with no request and no charge.
 4. Add the `sprite` shape, the `image` op or the `image` field that the command prints, then run `pnpm tools validate`.
 
 The tool reads `RUNWARE_API_KEY` from the environment or from `.env` at the repository root. Every charged image adds a line to `content/art/ledger.jsonl`, which git tracks. If a request would pass the $5.00 cap or its phase cap, the tool refuses it. `pnpm tools art ledger` prints the spend.

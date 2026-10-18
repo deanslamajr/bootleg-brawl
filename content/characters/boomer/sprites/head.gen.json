@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "character:boomer",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same man with a thin brown comb-over, a thick brown beard and a red rose clenched in his teeth, side view facing right, no neck, no shoulders",
+ "seed": 9211,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "1e189b81-0353-4999-a6f6-54399f520bab",
+ "imageUUID": "79f3d23a-1d8c-4f86-8074-e29fbcf2a884",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:43:13.942Z",
+ "anchor": [
+  13,
+  15.400000000000002
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f72295",
+  "heightPx": 28,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   91,
+   45,
+   373,
+   404
+  ],
+  "factor": 15,
+  "size": [
+   26,
+   28
+  ]
+ }
+}

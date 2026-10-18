@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:cheesegrater",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same villain in cheese-grater steel armor with a red belt and a short purple cape, side view facing right, no head, no arms, no legs",
+ "seed": 8203,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "9f902aef-5591-4777-baad-8465d8d0ef18",
+ "imageUUID": "d629b0fb-f7b2-4965-9ae5-fa504cdc9624",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:20:45.982Z",
+ "anchor": [
+  13,
+  28.9
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#fc28bd",
+  "heightPx": 34,
+  "widthPx": 26,
+  "indices": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   13,
+   14,
+   15
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   95,
+   71,
+   269,
+   386
+  ],
+  "factor": 11,
+  "size": [
+   26,
+   34
+  ]
+ }
+}

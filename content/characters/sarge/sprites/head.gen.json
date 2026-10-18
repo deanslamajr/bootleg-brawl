@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "character:sarge",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same woman with her towering cloud of bubblegum-pink curls, a white sweatband, smeared mascara and a sly smirk, side view facing right, no neck, no shoulders",
+ "seed": 9108,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "86a127f3-5705-49ec-a2dc-324b0a612a7f",
+ "imageUUID": "6dfb6632-e29e-4aaf-9bcd-40e1a435eb4a",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:42:16.789Z",
+ "anchor": [
+  20,
+  35.2
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f931a5",
+  "heightPx": 44,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   57,
+   41,
+   371,
+   410
+  ],
+  "factor": 9,
+  "size": [
+   40,
+   44
+  ]
+ }
+}

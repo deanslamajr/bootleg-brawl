@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:mungus",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same brute: a broad chest in a white tank top with a tan belt, side view facing right, no head, no arms, no legs",
+ "seed": 7505,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "9c922555-ff9b-4c41-a11a-d9880bc99f30",
+ "imageUUID": "a9422a88-c045-45b2-ad49-8fdf791e8c7d",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:19:49.745Z",
+ "anchor": [
+  14,
+  26.349999999999998
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e920eb",
+  "heightPx": 31,
+  "widthPx": 28,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   10,
+   11,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   83,
+   137,
+   299,
+   374
+  ],
+  "factor": 11,
+  "size": [
+   28,
+   31
+  ]
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:sid",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same punk in a black leather vest over a red shirt, side view facing right, no head, no arms, no legs",
+ "seed": 7909,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "66d0464f-ab28-4a48-bbf9-114bbfccc0df",
+ "imageUUID": "7fb5acda-2518-475a-b570-cdd2f0babc61",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:20:25.194Z",
+ "anchor": [
+  6.5,
+  20.4
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ef2dde",
+  "heightPx": 24,
+  "widthPx": 13,
+  "indices": [
+   6,
+   7,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   118,
+   99,
+   222,
+   350
+  ],
+  "factor": 15,
+  "size": [
+   13,
+   24
+  ]
+ }
+}

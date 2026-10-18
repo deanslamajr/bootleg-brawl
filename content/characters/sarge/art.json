@@ -1,0 +1,51 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 9108,
+ "look": {
+  "prompt": "a tall, curvy, muscular mother with a towering cloud of bubblegum-pink curls, a shiny black high-cut aerobics leotard with a white stripe, a white sweatband, slouchy white leg warmers and white high-top sneakers, sweat on her brow, smeared mascara and a sly smirk, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 44,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.8
+   ],
+   "prompt": "only the head of the same woman with her towering cloud of bubblegum-pink curls, a white sweatband, smeared mascara and a sly smirk, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 23,
+   "widthPx": 15,
+   "indices": [
+    2,
+    3,
+    6,
+    7,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.8
+   ],
+   "prompt": "only the torso of the same woman in a shiny black high-cut aerobics leotard with a white stripe, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

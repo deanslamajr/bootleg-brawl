@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:lickspittle",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same assistant with neatly parted brown hair, side view facing right, no neck, no shoulders",
+ "seed": 8505,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "36372f3e-83d8-4abc-b887-1f89738d7d56",
+ "imageUUID": "4878fc5f-7095-4be6-9995-9ba996118e90",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:22:21.849Z",
+ "anchor": [
+  8,
+  9.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ef22be",
+  "heightPx": 19,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   85,
+   52,
+   316,
+   381
+  ],
+  "factor": 22,
+  "size": [
+   16,
+   19
+  ]
+ }
+}

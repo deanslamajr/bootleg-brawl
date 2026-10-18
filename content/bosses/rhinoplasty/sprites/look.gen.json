@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:rhinoplasty",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a gray rhino-faced brute with one big horn on a bare gray head, a brown leather vest and green trousers, standing, facing right, full body",
+ "seed": 8809,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "94358fc8-6366-499f-804e-db1182ca14a3",
+ "imageUUID": "b37e44a5-eb1f-4d60-b114-c239939334dc",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:18:34.242Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

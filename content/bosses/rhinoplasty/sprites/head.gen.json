@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:rhinoplasty",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same brute: a gray rhino head with one big horn on a bare gray head, side view facing right, no neck, no shoulders",
+ "seed": 8808,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "62fb48cf-9698-4be4-a20b-2e6be559c2cf",
+ "imageUUID": "982c7c09-4f86-412d-8101-399a93b5eb08",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:21:09.973Z",
+ "anchor": [
+  20,
+  16.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f426b2",
+  "heightPx": 33,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   60,
+   84,
+   401,
+   327
+  ],
+  "factor": 10,
+  "size": [
+   40,
+   33
+  ]
+ }
+}

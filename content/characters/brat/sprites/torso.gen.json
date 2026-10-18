@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "character:brat",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same boy in cardboard armor held on with silver tape, side view facing right, no head, no arms, no legs",
+ "seed": 9303,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "8b6e9dd8-a9da-4ac5-adcc-b971f17e0388",
+ "imageUUID": "f9231e43-1fd2-4f84-a11b-6e7e13d9ca7b",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T17:44:33.626Z",
+ "anchor": [
+  5.5,
+  12.75
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ee2ea6",
+  "heightPx": 15,
+  "widthPx": 11,
+  "indices": [
+   6,
+   7,
+   12,
+   13,
+   14,
+   15
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   130,
+   208,
+   221,
+   268
+  ],
+  "factor": 20,
+  "size": [
+   11,
+   15
+  ]
+ }
+}

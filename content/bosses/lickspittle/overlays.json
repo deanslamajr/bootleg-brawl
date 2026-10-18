@@ -13,45 +13,18 @@
   "legs": 8,
   "feet": 13,
   "arms": 2,
-  "hide": []
+  "hide": [
+   "head",
+   "face"
+  ]
  },
  "layers": {
   "head": [
    {
-    "shape": "line",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dx": -5,
-    "dy": -6,
-    "w": 10,
-    "r": 0.6,
-    "rot": 8,
-    "color": 4,
-    "z": 53,
-    "outline": false
-   },
-   {
-    "shape": "line",
-    "at": "head",
-    "dx": -5,
-    "dy": -4,
-    "w": 10,
-    "r": 0.6,
-    "rot": 8,
-    "color": 4,
-    "z": 53,
-    "outline": false
-   },
-   {
-    "shape": "ellipse",
-    "at": "head",
-    "dx": 5,
-    "dy": 2,
-    "w": 5,
-    "h": 6,
-    "color": 3,
-    "z": 52,
-    "outline": false,
-    "shade": false
+    "z": 50
    }
   ],
   "torso": [

@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:interns",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same intern: a short-sleeved shirt with a lanyard and a badge, side view facing right, no head, no arms, no legs",
+ "seed": 1234568,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "c71ac4d3-53d9-414c-b8b9-91d010284c77",
+ "imageUUID": "29603649-82eb-471e-8320-768c4bc2188a",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:19:03.721Z",
+ "anchor": [
+  6.5,
+  20.4
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#d51dd7",
+  "heightPx": 24,
+  "widthPx": 13,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   145,
+   205,
+   209,
+   283
+  ],
+  "factor": 12,
+  "size": [
+   13,
+   24
+  ]
+ }
+}

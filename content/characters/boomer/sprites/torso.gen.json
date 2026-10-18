@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "target": "character:boomer",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the round torso of the same man in a short gold satin bathrobe hanging open over a big hairy belly and red boxer shorts with white hearts, side view facing right, no head, no arms, no legs",
+ "seed": 9211,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "65859eb8-b204-4747-9941-61818ce29381",
+ "imageUUID": "0e677f04-84eb-4760-be4d-09300b4f8d01",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:43:40.341Z",
+ "anchor": [
+  15,
+  23.8
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#fe2599",
+  "heightPx": 28,
+  "widthPx": 30,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   113,
+   61,
+   260,
+   395
+  ],
+  "factor": 9,
+  "size": [
+   30,
+   28
+  ]
+ }
+}

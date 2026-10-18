@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:shoe-clan",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same ninja: a black face mask and a big white sneaker worn as a hat, side view facing right, no neck, no shoulders",
+ "seed": 7809,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "7cdf71f1-2780-4b78-8c34-9b7826dcf10d",
+ "imageUUID": "5a9222cc-c7e7-40d6-85e5-3fcf0f343eb4",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:20:09.520Z",
+ "anchor": [
+  14.5,
+  14.399999999999999
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f129c3",
+  "heightPx": 24,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   75,
+   60,
+   391,
+   317
+  ],
+  "factor": 14,
+  "size": [
+   29,
+   24
+  ]
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:buffet-bob",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same cook wearing the tall white chef hat, side view facing right, no neck, no shoulders",
+ "seed": 7203,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "a282a6cb-2ca2-40b2-a3a5-348d56380110",
+ "imageUUID": "89be6441-1c7f-4b76-aec2-4af89ed32bd4",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:19:14.357Z",
+ "anchor": [
+  12,
+  22.44
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ea16df",
+  "heightPx": 34,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   97,
+   35,
+   297,
+   432
+  ],
+  "factor": 13,
+  "size": [
+   24,
+   34
+  ]
+ }
+}

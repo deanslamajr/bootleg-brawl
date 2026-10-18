@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:shoe-clan",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same ninja in a purple ninja jacket with a white sash, side view facing right, no head, no arms, no legs",
+ "seed": 7808,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "db09e86b-1db8-4fd6-b4fb-3082bf2f9f33",
+ "imageUUID": "7c544fae-a7a5-40a9-a9d8-dbc300fd961e",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:20:14.705Z",
+ "anchor": [
+  6.5,
+  20.4
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ef29b6",
+  "heightPx": 24,
+  "widthPx": 13,
+  "indices": [
+   4,
+   5,
+   6,
+   7,
+   10,
+   11,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   152,
+   71,
+   216,
+   388
+  ],
+  "factor": 17,
+  "size": [
+   13,
+   24
+  ]
+ }
+}

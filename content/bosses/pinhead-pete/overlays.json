@@ -15,19 +15,12 @@
   "arms": 2,
   "hide": [
    "torso",
-   "face"
+   "face",
+   "head"
   ]
  },
  "layers": {
   "head": [
-   {
-    "shape": "ellipse",
-    "at": "head",
-    "w": 16,
-    "h": 16,
-    "color": 6,
-    "z": 50
-   },
    {
     "shape": "circle",
     "at": "head",
@@ -75,42 +68,11 @@
   ],
   "torso": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/torso.png",
     "at": "hip",
-    "dy": -10,
-    "w": 26,
-    "h": 34,
-    "color": 6,
-    "z": 31
-   },
-   {
-    "shape": "ellipse",
-    "at": "neck",
-    "dy": -2,
-    "w": 14,
-    "h": 12,
-    "color": 6,
-    "z": 32
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dy": -1,
-    "w": 14,
-    "h": 3,
-    "color": 4,
-    "z": 33,
-    "outline": false
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dy": 3,
-    "w": 15,
-    "h": 3,
-    "color": 4,
-    "z": 33,
-    "outline": false
+    "alignTo": "neck",
+    "z": 40
    }
   ],
   "legs": [],

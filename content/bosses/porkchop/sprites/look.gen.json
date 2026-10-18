@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:porkchop",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a pink pig-faced brute with a big round snout, small pointed ears and a smooth bald head, a brown leather vest and blue jeans, standing, facing right, full body",
+ "seed": 8707,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "2b226abe-bb78-452b-811e-f85ee237db26",
+ "imageUUID": "da0d8557-fcfd-497b-bedd-1a5425c42159",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:18:31.463Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

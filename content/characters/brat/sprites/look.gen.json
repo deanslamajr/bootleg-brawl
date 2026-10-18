@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "character:brat",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a scrawny, gap-toothed boy dressed as a backyard stuntman, a dented red football helmet with a white stripe, cardboard armor held on with silver tape, a white plaster cast on one arm covered in doodles, scraped knees with bandages, torn denim shorts, mud everywhere and a wild grin, standing, facing right, full body",
+ "seed": 9303,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "3deff435-d723-476b-83d8-93ede3e96b7a",
+ "imageUUID": "d234e1d5-34e3-4f08-b25d-48db6bd7be9b",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:25:42.322Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

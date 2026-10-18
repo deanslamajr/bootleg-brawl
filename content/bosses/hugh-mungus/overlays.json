@@ -13,127 +13,28 @@
   "legs": 8,
   "feet": 13,
   "arms": 2,
-  "hide": []
+  "hide": [
+   "head",
+   "face",
+   "torso"
+  ]
  },
  "layers": {
   "head": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dx": 1,
-    "dy": 4,
-    "w": 10,
-    "h": 5,
-    "color": 5,
-    "z": 51,
-    "outline": false,
-    "shade": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "z": 50
    }
   ],
   "torso": [
    {
-    "shape": "rect",
-    "at": "neck",
-    "dy": 7,
-    "w": 15,
-    "h": 11,
-    "color": 6,
-    "z": 31,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dx": 3,
-    "dy": 9,
-    "w": 7,
-    "h": 5,
-    "color": 12,
-    "z": 36,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dx": 3,
-    "dy": 7,
-    "w": 7,
-    "h": 1.5,
-    "color": 10,
-    "z": 37,
-    "outline": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "rect",
+    "shape": "sprite",
+    "file": "sprites/torso.png",
     "at": "hip",
-    "dy": -1,
-    "w": 17,
-    "h": 3,
-    "color": 13,
-    "z": 46,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "alignTo": "neck",
+    "z": 30
    }
   ],
   "legs": [],

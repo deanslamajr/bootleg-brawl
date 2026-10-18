@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:bowling-pins",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the bowling pin body of the same character, white with two red stripes around the neck and two black dot eyes, side view facing right, no head, no arms, no legs",
+ "seed": 7101,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "33cb8296-ca45-4832-893d-d1ab9f9de3e6",
+ "imageUUID": "486ae4e7-d001-4d6a-8d32-1f5be3cd27d0",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:19:09.651Z",
+ "anchor": [
+  6.5,
+  19.68
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#eb18b7",
+  "heightPx": 24,
+  "widthPx": 13,
+  "indices": [
+   4,
+   5,
+   6,
+   7,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   170,
+   73,
+   162,
+   373
+  ],
+  "factor": 14,
+  "size": [
+   13,
+   24
+  ]
+ }
+}

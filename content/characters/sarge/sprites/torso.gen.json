@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "character:sarge",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same woman in a shiny black high-cut aerobics leotard with a white stripe, side view facing right, no head, no arms, no legs",
+ "seed": 9109,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "a9b84646-e2b0-4269-bc01-39f63dc8bdc6",
+ "imageUUID": "f8efc5f6-22da-41fa-a467-3de272740813",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:42:43.195Z",
+ "anchor": [
+  7.5,
+  18.400000000000002
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ed349e",
+  "heightPx": 23,
+  "widthPx": 15,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   143,
+   147,
+   194,
+   364
+  ],
+  "factor": 14,
+  "size": [
+   15,
+   23
+  ]
+ }
+}

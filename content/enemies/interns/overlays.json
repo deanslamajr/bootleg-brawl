@@ -13,82 +13,28 @@
   "legs": 8,
   "feet": 13,
   "arms": 2,
-  "hide": []
+  "hide": [
+   "head",
+   "face",
+   "torso"
+  ]
  },
  "layers": {
   "head": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dx": -1,
-    "dy": -4,
-    "w": 15,
-    "h": 9,
-    "color": 4,
-    "z": 51,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "z": 50
    }
   ],
   "torso": [
    {
-    "shape": "line",
-    "at": "neck",
-    "dx": 0,
-    "dy": 1,
-    "w": 8,
-    "r": 0.6,
-    "rot": 64,
-    "color": 10,
-    "z": 58,
-    "outline": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "rect",
-    "at": "neck",
-    "dx": 1,
-    "dy": 10,
-    "w": 4,
-    "h": 5,
-    "color": 12,
-    "z": 59,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "shape": "sprite",
+    "file": "sprites/torso.png",
+    "at": "hip",
+    "alignTo": "neck",
+    "z": 30
    }
   ],
   "legs": [],

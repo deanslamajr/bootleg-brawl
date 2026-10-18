@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:kendo-kevin",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a kendo fighter in dark blue kendo armor and a kendo helmet with a metal face grill, standing, facing right, full body",
+ "seed": 8405,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "8834c0b5-c44d-406d-b457-a9e1d0d427a1",
+ "imageUUID": "d7b42d43-6966-41a8-b39c-f38ced4e6a75",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:18:21.489Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:rollerinas",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same skater with the orange ponytail, side view facing right, no neck, no shoulders",
+ "seed": 7607,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "a03fc02a-c113-43ef-8d24-6b3179d72ebc",
+ "imageUUID": "a248637f-1cc4-4177-90b0-8c37dd116244",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:19:55.619Z",
+ "anchor": [
+  13,
+  11
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ef1eac",
+  "heightPx": 22,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   9,
+   69,
+   381,
+   317
+  ],
+  "factor": 15,
+  "size": [
+   26,
+   22
+  ]
+ }
+}

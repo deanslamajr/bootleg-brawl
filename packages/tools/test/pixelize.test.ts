@@ -1,4 +1,8 @@
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { reconvertDir } from "../src/commands/art";
 import {
   addOutline,
   blendSeam,
@@ -10,7 +14,8 @@ import {
   pixelize,
   quantize,
 } from "../src/art/pixelize";
-import type { RgbaImage } from "../src/art/png-rgba";
+import { decodeIndexedPngSync, type RgbaImage } from "../src/art/png-rgba";
+import { writeRgbaPng } from "../src/art/preview";
 import { IndexedImage } from "../src/art/raster";
 
 const MAGENTA: [number, number, number] = [255, 0, 255];
@@ -167,5 +172,31 @@ describe("the conversion pipeline", () => {
     ]);
     expect([r.img.width, r.img.height]).toEqual([96, 27]);
     expect(new Set(r.img.data)).toEqual(new Set([1]));
+  });
+});
+
+describe("art gen --reconvert", () => {
+  it("converts the saved raw images again at the new size, with no request", () => {
+    const tmp = mkdtempSync(join(tmpdir(), "bb-reconvert-"));
+    try {
+      const px = image(64, 64, MAGENTA, (x, y) =>
+        x >= 16 && x < 48 && y >= 8 && y < 56 ? [200, 40, 40] : null,
+      );
+      writeRgbaPng(join(tmp, "raw-1.png"), 64, 64, px.data);
+      writeFileSync(
+        join(tmp, "cand-1.json"),
+        JSON.stringify({ anchor: [0, 0], conversion: {}, seed: 7 }),
+      );
+      const palette = ["#000000", "#1a1420", "#c02030"];
+      expect(reconvertDir(tmp, { use: "part", heightPx: 12, anchor: [0.5, 1] }, palette)).toBe(1);
+      const png = decodeIndexedPngSync(new Uint8Array(readFileSync(join(tmp, "cand-1.png"))));
+      expect(png.height).toBe(12);
+      const meta = JSON.parse(readFileSync(join(tmp, "cand-1.json"), "utf8"));
+      expect(meta.seed).toBe(7);
+      expect(meta.anchor[1]).toBe(12);
+      expect(existsSync(join(tmp, "sheet.png"))).toBe(true);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
   });
 });

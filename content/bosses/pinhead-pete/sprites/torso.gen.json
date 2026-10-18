@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:pinhead-pete",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same bowling pin: its fat lower body with two red stripes at the top, side view facing right, no head, no arms, no legs",
+ "seed": 8606,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "3c0fa130-58ef-4e10-8883-eaacaf575cdd",
+ "imageUUID": "578888c1-c509-4d23-a633-0e165508689b",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:23:07.892Z",
+ "anchor": [
+  16,
+  33.6
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#dd16b5",
+  "heightPx": 42,
+  "widthPx": 32,
+  "indices": [
+   4,
+   5,
+   6,
+   7,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   152,
+   24,
+   203,
+   460
+  ],
+  "factor": 6,
+  "size": [
+   32,
+   42
+  ]
+ }
+}

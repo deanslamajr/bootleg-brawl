@@ -1,0 +1,55 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 9209,
+ "look": {
+  "prompt": "a round, hairy father with a thin brown comb-over and a bushy brown mustache, a short gold satin bathrobe hanging open over a big hairy belly, red boxer shorts with white hearts, fuzzy brown slippers, a red rose clenched in his teeth, sweat stains and a smoldering look, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 28,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.55
+   ],
+   "prompt": "only the head of the same man with a thin brown comb-over, a thick brown beard and a red rose clenched in his teeth, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 28,
+   "widthPx": 30,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the round torso of the same man in a short gold satin bathrobe hanging open over a big hairy belly and red boxer shorts with white hearts, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

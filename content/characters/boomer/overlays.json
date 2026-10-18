@@ -11,151 +11,41 @@
   "skin": 2,
   "torso": 6,
   "legs": 8,
-  "feet": 13,
+  "feet": 4,
   "arms": 2,
-  "hide": [],
+  "hide": [
+   "head",
+   "face",
+   "torso"
+  ],
   "headW": 16,
   "headH": 17
  },
  "layers": {
   "head": [
    {
-    "shape": "line",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dx": -2,
-    "dy": -8,
-    "w": 5,
-    "r": 0.5,
-    "rot": -80,
-    "color": 4,
-    "z": 53,
-    "outline": false,
-    "shade": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "line",
-    "at": "head",
-    "dx": 1,
-    "dy": -8,
-    "w": 5,
-    "r": 0.5,
-    "rot": -70,
-    "color": 4,
-    "z": 53,
-    "outline": false,
-    "shade": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "ellipse",
-    "at": "head",
-    "dx": 2,
-    "dy": 4,
-    "w": 12,
-    "h": 7,
-    "color": 5,
-    "z": 51,
-    "outline": false,
-    "shade": false,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "z": 50
    }
   ],
   "torso": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/torso.png",
     "at": "hip",
-    "dx": 2,
-    "dy": -9,
-    "w": 24,
-    "h": 22,
-    "color": 6,
-    "z": 33,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
-   },
-   {
-    "shape": "ellipse",
-    "at": "sF",
-    "dx": 1,
-    "dy": 2,
-    "w": 7,
-    "h": 6,
-    "color": 6,
-    "z": 61
-   },
-   {
-    "shape": "ellipse",
-    "at": "sB",
-    "dx": -1,
-    "dy": 2,
-    "w": 7,
-    "h": 6,
-    "color": 7,
-    "z": 11
+    "alignTo": "neck",
+    "z": 30
    },
    {
     "shape": "ellipse",
     "at": "hip",
-    "dx": 0,
-    "dy": -4,
-    "w": 22,
-    "h": 18,
-    "color": 6,
-    "z": 33,
-    "states": [
-     "down",
-     "ko",
-     "sleep",
-     "getup:0"
-    ]
+    "dy": 2,
+    "w": 17,
+    "h": 9,
+    "color": 10,
+    "z": 45
    }
   ],
   "legs": [],

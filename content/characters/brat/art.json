@@ -1,0 +1,51 @@
+{
+ "schemaVersion": 1,
+ "model": "klein4b",
+ "seed": 9303,
+ "look": {
+  "prompt": "a scrawny, gap-toothed boy dressed as a backyard stuntman, a dented red football helmet with a white stripe, cardboard armor held on with silver tape, a white plaster cast on one arm covered in doodles, scraped knees with bandages, torn denim shorts, mud everywhere and a wild grin, standing, facing right, full body",
+  "width": 512,
+  "height": 768
+ },
+ "parts": [
+  {
+   "id": "head",
+   "joint": "head",
+   "heightPx": 19,
+   "indices": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    11,
+    12,
+    13
+   ],
+   "anchor": [
+    0.5,
+    0.55
+   ],
+   "prompt": "only the head of the same boy in a dented red football helmet with a white stripe and a wild gap-toothed grin, side view facing right, no neck, no shoulders"
+  },
+  {
+   "id": "torso",
+   "joint": "hip",
+   "heightPx": 15,
+   "widthPx": 11,
+   "indices": [
+    6,
+    7,
+    12,
+    13,
+    14,
+    15
+   ],
+   "anchor": [
+    0.5,
+    0.85
+   ],
+   "prompt": "only the torso of the same boy in cardboard armor held on with silver tape, side view facing right, no head, no arms, no legs"
+  }
+ ]
+}

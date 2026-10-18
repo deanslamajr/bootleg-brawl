@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "target": "character:mensa",
+ "part": "look",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a small girl with a big black welding mask flipped up on top of her head, frizzy dark brown hair poking out, soot smudges on her face, a heavy brown leather apron over a blue striped shirt, oversized leather gloves, scuffed red sneakers and a fierce grin, standing, facing right, full body",
+ "seed": 9412,
+ "width": 512,
+ "height": 768,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "8e70315e-d327-41a9-8433-7e4b6016f292",
+ "imageUUID": "b0905a70-98ea-45dd-9372-a5174ff13e2e",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T17:26:06.615Z",
+ "anchor": [
+  0,
+  0
+ ],
+ "conversion": {}
+}

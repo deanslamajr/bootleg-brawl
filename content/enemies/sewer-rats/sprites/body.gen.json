@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:sewer-rats",
+ "part": "body",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, the same gray rat with pink ears, side view facing right, without its tail and without legs",
+ "seed": 7708,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "24647752-769f-42b7-a873-0c6ddc09c108",
+ "imageUUID": "18cad948-0d02-433f-a530-4457a7bab468",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:20:04.354Z",
+ "anchor": [
+  8,
+  7.4399999999999995
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ef1bd8",
+  "heightPx": 12,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   59,
+   147,
+   452,
+   256
+  ],
+  "factor": 25,
+  "size": [
+   20,
+   12
+  ]
+ }
+}

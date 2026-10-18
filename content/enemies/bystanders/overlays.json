@@ -13,35 +13,30 @@
   "legs": 8,
   "feet": 13,
   "arms": 2,
-  "hide": []
+  "hide": [
+   "head",
+   "face",
+   "torso"
+  ]
  },
  "layers": {
   "head": [
    {
-    "shape": "ellipse",
+    "shape": "sprite",
+    "file": "sprites/head.png",
     "at": "head",
-    "dx": -1,
-    "dy": -4,
-    "w": 15,
-    "h": 9,
-    "color": 4,
-    "z": 51,
-    "exceptStates": [
-     "down",
-     "ko",
-     "fall",
-     "thrown",
-     "teamFly",
-     "flip",
-     "ball",
-     "roll",
-     "sleep",
-     "getup:0",
-     "camFly"
-    ]
+    "z": 50
    }
   ],
-  "torso": [],
+  "torso": [
+   {
+    "shape": "sprite",
+    "file": "sprites/torso.png",
+    "at": "hip",
+    "alignTo": "neck",
+    "z": 30
+   }
+  ],
   "legs": [],
   "weapon": [],
   "fx": []

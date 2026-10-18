@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:interns",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same intern with short brown hair, side view facing right, no neck, no shoulders",
+ "seed": 1234567,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "3a1fd76f-79be-4d17-a872-412ca3bedffd",
+ "imageUUID": "58a78ecd-1d1e-49f8-a9db-0bb28b26f530",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:18:58.054Z",
+ "anchor": [
+  8.5,
+  10.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e91fd3",
+  "heightPx": 21,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   98,
+   51,
+   305,
+   384
+  ],
+  "factor": 20,
+  "size": [
+   17,
+   21
+  ]
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:kendo-kevin",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same fighter in dark blue kendo chest armor, side view facing right, no head, no arms, no legs",
+ "seed": 8404,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "d4c9e03c-4efd-4ef9-b773-159d5e721374",
+ "imageUUID": "388483d7-61eb-494e-8c4e-50bfa873b1b8",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-18T06:21:46.667Z",
+ "anchor": [
+  8.5,
+  20.4
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ff2ec3",
+  "heightPx": 24,
+  "widthPx": 17,
+  "indices": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   121,
+   138,
+   253,
+   342
+  ],
+  "factor": 15,
+  "size": [
+   17,
+   24
+  ]
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:cheesegrater",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same villain: a round steel pot helmet with one spike on top and a dark visor slit, side view facing right, no neck, no shoulders",
+ "seed": 8202,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "a7c2c814-0476-4e42-9520-061ae00e23e1",
+ "imageUUID": "30e4aeeb-5911-40ea-84df-aae775fb4add",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:20:40.444Z",
+ "anchor": [
+  13,
+  19.84
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f525b6",
+  "heightPx": 32,
+  "indices": [
+   4,
+   5,
+   6,
+   7,
+   12,
+   13,
+   14,
+   15
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   96,
+   36,
+   313,
+   386
+  ],
+  "factor": 12,
+  "size": [
+   26,
+   32
+  ]
+ }
+}

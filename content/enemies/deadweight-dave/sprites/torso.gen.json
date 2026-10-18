@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:deadweight-dave",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same punk in a black tank top, side view facing right, no head, no arms, no legs",
+ "seed": 7404,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "0107e806-76f0-4847-8001-086f19cc66b7",
+ "imageUUID": "9f7955b1-1e28-4cb0-a1d9-bf8a23863e0d",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:19:40.090Z",
+ "anchor": [
+  6.5,
+  20.4
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ed18a9",
+  "heightPx": 24,
+  "widthPx": 13,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   10,
+   11,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   146,
+   155,
+   193,
+   317
+  ],
+  "factor": 14,
+  "size": [
+   13,
+   24
+  ]
+ }
+}

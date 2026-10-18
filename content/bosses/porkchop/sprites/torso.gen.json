@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:porkchop",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the torso of the same brute in a brown leather vest over pink skin, side view facing right, no head, no arms, no legs",
+ "seed": 8707,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "6f0bd997-ff96-4b20-aafa-f610faf147f0",
+ "imageUUID": "aec94f1c-eab6-4d54-aece-44af910a8882",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:23:49.347Z",
+ "anchor": [
+  13,
+  26.349999999999998
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e505aa",
+  "heightPx": 31,
+  "widthPx": 26,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   86,
+   42,
+   295,
+   435
+  ],
+  "factor": 12,
+  "size": [
+   26,
+   31
+  ]
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:hugh-mungus",
+ "part": "head",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the head of the same giant: bald, with a thick black beard, side view facing right, no neck, no shoulders",
+ "seed": 8304,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "6778cffb-d7c7-41b1-a79c-69b86cc9cbe5",
+ "imageUUID": "9d016257-8bfc-4fa5-899f-8f3b5a9ae6db",
+ "cost": 0.0009,
+ "generatedAt": "2026-10-18T06:20:50.822Z",
+ "anchor": [
+  13.5,
+  15.5
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#ec1cbb",
+  "heightPx": 31,
+  "indices": [
+   2,
+   3,
+   4,
+   5,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   43,
+   37,
+   372,
+   440
+  ],
+  "factor": 14,
+  "size": [
+   27,
+   31
+  ]
+ }
+}
