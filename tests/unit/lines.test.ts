@@ -30,7 +30,7 @@ describe("line pools", () => {
   });
 
   it("give an empty pool index -1", () => {
-    expect(def("sewer-rats").enemy!.pools.ko).toBe(-1);
+    expect(def("sewer-rats").enemy!.pools.help).toBe(-1);
   });
 
   it("make a taunt name the taunt pool", () => {
