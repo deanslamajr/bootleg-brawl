@@ -2,6 +2,8 @@
 // standard wave in the training room. DPS, damage taken and time-to-clear must land within
 // ±15% of the archetype band in content/balance/bands.json, or the character is flagged.
 // --record writes the current results as the band centers (do this only with a justification).
+// The first character of each archetype in roster order sets its band (D86). A later character of
+// the same archetype is measured against that band and never recorded over it.
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -49,15 +51,19 @@ export function balanceCommand(args: string[]): number {
   const results = roster.map(measure);
   if (args.includes("--record")) {
     const bands: Record<string, { dps: number; taken: number; clearSeconds: number }> = {};
-    for (const r of results)
+    const reference: string[] = [];
+    for (const r of results) {
+      if (bands[r.archetype]) continue;
       bands[r.archetype] = { dps: r.dps, taken: r.taken, clearSeconds: r.clearSeconds };
+      reference.push(`${r.archetype}: ${r.id}`);
+    }
     mkdirSync(join(CONTENT, "balance"), { recursive: true });
     writeFileSync(
       BANDS,
       JSON.stringify({ schemaVersion: 1, tolerancePct: 15, bands }, null, 1) + "\n",
     );
     console.log(
-      `balance: recorded ${Object.keys(bands).length} archetype band(s) to content/balance/bands.json`,
+      `balance: recorded ${Object.keys(bands).length} archetype band(s) to content/balance/bands.json (${reference.join(", ")})`,
     );
     return 0;
   }

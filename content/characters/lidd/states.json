@@ -2,6 +2,56 @@
  "schemaVersion": 1,
  "extends": "template:balanced",
  "states": {
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        4,
+        12,
+        40,
+        30
+       ],
+       "damage": 9,
+       "knock": [
+        3.05,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "kick",
+       "score": 20,
+       "tags": [
+        "tray"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 11
+    }
+   ],
+   "next": "idle",
+   "tags": [
+    "improvised"
+   ],
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    }
+   ]
+  },
   "special": {
    "kind": "special",
    "frames": [

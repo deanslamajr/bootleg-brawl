@@ -3,24 +3,24 @@
  "tolerancePct": 15,
  "bands": {
   "balanced": {
-   "dps": 6.7,
-   "taken": 24,
-   "clearSeconds": 24.9
+   "dps": 7.3,
+   "taken": 12,
+   "clearSeconds": 21.4
   },
   "grappler": {
-   "dps": 13.7,
+   "dps": 14.5,
    "taken": 0,
-   "clearSeconds": 13.5
+   "clearSeconds": 13.4
   },
   "fast": {
    "dps": 7.1,
-   "taken": 48,
-   "clearSeconds": 23.6
+   "taken": 54,
+   "clearSeconds": 25.2
   },
   "ranged": {
    "dps": 7.2,
-   "taken": 18,
-   "clearSeconds": 21.7
+   "taken": 24,
+   "clearSeconds": 22.6
   }
  }
 }

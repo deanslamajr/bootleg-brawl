@@ -14,9 +14,9 @@
   "walkSpeed": 1.25,
   "runSpeed": 2.7,
   "jumpVel": 4.9,
-  "weight": 1,
+  "weight": 1.2,
   "reach": 1.1,
-  "damageMult": 0.8,
+  "damageMult": 1.0,
   "specialCost": 10
  },
  "kit": {

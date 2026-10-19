@@ -12,4 +12,4 @@ Archetype: balanced. Rig: medium. Template: template:balanced.
 8. Tells: a cafeteria hairnet instead of any mask, and the select-screen stat SHELL: NOT FOUND.
 9. Palette: `lidd` and `lidd-alt` in `content/palettes/palettes.json`, from `master.json`.
 
-Stats: the balanced band with `damageMult` 0.8. At 1.0 the bot measured dps 9.4 against Sarge's 7.3 (D83).
+Stats: the balanced band with `damageMult` 1.0, `weight` 1.2 and a tray-swat `atk3` (damage 9, knock 3.05 by 2.4). With the template finisher the bot measured dps 9.4 against Sarge's 7.3. The bot's attack range grows with the rig scale, and Sarge's large rig is 1.3 (D83, D86).
