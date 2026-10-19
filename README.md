@@ -34,7 +34,7 @@ Walk into a dazed or light enemy to grab it. Attack over an item to pick it up. 
 
 ## What v1 contains
 
-- Eight playable characters: Sarge, Boomer, Brat and Mensa, with two team-ups and a generic shoulder toss, and the four Garbage Geckos, Lidd, Sporke, Napkin and Strawe, the wave 1 cast (D83, D87).
+- Eight playable characters: Sarge, Boomer, Brat and Mensa, with two team-ups and a generic shoulder toss, and the four Garbage Geckos, Lidd, Sporke, Napkin and Strawe, the wave 1 cast (D83, D88).
 - Three stages: Game 0 (Anytown), Game 1 (Gecko Justice) and Game 2 (Mediocre City Ultra Turbo).
 - Six bosses plus Lickspittle, who escapes at the end of every game.
 - Eight enemy families in four corporate tiers, from Intern to Vice President.

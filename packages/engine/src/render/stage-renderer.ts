@@ -9,7 +9,16 @@ import type { Sim, SimEvent } from "../sim/sim";
 import { COSTUMES } from "../sim/systems/director";
 import { F, KIND, PHASE, SK, SLOT, VIEW_H, VIEW_W } from "../sim/types";
 import type { AssetStore } from "./assets";
-import { TAIL_W, placeBubble } from "./bubble";
+import {
+  BORDER,
+  TAIL_W,
+  bubbleLift,
+  bubbleTail,
+  bubbleTop,
+  placeBubble,
+  stackBubble,
+  type BubbleRect,
+} from "./bubble";
 import { LineBook, SpeechGate } from "./line-book";
 import { Label, hexNum } from "./text";
 
@@ -26,7 +35,19 @@ interface Effect {
   oy: number;
   world: boolean;
   /** Speech bubble parts. The node sits at the speaker's feet, and update() places these. */
-  bubble?: { box: Container; tail: Graphics; outerW: number; def: number };
+  bubble?: Bubble;
+}
+
+interface Bubble {
+  box: Container;
+  tail: Graphics;
+  outerW: number;
+  outerH: number;
+  /** Tail tip height over the speaker's feet. */
+  lift: number;
+  /** Tail length as last drawn. */
+  len: number;
+  def: number;
 }
 
 class EntityView extends Container {
@@ -86,6 +107,8 @@ export class StageRenderer {
   private readonly gate: SpeechGate;
   /** The continue line picked for each player slot while its continue box shows. */
   private readonly contLines = new Map<number, string>();
+  /** The top of each sheet's tallest idle frame, in px over the feet. */
+  private readonly idleTops = new Map<string, number>();
 
   constructor(
     readonly assets: AssetStore,
@@ -101,6 +124,7 @@ export class StageRenderer {
     this.book = opts.lines ?? new LineBook();
     this.gate = new SpeechGate(content.raw.speech);
     this.world.sortableChildren = true;
+    this.fx.sortableChildren = true;
     this.root.addChild(
       this.sky,
       this.bg,
@@ -359,19 +383,18 @@ export class StageRenderer {
       const w = Math.min(160, lab.textWidth + 8);
       const h = lab.height + 6;
       // The box and the tail are separate so the box can stay on screen while the tail
-      // stays on the speaker. The tail tip is 54 px above the feet, under the box.
+      // stays on the speaker. update() places both and draws the tail.
       const box = new Container();
       const b = new Graphics()
-        .rect(-2, -2, w + 4, h + 4)
+        .rect(-BORDER, -BORDER, w + 2 * BORDER, h + 2 * BORDER)
         .fill(0x1a1420)
         .rect(0, 0, w, h)
         .fill(0xffffff);
       lab.position.set(4, 3);
       box.addChild(b, lab);
-      box.y = -(h + 60);
-      const tail = new Graphics().poly([0, 0, 0, -6, TAIL_W, -6]).fill(0xffffff);
-      tail.y = -54;
+      const tail = new Graphics();
       c.addChild(box, tail);
+      c.label = "speech-bubble";
       const ent = ev.ent ?? -1;
       this.effects.push({
         node: c,
@@ -381,7 +404,15 @@ export class StageRenderer {
         ox: ev.x ?? 0,
         oy: ev.y ?? 0,
         world: true,
-        bubble: { box, tail, outerW: w + 4, def: ent >= 0 ? this.sim.c.def[ent]! : -1 },
+        bubble: {
+          box,
+          tail,
+          outerW: w + 2 * BORDER,
+          outerH: h + 2 * BORDER,
+          lift: this.speakerLift(ent),
+          len: 0,
+          def: ent >= 0 ? this.sim.c.def[ent]! : -1,
+        },
       });
       this.fx.addChild(c);
       return;
@@ -428,6 +459,7 @@ export class StageRenderer {
     this.drawEntities(alpha);
     this.drawRail(camX);
     const c = sim.c;
+    const placed: BubbleRect[] = [];
     for (const e of this.effects) {
       if (e.world) {
         const s = e.ent;
@@ -440,15 +472,8 @@ export class StageRenderer {
             (sim.prevZ[s]! + (c.z[s]! - sim.prevZ[s]!) * alpha) / FX;
         }
         e.oy += e.vy;
-        // Keep a speech bubble's box on screen and its tail on the speaker.
-        if (e.bubble) {
-          const ax = Math.round(e.ox);
-          const p = placeBubble(e.ox, camX, e.bubble.outerW);
-          e.bubble.box.x = p.boxX + 2 - ax;
-          e.bubble.tail.x = p.tailX - ax;
-          e.bubble.tail.scale.x = p.flip ? -1 : 1;
-        }
         e.node.position.set(Math.round(e.ox), Math.round(e.oy));
+        if (e.bubble) this.layoutBubble(e, e.bubble, camX, placed);
       }
     }
     this.flash.clear();
@@ -467,6 +492,44 @@ export class StageRenderer {
           .fill({ color: Math.random() < 0.5 ? 0xffffff : 0x4a4658, alpha: 0.8 });
     }
     this.updateHud();
+  }
+
+  /** Tail tip height over a speaker's feet: just over its tallest idle frame (D87). */
+  private speakerLift(ent: number): number {
+    if (ent < 0) return bubbleLift(0);
+    const sheet = this.sim.def(ent).sheet;
+    let top = this.idleTops.get(sheet);
+    if (top === undefined) {
+      const frames = this.assets.sheets.get(sheet)?.frames;
+      if (!frames) return bubbleLift(0);
+      top = 0;
+      for (const k in frames) if (k.startsWith("idle:")) top = Math.max(top, frames[k]!.ay);
+      this.idleTops.set(sheet, top);
+    }
+    return bubbleLift(this.sim.c.tiny[ent] ? top / 2 : top);
+  }
+
+  /** Places a bubble's box and tail for this frame. `placed` holds the older bubbles' boxes. */
+  private layoutBubble(e: Effect, b: Bubble, camX: number, placed: BubbleRect[]): void {
+    // A speaker in a team cloud is hidden, and so is its bubble.
+    e.node.visible = e.ent < 0 || !(this.sim.c.flags[e.ent]! & F.hidden);
+    if (!e.node.visible) return;
+    const ax = Math.round(e.ox);
+    const fy = Math.round(e.oy);
+    const p = placeBubble(e.ox, camX, b.outerW);
+    const rect = { x: p.boxX, y: bubbleTop(fy, b.lift, b.outerH), w: b.outerW, h: b.outerH };
+    rect.y = stackBubble(rect, placed);
+    placed.push(rect);
+    const t = bubbleTail(fy, b.lift, rect.y, b.outerH);
+    b.box.position.set(rect.x + BORDER - ax, rect.y + BORDER - fy);
+    if (t.len !== b.len) {
+      b.len = t.len;
+      b.tail.clear().poly([0, 0, 0, -t.len, TAIL_W, -t.len]).fill(0xffffff);
+    }
+    b.tail.position.set(p.tailX - ax, t.tipY - fy);
+    b.tail.scale.x = p.flip ? -1 : 1;
+    // A lower box draws over the long tail of a box stacked above it.
+    e.node.zIndex = rect.y + rect.h;
   }
 
   private drawRail(camX: number): void {
