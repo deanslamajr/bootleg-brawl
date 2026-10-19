@@ -42,7 +42,31 @@
     0.5,
     0.85
    ],
-   "prompt": "only the torso of the same tycoon in a purple suit jacket with a red cravat, side view facing right, no head, no arms, no legs"
+   "prompt": "only the chest of the same tycoon: a purple suit jacket with a red cravat, cut off at the white collar, side view facing right, no head, no neck, no skin, no arms, no legs"
+  },
+  {
+   "id": "moped",
+   "joint": "hip",
+   "heightPx": 34,
+   "indices": [
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+   ],
+   "anchor": [
+    0.5,
+    1
+   ],
+   "reference": false,
+   "candidates": 4,
+   "prompt": "a small gold-plated electric moped with chrome trim, black tires, a round headlight and a long black seat, no rider, side view facing right, the whole vehicle"
   }
  ]
 }

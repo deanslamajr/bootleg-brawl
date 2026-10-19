@@ -100,6 +100,8 @@ Generated art is optional. A `sprite` shape in `overlays.json` places a generate
 
 A head hangs from the neck. Its part in `art.json` sets `"anchor": "neck"`, and its shape is `{ "shape": "sprite", "file": "sprites/head.png", "at": "neck", "alignTo": "head" }`. The head then turns with the neck and lies flat when the actor is down. Over a torso sprite, set `"z": 25` so the torso draws over the neck, and move the head forward and down with `dx` and `dy`, about a sixth of its width and height. Over a vector torso, keep the head on top at `"z": 50`.
 
+If the model draws a part facing left, set `"flip": true` on its shape. If a part has colors close to the magenta background, set a `style` in the folder's `art.json` that names another background color.
+
 The tool reads `RUNWARE_API_KEY` from the environment or from `.env` at the repository root. Every charged image adds a line to `content/art/ledger.jsonl`, which git tracks. If a request would pass the $5.00 cap or its phase cap, the tool refuses it. `pnpm tools art ledger` prints the spend.
 
 To add a character:

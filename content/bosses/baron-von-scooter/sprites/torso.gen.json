@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:baron-von-scooter",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the chest of the same tycoon: a purple suit jacket with a red cravat, cut off at the white collar, side view facing right, no head, no neck, no skin, no arms, no legs",
+ "seed": 8103,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "cef59786-3aec-42b7-8852-40bda70e830f",
+ "imageUUID": "09a12eea-b3f4-4802-8ad5-a15eead72885",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-19T00:11:52.625Z",
+ "anchor": [
+  11,
+  26.349999999999998
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f622c6",
+  "heightPx": 31,
+  "widthPx": 22,
+  "indices": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   117,
+   112,
+   250,
+   360
+  ],
+  "factor": 12,
+  "size": [
+   22,
+   31
+  ]
+ }
+}

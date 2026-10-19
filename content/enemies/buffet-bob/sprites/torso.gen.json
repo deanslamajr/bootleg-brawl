@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "target": "enemy:buffet-bob",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the chest and big round belly of the same cook in a white chef jacket under a white apron, cut off at the neck and the shoulders, side view facing right, no head, no hat, no face, no arms, no legs",
+ "seed": 7205,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "f8db975e-f5df-44d4-95c6-23bf4449de93",
+ "imageUUID": "d515d114-1eb4-49b4-8f11-4dbead5b9ab5",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-19T00:11:40.038Z",
+ "anchor": [
+  18,
+  31.159999999999997
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e61bdb",
+  "heightPx": 38,
+  "widthPx": 40,
+  "indices": [
+   2,
+   3,
+   6,
+   7,
+   10,
+   11,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   84,
+   109,
+   344,
+   366
+  ],
+  "factor": 9,
+  "size": [
+   40,
+   38
+  ]
+ }
+}

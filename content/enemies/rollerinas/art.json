@@ -1,5 +1,6 @@
 {
  "schemaVersion": 1,
+ "style": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat green background",
  "model": "klein4b",
  "seed": 7606,
  "look": {
@@ -29,6 +30,8 @@
    "heightPx": 24,
    "widthPx": 12,
    "indices": [
+    2,
+    3,
     6,
     7,
     8,
@@ -39,7 +42,7 @@
     0.5,
     0.85
    ],
-   "prompt": "only the torso of the same skater in a pink leotard, side view facing right, no head, no arms, no legs"
+   "prompt": "only the torso of the same skater in a pink leotard, cut off at the neck, side view facing right, no head, no arms, no legs"
   }
  ]
 }

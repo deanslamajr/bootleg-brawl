@@ -1,0 +1,65 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:baron-von-scooter",
+ "part": "moped",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, a small gold-plated electric moped with chrome trim, black tires, a round headlight and a long black seat, no rider, side view facing right, the whole vehicle",
+ "seed": 8104,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "taskUUID": "5c7aee4d-011c-468d-8eea-1bd7096336f1",
+ "imageUUID": "39705bb9-b168-487c-8dd5-7333905a2f12",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-19T00:12:02.575Z",
+ "anchor": [
+  23.5,
+  34
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#f136a1",
+  "heightPx": 34,
+  "indices": [
+   4,
+   5,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   35,
+   115,
+   454,
+   324
+  ],
+  "factor": 10,
+  "size": [
+   47,
+   34
+  ]
+ }
+}

@@ -15,7 +15,8 @@
   "arms": 2,
   "hide": [
    "head",
-   "face"
+   "face",
+   "torso"
   ]
  },
  "layers": {
@@ -25,33 +26,18 @@
     "file": "sprites/head.png",
     "at": "neck",
     "alignTo": "head",
-    "z": 50
+    "dx": 4.4,
+    "dy": 0.1,
+    "z": 25
    }
   ],
   "torso": [
    {
-    "shape": "poly",
+    "shape": "sprite",
+    "file": "sprites/torso.png",
     "at": "hip",
-    "points": [
-     [
-      -5,
-      -4
-     ],
-     [
-      5,
-      -4
-     ],
-     [
-      3,
-      2
-     ],
-     [
-      -3,
-      2
-     ]
-    ],
-    "color": 6,
-    "z": 45
+    "alignTo": "neck",
+    "z": 30
    }
   ],
   "legs": [

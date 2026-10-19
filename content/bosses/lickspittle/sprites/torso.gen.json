@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "target": "boss:lickspittle",
+ "part": "torso",
+ "model": "runware:400@4",
+ "positivePrompt": "1990s arcade pixel art, flat colors, thick black outline, side view, no text, no logo, flat magenta background, only the chest of the same assistant: a white shirt, a gray vest and a blue tie, cut off at the collar, side view facing right, no head, no face, no hair, no arms, no legs",
+ "seed": 8507,
+ "width": 512,
+ "height": 512,
+ "steps": 4,
+ "CFGScale": 7,
+ "lora": [],
+ "reference": "look",
+ "taskUUID": "f73dd14c-74a5-413e-bf05-4899cab74ce0",
+ "imageUUID": "383d1cdd-8201-4828-8372-3eec358d27f3",
+ "cost": 0.0015,
+ "generatedAt": "2026-10-19T00:11:58.913Z",
+ "anchor": [
+  6,
+  19.55
+ ],
+ "conversion": {
+  "use": "part",
+  "key": "auto",
+  "keyDistance": 60,
+  "erode": 1,
+  "dither": false,
+  "outline": true,
+  "cleanup": true,
+  "keep": [
+   1,
+   12,
+   13
+  ],
+  "keyColor": "#e739c4",
+  "heightPx": 23,
+  "widthPx": 12,
+  "indices": [
+   6,
+   7,
+   10,
+   11,
+   12,
+   13
+  ],
+  "tile": false,
+  "source": [
+   512,
+   512
+  ],
+  "crop": [
+   81,
+   170,
+   341,
+   298
+  ],
+  "factor": 14,
+  "size": [
+   12,
+   23
+  ]
+ }
+}

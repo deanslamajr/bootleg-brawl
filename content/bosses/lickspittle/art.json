@@ -40,7 +40,7 @@
     0.5,
     0.85
    ],
-   "prompt": "only the torso of the same assistant in a white shirt, a gray vest and a blue tie, side view facing right, no head, no arms, no legs"
+   "prompt": "only the chest of the same assistant: a white shirt, a gray vest and a blue tie, cut off at the collar, side view facing right, no head, no face, no hair, no arms, no legs"
   }
  ]
 }
