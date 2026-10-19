@@ -20,7 +20,15 @@ export interface Hook {
   bounds(label: string): Rect | null;
   samplePerf(on: boolean): void;
   perf(): { frame: number[]; tick: number[] };
+  audio(): AudioStatus;
   ready: boolean;
+}
+
+export interface AudioStatus {
+  /** The AudioContext state, or "none" before the first user gesture creates it. */
+  context: string;
+  paused: boolean;
+  track: string | null;
 }
 
 export interface Rect {
@@ -81,6 +89,19 @@ export async function startSoloStage(page: Page): Promise<void> {
 
 export async function status(page: Page): Promise<Record<string, unknown>> {
   return page.evaluate(() => (window as unknown as { __bootleg: Hook }).__bootleg.status());
+}
+
+export async function audio(page: Page): Promise<AudioStatus> {
+  return page.evaluate(() => (window as unknown as { __bootleg: Hook }).__bootleg.audio());
+}
+
+/** Waits until the audio context is in the given state ("running", "suspended" or "none"). */
+export async function waitForAudio(page: Page, state: string, timeout = 5_000): Promise<void> {
+  await page.waitForFunction(
+    (state) => (window as unknown as { __bootleg: Hook }).__bootleg.audio().context === state,
+    state,
+    { timeout, polling: 50 },
+  );
 }
 
 /** Holds bits on the given slots for a few frames, then releases them (one clean press). */

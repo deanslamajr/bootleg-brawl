@@ -209,6 +209,8 @@ export class GameApp {
         this.sampling = on;
       },
       perf: () => ({ frame: this.frameWork.values(), tick: this.tickWork.values() }),
+      /** The audio context state, the pause flag and the current track id. */
+      audio: () => this.audio.status(),
       /**
        * Screen rectangle of the first display object with this Pixi label in the scene, measured
        * as if the object itself were visible (GO blinks). Null when it is missing or empty.

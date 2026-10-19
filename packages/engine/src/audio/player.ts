@@ -52,6 +52,13 @@ export class AudioEngine {
   } | null = null;
   private stingerTimer = 0;
   private duckUntil = 0;
+  /** The stage pause. A suspended context freezes the music where it is. */
+  private paused = false;
+  private suspendTimer = 0;
+  /** The stinger follow-up: what it plays and how many ms were left when the pause held it. */
+  private stingerAfter: TrackFile | undefined;
+  private stingerDue = 0;
+  private stingerLeft = 0;
   musicVolume = 0.7;
   sfxVolume = 0.9;
   readonly maxVoices = 14;
@@ -59,7 +66,8 @@ export class AudioEngine {
   /** Must be called from a user gesture (browsers keep contexts suspended until then). */
   unlock(): void {
     if (this.ctx) {
-      if (this.ctx.state === "suspended") void this.ctx.resume();
+      // A paused context stays suspended, or the first key in the pause menu wakes the music.
+      if (this.ctx.state === "suspended" && !this.paused) void this.ctx.resume();
       return;
     }
     const ctx = new AudioContext();
@@ -98,6 +106,37 @@ export class AudioEngine {
     if (!this.ctx) return;
     this.musicBus.gain.value = music;
     this.sfxBus.gain.value = sfx;
+  }
+
+  /** Freezes every sound where it is (the stage pause), or lets it run again. */
+  setPaused(on: boolean, graceMs = 160): void {
+    if (on === this.paused) return;
+    this.paused = on;
+    window.clearTimeout(this.suspendTimer);
+    const ctx = this.ctx;
+    if (!ctx) return;
+    if (on) {
+      // The pause blip is 0.15 s long. Let it finish before the clock stops.
+      this.suspendTimer = window.setTimeout(() => {
+        if (this.paused) void ctx.suspend();
+      }, graceMs);
+      if (this.stingerAfter) {
+        window.clearTimeout(this.stingerTimer);
+        this.stingerLeft = Math.max(0, this.stingerDue - performance.now());
+      }
+    } else {
+      void ctx.resume();
+      if (this.stingerAfter) this.armStinger(this.stingerAfter, this.stingerLeft);
+    }
+  }
+
+  /** What the window.__bootleg test hook reports. */
+  status(): { context: string; paused: boolean; track: string | null } {
+    return {
+      context: this.ctx?.state ?? "none",
+      paused: this.paused,
+      track: this.music?.track.id ?? null,
+    };
   }
 
   addSfx(id: string, bytes: ArrayBuffer): void {
@@ -181,14 +220,24 @@ export class AudioEngine {
     this.stopMusic(0.05);
     this.playMusic(track);
     window.clearTimeout(this.stingerTimer);
+    this.stingerAfter = undefined;
     if (after) {
       const rows = rowsOf(track);
       const secs = (rows * 60) / (track.bpm * track.rowsPerBeat) + 0.3;
-      this.stingerTimer = window.setTimeout(() => {
-        this.stopMusic(0.05);
-        this.playMusic(after);
-      }, secs * 1000);
+      this.armStinger(after, secs * 1000);
     }
+  }
+
+  /** Starts the follow-up timer of a stinger. The pause holds it, and the resume arms it again. */
+  private armStinger(after: TrackFile, ms: number): void {
+    this.stingerAfter = after;
+    this.stingerDue = performance.now() + ms;
+    window.clearTimeout(this.stingerTimer);
+    this.stingerTimer = window.setTimeout(() => {
+      this.stingerAfter = undefined;
+      this.stopMusic(0.05);
+      this.playMusic(after);
+    }, ms);
   }
 
   private schedule(): void {

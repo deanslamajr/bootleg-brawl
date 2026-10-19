@@ -96,6 +96,8 @@ export class StageScene implements Scene {
     window.removeEventListener("keydown", this.onKey);
     window.removeEventListener("blur", this.onBlur);
     document.removeEventListener("visibilitychange", this.onVisibility);
+    // QUIT TO TITLE leaves while paused, and the title plays its own music.
+    this.app.audio.setPaused(false);
   }
 
   status(): Record<string, unknown> {
@@ -393,6 +395,7 @@ export class StageScene implements Scene {
   private pause(): void {
     this.mode = "paused";
     this.app.sfx("pause");
+    this.app.audio.setPaused(true);
     const c = new Container();
     c.addChild(new Graphics().rect(0, 0, VIEW_W, VIEW_H).fill({ color: 0x1a1420, alpha: 0.7 }));
     c.addChild(label("PAUSED", VIEW_W / 2, 80, { color: C.yellow, scale: 2, align: "center" }));
@@ -407,6 +410,7 @@ export class StageScene implements Scene {
   }
 
   private resume(): void {
+    this.app.audio.setPaused(false);
     this.mode = "play";
     const p = this.overlay.children.find((ch) => ch.label === "pause");
     p?.destroy({ children: true });
