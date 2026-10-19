@@ -63,6 +63,7 @@ export function defineCore(w: World) {
     aiSide: w.define<Int8Array>({ name: "aiSide", type: "i8" }),
     aiX: w.define<Int32Array>({ name: "aiX", type: "i32" }),
     aiY: w.define<Int32Array>({ name: "aiY", type: "i32" }),
+    /** AI cooldown ticks. On a prop, the rearm countdown of its step, proximity or taunt gag. */
     aiCool: w.define<Uint16Array>({ name: "aiCool", type: "u16" }),
     /** Lifetime counter for projectiles, pickups and effects. */
     life: w.define<Uint16Array>({ name: "life", type: "u16" }),

@@ -7,6 +7,9 @@ import { CMD, F, KIND, SK, TEAM } from "../types";
 import { applyPickup, applyHit } from "./combat";
 import { findPickup } from "./fsm";
 
+/** Ticks a gag's zone must stay empty before a step, proximity or taunt gag can fire again. */
+const GAG_REARM = 30;
+
 export function gagSystem(sim: Sim): void {
   if (sim.actorsFrozen) return;
   const c = sim.c;
@@ -22,7 +25,9 @@ export function gagSystem(sim: Sim): void {
       sim.text("OM NOM", "pop", e, 40);
     }
   }
-  // Scenery gags triggered by stepping on them, walking near them or taunting at them.
+  // Scenery gags triggered by stepping on them, walking near them or taunting at them. A gag
+  // fires once when a player arrives, and arms again after its zone has been empty for a while.
+  // The rearm countdown lives in aiCool, which no prop uses for anything else.
   const w = sim.world;
   const seg = sim.segment();
   for (let p = 0; p < w.high; p++) {
@@ -31,15 +36,20 @@ export function gagSystem(sim: Sim): void {
     if (!gag || gag.trigger === "hit") continue;
     if (gag.once && c.counter[p]! >= gag.hits) continue;
     const radius = gag.params.radius ?? (gag.trigger === "step" ? 12 : 40);
+    let by = -1;
     for (const e of sim.playerEntities()) {
       const dx = Math.abs(c.x[e]! - c.x[p]!) / FX;
       const dy = Math.abs(c.y[e]! - c.y[p]!) / FX;
       if (dx > radius || dy > Math.max(10, radius / 2)) continue;
       if (gag.trigger === "taunt" && !(c.cmd[e]! & CMD.taunt)) continue;
       if (gag.trigger === "step" && c.z[e]! > 0) continue;
-      fire(sim, p, e);
+      by = e;
       break;
     }
+    if (by >= 0) {
+      if (c.aiCool[p] === 0) fire(sim, p, by);
+      c.aiCool[p] = GAG_REARM;
+    } else if (c.aiCool[p]! > 0) c.aiCool[p] = c.aiCool[p]! - 1;
   }
 }
 

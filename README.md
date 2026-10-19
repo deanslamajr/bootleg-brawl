@@ -26,7 +26,7 @@ Add `?debug` to the game URL for the frame and tick overlay and the GAME SELECT:
 | Start   | Enter         | Numpad Enter, R. Shift | Start               |
 | Pause   | Esc           | Esc                    | Esc                 |
 
-To remap the keys or pad buttons, open OPTIONS and pick CONTROLS P1, CONTROLS P2 or CONTROLS PAD. Every row except Pause can be remapped. RESET CONTROLS restores this table. A stage pauses when the window loses focus.
+To remap the keys or pad buttons, open OPTIONS and pick CONTROLS P1, CONTROLS P2 or CONTROLS PAD. Every row except Pause can be remapped. RESET CONTROLS restores this table. A stage pauses when the window loses focus. The music pauses with it.
 
 Walk into a dazed or light enemy to grab it. Attack over an item to pick it up. Taunt next to a teammate to start a team-up. Press Start on an empty slot to join during a stage. Hold Start to drop out.
 
