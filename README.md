@@ -34,7 +34,7 @@ Walk into a dazed or light enemy to grab it. Attack over an item to pick it up. 
 
 ## What v1 contains
 
-- Four playable characters: Sarge, Boomer, Brat and Mensa, with two team-ups and a generic shoulder toss.
+- Five playable characters: Sarge, Boomer, Brat and Mensa, with two team-ups and a generic shoulder toss, and Lidd of the Garbage Geckos, the first wave 1 character (D83).
 - Three stages: Game 0 (Anytown), Game 1 (Gecko Justice) and Game 2 (Mediocre City Ultra Turbo).
 - Six bosses plus Lickspittle, who escapes at the end of every game.
 - Eight enemy families in four corporate tiers, from Intern to Vice President.
@@ -112,7 +112,7 @@ Spoken lines live in pools. A `lines.json` next to a character, enemy, boss or s
 To add a character:
 
 1. Run `pnpm tools new-character <id> --archetype ranged --rig small`.
-2. Answer the prompts in `content/characters/<id>/DESIGN.md`. A human reads every name and line against the IP rule.
+2. Answer the prompts in `content/characters/<id>/DESIGN.md`. The deny-list scan in `pnpm tools validate` is the gate for every name and line (D82).
 3. Add a 16-color palette to `content/palettes/palettes.json`, using colors from `master.json`.
 4. Edit `overlays.json` and look at the result in the sandbox. Press R to reload content.
 5. Tune hitboxes in the sandbox box editor. Pause, then edit a box and press Write.

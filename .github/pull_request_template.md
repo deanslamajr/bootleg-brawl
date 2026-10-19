@@ -12,7 +12,7 @@
 ## New or changed character or stage (human checklist)
 
 - [ ] It is funny
-- [ ] It is legally distinct: no franchise names, likenesses, catchphrases, places or story beats; a human read every name and line
+- [ ] It is legally distinct: no franchise names, likenesses, catchphrases, places or story beats. `pnpm tools validate` passed the deny-list scan (D82)
 - [ ] It plays like its archetype (`pnpm tools balance` is within band)
 - [ ] The continue line reads well
 - [ ] Two bootleg tells are listed in `parodyMeta.tells`

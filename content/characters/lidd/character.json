@@ -1,0 +1,55 @@
+{
+ "id": "lidd",
+ "schemaVersion": 1,
+ "displayName": "Lidd",
+ "shortName": "LIDD",
+ "archetype": "balanced",
+ "rig": "medium",
+ "palette": "lidd",
+ "altPalettes": [
+  "lidd-alt"
+ ],
+ "stats": {
+  "hp": 110,
+  "walkSpeed": 1.25,
+  "runSpeed": 2.7,
+  "jumpVel": 4.9,
+  "weight": 1,
+  "reach": 1.1,
+  "damageMult": 0.8,
+  "specialCost": 10
+ },
+ "kit": {
+  "requires": [],
+  "flags": [],
+  "gags": []
+ },
+ "improvisedWeapon": {
+  "id": "lunch-tray",
+  "displayName": "Lunch Tray",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [],
+ "voice": {
+  "continueLine": "Pineapple. I said pineapple. Insert a coin and we settle this.",
+  "selectLine": "Lidd. Like the thing on the dumpster. Yes, that is where he found me.",
+  "tauntLines": [
+   "Lunch is served. You are the lunch.",
+   "I found this tray in the sewer. It is cleaner than you.",
+   "My sensei is a possum. Your sensei is a wall."
+  ],
+  "endingText": "Lidd went home to the pipe and found the other three had eaten his slice. The fight continues."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the leader of a four-reptile sewer ninja team, a balanced lead who fights with a lunch tray",
+  "gag": "Named after what the sensei found in a dumpster; his continue screen is an argument about pizza toppings",
+  "forbiddenTerms": [],
+  "tells": [
+   "Wears a cafeteria hairnet instead of any kind of mask, because the sensei dressed him in the dark",
+   "Select-screen stat reads SHELL: NOT FOUND"
+  ]
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:balanced",
+ "states": {
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "trayspin:0",
+     "dur": 4
+    },
+    {
+     "pose": "trayspin:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -30,
+        8,
+        60,
+        44
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "tags": [
+        "tray"
+       ],
+       "score": 20
+      }
+     ]
+    },
+    {
+     "pose": "trayspin:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -30,
+        8,
+        60,
+        44
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "tags": [
+        "tray"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "trayspin:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -30,
+        8,
+        60,
+        44
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "tags": [
+        "tray"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "trayspin:4",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -30,
+        8,
+        60,
+        44
+       ],
+       "damage": 10,
+       "knock": [
+        3,
+        2.6
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "special",
+       "tags": [
+        "tray"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "trayspin:5",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    16
+   ],
+   "tags": [
+    "improvised"
+   ]
+  }
+ }
+}

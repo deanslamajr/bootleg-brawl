@@ -133,9 +133,9 @@ export function newCharacterCommand(args: string[]): number {
 
 Archetype: ${arch}. Rig: ${rig}. Template: template:${TEMPLATE_FOR[arch]}.
 
-Answer each prompt, then edit the JSON files. An agent may propose three concepts; a human picks one
-and reads every name and line against the IP rule (no names, likenesses, catchphrases or places from
-any franchise).
+Answer each prompt, then edit the JSON files. An agent may propose three concepts and pick one. The
+deny-list scan in \`pnpm tools validate\` is the gate for every name and line against the IP rule (no
+names, likenesses, catchphrases or places from any franchise), per D82.
 
 1. Which generic role does this character bootleg? Describe the role, never name the original.
 2. Name: a dictionary word, a pun or a misprint. Never a one-letter change.

@@ -1,0 +1,248 @@
+{
+ "schemaVersion": 1,
+ "body": {
+  "scale": 1,
+  "headR": 8,
+  "torsoW": 10,
+  "armW": 3,
+  "legW": 3.5,
+  "footL": 6,
+  "handR": 2,
+  "skin": 2,
+  "torso": 4,
+  "legs": 2,
+  "feet": 13,
+  "arms": 2,
+  "hide": []
+ },
+ "layers": {
+  "head": [
+   {
+    "shape": "ellipse",
+    "at": "head",
+    "dx": 0,
+    "dy": -5,
+    "w": 17,
+    "h": 9,
+    "color": 14,
+    "z": 52
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 4,
+    "dy": -1,
+    "r": 3,
+    "color": 12,
+    "z": 53
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 5,
+    "dy": -1,
+    "r": 1.2,
+    "color": 1,
+    "z": 54,
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "torso": [
+   {
+    "shape": "poly",
+    "at": "hip",
+    "dy": 2,
+    "points": [
+     [
+      -3,
+      0
+     ],
+     [
+      -9,
+      3
+     ],
+     [
+      -15,
+      1
+     ],
+     [
+      -14,
+      5
+     ],
+     [
+      -8,
+      7
+     ],
+     [
+      -2,
+      4
+     ]
+    ],
+    "color": 2,
+    "z": 15,
+    "exceptStates": [
+     "down",
+     "ko",
+     "sleep",
+     "getup:0"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hip",
+    "dx": 0,
+    "dy": -4,
+    "w": 9,
+    "h": 14,
+    "color": 6,
+    "z": 35
+   },
+   {
+    "shape": "rect",
+    "at": "neck",
+    "dx": 2,
+    "dy": 7,
+    "w": 4,
+    "h": 2.5,
+    "color": 10,
+    "z": 36,
+    "shade": false
+   }
+  ],
+  "legs": [],
+  "weapon": [
+   {
+    "shape": "rect",
+    "at": "hF",
+    "dx": 7,
+    "dy": 0,
+    "w": 14,
+    "h": 3,
+    "color": 10,
+    "z": 62,
+    "whenWeapon": true,
+    "exceptStates": [
+     "trayspin",
+     "special"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hF",
+    "dx": 7,
+    "dy": -1.5,
+    "w": 14,
+    "h": 1,
+    "color": 11,
+    "z": 63,
+    "whenWeapon": true,
+    "exceptStates": [
+     "trayspin",
+     "special"
+    ],
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "fx": []
+ },
+ "uniqueFrames": {
+  "trayspin:0": {
+   "base": "special:0",
+   "shapes": [
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 8,
+     "dy": 0,
+     "w": 22,
+     "h": 5,
+     "rot": 0,
+     "color": 10,
+     "z": 61
+    }
+   ]
+  },
+  "trayspin:1": {
+   "base": "special:1",
+   "shapes": [
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 8,
+     "dy": 0,
+     "w": 22,
+     "h": 5,
+     "rot": 43,
+     "color": 10,
+     "z": 61
+    }
+   ]
+  },
+  "trayspin:2": {
+   "base": "special:2",
+   "shapes": [
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 8,
+     "dy": 0,
+     "w": 22,
+     "h": 5,
+     "rot": 85,
+     "color": 10,
+     "z": 61
+    }
+   ]
+  },
+  "trayspin:3": {
+   "base": "special:3",
+   "shapes": [
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 8,
+     "dy": 0,
+     "w": 22,
+     "h": 5,
+     "rot": 128,
+     "color": 10,
+     "z": 61
+    }
+   ]
+  },
+  "trayspin:4": {
+   "base": "special:4",
+   "shapes": [
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 8,
+     "dy": 0,
+     "w": 22,
+     "h": 5,
+     "rot": 171,
+     "color": 10,
+     "z": 61
+    }
+   ]
+  },
+  "trayspin:5": {
+   "base": "special:5",
+   "shapes": [
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 8,
+     "dy": 0,
+     "w": 22,
+     "h": 5,
+     "rot": 213,
+     "color": 10,
+     "z": 61
+    }
+   ]
+  }
+ }
+}
