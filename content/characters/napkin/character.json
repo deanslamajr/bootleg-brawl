@@ -1,0 +1,55 @@
+{
+ "id": "napkin",
+ "schemaVersion": 1,
+ "displayName": "Napkin",
+ "shortName": "NAPKIN",
+ "archetype": "grappler",
+ "rig": "medium",
+ "palette": "napkin",
+ "altPalettes": [
+  "napkin-alt"
+ ],
+ "stats": {
+  "hp": 140,
+  "walkSpeed": 1.0,
+  "runSpeed": 2.3,
+  "jumpVel": 4.4,
+  "weight": 1.6,
+  "reach": 1.5,
+  "damageMult": 1.15,
+  "specialCost": 12
+ },
+ "kit": {
+  "requires": [],
+  "flags": [],
+  "gags": []
+ },
+ "improvisedWeapon": {
+  "id": "mop-staff",
+  "displayName": "Mop Bo-Staff",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [],
+ "voice": {
+  "continueLine": "Olives. One coin. I am not discussing it.",
+  "selectLine": "Napkin. The possum found me folded. I am still a little folded.",
+  "tauntLines": [
+   "The mop has seen worse than you.",
+   "I do not talk much. The mop talks.",
+   "Olives on everything. Even you."
+  ],
+  "endingText": "Napkin mopped the whole sewer after the credits. It took four days. It is still wet."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the big quiet member of a four-reptile sewer ninja team, a long-reach powerhouse who fights with a mop",
+  "gag": "Named after what the sensei found in a dumpster; he folds himself into a corner when embarrassed, and he wants olives on everything",
+  "forbiddenTerms": [],
+  "tells": [
+   "Wears a paper napkin folded into a headband instead of any kind of mask, re-folded every time it tears",
+   "Select-screen stat reads REACH: YES"
+  ]
+ }
+}

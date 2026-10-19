@@ -2988,6 +2988,111 @@
     ],
     "frames": {}
    }
+  },
+  "spitball": {
+   "speed": 4.8,
+   "damage": 5,
+   "knock": [
+    1.2,
+    0
+   ],
+   "hitstun": 18,
+   "lifetime": 110,
+   "pierce": 1,
+   "box": [
+    -4,
+    -4,
+    8,
+    8
+   ],
+   "sfx": "thud",
+   "tags": [
+    "spit"
+   ],
+   "sprite": {
+    "size": [
+     8,
+     8
+    ],
+    "palette": "items-a",
+    "shapes": [
+     {
+      "shape": "circle",
+      "at": "c",
+      "dy": -4,
+      "r": 3,
+      "color": 3
+     },
+     {
+      "shape": "circle",
+      "at": "c",
+      "dx": -1,
+      "dy": -5,
+      "r": 0.9,
+      "color": 12,
+      "outline": false
+     }
+    ],
+    "frames": {}
+   }
+  },
+  "spitball-big": {
+   "speed": 5.2,
+   "damage": 10,
+   "knock": [
+    3,
+    2.4
+   ],
+   "knockdown": true,
+   "hitstop": 6,
+   "lifetime": 120,
+   "pierce": 0,
+   "box": [
+    -6,
+    -6,
+    12,
+    12
+   ],
+   "sfx": "thud",
+   "tags": [
+    "spit"
+   ],
+   "scale": 1.6,
+   "sprite": {
+    "size": [
+     14,
+     14
+    ],
+    "palette": "items-a",
+    "shapes": [
+     {
+      "shape": "circle",
+      "at": "c",
+      "dy": -7,
+      "r": 5.5,
+      "color": 3
+     },
+     {
+      "shape": "circle",
+      "at": "c",
+      "dx": -2,
+      "dy": -9,
+      "r": 1.4,
+      "color": 12,
+      "outline": false
+     },
+     {
+      "shape": "circle",
+      "at": "c",
+      "dx": 2,
+      "dy": -5,
+      "r": 1,
+      "color": 4,
+      "outline": false
+     }
+    ],
+    "frames": {}
+   }
   }
  }
 }

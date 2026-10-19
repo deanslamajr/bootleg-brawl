@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "body": {
+  "scale": 1,
+  "headR": 8,
+  "torsoW": 9.5,
+  "armW": 3,
+  "legW": 3.3,
+  "footL": 6,
+  "handR": 2,
+  "skin": 2,
+  "torso": 4,
+  "legs": 2,
+  "feet": 13,
+  "arms": 2,
+  "hide": []
+ },
+ "layers": {
+  "head": [
+   {
+    "shape": "ellipse",
+    "at": "head",
+    "dx": 3,
+    "dy": 3,
+    "w": 7,
+    "h": 5,
+    "color": 2,
+    "z": 51,
+    "states": [
+     "charge"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dy": -1,
+    "w": 17,
+    "h": 5,
+    "color": 14,
+    "z": 52
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": -5,
+    "dy": -1,
+    "w": 1.2,
+    "h": 5,
+    "color": 15,
+    "z": 53,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 0,
+    "dy": -1,
+    "w": 1.2,
+    "h": 5,
+    "color": 15,
+    "z": 53,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 5,
+    "dy": -1,
+    "w": 1.2,
+    "h": 5,
+    "color": 15,
+    "z": 53,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 4,
+    "dy": -1,
+    "r": 2.4,
+    "color": 12,
+    "z": 53
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 5,
+    "dy": -1,
+    "r": 1,
+    "color": 1,
+    "z": 54,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": -3,
+    "dy": -3,
+    "r": 1.4,
+    "color": 1,
+    "z": 53,
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "torso": [
+   {
+    "shape": "poly",
+    "at": "hip",
+    "dy": 2,
+    "points": [
+     [
+      -3,
+      0
+     ],
+     [
+      -9,
+      3
+     ],
+     [
+      -15,
+      1
+     ],
+     [
+      -14,
+      5
+     ],
+     [
+      -8,
+      7
+     ],
+     [
+      -2,
+      4
+     ]
+    ],
+    "color": 2,
+    "z": 15,
+    "exceptStates": [
+     "down",
+     "ko",
+     "sleep",
+     "getup:0"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hip",
+    "dy": -4,
+    "w": 8.5,
+    "h": 13,
+    "color": 6,
+    "z": 35
+   },
+   {
+    "shape": "circle",
+    "at": "hip",
+    "dx": 2,
+    "dy": -6,
+    "r": 2,
+    "color": 11,
+    "z": 36,
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "legs": [],
+  "weapon": [
+   {
+    "at": "hF",
+    "alignTo": "head",
+    "shape": "rect",
+    "dx": 2,
+    "dy": 0,
+    "w": 16,
+    "h": 2,
+    "color": 10,
+    "z": 62
+   },
+   {
+    "at": "hF",
+    "alignTo": "head",
+    "shape": "rect",
+    "dx": 2,
+    "dy": 0,
+    "w": 16,
+    "h": 0.6,
+    "color": 11,
+    "z": 63,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "at": "hF",
+    "alignTo": "head",
+    "shape": "rect",
+    "dx": 9,
+    "dy": 0,
+    "w": 2,
+    "h": 2.6,
+    "color": 7,
+    "z": 63,
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "fx": []
+ },
+ "uniqueFrames": {}
+}

@@ -1,0 +1,64 @@
+{
+ "id": "strawe",
+ "schemaVersion": 1,
+ "displayName": "Strawe",
+ "shortName": "STRAWE",
+ "archetype": "ranged",
+ "rig": "small",
+ "palette": "strawe",
+ "altPalettes": [
+  "strawe-alt"
+ ],
+ "stats": {
+  "hp": 95,
+  "walkSpeed": 1.35,
+  "runSpeed": 2.9,
+  "jumpVel": 5.0,
+  "weight": 0.8,
+  "reach": 1.4,
+  "damageMult": 0.9,
+  "specialCost": 10
+ },
+ "kit": {
+  "requires": [
+   "charge-shot"
+  ],
+  "flags": [],
+  "gags": [],
+  "chargeShot": {
+   "state": "charge",
+   "fire": "chargeShot",
+   "threshold": 24,
+   "maxLevel": 3,
+   "levelTicks": 24
+  }
+ },
+ "improvisedWeapon": {
+  "id": "bendy-straw",
+  "displayName": "Bendy Straw",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [],
+ "voice": {
+  "continueLine": "Extra sauce. On the continue. I do not care that it is a screen. Coin.",
+  "selectLine": "Strawe. The possum found a straw. The straw found a target. That is you.",
+  "tauntLines": [
+   "I shot a spitball through a brick. Your face is softer than a brick.",
+   "The straw is bendy. The aim is not.",
+   "Extra sauce on everything. You are everything."
+  ],
+  "endingText": "Strawe put a spitball through the moon. The moon is fine. The spitball is still going."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the ranged member of a four-reptile sewer ninja team, who fights with a straw blowgun",
+  "gag": "Named after what the sensei found in a dumpster; he talks through the straw, so every threat comes out as a whistle, and he wants extra sauce on everything",
+  "forbiddenTerms": [],
+  "tells": [
+   "Wears a paper straw wrapper over his eyes as a mask, with the holes punched in the wrong place",
+   "Select-screen stat reads AMMO: SPIT"
+  ]
+ }
+}

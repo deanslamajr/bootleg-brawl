@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:fast",
+ "states": {
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "swing:0",
+     "dur": 3,
+     "vel": [
+      2.8,
+      0
+     ]
+    },
+    {
+     "pose": "swing:1",
+     "dur": 3,
+     "hit": [
+      {
+       "box": [
+        4,
+        10,
+        26,
+        30
+       ],
+       "damage": 3,
+       "knock": [
+        0.3,
+        0
+       ],
+       "hitstun": 16,
+       "hitstop": 2,
+       "sfx": "tink",
+       "tags": [
+        "spork"
+       ],
+       "score": 5
+      }
+     ]
+    },
+    {
+     "pose": "swing:2",
+     "dur": 3,
+     "hit": [
+      {
+       "box": [
+        4,
+        10,
+        26,
+        30
+       ],
+       "damage": 3,
+       "knock": [
+        0.3,
+        0
+       ],
+       "hitstun": 16,
+       "hitstop": 2,
+       "sfx": "tink",
+       "tags": [
+        "spork"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "swing:1",
+     "dur": 3,
+     "vel": [
+      2.2,
+      0
+     ],
+     "hit": [
+      {
+       "box": [
+        4,
+        10,
+        26,
+        30
+       ],
+       "damage": 3,
+       "knock": [
+        0.3,
+        0
+       ],
+       "hitstun": 16,
+       "hitstop": 2,
+       "sfx": "tink",
+       "tags": [
+        "spork"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "swing:2",
+     "dur": 3,
+     "hit": [
+      {
+       "box": [
+        4,
+        10,
+        26,
+        30
+       ],
+       "damage": 3,
+       "knock": [
+        0.3,
+        0
+       ],
+       "hitstun": 16,
+       "hitstop": 2,
+       "sfx": "tink",
+       "tags": [
+        "spork"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        4,
+        8,
+        30,
+        34
+       ],
+       "damage": 8,
+       "knock": [
+        3,
+        2.4
+       ],
+       "knockdown": true,
+       "hitstop": 6,
+       "sfx": "clang",
+       "score": 20,
+       "tags": [
+        "spork"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 8
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    12
+   ],
+   "tags": [
+    "improvised"
+   ]
+  }
+ },
+ "patch": {},
+ "remove": []
+}

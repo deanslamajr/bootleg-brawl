@@ -1,0 +1,332 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:ranged",
+ "states": {
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "shoot:0",
+     "dur": 3
+    },
+    {
+     "pose": "shoot:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        8,
+        28,
+        26,
+        12
+       ],
+       "damage": 4,
+       "knock": [
+        0.4,
+        0
+       ],
+       "hitstun": 20,
+       "sfx": "tink",
+       "tags": [
+        "straw"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "shoot:0",
+     "dur": 6
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 4
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 4,
+     "until": 14
+    }
+   ],
+   "tags": [
+    "improvised"
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "shoot:0",
+     "dur": 3
+    },
+    {
+     "pose": "shoot:1",
+     "dur": 6,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.8,
+         0
+        ]
+       },
+       "sfx": "spray"
+      }
+     ]
+    },
+    {
+     "pose": "shoot:2",
+     "dur": 8
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 4
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 5,
+     "until": 16
+    }
+   ],
+   "tags": [
+    "improvised"
+   ]
+  },
+  "atk3": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk3:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk3:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        12,
+        22,
+        18
+       ],
+       "damage": 8,
+       "knock": [
+        2.4,
+        2.2
+       ],
+       "knockdown": true,
+       "hitstop": 7,
+       "sfx": "kick",
+       "score": 20,
+       "tags": [
+        "straw"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "atk3:2",
+     "dur": 10
+    }
+   ],
+   "next": "idle"
+  },
+  "charge": {
+   "kind": "misc",
+   "frames": [
+    {
+     "pose": "charge:0",
+     "dur": 8
+    },
+    {
+     "pose": "charge:1",
+     "dur": 8
+    }
+   ],
+   "loop": true,
+   "tags": [
+    "charging"
+   ]
+  },
+  "chargeShot": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "shoot:0",
+     "dur": 3
+    },
+    {
+     "pose": "shoot:1",
+     "dur": 8,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "spitball-big",
+        "offset": [
+         24,
+         34
+        ],
+        "vel": [
+         5.2,
+         0
+        ]
+       },
+       "sfx": "spray",
+       "signal": "chargeFire"
+      }
+     ]
+    },
+    {
+     "pose": "shoot:2",
+     "dur": 10
+    }
+   ],
+   "next": "idle"
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "charge:0",
+     "dur": 8
+    },
+    {
+     "pose": "shoot:1",
+     "dur": 6,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.6,
+         1.4
+        ]
+       }
+      },
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.6,
+         0
+        ]
+       }
+      },
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.6,
+         -1.4
+        ]
+       }
+      },
+      {
+       "shake": 6,
+       "text": "SPIT TAKE",
+       "sfx": "spray"
+      }
+     ]
+    },
+    {
+     "pose": "shoot:0",
+     "dur": 4
+    },
+    {
+     "pose": "shoot:1",
+     "dur": 6,
+     "events": [
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.6,
+         1.4
+        ]
+       }
+      },
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.6,
+         0
+        ]
+       }
+      },
+      {
+       "spawn": {
+        "projectile": "spitball",
+        "offset": [
+         22,
+         34
+        ],
+        "vel": [
+         4.6,
+         -1.4
+        ]
+       }
+      },
+      {
+       "sfx": "spray"
+      }
+     ]
+    },
+    {
+     "pose": "shoot:2",
+     "dur": 12
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    20
+   ],
+   "tags": [
+    "improvised"
+   ]
+  }
+ },
+ "patch": {},
+ "remove": []
+}

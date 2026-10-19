@@ -16,6 +16,9 @@ const WRONG_STATS: Record<string, string> = {
   brat: "MANNERS: 10",
   mensa: "IQ: 9",
   lidd: "SHELL: NOT FOUND",
+  sporke: "TINES: 3 OF 4",
+  napkin: "REACH: YES",
+  strawe: "AMMO: SPIT",
 };
 /** Card i sits where the v1 four-card row put it, so the layout test still holds. */
 const cardX = (i: number): number => 30 + i * 108;

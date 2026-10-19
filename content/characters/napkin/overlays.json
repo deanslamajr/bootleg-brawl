@@ -1,0 +1,412 @@
+{
+ "schemaVersion": 1,
+ "body": {
+  "scale": 1,
+  "headR": 7.5,
+  "torsoW": 12,
+  "armW": 3.6,
+  "legW": 4,
+  "footL": 6.5,
+  "handR": 2.3,
+  "skin": 2,
+  "torso": 4,
+  "legs": 2,
+  "feet": 13,
+  "arms": 2,
+  "hide": []
+ },
+ "layers": {
+  "head": [
+   {
+    "shape": "poly",
+    "at": "head",
+    "dx": -9,
+    "dy": -3,
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      -4,
+      -3
+     ],
+     [
+      -5,
+      1
+     ],
+     [
+      -2,
+      3
+     ]
+    ],
+    "color": 14,
+    "z": 51
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dy": -3,
+    "w": 17,
+    "h": 3.5,
+    "color": 14,
+    "z": 52
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": -3,
+    "dy": -3,
+    "w": 0.8,
+    "h": 3.5,
+    "color": 15,
+    "z": 53,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 3,
+    "dy": -3,
+    "w": 0.8,
+    "h": 3.5,
+    "color": 15,
+    "z": 53,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 4,
+    "dy": 0,
+    "r": 2.6,
+    "color": 12,
+    "z": 53
+   },
+   {
+    "shape": "circle",
+    "at": "head",
+    "dx": 5,
+    "dy": 0,
+    "r": 1.1,
+    "color": 1,
+    "z": 54,
+    "outline": false,
+    "shade": false
+   },
+   {
+    "shape": "rect",
+    "at": "head",
+    "dx": 4,
+    "dy": -2.6,
+    "w": 6,
+    "h": 1.2,
+    "color": 3,
+    "z": 54,
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "torso": [
+   {
+    "shape": "poly",
+    "at": "hip",
+    "dy": 2,
+    "points": [
+     [
+      -3,
+      0
+     ],
+     [
+      -9,
+      3
+     ],
+     [
+      -15,
+      1
+     ],
+     [
+      -14,
+      5
+     ],
+     [
+      -8,
+      7
+     ],
+     [
+      -2,
+      4
+     ]
+    ],
+    "color": 2,
+    "z": 15,
+    "exceptStates": [
+     "down",
+     "ko",
+     "sleep",
+     "getup:0"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hip",
+    "dy": -4,
+    "w": 11,
+    "h": 14,
+    "color": 6,
+    "z": 35
+   },
+   {
+    "shape": "rect",
+    "at": "hip",
+    "dy": -4,
+    "w": 1,
+    "h": 14,
+    "color": 7,
+    "z": 36,
+    "outline": false,
+    "shade": false
+   }
+  ],
+  "legs": [],
+  "weapon": [
+   {
+    "shape": "rect",
+    "at": "hF",
+    "dx": 0,
+    "dy": -5,
+    "w": 2.5,
+    "h": 26,
+    "color": 10,
+    "z": 62,
+    "exceptStates": [
+     "mopspin",
+     "special"
+    ]
+   },
+   {
+    "shape": "ellipse",
+    "at": "hF",
+    "dx": 0,
+    "dy": -17,
+    "w": 10,
+    "h": 6,
+    "color": 14,
+    "z": 63,
+    "exceptStates": [
+     "mopspin",
+     "special"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hF",
+    "dx": -3,
+    "dy": -13,
+    "w": 1.2,
+    "h": 4,
+    "color": 15,
+    "z": 63,
+    "outline": false,
+    "shade": false,
+    "exceptStates": [
+     "mopspin",
+     "special"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hF",
+    "dx": 0,
+    "dy": -13,
+    "w": 1.2,
+    "h": 4,
+    "color": 15,
+    "z": 63,
+    "outline": false,
+    "shade": false,
+    "exceptStates": [
+     "mopspin",
+     "special"
+    ]
+   },
+   {
+    "shape": "rect",
+    "at": "hF",
+    "dx": 3,
+    "dy": -13,
+    "w": 1.2,
+    "h": 4,
+    "color": 15,
+    "z": 63,
+    "outline": false,
+    "shade": false,
+    "exceptStates": [
+     "mopspin",
+     "special"
+    ]
+   }
+  ],
+  "fx": []
+ },
+ "uniqueFrames": {
+  "mopspin:0": {
+   "base": "special:0",
+   "shapes": [
+    {
+     "shape": "rect",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 44,
+     "h": 2.5,
+     "rot": 0,
+     "color": 10,
+     "z": 61
+    },
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 5,
+     "h": 5,
+     "color": 14,
+     "z": 62
+    }
+   ]
+  },
+  "mopspin:1": {
+   "base": "special:1",
+   "shapes": [
+    {
+     "shape": "rect",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 44,
+     "h": 2.5,
+     "rot": 43,
+     "color": 10,
+     "z": 61
+    },
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 5,
+     "h": 5,
+     "color": 14,
+     "z": 62
+    }
+   ]
+  },
+  "mopspin:2": {
+   "base": "special:2",
+   "shapes": [
+    {
+     "shape": "rect",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 44,
+     "h": 2.5,
+     "rot": 85,
+     "color": 10,
+     "z": 61
+    },
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 5,
+     "h": 5,
+     "color": 14,
+     "z": 62
+    }
+   ]
+  },
+  "mopspin:3": {
+   "base": "special:3",
+   "shapes": [
+    {
+     "shape": "rect",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 44,
+     "h": 2.5,
+     "rot": 128,
+     "color": 10,
+     "z": 61
+    },
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 5,
+     "h": 5,
+     "color": 14,
+     "z": 62
+    }
+   ]
+  },
+  "mopspin:4": {
+   "base": "special:4",
+   "shapes": [
+    {
+     "shape": "rect",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 44,
+     "h": 2.5,
+     "rot": 171,
+     "color": 10,
+     "z": 61
+    },
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 5,
+     "h": 5,
+     "color": 14,
+     "z": 62
+    }
+   ]
+  },
+  "mopspin:5": {
+   "base": "special:5",
+   "shapes": [
+    {
+     "shape": "rect",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 44,
+     "h": 2.5,
+     "rot": 213,
+     "color": 10,
+     "z": 61
+    },
+    {
+     "shape": "ellipse",
+     "at": "hF",
+     "dx": 0,
+     "dy": 0,
+     "w": 5,
+     "h": 5,
+     "color": 14,
+     "z": 62
+    }
+   ]
+  }
+ }
+}

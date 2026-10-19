@@ -1,0 +1,55 @@
+{
+ "id": "sporke",
+ "schemaVersion": 1,
+ "displayName": "Sporke",
+ "shortName": "SPORKE",
+ "archetype": "fast",
+ "rig": "small",
+ "palette": "sporke",
+ "altPalettes": [
+  "sporke-alt"
+ ],
+ "stats": {
+  "hp": 90,
+  "walkSpeed": 1.55,
+  "runSpeed": 3.2,
+  "jumpVel": 5.3,
+  "weight": 0.75,
+  "reach": 0.9,
+  "damageMult": 1.0,
+  "specialCost": 8
+ },
+ "kit": {
+  "requires": [],
+  "flags": [],
+  "gags": []
+ },
+ "improvisedWeapon": {
+  "id": "spork-nunchaku",
+  "displayName": "Spork Nunchaku",
+  "hits": 0,
+  "respawnTicks": 0
+ },
+ "teamUps": [],
+ "voice": {
+  "continueLine": "Anchovies are a vegetable. Put in a coin and I will prove it.",
+  "selectLine": "Sporke. Two sporks, one shoelace. The possum called it a weapon. I call it lunch.",
+  "tauntLines": [
+   "Two sporks. One string. Zero mercy.",
+   "I am the fast one. The possum timed me with a sundial.",
+   "Anchovies are a vegetable. Hold still while I explain."
+  ],
+  "endingText": "Sporke tied a third spork to the string. The possum said no. He did it anyway."
+ },
+ "unlock": "v1",
+ "portrait": "idle:0",
+ "parodyMeta": {
+  "bootlegOf": "the fast, goofy member of a four-reptile sewer ninja team, who fights with two sporks tied together",
+  "gag": "Named after what the sensei found in a dumpster; his nunchaku are two plastic sporks on a shoelace, and he has never once hit himself with them, which he mentions a lot",
+  "forbiddenTerms": [],
+  "tells": [
+   "Wears a paper soda-jerk hat instead of any kind of mask, because the sensei dressed him in the dark",
+   "Select-screen stat reads TINES: 3 OF 4"
+  ]
+ }
+}

@@ -1,0 +1,251 @@
+{
+ "schemaVersion": 1,
+ "extends": "template:grappler",
+ "states": {
+  "atk1": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "atk1:0",
+     "dur": 4
+    },
+    {
+     "pose": "atk1:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        26,
+        36,
+        16
+       ],
+       "damage": 8,
+       "knock": [
+        0.9,
+        0
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "thud",
+       "tags": [
+        "mop"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "atk1:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "back",
+     "to": "backAtk",
+     "from": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk2",
+     "from": 5,
+     "until": 16
+    }
+   ],
+   "tags": [
+    "improvised"
+   ]
+  },
+  "atk2": {
+   "kind": "attack",
+   "frames": [
+    {
+     "pose": "swing:0",
+     "dur": 5
+    },
+    {
+     "pose": "swing:1",
+     "dur": 5,
+     "hit": [
+      {
+       "box": [
+        6,
+        8,
+        40,
+        28
+       ],
+       "damage": 9,
+       "knock": [
+        0.9,
+        0
+       ],
+       "hitstun": 26,
+       "hitstop": 7,
+       "sfx": "thud",
+       "tags": [
+        "mop"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "swing:2",
+     "dur": 9
+    }
+   ],
+   "next": "idle",
+   "transitions": [
+    {
+     "on": "special",
+     "to": "special",
+     "until": 5
+    },
+    {
+     "on": "attack",
+     "to": "atk3",
+     "from": 5,
+     "until": 16
+    }
+   ],
+   "tags": [
+    "improvised"
+   ]
+  },
+  "special": {
+   "kind": "special",
+   "frames": [
+    {
+     "pose": "mopspin:0",
+     "dur": 5
+    },
+    {
+     "pose": "mopspin:1",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        88,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3.4,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "whoosh",
+       "tags": [
+        "mop"
+       ],
+       "score": 25
+      }
+     ]
+    },
+    {
+     "pose": "mopspin:2",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        88,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3.4,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "whoosh",
+       "tags": [
+        "mop"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "mopspin:3",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        88,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3.4,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "whoosh",
+       "tags": [
+        "mop"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "mopspin:4",
+     "dur": 4,
+     "hit": [
+      {
+       "box": [
+        -44,
+        6,
+        88,
+        40
+       ],
+       "damage": 12,
+       "knock": [
+        3.4,
+        2.8
+       ],
+       "knockdown": true,
+       "hitstop": 8,
+       "sfx": "whoosh",
+       "tags": [
+        "mop"
+       ]
+      }
+     ]
+    },
+    {
+     "pose": "mopspin:5",
+     "dur": 8,
+     "events": [
+      {
+       "text": "WET FLOOR",
+       "shake": 6
+      }
+     ]
+    }
+   ],
+   "next": "idle",
+   "invuln": [
+    0,
+    20
+   ],
+   "tags": [
+    "improvised"
+   ]
+  }
+ },
+ "patch": {},
+ "remove": []
+}
