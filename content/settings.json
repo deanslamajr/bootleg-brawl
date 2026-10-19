@@ -1,4 +1,11 @@
 {
   "schemaVersion": 1,
-  "flags": []
+  "flags": [],
+  "speech": {
+    "koChance": 40,
+    "spawnChance": 20,
+    "enemyGapTicks": 120,
+    "bossHurtChance": 25,
+    "bossGapTicks": 180
+  }
 }

@@ -8,6 +8,7 @@ import {
   CONTENT_VERSIONS,
   formatIssues,
   migrateDoc,
+  speechSettings,
   type ArenaFile,
   type ArtFile,
   type ArtStyleFile,
@@ -15,7 +16,9 @@ import {
   type ContentType,
   type InterludeFile,
   type LayerFile,
+  type LinePools,
   type SegmentFile,
+  type SpeechSettings,
   type TrackFile,
 } from "@bb/schema";
 import type { ModuleRegistry, RawContent, StageSource } from "@bb/engine";
@@ -176,13 +179,22 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
       };
   }
 
-  const actor = <F>(dir: string, main: string, type: ContentType) => {
+  /** A folder's optional lines.json, without its schemaVersion. */
+  const readLines = (base: string, type: ContentType): LinePools | undefined => {
+    const f = read<LinePools & { schemaVersion?: number }>(join(base, "lines.json"), type, true);
+    if (!f) return undefined;
+    const { schemaVersion: _v, ...pools } = f;
+    return pools as LinePools;
+  };
+
+  const actor = <F>(dir: string, main: string, type: ContentType, linesType: ContentType) => {
     const out: Record<
       string,
       {
         file: F;
         states: RawContent["templates"][string];
         overlays: RawContent["characters"][string]["overlays"];
+        lines?: LinePools;
       }
     > = {};
     for (const id of listDirs(join(root, dir))) {
@@ -201,7 +213,8 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
         join(base, file.overlays),
         "overlays",
       );
-      if (states && overlays) out[id] = { file, states, overlays };
+      const lines = readLines(base, linesType);
+      if (states && overlays) out[id] = { file, states, overlays, ...(lines ? { lines } : {}) };
       readArt(base);
       const table: SpriteTable = {};
       readPngs(join(base, "sprites"), "sprites/", table);
@@ -213,9 +226,20 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     "characters",
     "character.json",
     "character",
+    "character-lines",
   );
-  const enemies = actor<RawContent["enemies"][string]["file"]>("enemies", "family.json", "enemy");
-  const bosses = actor<RawContent["bosses"][string]["file"]>("bosses", "boss.json", "boss");
+  const enemies = actor<RawContent["enemies"][string]["file"]>(
+    "enemies",
+    "family.json",
+    "enemy",
+    "enemy-lines",
+  );
+  const bosses = actor<RawContent["bosses"][string]["file"]>(
+    "bosses",
+    "boss.json",
+    "boss",
+    "boss-lines",
+  );
   const arenas: Record<string, ArenaFile> = {};
   for (const id of listDirs(join(root, "bosses"))) {
     const a = read<ArenaFile>(join(root, "bosses", id, "arena.json"), "arena", true);
@@ -246,7 +270,8 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
       const l = read<LayerFile>(join(base, "layers", f), "layer");
       if (l) layers[l.id] = l;
     }
-    stages[id] = { file, segments, layers };
+    const lines = readLines(base, "stage-lines");
+    stages[id] = { file, segments, layers, ...(lines ? { lines } : {}) };
     readArt(base);
     const table: SpriteTable = {};
     readPngs(join(base, "layers"), "", table);
@@ -272,7 +297,11 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
   sprites.style = read<ArtStyleFile>(join(root, "art", "style.json"), "art-style", true);
   readArt(join(root, "art"));
   readPngs(join(root, "art", "sprites"), "sprites/", sprites.shared);
-  const settings = read<{ flags: string[] }>(join(root, "settings.json"), "settings", true);
+  const settings = read<{ flags: string[]; speech: SpeechSettings }>(
+    join(root, "settings.json"),
+    "settings",
+    true,
+  );
   const campaign = read<RawContent["campaign"]>(join(root, "campaign.json"), "campaign");
   const roster = read<RawContent["roster"]>(join(root, "roster.json"), "roster");
 
@@ -301,6 +330,7 @@ export function loadContent(registry: ModuleRegistry, root = CONTENT): LoadResul
     tracks,
     forbiddenTerms: forbidden?.terms ?? [],
     flags: settings?.flags ?? [],
+    speech: settings?.speech ?? speechSettings.parse({}),
   };
   return { raw, errors, warnings, docs, migrated, sprites };
 }

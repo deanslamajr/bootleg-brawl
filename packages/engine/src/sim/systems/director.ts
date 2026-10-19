@@ -45,7 +45,7 @@ export function defaultSegmentController(): SegmentController {
           sim.emit({ t: "lockClear", id: lock.id });
           sim.emit({ t: "go" });
           const bulletin = sim.stage.gagHooks.dirkHeadline.find((b) => b.lock === lock.id);
-          if (bulletin) sim.emit({ t: "text", text: bulletin.line, kind: "bulletin", ticks: 240 });
+          if (bulletin) sim.say(sim.stageLines.bulletin, "bulletin", -1, 240);
           updateCamMax(sim);
         }
         return false;
@@ -323,12 +323,11 @@ function finishSpawn(sim: Sim, e: number, p: Sim["g"]["pending"][number]): void 
     const costume = sim.stage.gagHooks.deadweightDave;
     if (costume) {
       c.variant[e] = costumeIndex(costume.costume);
-      sim.text(costume.line, "bubble", e, 150);
+      sim.say(sim.stageLines.costume, "bubble", e, 150);
     }
   } else {
-    const lines = sim.def(e).enemy?.lines.spawn ?? [];
-    if (lines.length && sim.rng.chance(20))
-      sim.text(lines[sim.rng.int(lines.length)]!, "bubble", e, 90);
+    // The game screen shows a spawn line at a chance (D80), so the sim draws no number here.
+    sim.say(sim.def(e).enemy?.pools.spawn, "bubble", e, 90);
   }
 }
 
@@ -464,8 +463,7 @@ function tickOutro(sim: Sim): void {
       c.mx[e] = 0;
       c.facing[e] = -1;
     }
-    if (g.phaseTimer === 190 && sim.stage.outro)
-      sim.text(sim.stage.outro.lickspittle, "bubble", e, 150);
+    if (g.phaseTimer === 190) sim.say(sim.stageLines.outro, "bubble", e, 150);
     if (g.phaseTimer === 40) {
       sim.emit({ t: "static" });
       sim.sfx("static");
@@ -473,8 +471,7 @@ function tickOutro(sim: Sim): void {
       g.outroEnt = -1;
     }
   }
-  if (g.phaseTimer === 30 && sim.stage.outro?.announcer)
-    sim.text(sim.stage.outro.announcer, "banner", -1, 120);
+  if (g.phaseTimer === 30) sim.say(sim.stageLines.outroBanner, "banner", -1, 120);
   if (g.phaseTimer <= 0) {
     g.phase = PHASE.clear;
     g.stageCleared = 1;

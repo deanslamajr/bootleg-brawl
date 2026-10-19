@@ -33,6 +33,8 @@ export class StageScene implements Scene {
   private cardFix: Label | null = null;
   private cardStrike: Graphics | null = null;
   private typed = 0;
+  /** The announcer's title-card line and Mensa's correction, picked from the stage's pool. */
+  private announce: [string, string] = ["", ""];
   private pauseMenu: Menu | null = null;
   private bossCardTicks = 0;
   /** Events the sim emitted while it was built (the first segment's intro banner). */
@@ -92,6 +94,7 @@ export class StageScene implements Scene {
     await Promise.all([app.assets.ensureSheets(sheets), app.assets.ensureLayers(this.stageId)]);
     this.renderer = new StageRenderer(app.assets, content, this.sim, this.stageId, {
       gore: app.settings.gore && (this.sim.stage.rules.gore ?? false),
+      lines: app.lines,
     });
     this.root.addChildAt(this.renderer.root, 0);
     window.addEventListener("keydown", this.onKey);
@@ -127,6 +130,10 @@ export class StageScene implements Scene {
   // ------------------------------------------------------------------ title card
 
   private buildCard(): void {
+    const stc = this.sim!.stage.titleCard;
+    this.announce = this.app.lines.pickPair(
+      this.app.content.lines[this.sim!.stageLines.announcer!],
+    ) ?? [stc.announcerLine, stc.announcerLineCorrected ?? ""];
     const st = this.sim!.stage;
     const tc = st.titleCard;
     const L = this.cardLayer;
@@ -173,12 +180,12 @@ export class StageScene implements Scene {
   }
 
   private tickCard(inputs: InputFrame[]): void {
-    const tc = this.sim!.stage.titleCard;
+    const [said, fixed] = this.announce;
     this.t++;
-    if (this.t % 2 === 0 && this.typed < tc.announcerLine.length) {
+    if (this.t % 2 === 0 && this.typed < said.length) {
       this.typed++;
       if (this.typed % 3 === 0) this.app.audio.play("announcer", 0, "announcer");
-      this.cardLine!.set(`ANNOUNCER: "${tc.announcerLine.slice(0, this.typed)}"`);
+      this.cardLine!.set(`ANNOUNCER: "${said.slice(0, this.typed)}"`);
     }
     // The pedant in the party fixes the Announcer's grammar.
     const pedant = this.sim!.g.players.some(
@@ -186,14 +193,14 @@ export class StageScene implements Scene {
     );
     if (
       pedant &&
-      tc.announcerLineCorrected &&
-      this.typed >= tc.announcerLine.length &&
-      this.t > tc.announcerLine.length * 2 + 50 &&
+      fixed &&
+      this.typed >= said.length &&
+      this.t > said.length * 2 + 50 &&
       !this.cardFix
     ) {
       const w = this.cardLine!.textWidth;
       this.cardStrike = new Graphics().rect(VIEW_W / 2 - w / 2, 208, w, 1).fill(C.red);
-      this.cardFix = label(`"${tc.announcerLineCorrected}" —MENSA`, VIEW_W / 2, 224, {
+      this.cardFix = label(`"${fixed}" —MENSA`, VIEW_W / 2, 224, {
         color: C.yellow,
         align: "center",
         maxWidth: 440,
@@ -273,6 +280,7 @@ export class StageScene implements Scene {
           if (!ev.midBoss) this.prefetchNext();
           break;
         case "text":
+        case "say":
           if (ev.kind === "bulletin") app.sfx("bulletin");
           break;
         case "go":
@@ -325,11 +333,16 @@ export class StageScene implements Scene {
       ),
     );
     c.addChild(
-      label(`"${b.card.taunt}"`, VIEW_W / 2, 206, {
-        color: C.white,
-        align: "center",
-        maxWidth: 420,
-      }),
+      label(
+        `"${app.lines.pick(app.content.lines[b.pools.card!]) ?? b.card.taunt}"`,
+        VIEW_W / 2,
+        206,
+        {
+          color: C.white,
+          align: "center",
+          maxWidth: 420,
+        },
+      ),
     );
     c.addChild(label(`BOUNTY: ${b.card.bounty}¢`, 200, 178, { color: C.red, scale: 1 }));
     this.overlay.addChild(c);

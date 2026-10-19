@@ -51,6 +51,16 @@ export type SimEvent =
       tags: string[];
     }
   | {
+      /** A line from a pool (D80). The game screen picks the text, so the sim never reads it. */
+      t: "say";
+      pool: number;
+      kind: "bubble" | "banner" | "bulletin";
+      ent?: number;
+      x?: number;
+      y?: number;
+      ticks: number;
+    }
+  | {
       t: "text";
       text: string;
       kind: "pop" | "banner" | "bubble" | "big" | "bulletin";
@@ -180,6 +190,8 @@ export class Sim {
   readonly rng: Rng;
   readonly content: CompiledContent;
   readonly stage: StageFile;
+  /** The stage's line pools by name (costume, bulletin, outro, outroBanner, announcer). */
+  readonly stageLines: Record<string, number>;
   readonly segments: SegmentFile[];
   readonly registry: ModuleRegistry;
   readonly modules: MechanicModule[];
@@ -207,6 +219,7 @@ export class Sim {
     const st = opts.content.raw.stages[opts.stageId];
     if (!st) throw new Error(`unknown stage ${opts.stageId}`);
     this.stage = st.file;
+    this.stageLines = opts.content.stagePools[opts.stageId] ?? {};
     this.segments = st.file.segments.map((id) => {
       const s = st.segments[id];
       if (!s) throw new Error(`stage ${opts.stageId}: missing segment ${id}`);
@@ -441,6 +454,23 @@ export class Sim {
   sfx(id: string | undefined, e = -1): void {
     if (!id) return;
     this.emit({ t: "sfx", id, x: e >= 0 ? (this.c.x[e]! - this.g.camX) / FX : undefined });
+  }
+
+  /** Names a line pool to speak from. Pool -1 (an empty pool) says nothing. */
+  say(
+    pool: number | undefined,
+    kind: "bubble" | "banner" | "bulletin",
+    ent = -1,
+    ticks = 90,
+  ): void {
+    if (pool === undefined || pool < 0) return;
+    const ev: SimEvent = { t: "say", pool, kind, ticks };
+    if (ent >= 0) {
+      ev.ent = ent;
+      ev.x = this.c.x[ent]! / FX;
+      ev.y = this.c.y[ent]! / FX;
+    }
+    this.emit(ev);
   }
 
   text(

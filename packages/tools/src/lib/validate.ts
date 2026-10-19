@@ -2,7 +2,14 @@
 // module availability, rig coverage, frame data sanity, palettes, team-ups, bootleg tells,
 // campaign reachability and the forbidden-terms scan. Output is one line per problem.
 
-import { ForbiddenScanner, stageFile, type ArtFile, type Shape, type StateDef } from "@bb/schema";
+import {
+  ForbiddenScanner,
+  lineProblems,
+  stageFile,
+  type ArtFile,
+  type Shape,
+  type StateDef,
+} from "@bb/schema";
 import {
   compileContent,
   ContentError,
@@ -580,9 +587,23 @@ export function validateRaw(
       );
   }
 
-  // ---- compile (catches dangling references the checks above missed)
+  // ---- compile (catches dangling references the checks above missed), then the line pools
   try {
-    compileContent(raw);
+    const compiled = compileContent(raw);
+    const folder: Record<string, string> = {
+      character: "characters",
+      enemy: "enemies",
+      boss: "bosses",
+      stage: "stages",
+    };
+    for (const pool of compiled.lines) {
+      const [kind, id, name] = pool.key.split("/");
+      const where = `content/${folder[kind!]}/${id}`;
+      if (!inScope(where)) continue;
+      for (const line of [...pool.lines, ...(pool.pair ?? [])].filter(Boolean))
+        for (const problem of lineProblems(line))
+          E(`${where}: ${name} line "${line.slice(0, 60)}" ${problem}`);
+    }
   } catch (e) {
     if (e instanceof ContentError) E(`compile: ${e.message}`);
     else throw e;

@@ -24,8 +24,10 @@ export class CreditsScene implements Scene {
       lines.push(["THE END??", C.yellow], ["NO. 996 GAMES REMAIN.", C.pink], ["", 0]);
       for (const id of app.content.raw.roster.rosterOrder) {
         const c = app.content.raw.characters[id];
-        if (c && app.run?.party.includes(id))
-          lines.push([c.file.voice.endingText, C.white], ["", 0]);
+        if (!c || !app.run?.party.includes(id)) continue;
+        const pools = app.content.defs[app.content.defIndex[id]!]?.player?.pools;
+        const ending = pools ? app.lines.pick(app.content.lines[pools.ending!]) : undefined;
+        lines.push([ending ?? c.file.voice.endingText, C.white], ["", 0]);
       }
     }
     for (const l of app.content.raw.campaign.credits) lines.push([l, C.white], ["", 0]);

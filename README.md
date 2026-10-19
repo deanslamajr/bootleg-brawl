@@ -83,6 +83,7 @@ The content CLI commands:
 - `balance [ids]` compares each character with its archetype band.
 - `record-golden` records the golden replays and `verify-golden` replays them.
 - `play <stage> [party]` runs one headless bot playthrough.
+- `lines [--seeds=N]` shows how many lines each dialogue pool shows in one playthrough at 1, 2 and 4 players, and how many playthroughs it lasts.
 - `perf` measures sim tick and snapshot time at the worst-case entity count.
 - `migrate [--write]` upgrades content files to the current schema versions.
 - `art probe|gen|accept|sheet|ledger` generates sprites and backgrounds through Runware. It spends money, so every run without `--dry-run` needs the owner's approval. The phase caps are in `PHASE_CAPS` in `packages/tools/src/art/runware.ts`.
@@ -105,6 +106,8 @@ A head hangs from the neck. Its part in `art.json` sets `"anchor": "neck"`, and 
 If the model draws a part facing left, set `"flip": true` on its shape. If a part has colors close to the magenta background, set a `style` in the folder's `art.json` that names another background color.
 
 The tool reads `RUNWARE_API_KEY` from the environment or from `.env` at the repository root. Every charged image adds a line to `content/art/ledger.jsonl`, which git tracks. If a request would pass the $5.00 cap or its phase cap, the tool refuses it. `pnpm tools art ledger` prints the spend.
+
+Spoken lines live in pools. A `lines.json` next to a character, enemy, boss or stage lists the lines of each pool, such as an enemy's `ko` and `spawn` pools or a character's `taunt` pool. The single lines in the main files, such as `voice.tauntLines`, come first in their pool. The sim only names a pool. The game screen picks a line the player did not see yet and remembers the seen lines in the browser, so a line comes back only after the player saw the whole pool. A KO line shows at the `koChance` in `content/settings.json`. A line can hold choices in braces, such as `MY {SPLEEN|LANYARD}!`. Run `pnpm tools lines` after you change a pool: it fails when a pool repeats within one 4-player playthrough.
 
 To add a character:
 

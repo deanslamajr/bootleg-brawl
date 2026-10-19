@@ -8,6 +8,7 @@
     "./render": "./src/render/index.ts",
     "./render/font": "./src/render/font.ts",
     "./render/png": "./src/render/png.ts",
+    "./render/line-book": "./src/render/line-book.ts",
     "./audio": "./src/audio/index.ts",
     "./input": "./src/input/index.ts"
   },

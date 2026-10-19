@@ -1,6 +1,8 @@
 // IP rule enforced by tooling: scan every string in a content document (and its file name) for
 // franchise names, character names and catchphrases from content/forbidden-terms.json.
 
+import { expandAll } from "./lines";
+
 export interface ForbiddenHit {
   path: string;
   term: string;
@@ -44,8 +46,19 @@ export class ForbiddenScanner {
       ...this.scanText(file.replace(/[/\\._]/g, " "), `${file}:<file name>`, extra),
     ];
     const walk = (v: unknown, path: string) => {
-      if (typeof v === "string") hits.push(...this.scanText(v, `${file}:${path}`, extra));
-      else if (Array.isArray(v)) v.forEach((item, i) => walk(item, `${path}[${i}]`));
+      if (typeof v === "string") {
+        hits.push(...this.scanText(v, `${file}:${path}`, extra));
+        // A line with braces can join words from two choices, so scan every expansion too.
+        if (v.includes("{")) {
+          const seen = new Set(hits.map((h) => `${h.path}|${h.term}`));
+          for (const x of expandAll(v))
+            for (const h of this.scanText(x, `${file}:${path}`, extra))
+              if (!seen.has(`${h.path}|${h.term}`)) {
+                seen.add(`${h.path}|${h.term}`);
+                hits.push(h);
+              }
+        }
+      } else if (Array.isArray(v)) v.forEach((item, i) => walk(item, `${path}[${i}]`));
       else if (v && typeof v === "object") {
         for (const [k, item] of Object.entries(v)) {
           // The parody metadata's own deny list is not content text.

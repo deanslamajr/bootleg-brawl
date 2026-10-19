@@ -10,6 +10,7 @@ import { COSTUMES } from "../sim/systems/director";
 import { F, KIND, PHASE, SK, SLOT, VIEW_H, VIEW_W } from "../sim/types";
 import type { AssetStore } from "./assets";
 import { TAIL_W, placeBubble } from "./bubble";
+import { LineBook, SpeechGate } from "./line-book";
 import { Label, hexNum } from "./text";
 
 const SLOT_COLORS = [0xffd93a, 0x4aa0f0, 0x5ac04a, 0xff8ac8];
@@ -81,15 +82,24 @@ export class StageRenderer {
   private comboLabels: Label[] = [];
   private comboTimers = [0, 0, 0, 0];
   debug: Label | null = null;
+  readonly book: LineBook;
+  private readonly gate: SpeechGate;
+  /** The continue line picked for each player slot while its continue box shows. */
+  private readonly contLines = new Map<number, string>();
 
   constructor(
     readonly assets: AssetStore,
     readonly content: CompiledContent,
     public sim: Sim,
     readonly stageId: string,
-    /** Display options. Gore needs the player's option and the stage's rules.gore opt-in. */
-    readonly opts: { gore?: boolean } = {},
+    /**
+     * Display options. Gore needs the player's option and the stage's rules.gore opt-in. `lines`
+     * is the game's line book, so the seen-line memory lasts across stages (D80).
+     */
+    readonly opts: { gore?: boolean; lines?: LineBook } = {},
   ) {
+    this.book = opts.lines ?? new LineBook();
+    this.gate = new SpeechGate(content.raw.speech);
     this.world.sortableChildren = true;
     this.root.addChild(
       this.sky,
@@ -167,6 +177,25 @@ export class StageRenderer {
         case "text":
           this.addText(ev);
           break;
+        case "say": {
+          const pool = this.content.lines[ev.pool];
+          if (!pool || !this.gate.allow(pool.role, sim.g.tick)) break;
+          const text = this.book.pick(pool);
+          if (!text) break;
+          const t: Extract<SimEvent, { t: "text" }> = {
+            t: "text",
+            text,
+            kind: ev.kind,
+            ticks: ev.ticks,
+          };
+          if (ev.ent !== undefined) {
+            t.ent = ev.ent;
+            t.x = ev.x;
+            t.y = ev.y;
+          }
+          this.addText(t);
+          break;
+        }
         case "shake":
           this.shake = Math.max(this.shake, ev.ticks);
           break;
@@ -696,6 +725,7 @@ export class StageRenderer {
       pv.bar.clear();
       pv.info.set("");
       const d = p.def >= 0 ? sim.content.defs[p.def] : undefined;
+      if (p.status !== SLOT.continue) this.contLines.delete(i);
       switch (p.status) {
         case SLOT.empty:
           pv.name.set(blink ? "PRESS START" : "");
@@ -741,8 +771,13 @@ export class StageRenderer {
           pv.lives.set("");
           if (!contShown && d?.player) {
             contShown = true;
+            let line = this.contLines.get(i);
+            if (line === undefined) {
+              line = this.book.pick(this.content.lines[d.player.pools.continue!]) ?? "";
+              this.contLines.set(i, line);
+            }
             this.contText.set(
-              `${d.player.shortName}: "${d.player.voice.continueLine}"\nPRESS START   ${Math.ceil(p.contTimer / 60)}`,
+              `${d.player.shortName}: "${line}"\nPRESS START   ${Math.ceil(p.contTimer / 60)}`,
             );
           }
           break;

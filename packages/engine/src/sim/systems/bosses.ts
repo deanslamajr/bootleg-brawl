@@ -124,8 +124,7 @@ export function bossThink(sim: Sim, e: number): void {
     c.aiStep[e] = 0;
     c.aiPattern[e] = 0;
     c.aiTimer[e] = 0;
-    const text = b.phases[ph]!.enterText;
-    if (text) sim.text(text, "banner", e, 120);
+    if (b.phases[ph]!.enterText) sim.say(b.pools.phase, "banner", e, 120);
   }
   duoCheck(sim, e);
   const kind = sim.stateKind(e);
@@ -245,7 +244,7 @@ export function bossThink(sim: Sim, e: number): void {
       if (timer > s.ticks) nextStep(sim, e);
       return;
     case "taunt": {
-      if (s.line) sim.text(s.line, "bubble", e, 90);
+      if (s.line) sim.say(d.boss!.pools.pattern, "bubble", e, 90);
       if (d.S.taunt >= 0) sim.enterState(e, d.S.taunt);
       nextStep(sim, e);
       return;

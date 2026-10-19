@@ -12,7 +12,7 @@ import {
   VIEW_W,
   TICK_HZ,
 } from "@bb/engine";
-import { AssetStore, Label } from "@bb/engine/render";
+import { AssetStore, Label, LineBook, localLineStore } from "@bb/engine/render";
 import { AudioEngine } from "@bb/engine/audio";
 import { InputManager } from "@bb/engine/input";
 import { loadSettings, saveSettings, type RunState, type Settings } from "./settings";
@@ -38,6 +38,8 @@ export class GameApp {
   readonly app = new Application();
   readonly assets = new AssetStore("./");
   readonly audio = new AudioEngine();
+  /** Picks every spoken line and remembers what this browser saw, across playthroughs (D80). */
+  readonly lines = new LineBook(localLineStore());
   input!: InputManager;
   content!: CompiledContent;
   registry!: ModuleRegistry;

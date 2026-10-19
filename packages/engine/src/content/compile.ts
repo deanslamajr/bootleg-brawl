@@ -1,7 +1,7 @@
 // Turns validated content into integer runtime tables. Pure and deterministic: the same content
 // always compiles to the same tables, in the browser and in Node.
 
-import { stateDef as stateDefSchema, type Frame, type Hitbox, type ItemSprite, type OverlaysFile, type RigFile, type StateDef, type StatesFile } from "@bb/schema";
+import { stateDef as stateDefSchema, type Frame, type LinePools, type Hitbox, type ItemSprite, type OverlaysFile, type RigFile, type StateDef, type StatesFile } from "@bb/schema";
 import { toFx } from "../math/fixed";
 import { Hasher, hex32 } from "../math/hash";
 import { CMD, COND, SK, type CommandName } from "../sim/types";
@@ -12,6 +12,7 @@ import type {
   CEvent,
   CFrame,
   CHit,
+  CLinePool,
   CompiledContent,
   CState,
   CWeapon,
@@ -287,6 +288,27 @@ export function compileContent(raw: RawContent): CompiledContent {
   };
   weaponIds.forEach((id, i) => (weaponIndex[id] = i));
 
+  const lines: CLinePool[] = [];
+  /**
+   * Builds the named pools of one folder: the single lines from its main file come first, then
+   * its lines.json, without duplicates. An empty pool gets index -1, and the sim skips it.
+   */
+  const pools = (
+    key: string,
+    names: readonly string[],
+    inline: Record<string, readonly (string | undefined)[]>,
+    file: LinePools | undefined,
+  ): Record<string, number> => {
+    const out: Record<string, number> = {};
+    for (const n of names) {
+      const all = [...new Set([...(inline[n] ?? []), ...(file?.[n] ?? [])])].filter(
+        (l): l is string => !!l,
+      );
+      out[n] = all.length ? lines.push({ key: `${key}/${n}`, role: n, lines: all }) - 1 : -1;
+    }
+    return out;
+  };
+
   const actorCommon = (
     kind: CDef["kind"],
     id: string,
@@ -367,6 +389,17 @@ export function compileContent(raw: RawContent): CompiledContent {
       requires: f.kit.requires,
       kit: f.kit as Record<string, unknown>,
       voice: f.voice,
+      pools: pools(
+        `character/${id}`,
+        ["taunt", "continue", "ending", "select"],
+        {
+          taunt: f.voice.tauntLines,
+          continue: [f.voice.continueLine],
+          ending: [f.voice.endingText],
+          select: [f.voice.selectLine],
+        },
+        src.lines,
+      ),
       portrait: f.portrait,
       unlock: f.unlock,
     };
@@ -420,7 +453,12 @@ export function compileContent(raw: RawContent): CompiledContent {
             rescueDrop: f.civilian.rescueDrop ? pickupIndexOf(f.civilian.rescueDrop, id) : -1,
           }
         : undefined,
-      lines: f.lines,
+      pools: pools(
+        `enemy/${id}`,
+        ["ko", "spawn", "help", "rescue"],
+        { ko: f.lines.ko, spawn: f.lines.spawn },
+        src.lines,
+      ),
       catalogType: f.catalogType,
     };
     if (f.weapon && weaponIndex[f.weapon] === undefined) throw new ContentError(`${id}: unknown weapon ${f.weapon}`);
@@ -455,7 +493,21 @@ export function compileContent(raw: RawContent): CompiledContent {
       partner: f.partner ?? "",
       card: f.card,
       defeat: f.defeat,
-      lines: f.lines,
+      pools: pools(
+        `boss/${id}`,
+        ["pattern", "hurt", "defeat", "card", "phase", "defeatBanner"],
+        {
+          pattern: f.phases.flatMap((ph) =>
+            ph.patterns.flatMap((p) => p.steps.map((st) => (st.do === "taunt" ? st.line : undefined))),
+          ),
+          hurt: f.lines.hurt,
+          defeat: f.lines.defeat,
+          card: [f.card.taunt],
+          phase: f.phases.map((ph) => ph.enterText),
+          defeatBanner: [f.defeat.text],
+        },
+        src.lines,
+      ),
     };
     defs[d.index] = d;
   }
@@ -559,6 +611,35 @@ export function compileContent(raw: RawContent): CompiledContent {
     });
   }
 
+  const stagePools: Record<string, Record<string, number>> = {};
+  for (const id of Object.keys(raw.stages).sort()) {
+    const st = raw.stages[id]!;
+    const f = st.file;
+    const sp = pools(
+      `stage/${id}`,
+      ["costume", "bulletin", "outro", "outroBanner"],
+      {
+        costume: [f.gagHooks.deadweightDave?.line],
+        bulletin: f.gagHooks.dirkHeadline.map((b) => b.line),
+        outro: [f.outro?.lickspittle],
+        outroBanner: [f.outro?.announcer],
+      },
+      st.lines,
+    );
+    // The announcer's title-card line and Mensa's correction stay paired by index.
+    const said = [f.titleCard.announcerLine, ...(st.lines?.announcer ?? [])];
+    const fixed = [f.titleCard.announcerLineCorrected ?? "", ...(st.lines?.announcerFix ?? [])];
+    const keep = said.map((l, i) => i).filter((i) => said[i] && said.indexOf(said[i]!) === i);
+    sp.announcer =
+      lines.push({
+        key: `stage/${id}/announcer`,
+        role: "announcer",
+        lines: keep.map((i) => said[i]!),
+        pair: keep.map((i) => fixed[i] ?? ""),
+      }) - 1;
+    stagePools[id] = sp;
+  }
+
   const roster = raw.roster.rosterOrder.map((id) => {
     const i = defIndex[id];
     if (i === undefined || defs[i]?.kind !== "player") throw new ContentError(`roster lists unknown character ${id}`);
@@ -567,7 +648,7 @@ export function compileContent(raw: RawContent): CompiledContent {
 
   // Everything the sim reads goes into the hash, so a failed replay can name a content change.
   // Art and text stay out: layers, palettes, sheets, rigs, portraits, display names, voices, boss
-  // cards, sfx ids and every text line except the counts of lines picked with the RNG. The
+  // cards, sfx ids and the line pools, because the game screen picks lines, not the sim (D80). The
   // browser never loads layer ops, so leaving layers out also lets it match the packer's hash.
   const h = new Hasher();
   h.value(raw.roster);
@@ -580,7 +661,17 @@ export function compileContent(raw: RawContent): CompiledContent {
   }
   h.value(raw.items);
   h.value(raw.arenas);
-  return { raw, defs, defIndex, weapons, weaponIndex, roster, hash: hex32(h.digest()) };
+  return {
+    raw,
+    defs,
+    defIndex,
+    weapons,
+    weaponIndex,
+    roster,
+    lines,
+    stagePools,
+    hash: hex32(h.digest()),
+  };
 }
 
 /** The fields of a compiled def that the sim reads, as plain JSON for the content hash. */
@@ -669,8 +760,6 @@ export function simRelevant(d: CDef): unknown {
       grabbable: d.enemy.grabbable,
       weapon: d.enemy.weapon,
       civilian: d.enemy.civilian,
-      // The KO and spawn lines are picked with sim.rng, so their counts move the RNG.
-      lines: [d.enemy.lines.spawn.length, d.enemy.lines.ko.length],
     },
     boss: d.boss && {
       phases: d.boss.phases,

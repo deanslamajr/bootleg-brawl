@@ -313,6 +313,8 @@ export function applyHit(
   if (sim.stateKind(t) !== SK.grabbed || knockdown) c.facing[t] = -facing || 1;
 
   const weightPct = Math.max(40, dt.weightPct);
+  // The game screen shows a boss's hurt line at a chance, at most once per gap (D80).
+  if (dt.boss && dmg > 0 && c.hp[t]! > 0) sim.say(dt.boss.pools.hurt, "bubble", t, 90);
   if (c.hp[t]! <= 0) {
     c.hp[t] = 0;
     knockOut(sim, a, t, facing, hit);
@@ -416,8 +418,7 @@ function knockOut(sim: Sim, a: number, t: number, facing: number, hit: CHit): vo
     if (!dt.enemy.civilian) sim.addScore(scorer, tier.score);
     const slot = sim.playerSlotOf(scorer);
     if (slot >= 0) sim.g.players[slot]!.kos++;
-    const lines = dt.enemy.lines.ko;
-    if (lines.length) sim.text(lines[sim.rng.int(lines.length)]!, "bubble", t, 90);
+    sim.say(dt.enemy.pools.ko, "bubble", t, 90);
   }
   if (dt.boss && scorer >= 0) sim.addScore(scorer, 5000);
 }
@@ -447,7 +448,8 @@ export function koFinished(sim: Sim, e: number): void {
     if (c.flags[e]! & F.towing) return;
     const b = sim.def(e).boss!;
     sim.emit({ t: "bossDefeated", def: c.def[e]! });
-    sim.text(b.defeat.text, "banner", -1, 140);
+    sim.say(b.pools.defeatBanner, "banner", -1, 140);
+    sim.say(b.pools.defeat, "bubble", e, 150);
     if (b.defeat.kind === "towed") {
       // The battery dies and a tow truck hauls him away (see director towAway).
       c.flags[e]! |= F.towing | F.invulnerable;

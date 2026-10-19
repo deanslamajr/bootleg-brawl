@@ -9,11 +9,13 @@ import type {
   InterludeFile,
   ItemsFile,
   LayerFile,
+  LinePools,
   OverlaysFile,
   RigFile,
   RosterFile,
   SegmentFile,
   SfxFile,
+  SpeechSettings,
   StageFile,
   StatesFile,
   TrackFile,
@@ -23,12 +25,15 @@ export interface ActorSource<F> {
   file: F;
   states: StatesFile;
   overlays: OverlaysFile;
+  /** The folder's lines.json, pool name to lines (D80). */
+  lines?: LinePools;
 }
 
 export interface StageSource {
   file: StageFile;
   segments: Record<string, SegmentFile>;
   layers: Record<string, LayerFile>;
+  lines?: LinePools;
 }
 
 export interface RawContent {
@@ -50,6 +55,8 @@ export interface RawContent {
   forbiddenTerms: string[];
   /** Feature flags this build turns on (content/settings.json). */
   flags: string[];
+  /** How often the game screen shows lines (content/settings.json). */
+  speech: SpeechSettings;
 }
 
 export interface CBox {
@@ -222,6 +229,8 @@ export interface CPlayer {
   requires: string[];
   kit: Record<string, unknown>;
   voice: CharacterFile["voice"];
+  /** Line pool indices: taunt, continue, ending, select. -1 when a pool is empty. */
+  pools: Record<string, number>;
   portrait: string;
   unlock: string;
 }
@@ -238,7 +247,8 @@ export interface CEnemy {
   grabbable: boolean;
   weapon: number;
   civilian?: { penalty: number; rescueDrop: number };
-  lines: { spawn: string[]; ko: string[] };
+  /** Line pool indices: ko, spawn, help, rescue. -1 when a pool is empty. */
+  pools: Record<string, number>;
   catalogType: string[];
 }
 
@@ -251,7 +261,8 @@ export interface CBoss {
   partner: string;
   card: BossFile["card"];
   defeat: BossFile["defeat"];
-  lines: BossFile["lines"];
+  /** Line pool indices: pattern, hurt, defeat, card, phase, defeatBanner. -1 when empty. */
+  pools: Record<string, number>;
 }
 
 export interface CProjectile {
@@ -314,5 +325,19 @@ export interface CompiledContent {
   weaponIndex: Record<string, number>;
   /** Player character def indices in select-screen order. */
   roster: number[];
+  /** Every line pool. The sim names a pool by its index; the game screen picks the line (D80). */
+  lines: CLinePool[];
+  /** Stage id to pool name to pool index: costume, bulletin, outro, outroBanner, announcer. */
+  stagePools: Record<string, Record<string, number>>;
   hash: string;
+}
+
+export interface CLinePool {
+  /** Stable name for the seen-line memory, such as "enemy/interns/ko". */
+  key: string;
+  /** The pool name, such as "ko". The line book's chance and gap rules key on it. */
+  role: string;
+  lines: string[];
+  /** Paired lines at the same index (the announcer's line and Mensa's correction). */
+  pair?: string[];
 }

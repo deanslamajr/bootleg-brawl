@@ -396,8 +396,7 @@ function coreSignal(sim: Sim, e: number, signal: string): void {
   const c = sim.c;
   if (signal === "taunt") {
     const d = sim.def(e);
-    const lines = d.player?.voice.tauntLines ?? [];
-    if (lines.length) sim.text(lines[(sim.g.tick >> 3) % lines.length]!, "bubble", e, 90);
+    sim.say(d.player?.pools.taunt, "bubble", e, 90);
     return;
   }
   if (signal === "wake") {

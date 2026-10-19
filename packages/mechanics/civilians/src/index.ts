@@ -46,7 +46,7 @@ function civilianAi(sim: Sim, e: number): void {
       ) {
         startGrab(sim, enemy, e);
         sim.g.flags[`harassed:${e}`] = 1;
-        sim.text("HELP! HELP-ISH!", "bubble", e, 90);
+        sim.say(sim.def(e).enemy?.pools.help, "bubble", e, 90);
         return;
       }
       if (panicId >= 0 && sim.st(e).id !== panicId) sim.enterState(e, panicId);
@@ -104,7 +104,7 @@ export const civiliansModule: MechanicModule = {
           delete sim.g.flags[key];
           const drop = sim.def(e).enemy?.civilian?.rescueDrop ?? -1;
           if (drop >= 0) sim.spawnPickup(drop, c.x[e]!, c.y[e]! + 1, 12 * FX, 0, 2 * FX);
-          sim.text("MY HERO! HAVE A SNACK.", "bubble", e, 90);
+          sim.say(sim.def(e).enemy?.pools.rescue, "bubble", e, 90);
           sim.addScore(e, 0);
         }
       },

@@ -5,6 +5,7 @@ import { genRigs } from "./commands/gen-rigs";
 import { packCommand } from "./commands/pack";
 import { validateCommand } from "./commands/validate";
 import { playCommand } from "./commands/play";
+import { linesCommand } from "./commands/lines";
 import { bakeRigsCommand } from "./commands/bake-rigs";
 import { exportSpritesCommand } from "./commands/export-sprites";
 import { migrateCommand } from "./commands/migrate";
@@ -67,6 +68,10 @@ const commands: Record<string, { run: Command; help: string }> = {
     help: "replay every golden and compare state hashes",
   },
   play: { run: playCommand, help: "headless bot playthrough <stage> [party] [--seed=] [--ticks=]" },
+  lines: {
+    run: linesCommand,
+    help: "how fast each line pool runs out over bot playthroughs [--seeds=N]",
+  },
   perf: { run: perfCommand, help: "sim tick and snapshot timing at the worst-case entity count" },
   "gen-rigs": {
     run: () => genRigs(),

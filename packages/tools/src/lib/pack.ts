@@ -128,6 +128,7 @@ export function buildBundles(
       beatmaps,
       arenas: raw.arenas,
       flags: raw.flags,
+      speech: raw.speech,
       sheets: { items: items.meta },
     },
     files: [{ path: "items.png", bytes: items.png }, ...sfxFiles],
@@ -231,7 +232,12 @@ export function buildBundles(
     bundles.push({
       id,
       type: "stage",
-      content: { file: shipped(st.file), segments: st.segments, layers: layerMeta },
+      content: {
+        file: shipped(st.file),
+        segments: st.segments,
+        layers: layerMeta,
+        ...(st.lines ? { lines: st.lines } : {}),
+      },
       files,
       requires: st.file.rules.requires,
       displayName: st.file.titleCard.title,

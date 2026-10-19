@@ -3,7 +3,12 @@
 // is decoded to indices once and recolored per palette on first use.
 
 import { Rectangle, Texture } from "pixi.js";
-import type { ManifestFile, ManifestEntry } from "@bb/schema";
+import {
+  speechSettings,
+  type ManifestFile,
+  type ManifestEntry,
+  type SpeechSettings,
+} from "@bb/schema";
 import type { RawContent } from "../content/types";
 import { decodeIndexedPng, type IndexedPng } from "./png";
 
@@ -177,6 +182,7 @@ export class AssetStore {
       tracks: core.tracks as RawContent["tracks"],
       forbiddenTerms: [],
       flags: (core.flags as string[] | undefined) ?? [],
+      speech: { ...speechSettings.parse({}), ...(core.speech as Partial<SpeechSettings>) },
     };
     for (const e of this.manifest.entries) {
       const d = this.bundleData.get(`${e.type}:${e.id}`) as Record<string, unknown>;
@@ -191,11 +197,13 @@ export class AssetStore {
           file: RawContent["stages"][string]["file"];
           segments: RawContent["stages"][string]["segments"];
           layers: Record<string, LayerMeta>;
+          lines?: RawContent["stages"][string]["lines"];
         };
         this.layerMeta.set(e.id, s.layers);
         raw.stages[e.id] = {
           file: s.file,
           segments: s.segments,
+          ...(s.lines ? { lines: s.lines } : {}),
           layers: Object.fromEntries(
             Object.entries(s.layers).map(([k, v]) => [
               k,

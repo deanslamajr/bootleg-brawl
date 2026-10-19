@@ -19,6 +19,7 @@ import {
 } from "./assets";
 import { statesFile } from "./states";
 import { artFile, artStyleFile, spriteMeta } from "./art";
+import { bossLinesFile, characterLinesFile, enemyLinesFile, stageLinesFile } from "./lines";
 
 export * from "./common";
 export * from "./states";
@@ -30,6 +31,7 @@ export * from "./items";
 export * from "./interlude";
 export * from "./assets";
 export * from "./art";
+export * from "./lines";
 export * from "./forbidden";
 export * from "./migrations";
 
@@ -67,7 +69,11 @@ export type ContentType =
   | "manifest"
   | "art"
   | "art-style"
-  | "sprite-meta";
+  | "sprite-meta"
+  | "character-lines"
+  | "enemy-lines"
+  | "boss-lines"
+  | "stage-lines";
 
 export interface ContentTypeInfo {
   current: number;
@@ -101,6 +107,10 @@ export const CONTENT_VERSIONS: Record<ContentType, ContentTypeInfo> = {
   art: { current: 1, minimum: 1 },
   "art-style": { current: 1, minimum: 1 },
   "sprite-meta": { current: 1, minimum: 1 },
+  "character-lines": { current: 1, minimum: 1 },
+  "enemy-lines": { current: 1, minimum: 1 },
+  "boss-lines": { current: 1, minimum: 1 },
+  "stage-lines": { current: 1, minimum: 1 },
 };
 
 function fileSchemas(fragments: readonly SchemaFragments[]) {
@@ -155,6 +165,10 @@ export function buildSchemas(fragments: readonly SchemaFragments[] = []) {
     art: artFile,
     "art-style": artStyleFile,
     "sprite-meta": spriteMeta,
+    "character-lines": characterLinesFile,
+    "enemy-lines": enemyLinesFile,
+    "boss-lines": bossLinesFile,
+    "stage-lines": stageLinesFile,
   };
   return schemas;
 }

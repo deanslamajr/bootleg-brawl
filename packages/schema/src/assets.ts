@@ -150,8 +150,22 @@ export const manifestFile = z.strictObject({
 export type ManifestFile = z.infer<typeof manifestFile>;
 
 /** Build-wide settings: feature flags on by default for this build (URL ?flags= overrides). */
+/** How often the game screen shows lines (D80). Chances are percents. */
+export const speechSettings = z.strictObject({
+  /** An enemy KO shows a line at this chance. */
+  koChance: z.number().int().min(0).max(100).default(40),
+  spawnChance: z.number().int().min(0).max(100).default(20),
+  /** No enemy bubble starts within this many ticks of the last one. */
+  enemyGapTicks: z.number().int().min(0).default(120),
+  /** A hit on a boss shows a hurt line at this chance, at most once per bossGapTicks. */
+  bossHurtChance: z.number().int().min(0).max(100).default(25),
+  bossGapTicks: z.number().int().min(0).default(180),
+});
+export type SpeechSettings = z.infer<typeof speechSettings>;
+
 export const settingsFile = z.strictObject({
   schemaVersion,
   flags: z.array(z.string()).default([]),
+  speech: speechSettings.default(speechSettings.parse({})),
 });
 export type SettingsFile = z.infer<typeof settingsFile>;
