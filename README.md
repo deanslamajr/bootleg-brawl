@@ -15,18 +15,20 @@ Add `?debug` to the game URL for the frame and tick overlay and the GAME SELECT:
 
 ## Controls
 
-| Action  | Player 1 keys | Player 2 keys          | Gamepad             |
-| ------- | ------------- | ---------------------- | ------------------- |
-| Move    | W A S D       | Arrow keys             | Left stick or d-pad |
-| Attack  | J             | Numpad 1 or `,`        | X / Square          |
-| Jump    | K             | Numpad 2 or `.`        | A / Cross           |
-| Special | J + K, or U   | Numpad 1 + 2, or `;`   | Y / Triangle        |
-| Run     | Double-tap, I | Double-tap, Numpad 5   | Double-tap or RB    |
-| Taunt   | L             | Numpad 3 or `/`        | B / Circle          |
-| Start   | Enter         | Numpad Enter, R. Shift | Start               |
-| Pause   | Esc           | Esc                    | Esc                 |
+| Action  | Player 1 keys | Player 2 keys          | Gamepad             | Touch               |
+| ------- | ------------- | ---------------------- | ------------------- | ------------------- |
+| Move    | W A S D       | Arrow keys             | Left stick or d-pad | Stick               |
+| Attack  | J             | Numpad 1 or `,`        | X / Square          | ATK                 |
+| Jump    | K             | Numpad 2 or `.`        | A / Cross           | JMP                 |
+| Special | J + K, or U   | Numpad 1 + 2, or `;`   | Y / Triangle        | SPC                 |
+| Run     | Double-tap, I | Double-tap, Numpad 5   | Double-tap or RB    | Stick past the ring |
+| Taunt   | L             | Numpad 3 or `/`        | B / Circle          | TNT                 |
+| Start   | Enter         | Numpad Enter, R. Shift | Start               | START               |
+| Pause   | Esc           | Esc                    | Esc                 | PAUSE               |
 
 To remap the keys or pad buttons, open OPTIONS and pick CONTROLS P1, CONTROLS P2 or CONTROLS PAD. Every row except Pause can be remapped. RESET CONTROLS restores this table. A stage pauses when the window loses focus. The music pauses with it.
+
+On a phone or tablet held sideways, an on-screen pad shows for one player: the stick on the left, the four buttons and START on the right, and PAUSE. The touch layout is fixed. In OPTIONS, TOUCH CONTROLS turns the pad on, off or automatic. Automatic shows it on a touch screen and hides it after a key or pad press. On a touch screen, OFF takes effect only after you use a keyboard or a gamepad in the current page session. Until then the pad stays, and a reload brings it back.
 
 Walk into a dazed or light enemy to grab it. Attack over an item to pick it up. Taunt next to a teammate to start a team-up. Press Start on an empty slot to join during a stage. Hold Start to drop out.
 

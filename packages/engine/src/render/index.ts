@@ -1,4 +1,5 @@
 export * from "./assets";
+export * from "./bubble";
 export * from "./text";
 export * from "./font";
 export * from "./png";

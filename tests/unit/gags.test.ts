@@ -1,5 +1,5 @@
 // Scenery gags with a step trigger fire once when a player arrives, and arm again only after the
-// zone has been empty for the rearm window (D71). The Game 0 sprinkler is the shipped example.
+// zone has been empty for the rearm window (D78). The Game 0 sprinkler is the shipped example.
 
 import { beforeAll, describe, expect, it } from "vitest";
 import { Sim, intToFx, type CompiledContent } from "@bb/engine";

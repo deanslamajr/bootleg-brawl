@@ -9,6 +9,7 @@ import type { Sim, SimEvent } from "../sim/sim";
 import { COSTUMES } from "../sim/systems/director";
 import { F, KIND, PHASE, SK, SLOT, VIEW_H, VIEW_W } from "../sim/types";
 import type { AssetStore } from "./assets";
+import { TAIL_W, placeBubble } from "./bubble";
 import { Label, hexNum } from "./text";
 
 const SLOT_COLORS = [0xffd93a, 0x4aa0f0, 0x5ac04a, 0xff8ac8];
@@ -23,6 +24,8 @@ interface Effect {
   ox: number;
   oy: number;
   world: boolean;
+  /** Speech bubble parts. The node sits at the speaker's feet, and update() places these. */
+  bubble?: { box: Container; tail: Graphics; outerW: number; def: number };
 }
 
 class EntityView extends Container {
@@ -186,6 +189,10 @@ export class StageRenderer {
         case "ko":
           if (this.opts.gore) this.splatter(ev.ent);
           break;
+        case "despawn":
+          // The id can go to the next spawn. A bubble stays where its speaker was.
+          for (const e of this.effects) if (e.ent === ev.ent) e.ent = -1;
+          break;
       }
     }
     for (const e of this.effects) e.ttl--;
@@ -321,24 +328,30 @@ export class StageRenderer {
       });
       const w = Math.min(160, lab.textWidth + 8);
       const h = lab.height + 6;
+      // The box and the tail are separate so the box can stay on screen while the tail
+      // stays on the speaker. The tail tip is 54 px above the feet, under the box.
+      const box = new Container();
       const b = new Graphics()
         .rect(-2, -2, w + 4, h + 4)
         .fill(0x1a1420)
         .rect(0, 0, w, h)
-        .fill(0xffffff)
-        .poly([6, h, 14, h, 6, h + 6])
         .fill(0xffffff);
       lab.position.set(4, 3);
-      c.addChild(b, lab);
-      c.pivot.set(8, h + 60);
+      box.addChild(b, lab);
+      box.y = -(h + 60);
+      const tail = new Graphics().poly([0, 0, 0, -6, TAIL_W, -6]).fill(0xffffff);
+      tail.y = -54;
+      c.addChild(box, tail);
+      const ent = ev.ent ?? -1;
       this.effects.push({
         node: c,
         ttl: ev.ticks,
         vy: 0,
-        ent: ev.ent ?? -1,
+        ent,
         ox: ev.x ?? 0,
         oy: ev.y ?? 0,
         world: true,
+        bubble: { box, tail, outerW: w + 4, def: ent >= 0 ? this.sim.c.def[ent]! : -1 },
       });
       this.fx.addChild(c);
       return;
@@ -384,23 +397,28 @@ export class StageRenderer {
     this.fx.position.set(sx - Math.round(camX), sy);
     this.drawEntities(alpha);
     this.drawRail(camX);
+    const c = sim.c;
     for (const e of this.effects) {
       if (e.world) {
-        if (e.ent >= 0 && sim.world.alive[e.ent]) {
-          e.ox = sim.c.x[e.ent]! / FX;
-          e.oy = sim.c.y[e.ent]! / FX - sim.c.z[e.ent]! / FX;
+        const s = e.ent;
+        if (s >= 0 && e.bubble && c.def[s] !== e.bubble.def) e.ent = -1;
+        else if (s >= 0 && sim.world.alive[s]) {
+          // Follow the speaker where drawOne draws it, between the last two ticks.
+          e.ox = (sim.prevX[s]! + (c.x[s]! - sim.prevX[s]!) * alpha) / FX;
+          e.oy =
+            (sim.prevY[s]! + (c.y[s]! - sim.prevY[s]!) * alpha) / FX -
+            (sim.prevZ[s]! + (c.z[s]! - sim.prevZ[s]!) * alpha) / FX;
         }
         e.oy += e.vy;
-        let x = e.ox;
-        // Keep speech bubbles on screen.
-        if (e.ent >= 0 || e.node.pivot.y > 0) {
-          const w = e.node.width;
-          x = Math.max(
-            camX + 4 + e.node.pivot.x,
-            Math.min(camX + VIEW_W - w + e.node.pivot.x - 4, x),
-          );
+        // Keep a speech bubble's box on screen and its tail on the speaker.
+        if (e.bubble) {
+          const ax = Math.round(e.ox);
+          const p = placeBubble(e.ox, camX, e.bubble.outerW);
+          e.bubble.box.x = p.boxX + 2 - ax;
+          e.bubble.tail.x = p.tailX - ax;
+          e.bubble.tail.scale.x = p.flip ? -1 : 1;
         }
-        e.node.position.set(Math.round(x), Math.round(e.oy));
+        e.node.position.set(Math.round(e.ox), Math.round(e.oy));
       }
     }
     this.flash.clear();

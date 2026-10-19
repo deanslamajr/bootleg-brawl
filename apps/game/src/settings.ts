@@ -3,6 +3,10 @@
 
 import type { Difficulty, FriendlyFire } from "@bb/engine";
 
+/** The on-screen pad: shown by the device rules, always, or never. */
+export type TouchControls = "auto" | "on" | "off";
+export const TOUCH_CONTROLS: TouchControls[] = ["auto", "on", "off"];
+
 export interface Settings {
   difficulty: Difficulty;
   friendlyFire: FriendlyFire;
@@ -10,6 +14,7 @@ export interface Settings {
   musicVolume: number;
   sfxVolume: number;
   gore: boolean;
+  touchControls: TouchControls;
 }
 
 const SETTINGS_KEY = "bootleg-brawl.settings.v1";
@@ -22,6 +27,7 @@ export const DEFAULT_SETTINGS: Settings = {
   musicVolume: 0.7,
   sfxVolume: 0.9,
   gore: false,
+  touchControls: "auto",
 };
 
 function read<T>(key: string): T | null {

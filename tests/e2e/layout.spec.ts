@@ -60,8 +60,14 @@ test("title, options and controls text do not overlap", async ({ page }) => {
   const settings = await page.evaluate(() => localStorage.getItem("bootleg-brawl.settings.v1"));
   expect(settings).toContain('"gore":true');
 
-  // CONTROLS P1 follows GORE, MUSIC and SOUND.
+  // TOUCH CONTROLS follows GORE, MUSIC and SOUND. Left cycles AUTO to OFF and saves.
   await down(page, 3);
+  await press(page, [0], IN.LEFT);
+  const touch = await page.evaluate(() => localStorage.getItem("bootleg-brawl.settings.v1"));
+  expect(touch).toContain('"touchControls":"off"');
+
+  // CONTROLS P1 follows TOUCH CONTROLS.
+  await down(page, 1);
   await press(page, [0], IN.ATTACK);
   expect(await waitForScene(page, ["controls"])).toBe("controls");
   expect((await status(page)).target).toBe("p1");

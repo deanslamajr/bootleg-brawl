@@ -39,16 +39,24 @@ export class StageScene implements Scene {
   private startEvents: SimEvent[] = [];
   private escHeld = false;
   private readonly onKey = (e: KeyboardEvent) => {
-    if (e.code === "Escape") this.escHeld = true;
+    if (e.code === "Escape") this.escape();
   };
   /** Losing focus or hiding the tab pauses play, so an alt-tab does not cost a life. */
-  private readonly onBlur = () => {
-    if (this.mode === "play") this.pause();
-  };
+  private readonly onBlur = () => this.interrupt();
   private readonly onVisibility = () => {
     if (!document.hidden) return;
-    this.onBlur();
+    this.interrupt();
   };
+
+  /** The Escape key and the touch PAUSE button: pause play, or resume from the pause menu. */
+  escape(): void {
+    this.escHeld = true;
+  }
+
+  /** Pauses play and never resumes it: a blur, a hidden tab or the rotate message. */
+  interrupt(): void {
+    if (this.mode === "play") this.pause();
+  }
 
   constructor(
     private readonly app: GameApp,
