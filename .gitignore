@@ -11,3 +11,5 @@ content/manifest.json
 # Private: planning docs and the forbidden-terms deny list stay out of the public repository.
 docs/
 content/forbidden-terms.json
+# Agent worktrees that other Claude sessions open inside the checkout.
+.claude/
