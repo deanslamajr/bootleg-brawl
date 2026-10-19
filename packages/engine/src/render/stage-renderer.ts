@@ -186,7 +186,8 @@ export class StageRenderer {
             t: "text",
             text,
             kind: ev.kind,
-            ticks: ev.ticks,
+            // A longer line stays up longer: one second plus two ticks per character (D80).
+            ticks: Math.max(ev.ticks, 60 + text.length * 2),
           };
           if (ev.ent !== undefined) {
             t.ent = ev.ent;
